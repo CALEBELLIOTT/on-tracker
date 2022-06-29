@@ -7,4 +7,12 @@ export const NoteSchema = new Schema({
     projectId: { type: ObjectId, required: true, ref: 'Project' },
     accountId: { type: ObjectId, required: true, ref: 'Account' },
     body: { type: String, required: true }
+},
+    { timestamps: true, toJSON: { virtuals: true } })
+
+NoteSchema.virtual('account', {
+    localField: 'accountId',
+    ref: 'Account',
+    foreignField: '_id',
+    justOne: true
 })
