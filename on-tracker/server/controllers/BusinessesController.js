@@ -8,7 +8,11 @@ export class BusinessesController extends BaseController{
         super('api/businesses')
         this.router
         .get('', this.getBusinesses)
+        .get('/:id', this.getBusinessesById)
+        // TODO create project and employee gets
+        .post('', this.createBusiness)
     }
+    
     async getBusinesses(req, res, next) {
       try {
         const business = await businessesService.getBusinesses()
@@ -16,5 +20,24 @@ export class BusinessesController extends BaseController{
       } catch (error) {
         next(error)
       }
+    }
+
+    async getBusinessesById(req, res ,next) {
+       try {
+        const business = await businessesService.getBusinessesById(req.params.id)
+        return res.send(business)
+       } catch (error) {
+        next(error)
+       }
+    }
+
+
+    async createBusiness(req, res, next){
+        try {
+            const business = await businessesService.createBusiness(req.body)
+            return res.send(business)
+        } catch (error) {
+            next(error)
+        }
     }
 }

@@ -4,8 +4,20 @@ import { dbContext } from "../db/DbContext"
 
 
 class BusinessesService{
-    getBusinesses() {
-        const business = dbContext.Businesses.find()
+    
+    async getBusinesses() {
+        const business = await dbContext.Businesses.find()
+        return business
+    }
+
+    async getBusinessesById(id) {
+        const business = await dbContext.Businesses.findById(id)
+        return business
+    }
+
+    async createBusiness(businessData) {
+        const business = await dbContext.Businesses.create(businessData)
+        await business.Populate('creator')
         return business
     }
 
