@@ -1,5 +1,8 @@
 import { Auth0Provider } from "@bcwdev/auth0provider";
+import { notesService } from "../services/NotesService.js";
 import { projectsService } from "../services/ProjectsService.js";
+import { tasksService } from "../services/TasksService.js";
+import { teamMembersService } from "../services/TeamMembersService.js";
 import BaseController from "../utils/BaseController.js";
 
 export class ProjectsController extends BaseController {
@@ -9,6 +12,9 @@ export class ProjectsController extends BaseController {
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)
       .get('/:id', this.getById)
+      .get('/:id/notes', this.getNotesByProject)
+      .get('/:id/teamMembers', this.getTeamMembersByProject)
+      .get('/:id/tasks', this.getTasksByProject)
       .post('', this.create)
       .put('/:id', this.edit)
       .put('/:id/cancel', this.cancel)
@@ -30,6 +36,31 @@ export class ProjectsController extends BaseController {
     try {
       const project = await projectsService.findById(req.params.id)
       res.send(project)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async getNotesByProject(req, res, next) {
+    try {
+      const notes = await notesService.getNotesByProject(req.params.id)
+      res.send(notes)
+    } catch (error) {
+      next(error)
+    }
+  }
+  async getTeamMembersByProject(req, res, next) {
+    try {
+      const teamMembers = await teamMembersService.getTeamMembersByProject(req.params.id)
+      res.send(teamMembers)
+    } catch (error) {
+      next(error)
+    }
+  }
+  async getTasksByProject(req, res, next) {
+    try {
+      const tasks = await tasksService.getTasksByProject(req.params.id)
+      res.send(tasks)
     } catch (error) {
       next(error)
     }
