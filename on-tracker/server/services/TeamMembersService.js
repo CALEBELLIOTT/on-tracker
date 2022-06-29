@@ -17,6 +17,7 @@ class TeamMembersService {
 
     async createTeamMember(teamMemberData) {
         const teamMember = await dbContext.TeamMembers.create(teamMemberData)
+        await teamMember.populate('project').populate('employee')
         return teamMember
     }
 
