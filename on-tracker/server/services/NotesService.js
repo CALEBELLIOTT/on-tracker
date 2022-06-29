@@ -7,7 +7,7 @@ class NotesService {
         return notes
     }
     async getNotesByProject(projectId) {
-        const notes = await dbContext.Notes.findById(projectId)
+        const notes = await dbContext.Notes.find({projectId})
         return notes
     }
 

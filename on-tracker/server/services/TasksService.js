@@ -3,7 +3,7 @@ import { dbContext } from "../db/DbContext"
 
 class TasksService {
   async getTasksByProject(projectId) {
-    const tasks = await dbContext.Tasks.findById(projectId)
+    const tasks = await dbContext.Tasks.find({projectId})
     return tasks
   }
 
