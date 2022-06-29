@@ -1,10 +1,14 @@
+import { dbContext } from "../db/DbContext"
 
 
 
 class EmployeesService{
-    teamMembersService(id) {
-        throw new Error('Method not implemented.');
+    async createEmployee(employeeData) {
+       const employee = await dbContext.Employees.create(employeeData)
+       await employee.Populate('account', 'name picture')
+       return employee
     }
+  
     
 
 }
