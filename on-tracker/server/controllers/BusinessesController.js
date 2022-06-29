@@ -11,6 +11,7 @@ export class BusinessesController extends BaseController{
         .get('/:id', this.getBusinessesById)
         // TODO create project and employee gets
         .post('', this.createBusiness)
+        .put('/:id', this.editBusiness)
     }
     
     async getBusinesses(req, res, next) {
@@ -35,6 +36,16 @@ export class BusinessesController extends BaseController{
     async createBusiness(req, res, next){
         try {
             const business = await businessesService.createBusiness(req.body)
+            return res.send(business)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+
+    async editBusiness(req, res, next){
+        try {
+            const business = await businessesService.editBusiness(req.body, req.params.id)
             return res.send(business)
         } catch (error) {
             next(error)
