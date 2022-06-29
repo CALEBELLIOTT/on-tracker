@@ -36,7 +36,7 @@ export class BusinessesController extends BaseController{
 
     async createBusiness(req, res, next){
         try {
-            req.body.creatorId = req.userInfo.id
+            req.body.accountId = req.userInfo.id
             const business = await businessesService.createBusiness(req.body)
             return res.send(business)
         } catch (error) {
