@@ -1,3 +1,4 @@
+import { Auth0Provider } from "@bcwdev/auth0provider";
 import { projectsService } from "../services/ProjectsService.js";
 import BaseController from "../utils/BaseController.js";
 
@@ -5,11 +6,16 @@ export class ProjectsController extends BaseController {
   constructor() {
     super('api/projects')
     this.router
+      .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)
       .get('/:id', this.getById)
       .post('', this.create)
       .put('/:id', this.edit)
+      .put('/:id/cancel', this.cancel)
+      .put('/:id/complete', this.complete)
+      .delete('/:id', this.delete)
   }
+
 
   async getAll(req, res, next) {
     try {
@@ -30,6 +36,7 @@ export class ProjectsController extends BaseController {
   }
   async create(req, res, next) {
     try {
+      req.body.creatorId = req.userInfo.id;
       const project = await projectsService.create(req.body)
       res.send(project)
     } catch (error) {
@@ -38,8 +45,36 @@ export class ProjectsController extends BaseController {
   }
   async edit(req, res, next) {
     try {
+      req.body.creatorId = req.userInfo.id;
+      req.body.id = req.params.id
       const updated = await projectsService.edit(req.body)
       res.send(updated)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async cancel(req, res, next) {
+    try {
+      await projectsService.cancel(req.params.id, req.userInfo.id)
+      res.send({ message: "Project Canceled" })
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async complete(req, res, next) {
+    try {
+      await projectsService.complete(req.params.id, req.userInfo.id)
+      res.send({ message: "Project Completed" })
+    } catch (error) {
+      next(error)
+    }
+  }
+  async delete(req, res, next) {
+    try {
+      await projectsService.delete(req.params.id)
+      res.send({ message: 'Deleted Project' })
     } catch (error) {
       next(error)
     }
