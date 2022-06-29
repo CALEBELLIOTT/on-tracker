@@ -18,7 +18,7 @@ class BusinessesService{
 
     async createBusiness(businessData) {
         const business = await dbContext.Businesses.create(businessData)
-        await business.Populate('creator')
+        await business.populate('creator')
         return business
     }
 
