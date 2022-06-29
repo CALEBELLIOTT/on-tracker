@@ -3,11 +3,11 @@ import { dbContext } from "../db/DbContext"
 class NotesService {
 
     async getById(id) {
-        const notes = await dbContext.Notes.findById(id)
+        const notes = await dbContext.Notes.findById(id).populate('account').populate('project')
         return notes
     }
     async getNotesByProject(projectId) {
-        const notes = await dbContext.Notes.findById(projectId)
+        const notes = await dbContext.Notes.find({projectId})
         return notes
     }
 
