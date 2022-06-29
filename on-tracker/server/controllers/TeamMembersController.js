@@ -10,12 +10,22 @@ export class TeamMembersController extends BaseController {
         this.router
             .get('', this.getTeamMembers)
             .use(Auth0Provider.getAuthorizedUserInfo)
+            .post('', this.createTeamMeber)
             .delete('/:id', this.removeTeamMembers)
     }
     async getTeamMembers(req, res, next) {
         try {
             const teamMembers = await teamMembersService.getTeamMembers()
             return res.send(teamMembers)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async createTeamMember(req, res, next) {
+        try {
+            const teamMember = await teamMembersService.createTeamMember(req.body)
+            return res.send(teamMember)
         } catch (error) {
             next(error)
         }

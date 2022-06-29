@@ -3,6 +3,7 @@ import { Forbidden } from "../utils/Errors"
 
 class TeamMembersService {
 
+
     async getTeamMembers() {
         const teamMembers = await dbContext.TeamMembers.find()
             .populate('employee')
@@ -14,10 +15,16 @@ class TeamMembersService {
         return teamMembers
     }
 
+    async createTeamMember(teamMemberData) {
+        const teamMember = await dbContext.TeamMembers.create(teamMemberData)
+        return teamMember
+    }
+
     async teamByEmployee(id) {
         const teams = await dbContext.TeamMembers.find({ employeeId: id }).populate('project').populate('employee')
         return teams
     }
+
 
     async removeTeamMembers(id, userId) {
         const teamMember = await dbContext.TeamMembers.findById(id)
