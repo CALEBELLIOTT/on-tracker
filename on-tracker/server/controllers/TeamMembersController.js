@@ -10,7 +10,7 @@ export class TeamMembersController extends BaseController {
         this.router
             .get('', this.getTeamMembers)
             .use(Auth0Provider.getAuthorizedUserInfo)
-            .post('', this.createTeamMeber)
+            .post('', this.createTeamMember)
             .delete('/:id', this.removeTeamMembers)
     }
     async getTeamMembers(req, res, next) {
