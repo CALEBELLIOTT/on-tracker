@@ -6,16 +6,17 @@ import { teamMembersService } from '../services/TeamMembersService'
 
 
 
-export class EmployeesController extends BaseController{
-    constructor(){
+export class EmployeesController extends BaseController {
+    constructor() {
         super('api/employees')
         this.router
-        .get('/:id/teammembers', this.teamByEmployee)
-        .use(Auth0Provider.getAuthorizedUserInfo)
-        .post('', this.createEmployee)
-        .put('/:id', this.editEmployee)
+            .get('/:id/teammembers', this.teamByEmployee)
+            .use(Auth0Provider.getAuthorizedUserInfo)
+            .post('', this.createEmployee)
+            .put('/:id', this.editEmployee)
+            .delete('/:id', this.deleteEmployee)
     }
-    
+
     async teamByEmployee(req, res, next) {
         try {
             const employeeTeams = await teamMembersService.teamByEmployee(req.params.id)
@@ -35,10 +36,17 @@ export class EmployeesController extends BaseController{
         }
     }
 
-    async editEmployee(req, res, next){
+    async editEmployee(req, res, next) {
         try {
-           
-            const employee = await employeesService.editEmployee(req.body,  req.userInfo.id, req.params.id)
+            const employee = await employeesService.editEmployee(req.body, req.userInfo.id, req.params.id)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async deleteEmployee(req, res, next) {
+        try {
+            await employeesService.deleteEmployee(req.params.id, req.userInfo.id)
         } catch (error) {
             next(error)
         }
