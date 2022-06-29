@@ -7,7 +7,7 @@ class EmployeesService{
     
     async createEmployee(employeeData) {
        const employee = await dbContext.Employees.create(employeeData)
-       await employee.Populate('account', 'name picture')
+       await employee.populate('account', 'name picture')
        return employee
     }
 
