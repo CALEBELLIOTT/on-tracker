@@ -11,10 +11,21 @@ export class EmployeesController extends BaseController {
         super('api/employees')
         this.router
             .get('/:id/teammembers', this.teamByEmployee)
+            .get('/:id', this.getById)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createEmployee)
             .put('/:id', this.editEmployee)
             .delete('/:id', this.deleteEmployee)
+    }
+
+
+    async getById(req, res, next) {
+        try {
+            const employee = await employeesService.getById(req.params.id)
+            return res.send(employee)
+        } catch (error) {
+            next(error)
+        }
     }
 
     async teamByEmployee(req, res, next) {
@@ -39,6 +50,7 @@ export class EmployeesController extends BaseController {
     async editEmployee(req, res, next) {
         try {
             const employee = await employeesService.editEmployee(req.body, req.userInfo.id, req.params.id)
+            res.send(employee)
         } catch (error) {
             next(error)
         }
@@ -47,6 +59,7 @@ export class EmployeesController extends BaseController {
     async deleteEmployee(req, res, next) {
         try {
             await employeesService.deleteEmployee(req.params.id, req.userInfo.id)
+            res.send('delorted')
         } catch (error) {
             next(error)
         }

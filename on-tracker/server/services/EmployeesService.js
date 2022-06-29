@@ -8,6 +8,7 @@ class EmployeesService {
 
    async getById(id) {
       const employee = await dbContext.Employees.findById(id)
+      await employee.populate('account')
       return employee
    }
 
@@ -30,6 +31,8 @@ class EmployeesService {
       return original
    }
 
+
+   // TODO add logic to allow admins/ business owners to delete employees too
    async deleteEmployee(id, userId) {
       const employee = await this.getById(id)
       if (employee.accountId != userId) {
