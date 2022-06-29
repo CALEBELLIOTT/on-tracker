@@ -16,3 +16,10 @@ NoteSchema.virtual('account', {
     foreignField: '_id',
     justOne: true
 })
+
+NoteSchema.virtual('project', {
+    localField: 'projectId',
+    ref: 'Project',
+    foreignField: '_id',
+    justOne: true
+})
