@@ -2,8 +2,9 @@ import { dbContext } from "../db/DbContext"
 
 class TeamMembersService{
 
-    async TeamByEmployee(){
-        const Teams = await dbContext.
+    async TeamByEmployee(id){
+        const teams = await dbContext.TeamMembers.find({employeeId: id})
+        return teams
     }
 
 
