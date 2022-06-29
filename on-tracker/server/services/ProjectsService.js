@@ -14,22 +14,41 @@ class ProjectsService {
   }
   async edit(edited) {
     const original = await this.findById(edited.id);
-    if (original.creatorId.toString() !== edited.creatorId) {
+    if (original.creatorId !== edited.creatorId) {
       throw new Forbidden("You do not have permission to edit this project.");
     }
     if (original.cancelled) {
       throw new Forbidden("You cannot edit a cancelled project.");
     }
-    original.creatorId = edited.creatorId || original.creatorId
-    original.businessId = edited.businessId || original.businessId
     original.location = edited.location || original.location
     original.quotePrice = edited.quotePrice || original.quotePrice
     original.coverImg = edited.coverImg || original.coverImg
     original.jobSiteImgs = edited.jobSiteImgs || original.jobSiteImgs
     original.description = edited.description || original.description
     original.dueDate = edited.dueDate || original.dueDate
-    original.cancelled = edited.cancelled || original.cancelled
     original.completed = edited.completed || original.completed
+  }
+
+  async cancel(projectId, userId) {
+    const project = await this.findById(projectId)
+    if (project.creatorId != userId) {
+      throw new Forbidden("You are not authorized to cancel this project!")
+    }
+    project.cancelled = true
+    await project.save()
+  }
+
+
+  async complete(projectId, userId) {
+    const project = await this.findById(projectId)
+    if (project.creatorId != userId) {
+      throw new Forbidden("You are not authorized to complete this project!")
+    }
+    if (project.cancelled) {
+      throw new Forbidden("You cannot complete a project that is canceled(trust me, Sam said I'm a developer)!")
+    }
+    project.completed = true
+    await project.save()
   }
   async findById(id) {
     const project = await dbContext.Projects.findById(id).populate('creator', 'name picture')
@@ -38,7 +57,14 @@ class ProjectsService {
     }
     return project
   }
-
+  async delete(id, userId) {
+    const project = await this.findById(id)
+    if (project.creatorId != userId) {
+      throw new Forbidden('This is not your project')
+    }
+    await project.remove()
+    return
+  }
 }
 
 export const projectsService = new ProjectsService()
