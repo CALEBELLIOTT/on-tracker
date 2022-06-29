@@ -1,4 +1,5 @@
 import { dbContext } from "../db/DbContext"
+import { Forbidden } from "../utils/Errors"
 
 
 
@@ -29,8 +30,19 @@ class BusinessesService{
         original.logo = update.logo || original.logo 
 
         await original.save()
+        await original.populate('creator')
         return original
     }
+
+    async removeBusiness(id, userId) {
+        const business = await this.getBusinessesById(id)
+        if (business.accountId != userId) {
+            throw new Forbidden('This is not your Business')
+        }
+        business.remove()
+        return business
+    }
+   
 
 }
 
