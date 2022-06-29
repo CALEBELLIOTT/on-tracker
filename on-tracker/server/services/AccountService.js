@@ -1,4 +1,5 @@
 import { dbContext } from '../db/DbContext'
+import { Forbidden } from "../utils/Errors"
 
 // Private Methods
 
@@ -74,5 +75,19 @@ class AccountService {
     )
     return account
   }
+
+  async editAccount(data, userId, accountId) {
+    const account = await dbContext.Account.findById(accountId)
+    if (account.id != userId) {
+      throw new Forbidden('not your account')
+    }
+    account.description = data.description || account.description
+    account.picture = data.picture || account.picture
+    account.name = data.name || account.name
+    await account.save()
+    await account.populate('business')
+    return account
+  }
+
 }
 export const accountService = new AccountService()

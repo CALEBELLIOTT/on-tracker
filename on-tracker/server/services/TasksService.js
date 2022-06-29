@@ -2,6 +2,10 @@ import { dbContext } from "../db/DbContext"
 
 
 class TasksService {
+  async getTasksByProject(projectId) {
+    const tasks = await dbContext.Tasks.findById(projectId)
+    return tasks
+  }
 
   async getById(id) {
     const task = await dbContext.Tasks.findById(id)
