@@ -13,6 +13,7 @@ export class BusinessesController extends BaseController{
         .use(Auth0Provider.getAuthorizedUserInfo)
         .post('', this.createBusiness)
         .put('/:id', this.editBusiness)
+        .delete('/:id', this.removeBusiness)
     }
     
     async getBusinesses(req, res, next) {
@@ -49,6 +50,16 @@ export class BusinessesController extends BaseController{
         try {
             const business = await businessesService.editBusiness(req.body, req.params.id)
             return res.send(business)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+
+    async removeBusiness(req, res, next){
+        try {
+             await businessesService.removeBusiness(req.params.id, req.userInfo.id)
+            return res.send('delorted')
         } catch (error) {
             next(error)
         }
