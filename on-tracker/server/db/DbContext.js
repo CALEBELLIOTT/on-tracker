@@ -6,6 +6,7 @@ import { ProjectSchema } from '../models/Project.js'
 import { EmployeeSchema } from '../models/Employee';
 import { TeamMemberSchema } from '../models/TeamMember';
 import { BusinessSchema } from '../models/Business';
+import { NoteSchema } from '../models/Note';
 
 class DbContext {
   Values = mongoose.model('Value', ValueSchema);
@@ -20,6 +21,8 @@ class DbContext {
   TeamMembers = mongoose.model('TeamMember', TeamMemberSchema)
 
   Businesses = mongoose.model('Business', BusinessSchema)
+
+  Notes = mongoose.model('Note', NoteSchema)
 }
 
 export const dbContext = new DbContext()
