@@ -4,7 +4,8 @@ const ObjectId = Schema.Types.ObjectId
 
 
 export const ProjectSchema = new Schema({
-  creatorId: { type: ObjectId, required: true, ref: 'Account' },
+  creatorId: { type: String, required: true, ref: 'Account' },
+  businessId: { type: String, required: true, ref: 'Business' },
   location: { type: String, required: true },
   quotePrice: { type: Number, required: true },
   coverImg: { type: String, required: true },
@@ -21,6 +22,13 @@ ProjectSchema.virtual('creator', {
   localField: 'creatorId',
   foreignField: '_id',
   ref: 'Account',
+  justOne: true
+}
+)
+ProjectSchema.virtual('business', {
+  localField: 'businessId',
+  foreignField: '_id',
+  ref: 'Business',
   justOne: true
 }
 )
