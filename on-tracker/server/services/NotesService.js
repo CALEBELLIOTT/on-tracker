@@ -14,10 +14,17 @@ class NotesService {
 
     async editNote(update, id) {
         const original = await this.getById(id)
-        original.
-
+        original.body = update.body || original.body
+        await original.save()
+        return original
     }
 
+    async removeNote(id) {
+        const note = await this.getById(id)
+        await note.delete()
+        return
+
+    }
 
 }
 

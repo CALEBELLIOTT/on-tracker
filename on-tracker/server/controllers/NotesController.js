@@ -8,7 +8,7 @@ export class NotesController extends BaseController {
             .get('/:id', this.getById)
             .post('', this.createNote)
             .put('/:id', this.editNote)
-        // .delete('/:id', this.edit)
+            .delete('/:id', this.removeNote)
     }
 
 
@@ -34,6 +34,15 @@ export class NotesController extends BaseController {
         try {
             const note = await notesService.editNote(req.body, req.params.id)
             res.send(note)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async removeNote(req, res, next) {
+        try {
+            const note = await notesService.removeNote(req.params.id)
+            res.send('delorted')
         } catch (error) {
             next(error)
         }
