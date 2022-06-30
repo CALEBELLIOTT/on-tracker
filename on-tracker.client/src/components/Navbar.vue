@@ -1,8 +1,8 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+  <nav class="navbar navbar-expand-lg navbar-dark px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center">
-        On Freaking Tracker
+      <div class="d-flex flex-column align-items-left">
+        <img src="../assets/img/Ontracker logo OG.png" alt="logo">
       </div>
     </router-link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
@@ -37,6 +37,8 @@ export default {
 </script>
 
 <style scoped>
+
+
 a:hover {
   text-decoration: none;
 }
@@ -44,8 +46,16 @@ a:hover {
   text-transform: uppercase;
 }
 .navbar-nav .router-link-exact-active {
+
   border-bottom: 2px solid var(--bs-success);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+img{
+  width: 25%
+}
+
+nav {
+    background-color: rgb(93, 92, 92);
 }
 </style>

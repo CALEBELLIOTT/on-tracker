@@ -1,6 +1,6 @@
 <template>
   <div
-    class="col-4 project-img card"
+    class="col-4 project-img card mt-4"
     @click="goToProjectPage"
     :style="`background-image: url(${project.coverImg})`"
   >

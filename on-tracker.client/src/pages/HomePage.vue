@@ -1,9 +1,11 @@
 <template>
-<navbar />
+  <navbar />
   <UserLogin v-if="!account.id" />
-  <div class="col-10 d-flex justify-content-between p-3">
-    <Project v-for="p in projects" :key="p.id" :project="p" />
-  </div>
+  <!-- <div class="col-10 d-flex justify-content-between p-3"> -->
+    <div class="row justify-content-evenly">
+      <Project v-for="p in projects" :key="p.id" :project="p" />
+    </div>
+  <!-- </div> -->
 </template>
 
 
