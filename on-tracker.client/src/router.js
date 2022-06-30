@@ -17,6 +17,21 @@ const routes = [
     component: loadPage('AboutPage')
   },
   {
+    path: '/employeeLogin',
+    name: 'EmployeeLogin',
+    component: loadPage('EmployeeLoginPage')
+  },
+  {
+    path: '/businessLogin',
+    name: 'BusinessLogin',
+    component: loadPage('BusinessLoginPage')
+  },
+  {
+    path: '/firstTimeLogin',
+    name: 'FirstTimeLogin',
+    component: loadPage('FirstTimeLoginPage')
+  },
+  {
     path: '/account',
     name: 'Account',
     component: loadPage('AccountPage'),
