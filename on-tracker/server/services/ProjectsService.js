@@ -21,6 +21,7 @@ class ProjectsService {
       throw new Forbidden("You cannot edit a cancelled project.");
     }
     original.location = edited.location || original.location
+    original.projectName = edited.projectName || original.projectName
     original.quotePrice = edited.quotePrice || original.quotePrice
     original.coverImg = edited.coverImg || original.coverImg
     original.jobSiteImgs = edited.jobSiteImgs || original.jobSiteImgs

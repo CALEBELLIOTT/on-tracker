@@ -6,6 +6,7 @@ const ObjectId = Schema.Types.ObjectId
 export const ProjectSchema = new Schema({
   creatorId: { type: ObjectId, required: true, ref: 'Account' },
   businessId: { type: ObjectId, required: true, ref: 'Business' },
+  projectName: { type: String, required: true },
   location: { type: String, required: true },
   quotePrice: { type: Number, required: true },
   coverImg: { type: String, required: true },
