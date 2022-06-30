@@ -1,14 +1,10 @@
 <template>
-<<<<<<< HEAD
-  <navbar />
-=======
-  <navbar v-if="account.id" />
->>>>>>> 73b63df798f57c3658e69da7a5b04d760a624405
+  <Navbar v-if="account.id"></Navbar>
   <UserLogin v-if="!account.id" />
   <!-- <div class="col-10 d-flex justify-content-between p-3"> -->
-    <div class="row justify-content-evenly">
-      <Project v-for="p in projects" :key="p.id" :project="p" />
-    </div>
+  <div class="row justify-content-evenly">
+    <Project v-for="p in projects" :key="p.id" :project="p" />
+  </div>
   <!-- </div> -->
 </template>
 
