@@ -1,5 +1,6 @@
 import { AppState } from '../AppState'
 import { logger } from '../utils/Logger'
+import Pop from "../utils/Pop"
 import { api } from './AxiosService'
 
 class AccountService {
@@ -13,8 +14,12 @@ class AccountService {
   }
 
   async setBusinessId(id) {
-    AppState.account.businessId = id
-    const res = await api.put('account', {})
+    if (!AppState.account.businessId) {
+      const res = await api.put('account/' + AppState.account.id, { businessId: id })
+      console.log(res.data);
+      AppState.account.businessId = id
+    }
+    Pop.toast('you already belong to a business', "warning")
   }
 }
 
