@@ -4,16 +4,16 @@ import { Forbidden } from "../utils/Errors"
 
 
 
-class BusinessesService{
-   
-    
+class BusinessesService {
+
+
     async getBusinesses() {
         const business = await dbContext.Businesses.find()
         return business
     }
 
     async getBusinessesById(id) {
-        const business = await dbContext.Businesses.findById(id)
+        const business = await dbContext.Businesses.findById(id).populate('creator')
         return business
     }
 
@@ -25,9 +25,9 @@ class BusinessesService{
 
     async editBusiness(update, id) {
         const original = await this.getBusinessesById(id)
-        original.name = update.name || original.name 
-        original.coverImg = update.coverImg || original.coverImg 
-        original.logo = update.logo || original.logo 
+        original.name = update.name || original.name
+        original.coverImg = update.coverImg || original.coverImg
+        original.logo = update.logo || original.logo
 
         await original.save()
         await original.populate('creator')
@@ -42,7 +42,7 @@ class BusinessesService{
         business.remove()
         return business
     }
-   
+
 
 }
 
