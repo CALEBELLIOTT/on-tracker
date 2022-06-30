@@ -9,12 +9,13 @@ export class ProjectsController extends BaseController {
   constructor() {
     super('api/projects')
     this.router
-      .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)
       .get('/:id', this.getById)
       .get('/:id/notes', this.getNotesByProject)
       .get('/:id/teamMembers', this.getTeamMembersByProject)
       .get('/:id/tasks', this.getTasksByProject)
+      // NOTE May have switch auth0 to another place
+      .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.create)
       .put('/:id', this.edit)
       .put('/:id/cancel', this.cancel)
