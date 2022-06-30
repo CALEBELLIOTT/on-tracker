@@ -17,7 +17,6 @@ class BusinessesService {
       const res = await api.post('api/businesses', data)
       console.log(res.data);
       AppState.allBusinesses.push(res.data)
-      await accountService.setBusinessAccount()
     }
     Pop.toast('you already belong to a business', "error")
   }

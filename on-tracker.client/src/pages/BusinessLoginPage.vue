@@ -3,7 +3,7 @@
     <div class="row d-flex justify-content-center form-row align-items-center">
       <div class="col-8">
         <div class="form-card d-flex flex-column justify-content-around rounded p-2">
-          <form class="" action="">
+          <form class="" @submit.prevent="createBusiness" action="">
             <div class="d-flex flex-column align-items-center">
               <h3 class="text-center">Tell us about your business</h3>
               <div class="col-10 d-flex flex-column">
@@ -24,7 +24,9 @@
                 </div>
               </div>
             </div>
-            <h3 class="text-end m-2"><i class="mdi mdi-check selectable" @click="createBusiness"></i></h3>
+            <button type="submit">
+              <h3 class="text-end m-2"><i class="mdi mdi-check selectable"></i></h3>
+            </button>
           </form>
         </div>
       </div>
