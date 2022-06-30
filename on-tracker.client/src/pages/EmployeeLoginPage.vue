@@ -2,7 +2,7 @@
   <div class="container-fluid dark-theme text-light">
     <div class="row ">
       <div class="col-12 d-flex flex-column justify-content-center align-items-center">
-        <h4 class="mb-5">Select Your Business</h4>
+        <h4 class="mb-5 mt-2">Select Your Workplace</h4>
         <div class="business-list mt-5">
           <h4 class="text-light text-center business" v-for="b in businesses" :key="b.id" :business="b"
             @click="assignBusiness(b.id)">
@@ -18,6 +18,7 @@
 <script>
 import { computed, onMounted } from "vue"
 import { AppState } from "../AppState"
+import { router } from "../router"
 import { accountService } from "../services/AccountService"
 import { businessesService } from "../services/BusinessesService"
 import Pop from "../utils/Pop"
@@ -37,6 +38,7 @@ export default {
       async assignBusiness(id) {
         try {
           await accountService.setBusinessId(id)
+          router.push({ name: 'Home' })
         } catch (error) {
           Pop.toast(error.message, "error")
           console.error(error)
