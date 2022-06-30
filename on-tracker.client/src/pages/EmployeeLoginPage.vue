@@ -4,8 +4,13 @@
 
 
 <script>
+import { onMounted } from "vue"
+
 export default {
   setup() {
+    onMounted(async () => {
+      await businessesService.getAllBusinesses()
+    })
     return {}
   }
 }
