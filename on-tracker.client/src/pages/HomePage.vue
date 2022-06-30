@@ -1,5 +1,5 @@
 <template>
-<navbar />
+  <navbar v-if="account.id" />
   <UserLogin v-if="!account.id" />
   <div class="col-10 d-flex justify-content-between p-3">
     <Project v-for="p in projects" :key="p.id" :project="p" />
