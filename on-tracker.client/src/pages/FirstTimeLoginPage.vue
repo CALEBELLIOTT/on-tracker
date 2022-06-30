@@ -8,8 +8,7 @@
     </div>
     <div class="row justify-content-center align-items-center">
       <div class="col-5">
-        <div
-          class="
+        <div class="
             d-flex
             justify-content-center
             align-items-center
@@ -17,16 +16,14 @@
             rounded
             bg-white
             selection-card
-          "
-        >
+          " @click="navigateToBusiness">
           <h4>OnTracker for businesses</h4>
         </div>
       </div>
     </div>
     <div class="row mb-5 justify-content-center align-items-center">
       <div class="col-5">
-        <div
-          class="
+        <div class="
             d-flex
             justify-content-center
             align-items-center
@@ -34,8 +31,7 @@
             rounded
             bg-white
             selection-card
-          "
-        >
+          " @click="navigateToEmployee">
           <h4>OnTracker for employees</h4>
         </div>
       </div>
@@ -45,9 +41,19 @@
 
 
 <script>
+import { useRouter } from "vue-router"
+import { router } from "../router"
+
 export default {
   setup() {
-    return {}
+    return {
+      navigateToEmployee() {
+        router.push({ name: 'EmployeeLogin' })
+      },
+      navigateToBusiness() {
+        router.push({ name: 'BusinessLogin' })
+      }
+    }
   }
 }
 </script>
@@ -61,11 +67,13 @@ export default {
   flex-direction: column;
   flex-grow: 1;
 }
+
 .selection-card {
   height: 30vh;
   transition: 500ms;
   border: solid 4px rgba(37, 36, 36, 1);
 }
+
 .selection-card:hover {
   cursor: pointer;
   transform: scale(1.1);
