@@ -35,7 +35,9 @@
           type="text"
           placeholder="Add Task..."
         />
-        <button class="btn btn-success" type="button">Post</button>
+        <button class="btn btn-success" type="button" @click="postTask">
+          Post
+        </button>
       </form>
     </footer>
   </div>
@@ -53,7 +55,7 @@ export default {
 
       async postTask() {
         try {
-          await tasksService.postTask(route.params.id)
+          await tasksService.postTask()
         } catch (error) {
           logger.log(error)
           Pop.toast(error.message, 'error')
