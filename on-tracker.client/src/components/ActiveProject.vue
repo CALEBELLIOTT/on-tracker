@@ -4,16 +4,20 @@
       <div class="col-md-10 mx-auto bg-grey p-5 rounded">
         <div>{{ project.description }}</div>
       </div>
-      <span class="d-flex justify-content-end"
-        ><button class="btn btn-info">Task</button></span
-      >
+      <span class="d-flex justify-content-end"><TaskOffCanvas /></span>
     </div>
     <div class="col-12">
-      <div class="row">
-        <div class="col-md-8 mx-auto bg-white elevation-4 py-4 rounded">
-          <!-- NOTE create method to iterate through images -->
-          <img class="img-fluid" :src="project.jobSiteImgs" alt="" />
-        </div>
+      <div class="row p-5">
+        <vue-horizontal responsive>
+          <div
+            class="col-md-12 bg-white elevation-4 py-4 rounded"
+            v-for="img in project.jobSiteImgs"
+            :key="img"
+          >
+            <!-- NOTE create method to iterate through images -->
+            <img class="img-fluid" :src="img" alt="" />
+          </div>
+        </vue-horizontal>
         <div class="col-md-10 mx-auto pt-3">
           <div class="progress">
             <div
@@ -31,13 +35,17 @@
       </div>
     </div>
   </div>
+
+  <!-- OFFCANVAS -->
 </template>
 
 
 <script>
 import { computed } from '@vue/reactivity'
 import { AppState } from '../AppState'
+import VueHorizontal from "vue-horizontal";
 export default {
+  components: { VueHorizontal },
   props: { project: { type: Object, required: true } },
   setup() {
     return {

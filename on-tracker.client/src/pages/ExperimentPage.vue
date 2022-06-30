@@ -1,5 +1,5 @@
 <template>
-  <div class="component">
+  <div class="container-fluid p-5">
     <Experimental />
   </div>
 </template>

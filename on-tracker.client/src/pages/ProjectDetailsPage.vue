@@ -1,5 +1,5 @@
 <template>
-<navbar />
+  <navbar />
   <div class="container-fluid dark-theme">
     <div class="row">
       <ActiveProject />

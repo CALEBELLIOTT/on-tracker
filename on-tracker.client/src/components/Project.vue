@@ -1,6 +1,18 @@
 <template>
-  <div class="col-4 project-img card p-0 mt-4 justify-content-end text-center" @click="goToProjectPage"
-    :style="`background-image: url(${project.coverImg})`">
+  <div
+    class="
+      col-4
+      project-img
+      card
+      p-0
+      mt-4
+      selectable
+      justify-content-end
+      text-center
+    "
+    @click="goToProjectPage"
+    :style="`background-image: url(${project.coverImg})`"
+  >
     <div class="happy">
       <h1>
         {{ project.location }}
@@ -39,10 +51,8 @@ export default {
 
 
 <style lang="scss" scoped>
-
 .happy {
   background-color: rgba(128, 128, 128, 0.639);
-
 }
 .project-img {
   height: 200px;
