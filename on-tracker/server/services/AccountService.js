@@ -84,6 +84,7 @@ class AccountService {
     account.description = data.description || account.description
     account.picture = data.picture || account.picture
     account.name = data.name || account.name
+    account.businessId = data.businessId || account.businessId
     await account.save()
     await account.populate('business')
     return account

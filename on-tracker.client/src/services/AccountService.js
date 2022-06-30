@@ -11,6 +11,11 @@ class AccountService {
       logger.error('HAVE YOU STARTED YOUR SERVER YET???', err)
     }
   }
+
+  async setBusinessId(id) {
+    AppState.account.businessId = id
+    const res = await api.put('account', {})
+  }
 }
 
 export const accountService = new AccountService()
