@@ -1,30 +1,31 @@
 <template>
-  <div class="col-10 d-flex justify-content-between p-3">
-    <Project v-for="p in projects" :key="p.id" :project="p" />
-  </div>
+  {{ project }}
 </template>
 
 
 <script>
-import { computed, onMounted } from '@vue/runtime-core'
+import { computed, watchEffect } from '@vue/runtime-core'
+import { useRoute } from 'vue-router'
 import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
 import { projectsService } from '../services/ProjectsService'
 import { AppState } from '../AppState'
 export default {
+
   setup() {
-    onMounted(async () => {
+    const route = useRoute()
+    watchEffect(async () => {
       try {
-        await projectsService.getAllProjects()
+        await projectsService.getProjectById(route.params.id)
       } catch (error) {
         logger.log(error)
         Pop.toast(error.message, 'error')
       }
-    })
+    }
+    )
+
     return {
-
-      projects: computed(() => AppState.projects)
-
+      project: computed(() => AppState.activeProject)
     }
   }
 }
