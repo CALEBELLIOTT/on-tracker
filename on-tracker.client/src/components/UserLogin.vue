@@ -1,16 +1,20 @@
 <template>
   <div class="container-fluid dark-theme text-light">
     <div class="row">
-      <div class="col-12 bg-secondary d-flex justify-content-center">
+      <div class="col-12 p-4 d-flex justify-content-center">
         <img
           class="img-fluid login-logo p-2"
           src="../assets/img/Ontracker logo OG.png"
           alt=""
         />
       </div>
-      <div class="col-5">
+      <div class="col-md-5">
         <div>
-          <img class="img-fluid" src="https://thiscatdoesnotexist.com" alt="" />
+          <img
+            class="img-fluid"
+            src="https://tse4.mm.bing.net/th/id/OIP.RCp2Haiyao-2QSxiUziDuwHaE8?pid=ImgDet&rs=1"
+            alt=""
+          />
           <h5>
             On Tracker is a project management system designed to increase
             productivity
@@ -34,38 +38,104 @@
           </p>
         </div>
       </div>
-      <div class="col-7 d-flex flex-column">
-        <button class="btn btn-light login-button">login or sign up</button>
-        <h4 class="text-center"><u> Our Happy Customers</u></h4>
+      <div class="col-md-7 d-flex flex-column justify-content-center">
+        <div class="d-flex justify-content-center m-2">
+          <button class="btn btn-light login-button" @click="launchLogin">
+            login or sign up
+          </button>
+        </div>
+        <h4 class="text-center mt-4"><u> Our Happy Customers</u></h4>
         <div class="row">
-          <div class="col-12 d-flex p-2 align-items-center">
+          <div class="col-12 d-flex px-4 mt-4 align-items-center">
             <img
               class="profile-img"
-              src="https://thiscatdoesnotexist.com"
+              src="https://tse2.mm.bing.net/th/id/OIP.DWOlN0V1es_i-n1FnwqMaAHaE6?pid=ImgDet&rs=1"
               alt=""
             />
-            <h5 class="mx-2">"I use on tracker everyday"</h5>
+            <h5 class="mx-2">"I use on tracker to keep track of joe"</h5>
           </div>
         </div>
         <div class="row">
-          <div class="col-12 d-flex justify-content-end p-2 align-items-center">
+          <div
+            class="
+              col-12
+              d-flex
+              justify-content-end
+              px-4
+              mt-4
+              align-items-center
+              pe-4
+            "
+          >
             <img
               class="profile-img"
-              src="https://thiscatdoesnotexist.com"
+              src="https://tse2.mm.bing.net/th/id/OIP.DWOlN0V1es_i-n1FnwqMaAHaE6?pid=ImgDet&rs=1"
               alt=""
             />
-            <h5 class="mx-2">"I use on tracker everyday"</h5>
+            <h5 class="mx-2">"I use on tracker to keep track of joe"</h5>
           </div>
         </div>
         <div class="row">
-          <div class="col-12 d-flex p-2 align-items-center">
+          <div class="col-12 d-flex px-4 mt-4 align-items-center">
             <img
               class="profile-img"
-              src="https://thiscatdoesnotexist.com"
+              src="https://tse2.mm.bing.net/th/id/OIP.DWOlN0V1es_i-n1FnwqMaAHaE6?pid=ImgDet&rs=1"
               alt=""
             />
-            <h5 class="mx-2">"I use on tracker everyday"</h5>
+            <h5 class="mx-2">"I use on tracker to keep track of joe"</h5>
           </div>
+        </div>
+      </div>
+    </div>
+    <h4 class="text-center">Businesses that trust On Tracker</h4>
+    <div class="row businesses-section bg-light p-0 align-items-center">
+      <div class="col-12 business-slideshow">
+        <div class="business-slide">
+          <img
+            class="business-img"
+            src="https://pngmind.com/wp-content/uploads/2019/08/Twitter-Logo-Png-Transparent-Background.jpg"
+            alt=""
+          />
+          <img
+            class="business-img"
+            src="https://itex365.com/wp-content/uploads/2021/04/In-Time-Tec_logo-768x184.png"
+            alt=""
+          />
+          <img
+            class="business-img"
+            src="https://th.bing.com/th/id/R.8c10347c0c2076d0e195c6fd9414bae9?rik=0EFgd9Q%2fX5lBnA&riu=http%3a%2f%2ftous-logos.com%2fwp-content%2fuploads%2f2018%2f02%2fCouleur-logo-Netflix.jpg&ehk=oLdx1Tt1M83wUyb93AuErMnEoNAXHVH7xCUZH7mcjqE%3d&risl=&pid=ImgRaw&r=0"
+            alt=""
+          />
+          <img
+            class="business-img"
+            src="https://pngmind.com/wp-content/uploads/2019/08/Twitter-Logo-Png-Transparent-Background.jpg"
+            alt=""
+          />
+          <img
+            class="business-img"
+            src="https://itex365.com/wp-content/uploads/2021/04/In-Time-Tec_logo-768x184.png"
+            alt=""
+          />
+          <img
+            class="business-img"
+            src="https://th.bing.com/th/id/R.8c10347c0c2076d0e195c6fd9414bae9?rik=0EFgd9Q%2fX5lBnA&riu=http%3a%2f%2ftous-logos.com%2fwp-content%2fuploads%2f2018%2f02%2fCouleur-logo-Netflix.jpg&ehk=oLdx1Tt1M83wUyb93AuErMnEoNAXHVH7xCUZH7mcjqE%3d&risl=&pid=ImgRaw&r=0"
+            alt=""
+          />
+          <img
+            class="business-img"
+            src="https://pngmind.com/wp-content/uploads/2019/08/Twitter-Logo-Png-Transparent-Background.jpg"
+            alt=""
+          />
+          <img
+            class="business-img"
+            src="https://itex365.com/wp-content/uploads/2021/04/In-Time-Tec_logo-768x184.png"
+            alt=""
+          />
+          <img
+            class="business-img"
+            src="https://th.bing.com/th/id/R.8c10347c0c2076d0e195c6fd9414bae9?rik=0EFgd9Q%2fX5lBnA&riu=http%3a%2f%2ftous-logos.com%2fwp-content%2fuploads%2f2018%2f02%2fCouleur-logo-Netflix.jpg&ehk=oLdx1Tt1M83wUyb93AuErMnEoNAXHVH7xCUZH7mcjqE%3d&risl=&pid=ImgRaw&r=0"
+            alt=""
+          />
         </div>
       </div>
     </div>
@@ -74,9 +144,14 @@
 
 
 <script>
+import { AuthService } from "../services/AuthService";
 export default {
   setup() {
-    return {}
+    return {
+      async launchLogin() {
+        AuthService.loginWithPopup();
+      },
+    }
   }
 }
 </script>
@@ -87,16 +162,50 @@ export default {
   height: 7rem;
 }
 .login-button {
-  height: 5em;
-  width: 15em;
+  height: 4em;
+  width: 12em;
 }
 .profile-img {
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   object-fit: cover;
+  border-radius: 50em;
+}
+.business-img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
   border-radius: 50em;
 }
 .review-div {
   width: 100%;
+}
+.businesses-section {
+  height: 7em;
+}
+.business-slideshow {
+  height: 100px;
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+.business-slide {
+  width: 13208px;
+  position: absolute;
+  overflow-x: hidden;
+  display: flex;
+  top: 0;
+  left: 0;
+  animation: moveSlideshow 250s linear infinite;
+}
+.business-slide img {
+  display: inline-block;
+  vertical-align: middle;
+  width: 180px;
+  height: 90px;
+  margin: 0 2rem;
+  object-fit: contain;
+  object-position: top;
 }
 </style>
