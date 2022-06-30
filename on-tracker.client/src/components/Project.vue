@@ -1,11 +1,10 @@
 <template>
-  <div
-    class="col-4 project-img card mt-4"
-    @click="goToProjectPage"
-    :style="`background-image: url(${project.coverImg})`"
-  >
-    <div>
-      {{ project.location }}
+  <div class="col-4 project-img card p-0 mt-4 justify-content-end text-center" @click="goToProjectPage"
+    :style="`background-image: url(${project.coverImg})`">
+    <div class="happy">
+      <h1>
+        {{ project.location }}
+      </h1>
     </div>
   </div>
 </template>
@@ -32,10 +31,6 @@ export default {
         }
       }
 
-
-
-
-
     }
   }
 }
@@ -44,6 +39,11 @@ export default {
 
 
 <style lang="scss" scoped>
+
+.happy {
+  background-color: rgba(128, 128, 128, 0.639);
+
+}
 .project-img {
   height: 200px;
   width: 30%;
