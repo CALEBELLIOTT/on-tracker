@@ -1,5 +1,15 @@
 <template>
-  {{ project }}
+  <div class="container-fluid dark-theme">
+    <div class="row">
+      <ActiveProject />
+    </div>
+
+    <!-- Note Component -->
+    <div class="row">
+      <Note v-for="n in notes" :key="n.id" :note="n" />
+    </div>
+    <!--  -->
+  </div>
 </template>
 
 
@@ -10,6 +20,7 @@ import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
 import { projectsService } from '../services/ProjectsService'
 import { AppState } from '../AppState'
+import { notesService } from '../services/NotesService'
 export default {
 
   setup() {
@@ -17,6 +28,7 @@ export default {
     watchEffect(async () => {
       try {
         await projectsService.getProjectById(route.params.id)
+        await notesService.getNotes(route.params.id)
       } catch (error) {
         logger.log(error)
         Pop.toast(error.message, 'error')
@@ -25,7 +37,8 @@ export default {
     )
 
     return {
-      project: computed(() => AppState.activeProject)
+      project: computed(() => AppState.activeProject),
+      notes: computed(() => AppState.projectNotes)
     }
   }
 }

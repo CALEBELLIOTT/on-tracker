@@ -7,14 +7,14 @@
 
 
 <script>
-import { computed, onMounted } from '@vue/runtime-core'
+import { computed, watchEffect } from '@vue/runtime-core'
 import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
 import { projectsService } from '../services/ProjectsService'
 import { AppState } from '../AppState'
 export default {
   setup() {
-    onMounted(async () => {
+    watchEffect(async () => {
       try {
         await projectsService.getAllProjects()
       } catch (error) {
