@@ -19,6 +19,12 @@ class ProjectsService {
         AppState.activeProject = res.data
     }
 
+    async createProject(projectData) {
+        projectData.businessId = AppState.account.businessId
+        projectData.creatorId = AppState.account.id
+        const res = await api.post('api/projects', projectData)
+    }
+
 
 }
 
