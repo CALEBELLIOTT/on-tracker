@@ -16,23 +16,22 @@ class AccountService {
   async setBusinessId(id) {
     if (!AppState.account.businessId) {
       const res = await api.put('account/' + AppState.account.id, { businessId: id })
-      // if (res.data.creator.id == AppState.account.id) {
-      //   const res = await api.put('account/' + AppState.account.id, { businessAccount: true })
-      //   console.log(res.data);
-      // }
-      console.log(res.data);
-      console.log(AppState.account);
+      const business = await api.get('api/businesses/' + id)
+      if (business.data.creator.id == AppState.account.id) {
+        const res = await api.put('account/' + AppState.account.id, { businessAccount: true })
+        AppState.account.businessAccount = true
+      }
       AppState.account.businessId = id
       return
     }
     Pop.toast('you already belong to a business [set business id]', "warning")
   }
 
-  async setBusinessAccount() {
-    const res = await api.put('account/' + AppState.account.id, { businessAccount: true })
-    console.log(res.data);
-    console.log(AppState.account);
-  }
+  // async setBusinessAccount() {
+  //   const res = await api.put('account/' + AppState.account.id, { businessAccount: true })
+  //   console.log(res.data);
+  //   console.log(AppState.account);
+  // }
 }
 
 export const accountService = new AccountService()

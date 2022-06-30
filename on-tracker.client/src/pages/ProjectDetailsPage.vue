@@ -15,7 +15,7 @@
 
 
 <script>
-import { computed, watchEffect } from '@vue/runtime-core'
+import { computed, watchEffect, onMounted } from '@vue/runtime-core'
 import { useRoute } from 'vue-router'
 import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
@@ -26,7 +26,7 @@ export default {
 
   setup() {
     const route = useRoute()
-    watchEffect(async () => {
+    onMounted(async () => {
       try {
         await projectsService.getProjectById(route.params.id)
         await notesService.getNotes(route.params.id)

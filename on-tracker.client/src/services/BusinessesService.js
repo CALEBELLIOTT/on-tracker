@@ -18,7 +18,7 @@ class BusinessesService {
       console.log(res.data);
       AppState.allBusinesses.push(res.data)
       accountService.setBusinessId(res.data.id)
-      accountService.setBusinessAccount()
+      // accountService.setBusinessAccount()
       return
     }
     Pop.toast('you already belong to a business', "error")
