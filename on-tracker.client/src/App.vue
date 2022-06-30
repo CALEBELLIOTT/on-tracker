@@ -18,4 +18,12 @@ export default {
 </script>
 <style lang="scss">
 @import "./assets/scss/main.scss";
+
+.dark-theme {
+  background-color: rgba(37, 36, 36, 1);
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  flex-grow: 1;
+}
 </style>
