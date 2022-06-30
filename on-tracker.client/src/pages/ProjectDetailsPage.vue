@@ -1,4 +1,5 @@
 <template>
+<navbar />
   <div class="container-fluid dark-theme">
     <div class="row">
       <ActiveProject />
@@ -38,7 +39,7 @@ export default {
 
     return {
       project: computed(() => AppState.activeProject),
-      notes: computed(() => AppState.projectNotes)
+      notes: computed(() => AppState.projectNotes),
     }
   }
 }
