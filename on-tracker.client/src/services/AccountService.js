@@ -23,15 +23,16 @@ class AccountService {
       console.log(res.data);
       console.log(AppState.account);
       AppState.account.businessId = id
+      return
     }
-    Pop.toast('you already belong to a business', "warning")
+    Pop.toast('you already belong to a business [set business id]', "warning")
   }
 
-  // async setBusinessAccount() {
-  //   const res = await api.put('account/' + AppState.account.id, { businessAccount: true })
-  //   console.log(res.data);
-  //   console.log(AppState.account);
-  // }
+  async setBusinessAccount() {
+    const res = await api.put('account/' + AppState.account.id, { businessAccount: true })
+    console.log(res.data);
+    console.log(AppState.account);
+  }
 }
 
 export const accountService = new AccountService()
