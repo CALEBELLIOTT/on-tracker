@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="row justify-content-center align-items-center">
-      <div class="col-5">
+      <div class="col-md-5">
         <div class="
             d-flex
             justify-content-center
@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="row mb-5 justify-content-center align-items-center">
-      <div class="col-5">
+      <div class="col-md-5">
         <div class="
             d-flex
             justify-content-center

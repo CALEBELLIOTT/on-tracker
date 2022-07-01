@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-12">
-      <div class="bg-light rounded m-2 p-2 d-flex align-items-center">
+      <div class="bg-light rounded m-2 p-2 d-flex align-items-center" @click="setActiveEmployee()">
         <div class="row">
           <div class="col-md-4">
             <img :src="employee.account.picture" class="img-fluid" alt="">
@@ -10,7 +10,7 @@
             <div class="d-flex flex-column mx-2">
               <p class=""><b>{{ employee.account.name }}</b></p>
               <p>{{ employee.skills }}</p>
-              <p> <span v-for="c in employee.certifications">{{ c }}</span></p>
+              <p> <span v-for="c in employee.certifications" :key="c">{{ c }}</span></p>
             </div>
           </div>
           <div class="col-md-1">
@@ -45,6 +45,9 @@ export default {
       async quitJob() {
         await employeesService.removeEmployee(props.employee.id)
         await accountService.removeBusinessId(AppState.account.id)
+      },
+      async setActiveEmployee() {
+        await employeesService.setActiveEmployee(props.employee.id)
       }
     }
   }

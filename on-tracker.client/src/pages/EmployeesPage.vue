@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <!-- component of active employee -->
+    <ActiveEmployee />
 
     <!-- employee nav bar -->
 
@@ -17,10 +18,11 @@
 <script>
 import { computed, onMounted } from "vue";
 import { AppState } from "../AppState.js";
+import { employeesService } from "../services/EmployeesService.js";
 export default {
   setup() {
     onMounted(() => {
-      console.log(AppState.account);
+      employeesService.getAllEmployees()
     })
     return {
       employees: computed(() => AppState.employees)

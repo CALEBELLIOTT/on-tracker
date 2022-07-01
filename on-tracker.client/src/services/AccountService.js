@@ -21,7 +21,7 @@ class AccountService {
       AppState.account.businessId = id
       await employeesService.getAllEmployees()
       if (business.data.creator.id == AppState.account.id) {
-        const res = await api.put('account/' + AppState.account.id, { businessAccount: true })
+        const res = await api.put('account/' + AppState.account.id, { businessAccount: true, businessId: id })
         AppState.account.businessAccount = true
       }
       AppState.account.businessId = id
