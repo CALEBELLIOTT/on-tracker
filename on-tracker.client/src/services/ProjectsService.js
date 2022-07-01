@@ -23,6 +23,7 @@ class ProjectsService {
         projectData.businessId = AppState.account.businessId
         projectData.creatorId = AppState.account.id
         const res = await api.post('api/projects', projectData)
+        console.log(res.data);
     }
 
 
