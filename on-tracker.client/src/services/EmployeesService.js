@@ -8,6 +8,8 @@ class EmployeesService {
     const res = await api.get('api/businesses/' + AppState.account.businessId + '/employees')
     logger.log(res.data)
     AppState.employees = res.data
+    AppState.activeEmployee = AppState.employees.filter(e => e.account.id == AppState.account.id)
+    logger.log('Active Employee', AppState.activeEmployee)
     logger.log('[EMPLOYEES IN APPSTATE]')
   }
 
@@ -20,6 +22,7 @@ class EmployeesService {
     }
     const res = await api.post('api/employees', data)
     AppState.employees.push(res.data)
+    AppState.activeEmployee = res.data
     console.log(res.data + 'create employee');
   }
 
@@ -27,6 +30,11 @@ class EmployeesService {
     // TODO allow business accounts to remove employees that aren't themselves
     const res = await api.delete('api/employees/' + id)
     console.log(res.data + "[remove employee]");
+  }
+
+  async setActiveEmployee(id) {
+    AppState.activeEmployee = AppState.employees.filter(e => e.id == id);
+    logger.log(AppState.activeEmployee)
   }
 }
 

@@ -17,16 +17,19 @@
           justify-content-center
         "
       >
-        <div class="col-md-10">
+        <div class="col-md-10 m-2">
           <h1
             class="text-center text-white border-bottom border-5 border-white"
           >
             <b>Notes</b>
           </h1>
-          <ProjectNotes v-for="n in notes" :key="n.id" :note="n" />
+          <div class="notes-section m-4 bg-light rounded">
+            <ProjectNotes v-for="n in notes" :key="n.id" :note="n" />
+          </div>
           <div class="d-flex justify-content-center">
             <form @submit.prevent="createNote">
               <textarea
+                class="form-control"
                 placeholder="Add a note..."
                 name=""
                 id=""
@@ -34,18 +37,115 @@
                 rows="1"
                 v-model="noteData.body"
               ></textarea>
-              <button
-                class="btn btn-dark text-light rounded mb-3"
-                type="submit"
-              >
-                Submit
-              </button>
+              <div class="d-flex justify-content-center mt-2">
+                <button
+                  class="btn btn-dark text-light rounded mb-3"
+                  type="submit"
+                >
+                  Submit
+                </button>
+              </div>
             </form>
           </div>
         </div>
       </div>
     </div>
-    <!--  -->
+
+    <!-- Employee Cards and Mapbox  -->
+    <div class="row justify-content-around">
+      <div class="col-md-3 d-flex justify-content-center flex-column mt-4">
+        <h4 class="text-center text-light">Current</h4>
+        <h4 class="text-center text-light">Employees</h4>
+        <div class="employee-cards elevation-2 rounded bg-grey m-4">
+          <div class="col-12 d-flex justify-content-around p-2">
+            <span
+              ><img
+                class="small-profile-img"
+                src="https://th.bing.com/th/id/R.3223efb84d9394750bcb90dadfefc5b2?rik=zhNwcP5qVVgiFQ&pid=ImgRaw&r=0"
+                alt=""
+            /></span>
+            <span><h2>Bob</h2></span>
+            <span><i class="mdi mdi-delete f-24"></i></span>
+          </div>
+          <div class="col-12 d-flex justify-content-around p-2">
+            <span
+              ><img
+                class="small-profile-img"
+                src="https://th.bing.com/th/id/R.3223efb84d9394750bcb90dadfefc5b2?rik=zhNwcP5qVVgiFQ&pid=ImgRaw&r=0"
+                alt=""
+            /></span>
+            <span><h2>Bob</h2></span>
+            <span><i class="mdi mdi-delete f-24"></i></span>
+          </div>
+          <div class="col-12 d-flex justify-content-around p-2">
+            <span
+              ><img
+                class="small-profile-img"
+                src="https://th.bing.com/th/id/R.3223efb84d9394750bcb90dadfefc5b2?rik=zhNwcP5qVVgiFQ&pid=ImgRaw&r=0"
+                alt=""
+            /></span>
+            <span><h2>Bob</h2></span>
+            <span><i class="mdi mdi-delete f-24"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 d-flex justify-content-center flex-column mt-4">
+        <h4 class="text-center text-light">Active</h4>
+        <h4 class="text-center text-light">Employees</h4>
+        <div class="employee-cards elevation-2 rounded bg-grey m-4">
+          <div class="col-12 d-flex justify-content-around p-2">
+            <span
+              ><img
+                class="small-profile-img"
+                src="https://th.bing.com/th/id/R.3223efb84d9394750bcb90dadfefc5b2?rik=zhNwcP5qVVgiFQ&pid=ImgRaw&r=0"
+                alt=""
+            /></span>
+            <span><h2>Bob</h2></span>
+            <span><i class="mdi mdi-delete f-22"></i></span>
+          </div>
+          <div class="col-12 d-flex justify-content-around p-2">
+            <span
+              ><img
+                class="small-profile-img"
+                src="https://th.bing.com/th/id/R.3223efb84d9394750bcb90dadfefc5b2?rik=zhNwcP5qVVgiFQ&pid=ImgRaw&r=0"
+                alt=""
+            /></span>
+            <span><h2>Bob</h2></span>
+            <span><i class="mdi mdi-delete f-22"></i></span>
+          </div>
+          <div class="col-12 d-flex justify-content-around p-2">
+            <span
+              ><img
+                class="small-profile-img"
+                src="https://th.bing.com/th/id/R.3223efb84d9394750bcb90dadfefc5b2?rik=zhNwcP5qVVgiFQ&pid=ImgRaw&r=0"
+                alt=""
+            /></span>
+            <span><h2>Bob</h2></span>
+            <span><i class="mdi mdi-delete f-22"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 d-flex justify-content-center flex-column mt-4">
+        <div
+          class="
+            map-card
+            elevation-2
+            rounded
+            bg-light
+            m-4
+            d-flex
+            align-items-center
+          "
+        >
+          <img
+            class="img-fluid p-2 map-card-img"
+            src="https://www.s-lec.eu/wp-content/uploads/map.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -96,4 +196,26 @@ export default {
 
 
 <style lang="scss" scoped>
+.small-profile-img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50em;
+}
+.employee-cards {
+  height: 35vh;
+}
+.map-card {
+  height: 35vh;
+  transform: translateY(3.85vh);
+}
+.map-card-img {
+  object-fit: cover;
+  height: 35vh;
+}
+.notes-section {
+  height: 12vh;
+  overflow-y: scroll;
+  // background-color: white;
+}
 </style>
