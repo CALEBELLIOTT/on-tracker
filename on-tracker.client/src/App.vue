@@ -22,7 +22,7 @@ export default {
 .dark-theme {
   background-color: rgba(37, 36, 36, 1);
   display: flex;
-  min-height: 100vh;
+  min-height: 100%;
   flex-direction: column;
   flex-grow: 1;
 }
