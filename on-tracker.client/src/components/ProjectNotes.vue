@@ -3,53 +3,65 @@
     <span>
       <b>{{ note.body }}</b>
     </span>
+    <!-- Button trigger modal -->
     <span>
       <i
         class="p-1 mdi mdi-pencil-outline selectable"
         data-bs-toggle="modal"
-        data-bs-target="#modelId"
+        :data-bs-target="'#modelId' + note.id"
       ></i>
       <i class="p-1 mdi mdi-delete selectable" @click="deleteNote"></i>
     </span>
+    <!-- Modal -->
   </div>
-  <!-- Button trigger modal -->
-
-  <!-- Modal -->
-  <div
-    class="modal fade"
-    id="modelId"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="modelTitleId"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Edit Note</h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="modal-body">
-          <input class="form-control" type="text" v-model="editNoteData.body" />
-        </div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
-            Close
-          </button>
-          <button type="button" class="btn btn-primary">Save</button>
+  <form>
+    <div
+      class="modal fade"
+      :id="'modelId' + note.id"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="modelTitleId"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Edit Note</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <input
+              class="form-control"
+              type="text"
+              v-model="editNoteData.body"
+            />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              data-bs-dismiss="modal"
+              type="button"
+              class="btn btn-primary"
+              @click="editNote"
+            >
+              Save
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </form>
 </template>
 
 
