@@ -19,7 +19,6 @@ class BusinessesService {
       console.log(res.data);
       AppState.allBusinesses.push(res.data)
       accountService.setBusinessId(res.data.id)
-      await employeesService.createEmployee()
       return
     }
     Pop.toast('you already belong to a business', "error")

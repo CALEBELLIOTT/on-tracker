@@ -30,6 +30,12 @@ class AccountService {
     Pop.toast('you already belong to a business [set business id]', "warning")
   }
 
+  async removeBusinessId(id) {
+    const res = await api.put('/account/' + id, { businessId: undefined })
+    console.log("remove business ID");
+    console.log(res.data);
+  }
+
   // async setBusinessAccount() {
   //   const res = await api.put('account/' + AppState.account.id, { businessAccount: true })
   //   console.log(res.data);

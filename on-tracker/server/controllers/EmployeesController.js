@@ -12,10 +12,10 @@ export class EmployeesController extends BaseController {
         this.router
             .get('/:id/teammembers', this.teamByEmployee)
             .get('/:id', this.getById)
+            .delete('/:id', this.deleteEmployee)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createEmployee)
             .put('/:id', this.editEmployee)
-            .delete('/:id', this.deleteEmployee)
     }
 
 
