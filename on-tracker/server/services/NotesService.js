@@ -7,7 +7,7 @@ class NotesService {
         return notes
     }
     async getNotesByProject(projectId) {
-        const notes = await dbContext.Notes.find({projectId})
+        const notes = await dbContext.Notes.find({ projectId }).populate('account').populate('project')
         return notes
     }
 

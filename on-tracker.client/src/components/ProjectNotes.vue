@@ -6,13 +6,16 @@
     <!-- Button trigger modal -->
     <span>
       <i
-        class="p-1 mdi mdi-pencil-outline selectable"
+        class="mdi mdi-pencil-outline selectable"
         data-bs-toggle="modal"
         :data-bs-target="'#modelId' + note.id"
       ></i>
-      <i class="p-1 mdi mdi-delete selectable" @click="deleteNote"></i>
+      <i class="mdi mdi-delete selectable" @click="deleteNote"></i>
     </span>
     <!-- Modal -->
+  </div>
+  <div>
+    <p class="ps-2 text-muted">{{ note.account.name }}</p>
   </div>
   <form>
     <div
