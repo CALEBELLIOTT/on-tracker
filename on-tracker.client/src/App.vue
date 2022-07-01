@@ -26,4 +26,7 @@ export default {
   flex-direction: column;
   flex-grow: 1;
 }
+.text-dark-theme {
+  color: rgba(37, 36, 36, 1);
+}
 </style>

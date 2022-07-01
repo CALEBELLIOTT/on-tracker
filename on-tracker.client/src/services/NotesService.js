@@ -18,6 +18,12 @@ class NotesService {
 
     }
 
+    async editNote(id) {
+        const res = await api.put('api/notes/' + id)
+        logger.log(res.data)
+        return id
+    }
+
 
 }
 
