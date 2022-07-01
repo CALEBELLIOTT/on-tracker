@@ -1,8 +1,10 @@
 <template>
 <!-- component of active employee -->
+
+<!-- employee nav bar -->
+
+<!-- list of all business employees -->
   <div class="">
-
-
   </div>
 </template>
 
