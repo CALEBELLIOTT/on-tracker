@@ -31,6 +31,12 @@ class TasksService {
         AppState.projectTasks = AppState.projectTasks.filter(t => t.id != id)
     }
 
+
+    async editTask(id, newText, newHour) {
+        const res = await api.put(`api/tasks/${id}`, { description: newText }, { estimatedTime: newHour })
+        logger.log(res.data)
+    }
+
 }
 
 export const tasksService = new TasksService()

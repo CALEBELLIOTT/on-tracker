@@ -1,34 +1,27 @@
 <template>
-  <div class="row">
-    <div class="col-12">
-      <div class="bg-light rounded m-2 p-2 d-flex align-items-center">
-        <div class="row">
-          <div class="col-md-4">
-            <img :src="employee.account.picture" class="img-fluid" alt="">
-          </div>
-          <div class="col-md-7">
-            <div class="d-flex flex-column mx-2">
-              <p class=""><b>{{ employee.account.name }}</b></p>
-              <p>{{ employee.skills }}</p>
-              <p> <span v-for="c in employee.certifications" :key="c">{{ c }}</span></p>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="">
+    <div>
+      <img :src="employee.account.picture || employee.account.picture" alt="">
     </div>
+    <div class="text-light">
+      <h2> {{ employee.account.name }} </h2>
+
+    </div>
+
+
   </div>
+  <hr class="text-light">
 </template>
 
 
 <script>
+import { computed } from "@vue/reactivity"
+import { AppState } from "../AppState.js"
 export default {
-  props: { employee: { type: Object, required: true } },
-  setup(props){
+  setup() {
     return {
-      async quitJob() {
-        await employeesService.removeEmployee(props.employee.id)
-        await accountService.removeBusinessId(AppState.account.id)
-      }
+      employee: computed(() => AppState.activeEmployee[0]),
+      account: computed(() => AppState.account)
     }
   }
 }
@@ -36,5 +29,4 @@ export default {
 
 
 <style lang="scss" scoped>
-
 </style>
