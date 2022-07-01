@@ -1,10 +1,10 @@
 <template>
   <div class="">
     <div>
-      <img :src="employee[0].account.picture || employee.account.picture" alt="">
+      <img :src="employee.account.picture || employee.account.picture" alt="">
     </div>
-    <div>
-      {{ employee.name }}
+    <div class="text-light">
+      <h2> {{ employee.account.name }} </h2>
 
     </div>
 
@@ -20,7 +20,7 @@ import { AppState } from "../AppState.js"
 export default {
   setup() {
     return {
-      employee: computed(() => AppState.activeEmployee),
+      employee: computed(() => AppState.activeEmployee[0]),
       account: computed(() => AppState.account)
     }
   }
