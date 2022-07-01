@@ -15,10 +15,13 @@
 
 
 <script>
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
 import { AppState } from "../AppState.js";
 export default {
   setup() {
+    onMounted(() => {
+      console.log(AppState.account);
+    })
     return {
       employees: computed(() => AppState.employees)
     }
