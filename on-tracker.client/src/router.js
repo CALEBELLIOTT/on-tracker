@@ -28,8 +28,8 @@ const routes = [
   },
   {
     path: '/employeePage',
-    name: 'EmployeePage',
-    component: loadPage('EmployeePage')
+    name: 'EmployeesPage',
+    component: loadPage('EmployeesPage')
   },
   {
     path: '/experimental',

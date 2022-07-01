@@ -4,18 +4,19 @@
 <!-- employee nav bar -->
 
 <!-- list of all business employees -->
+v-
   <div class="">
   </div>
 </template>
 
 
 <script>
-import { onMounted } from "@vue/runtime-core"
+import { onMounted, watchEffect } from "@vue/runtime-core"
+import { employeesService } from "../services/EmployeesService.js"
+import { AppState } from "../AppState.js";
+import { logger } from "../utils/Logger.js";
 export default {
   setup(){
-    onMounted(()=>{
-      employeesService.getAllEmployees()
-    })
     return {}
   }
 }
