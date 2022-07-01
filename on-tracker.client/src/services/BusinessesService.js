@@ -2,6 +2,7 @@ import { AppState } from "../AppState";
 import Pop from "../utils/Pop";
 import { accountService } from "./AccountService";
 import { api } from "./AxiosService"
+import { employeesService } from "./EmployeesService";
 
 
 class BusinessesService {
@@ -18,7 +19,7 @@ class BusinessesService {
       console.log(res.data);
       AppState.allBusinesses.push(res.data)
       accountService.setBusinessId(res.data.id)
-      // accountService.setBusinessAccount()
+      await employeesService.createEmployee()
       return
     }
     Pop.toast('you already belong to a business', "error")

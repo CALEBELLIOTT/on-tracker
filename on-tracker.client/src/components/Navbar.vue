@@ -21,6 +21,11 @@
             About
           </router-link>
         </li>
+        <li>
+          <router-link :to="{ name: 'EmployeesPage' }" class="btn text-success lighten-30 selectable text-uppercase">
+            Employees Page
+          </router-link>
+        </li>
       </ul>
       <!-- LOGIN COMPONENT HERE -->
       <Login />
