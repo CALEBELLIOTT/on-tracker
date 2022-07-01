@@ -29,15 +29,19 @@
       </div>
     </div>
     <footer>
-      <form @submit="postTask">
+      <form @submit.prevent="postTask">
         <input
           class="form-control m-2 rounded"
           type="text"
           placeholder="Add Task..."
+          v-model="taskData.description"
         />
-        <button class="btn btn-success" type="button" @click="postTask">
-          Post
-        </button>
+        <input
+          class="form-control"
+          type="text"
+          v-model="taskData.estimatedTime"
+        />
+        <button class="btn btn-success" type="submit">Post</button>
       </form>
     </footer>
   </div>
@@ -45,17 +49,20 @@
 
 
 <script>
+import { ref } from '@vue/reactivity'
 import { useRoute } from 'vue-router'
 import { tasksService } from '../services/TasksService'
 import Pop from '../utils/Pop'
 export default {
   setup() {
     const route = useRoute()
+    const taskData = ref({})
     return {
+      taskData,
 
       async postTask() {
         try {
-          await tasksService.postTask()
+          await tasksService.postTask(taskData.value)
         } catch (error) {
           logger.log(error)
           Pop.toast(error.message, 'error')
