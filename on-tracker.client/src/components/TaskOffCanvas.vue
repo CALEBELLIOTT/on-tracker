@@ -9,13 +9,13 @@
     Tasks
   </button>
   <div
-    class="offcanvas offcanvas-end"
+    class="offcanvas offcanvas-end bg text-light"
     tabindex="-1"
     id="offcanvasRight"
     aria-labelledby="offcanvasRightLabel"
   >
-    <div class="offcanvas-header">
-      <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+    <div class="offcanvas-header text-center border-bottom border-2">
+      <h5 id="offcanvasRightLabel">Tasks</h5>
       <button
         type="button"
         class="btn-close text-reset"
@@ -28,12 +28,14 @@
     </div>
     <footer>
       <form @submit.prevent="postTask">
-        <input
-          class="form-control m-2 rounded"
-          type="text"
-          placeholder="Add Task..."
-          v-model="taskData.description"
-        />
+        <div>
+          <input
+            class="form-control m-2 rounded"
+            type="text"
+            placeholder="Add Task..."
+            v-model="taskData.description"
+          />
+        </div>
         <input
           class="form-control m-2 rounded"
           type="number"
@@ -53,13 +55,13 @@ import { useRoute } from 'vue-router'
 import { tasksService } from '../services/TasksService'
 import Pop from '../utils/Pop'
 import { logger } from '../utils/Logger'
-import { onMounted } from '@vue/runtime-core'
+import { onMounted, watchEffect } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 export default {
   setup() {
     const route = useRoute()
     const taskData = ref({})
-    onMounted(async () => {
+    watchEffect(async () => {
       try {
         await tasksService.getTasks(route.params.id)
       } catch (error) {
@@ -69,10 +71,6 @@ export default {
     })
     return {
       taskData,
-
-
-
-
       async postTask() {
         try {
           taskData.value.projectId = route.params.id
@@ -92,4 +90,7 @@ export default {
 
 
 <style lang="scss" scoped>
+.bg {
+  background: rgba(0, 0, 0, 0.8);
+}
 </style>
