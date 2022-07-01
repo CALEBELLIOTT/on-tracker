@@ -4,6 +4,10 @@ import { Forbidden } from "../utils/Errors"
 
 
 class EmployeesService {
+   async getEmployeesByBusiness(businessId) {
+      const employees = await dbContext.Employees.find({ businessId }).populate('account')
+      return employees
+   }
 
 
    async getById(id) {
