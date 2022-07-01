@@ -1,6 +1,8 @@
 <template>
-  <div class="col-md-12 bg-grey text-light">
-    <div>{{ note.body }}</div>
+  <div class="col-md-12 bg-grey text-dark">
+    <div>
+      <b>{{ note.body }}</b>
+    </div>
   </div>
 </template>
 

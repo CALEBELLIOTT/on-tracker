@@ -19,7 +19,14 @@ class EmployeesService {
       certifications: ["emt"]
     }
     const res = await api.post('api/employees', data)
+    AppState.employees.push(res.data)
     console.log(res.data + 'create employee');
+  }
+
+  async removeEmployee(id) {
+    // TODO allow business accounts to remove employees that aren't themselves
+    const res = await api.delete('api/employees/' + id)
+    console.log(res.data + "[remove employee]");
   }
 }
 

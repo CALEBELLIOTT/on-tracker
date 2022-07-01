@@ -21,13 +21,19 @@ class AccountService {
       AppState.account.businessId = id
       await employeesService.getAllEmployees()
       if (business.data.creator.id == AppState.account.id) {
-        const res = await api.put('account/' + AppState.account.id, { businessAccount: true })
+        const res = await api.put('account/' + AppState.account.id, { businessAccount: true, businessId: id })
         AppState.account.businessAccount = true
       }
       AppState.account.businessId = id
       return
     }
     Pop.toast('you already belong to a business [set business id]', "warning")
+  }
+
+  async removeBusinessId(id) {
+    const res = await api.put('/account/' + id, { businessId: undefined })
+    console.log("remove business ID");
+    console.log(res.data);
   }
 
   // async setBusinessAccount() {
