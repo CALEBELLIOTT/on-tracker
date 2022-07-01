@@ -24,9 +24,7 @@
       ></button>
     </div>
     <div class="offcanvas-body">
-      <div class="col-12 d-flex">
-        <input class="ms-2" type="checkbox" />
-      </div>
+      <Task v-for="t in tasks" :key="t.id" :task="t" />
     </div>
     <footer>
       <form @submit.prevent="postTask">
@@ -37,7 +35,7 @@
           v-model="taskData.description"
         />
         <input
-          class="form-control"
+          class="form-control m-2 rounded"
           type="number"
           v-model="taskData.estimatedTime"
           placeholder="Estimated hours"
@@ -50,17 +48,30 @@
 
 
 <script>
-import { ref } from '@vue/reactivity'
+import { computed, ref } from '@vue/reactivity'
 import { useRoute } from 'vue-router'
 import { tasksService } from '../services/TasksService'
 import Pop from '../utils/Pop'
 import { logger } from '../utils/Logger'
+import { onMounted } from '@vue/runtime-core'
+import { AppState } from '../AppState'
 export default {
   setup() {
     const route = useRoute()
     const taskData = ref({})
+    onMounted(async () => {
+      try {
+        await tasksService.getTasks(route.params.id)
+      } catch (error) {
+        logger.log(error),
+          Pop.toast(error.message, 'error')
+      }
+    })
     return {
       taskData,
+
+
+
 
       async postTask() {
         try {
@@ -71,14 +82,8 @@ export default {
           Pop.toast(error.message, 'error')
         }
       },
-      async completeTask() {
-        try {
-          await tasksService.completeTask(taskData.id)
-        } catch (error) {
-          Pop.toast(error.message, 'error')
-          logger.log(error)
-        }
-      }
+
+      tasks: computed(() => AppState.projectTasks)
     }
 
   }
