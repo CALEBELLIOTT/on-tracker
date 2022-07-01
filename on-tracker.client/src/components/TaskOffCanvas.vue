@@ -61,7 +61,7 @@ export default {
   setup() {
     const route = useRoute()
     const taskData = ref({})
-    watchEffect(async () => {
+    onMounted(async () => {
       try {
         await tasksService.getTasks(route.params.id)
       } catch (error) {
