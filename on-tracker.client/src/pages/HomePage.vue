@@ -2,11 +2,11 @@
   <Navbar v-if="account.id"></Navbar>
   <UserLogin v-if="!account.id" />
   <!-- <div class="col-10 d-flex justify-content-between p-3"> -->
-    <h1 class="text-light text-center">The Map</h1>
-    <hr class="text-light">
-    <h1 class="text-light text-center">Critical</h1>
-    <hr>
-  <div class="row justify-content-evenly">
+  <h1 class="text-light text-center" v-if="account.id">The Map</h1>
+  <hr class="text-light">
+  <h1 class="text-light text-center" v-if="account.id">Critical</h1>
+  <hr>
+  <div class="row justify-content-evenly" v-if="account.id">
     <Project v-for="p in projects" :key="p.id" :project="p" />
   </div>
   <!-- </div> -->

@@ -19,6 +19,7 @@ class EmployeesService {
       certifications: ["emt"]
     }
     const res = await api.post('api/employees', data)
+    AppState.employees.push(res.data)
     console.log(res.data + 'create employee');
   }
 
