@@ -38,8 +38,9 @@
         />
         <input
           class="form-control"
-          type="text"
+          type="number"
           v-model="taskData.estimatedTime"
+          placeholder="Estimated hours"
         />
         <button class="btn btn-success" type="submit">Post</button>
       </form>
@@ -53,6 +54,7 @@ import { ref } from '@vue/reactivity'
 import { useRoute } from 'vue-router'
 import { tasksService } from '../services/TasksService'
 import Pop from '../utils/Pop'
+import { logger } from '../utils/Logger'
 export default {
   setup() {
     const route = useRoute()
@@ -62,13 +64,23 @@ export default {
 
       async postTask() {
         try {
+          taskData.value.projectId = route.params.id
           await tasksService.postTask(taskData.value)
         } catch (error) {
           logger.log(error)
           Pop.toast(error.message, 'error')
         }
+      },
+      async completeTask() {
+        try {
+          await tasksService.completeTask(taskData.id)
+        } catch (error) {
+          Pop.toast(error.message, 'error')
+          logger.log(error)
+        }
       }
     }
+
   }
 }
 </script>
