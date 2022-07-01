@@ -6,27 +6,29 @@
           <form class="" @submit.prevent="createBusiness" action="">
             <div class="d-flex flex-column align-items-center">
               <h3 class="text-center">Tell us about your business</h3>
-              <div class="col-10 d-flex flex-column">
+              <div class="col-md-10 d-flex flex-column">
                 <div class="d-flex my-2">
-                  <label for="">name</label>
-                  <input v-model="businessData.name" type="text" class="border-bottom mx-2 form-control "
-                    placeholder="name...">
+                  <label for="">Name</label>
+                  <input v-model="businessData.name" required type="text" class="border-bottom mx-2 form-control "
+                    placeholder="Business Name...">
                 </div>
                 <div class="d-flex my-2">
                   <label for="">Cover Image</label>
-                  <input v-model="businessData.coverImg" type="text" class="border-bottom mx-2 form-control "
-                    placeholder="url...">
+                  <input v-model="businessData.coverImg" required type="text" class="border-bottom mx-2 form-control "
+                    placeholder="Upload your Image...">
                 </div>
                 <div class="d-flex my-2">
                   <label for="">Logo</label>
-                  <input v-model="businessData.logo" type="text" class="border-bottom mx-2 form-control "
-                    placeholder="url...">
+                  <input v-model="businessData.logo" required type="text" class="border-bottom mx-2 form-control "
+                    placeholder="Upload your Logo...">
                 </div>
               </div>
             </div>
-            <button type="submit">
-              <h3 class="text-end m-2"><i class="mdi mdi-check selectable"></i></h3>
-            </button>
+            <div class="d-flex justify-content-end m-2">
+              <button type="submit" title="Add your Business ">
+                <h3 class="m-2"><i class="mdi mdi-check "></i></h3>
+              </button>
+            </div>
           </form>
         </div>
       </div>
