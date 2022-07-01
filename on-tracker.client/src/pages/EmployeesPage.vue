@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <!-- component of active employee -->
+    <ActiveEmployee />
 
     <!-- employee nav bar -->
 
