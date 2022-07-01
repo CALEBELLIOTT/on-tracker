@@ -7,7 +7,7 @@
 
     <!-- Note Component -->
     <div class="row">
-      <Note v-for="n in notes" :key="n.id" :note="n" />
+      <ProjectNotes v-for="n in notes" :key="n.id" :note="n" />
     </div>
     <!--  -->
   </div>
