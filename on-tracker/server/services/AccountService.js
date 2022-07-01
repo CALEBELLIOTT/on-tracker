@@ -78,9 +78,6 @@ class AccountService {
 
   async editAccount(data, userId, accountId) {
     const account = await dbContext.Account.findById(accountId)
-    if (account.id != userId) {
-      throw new Forbidden('not your account')
-    }
     account.description = data.description || account.description
     account.picture = data.picture || account.picture
     account.name = data.name || account.name

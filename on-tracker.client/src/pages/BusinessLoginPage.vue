@@ -39,6 +39,7 @@
 import { ref } from "vue"
 import { router } from "../router"
 import { businessesService } from "../services/BusinessesService"
+import { employeesService } from "../services/EmployeesService"
 import Pop from "../utils/Pop"
 
 export default {
@@ -49,6 +50,7 @@ export default {
       async createBusiness() {
         try {
           await businessesService.createBusiness(businessData.value)
+          await employeesService.createEmployee()
           router.push({ name: 'Home' })
         } catch (error) {
           Pop.toast(error.message)
