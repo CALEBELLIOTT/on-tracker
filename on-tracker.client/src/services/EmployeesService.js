@@ -5,10 +5,21 @@ import { api } from "./AxiosService.js"
 class EmployeesService {
 
   async getAllEmployees() {
-    const res = await api.get('api/businesses/'+ AppState.account.businessId + '/employees')
+    const res = await api.get('api/businesses/' + AppState.account.businessId + '/employees')
     logger.log(res.data)
     AppState.employees = res.data
     logger.log('[EMPLOYEES IN APPSTATE]')
+  }
+
+  async createEmployee() {
+    data = {
+      businessId: AppState.account.businessId,
+      accountId: AppState.account.id,
+      skills: "",
+      certifications: []
+    }
+    const res = await api.post('api/employees', data)
+    console.log(res.data + 'create employee');
   }
 }
 

@@ -1,28 +1,31 @@
 <template>
-<!-- component of active employee -->
+  <div class="container">
+    <!-- component of active employee -->
 
-<!-- employee nav bar -->
+    <!-- employee nav bar -->
 
-<!-- list of all business employees -->
-v-
-  <div class="">
+    <div class="row">
+      <div class="col-6" v-for="e in employees" :key="e.id">
+        <EmployeeCard :employee="e"></EmployeeCard>
+      </div>
+    </div>
   </div>
+
 </template>
 
 
 <script>
-import { onMounted, watchEffect } from "@vue/runtime-core"
-import { employeesService } from "../services/EmployeesService.js"
+import { computed } from "vue";
 import { AppState } from "../AppState.js";
-import { logger } from "../utils/Logger.js";
 export default {
-  setup(){
-    return {}
+  setup() {
+    return {
+      employees: computed(() => AppState.employees)
+    }
   }
 }
 </script>
 
 
 <style lang="scss" scoped>
-
 </style>
