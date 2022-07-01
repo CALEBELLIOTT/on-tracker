@@ -10,7 +10,7 @@
             <div class="d-flex flex-column mx-2">
               <p class=""><b>{{ employee.account.name }}</b></p>
               <p>{{ employee.skills }}</p>
-              <p> <span v-for="c in employee.certifications">{{ c }}</span></p>
+              <p> <span v-for="c in employee.certifications" :key="c">{{ c }}</span></p>
             </div>
           </div>
           <div class="col-md-1">
