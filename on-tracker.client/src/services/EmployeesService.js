@@ -12,11 +12,11 @@ class EmployeesService {
   }
 
   async createEmployee() {
-    data = {
+    let data = {
       businessId: AppState.account.businessId,
       accountId: AppState.account.id,
-      skills: "",
-      certifications: []
+      skills: "I am good at this",
+      certifications: ["emt"]
     }
     const res = await api.post('api/employees', data)
     console.log(res.data + 'create employee');

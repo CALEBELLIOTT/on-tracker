@@ -2,6 +2,7 @@ import { AppState } from '../AppState'
 import { logger } from '../utils/Logger'
 import Pop from "../utils/Pop"
 import { api } from './AxiosService'
+import { employeesService } from "./EmployeesService"
 
 class AccountService {
   async getAccount() {
@@ -17,6 +18,8 @@ class AccountService {
     if (!AppState.account.businessId) {
       const res = await api.put('account/' + AppState.account.id, { businessId: id })
       const business = await api.get('api/businesses/' + id)
+      AppState.account.businessId = id
+      await employeesService.getAllEmployees()
       if (business.data.creator.id == AppState.account.id) {
         const res = await api.put('account/' + AppState.account.id, { businessAccount: true })
         AppState.account.businessAccount = true

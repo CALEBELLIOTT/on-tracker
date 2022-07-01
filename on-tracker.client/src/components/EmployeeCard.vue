@@ -1,10 +1,18 @@
 <template>
   <div class="row">
-    <div class="col-4 bg-light rounded p-2">
-      <div class="row">
-        <div class="col-12">
-          <!--   dropdown maybe?     -->
-          <p>this is an employee</p>
+    <div class="col-12">
+      <div class="bg-light rounded m-2 p-2 d-flex align-items-center">
+        <div class="row">
+          <div class="col-md-4">
+            <img :src="employee.account.picture" class="img-fluid" alt="">
+          </div>
+          <div class="col-md-8">
+            <div class="d-flex flex-column mx-2">
+              <p class=""><b>{{ employee.account.name }}</b></p>
+              <p>{{ employee.skills }}</p>
+              <p> <span v-for="c in employee.certifications">{{ c }}</span></p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -14,6 +22,7 @@
 
 <script>
 export default {
+  props: { employee: { type: Object, required: true } },
   setup() {
     return {}
   }
@@ -22,4 +31,7 @@ export default {
 
 
 <style lang="scss" scoped>
+img {
+  border-radius: 50%;
+}
 </style>
