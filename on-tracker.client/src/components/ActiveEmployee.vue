@@ -1,12 +1,12 @@
 <template>
   <div class="">
-  <div>
-    <img :src="employee.account.picture" alt="">
-  </div>
-  <div>
-    {{employee.name}}
+    <div>
+      <img :src="employee[0].account.picture || employee.account.picture" alt="">
+    </div>
+    <div>
+      {{ employee.name }}
 
-  </div>
+    </div>
 
 
   </div>
@@ -18,9 +18,9 @@
 import { computed } from "@vue/reactivity"
 import { AppState } from "../AppState.js"
 export default {
-  setup(){
+  setup() {
     return {
-      employee: computed(() => AppState.activeEmployee[0]),
+      employee: computed(() => AppState.activeEmployee),
       account: computed(() => AppState.account)
     }
   }
@@ -29,5 +29,4 @@ export default {
 
 
 <style lang="scss" scoped>
-
 </style>

@@ -22,6 +22,7 @@ class EmployeesService {
     }
     const res = await api.post('api/employees', data)
     AppState.employees.push(res.data)
+    AppState.activeEmployee = res.data
     console.log(res.data + 'create employee');
   }
 
