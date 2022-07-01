@@ -18,7 +18,7 @@ class BusinessesService {
       const res = await api.post('api/businesses', data)
       console.log(res.data);
       AppState.allBusinesses.push(res.data)
-      accountService.setBusinessId(res.data.id)
+      await accountService.setBusinessId(res.data.id)
       return
     }
     Pop.toast('you already belong to a business', "error")
