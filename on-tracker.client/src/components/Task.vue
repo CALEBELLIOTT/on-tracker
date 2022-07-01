@@ -7,9 +7,22 @@
       :checked="task.isCompleted"
       @click="completeTask(task._id)"
     />
-    <span class="px-4">{{ task.description }}</span>
-    <span class="px-4">Hours: {{ task.estimatedTime }}</span>
-    <span class="mdi mdi-pencil selectable" title="Edit Task"></span>
+    <span
+      :id="`taskInfo${task.id}`"
+      @blur="editTask(task._id)"
+      contenteditable="true"
+      class="px-4"
+    >
+      {{ task.description }}</span
+    >
+    <span contenteditable="true" class="px-4"
+      >Hours: {{ task.estimatedTime }}</span
+    >
+    <span
+      @click="editTask(task._id)"
+      class="mdi mdi-pencil selectable"
+      title="Edit Task"
+    ></span>
     <span
       @click="deleteTask(task._id)"
       class="mdi mdi-trash-can selectable"
@@ -20,7 +33,7 @@
 
 
 <script>
-import { computed } from '@vue/reactivity'
+import { computed, ref } from '@vue/reactivity'
 import { tasksService } from '../services/TasksService'
 import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
@@ -29,9 +42,6 @@ export default {
   props: { task: { type: Object, required: true } },
   setup(props) {
     return {
-
-
-
 
       async completeTask(id) {
         try {
@@ -52,6 +62,19 @@ export default {
           Pop.toast(error.message, 'error')
         }
       },
+
+      async editTask(id) {
+        try {
+
+          const newText = document.getElementById('taskInfo' + props.task.id).innerText;
+          logger.log(newText)
+          await tasksService.editTask(id, newText)
+          Pop.toast('Task Updated')
+        } catch (error) {
+          logger.log(error)
+          Pop.toast(error.message)
+        }
+      }
 
 
     }
