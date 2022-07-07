@@ -8,7 +8,8 @@ class EmployeesService {
     const res = await api.get('api/businesses/' + AppState.account.businessId + '/employees')
     logger.log(res.data)
     AppState.employees = res.data
-    AppState.activeEmployee = AppState.employees.filter(e => e.account.id == AppState.account.id)
+    let target = AppState.employees.filter(e => e.account.id == AppState.account.id)
+    AppState.activeEmployee = target[0]
     logger.log('Active Employee', AppState.activeEmployee)
     logger.log('[EMPLOYEES IN APPSTATE]')
   }
@@ -33,8 +34,10 @@ class EmployeesService {
   }
 
   async setActiveEmployee(id) {
-    AppState.activeEmployee = AppState.employees.filter(e => e.id == id);
-    logger.log(AppState.activeEmployee)
+    let target = AppState.employees.filter(e => e.id == id);
+    AppState.activeEmployee = target[0]
+    console.log(AppState.employees);
+    console.log(AppState.activeEmployee)
   }
 }
 
