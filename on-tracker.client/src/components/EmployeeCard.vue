@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-12">
-      <div class="bg-light rounded m-2 p-2 d-flex align-items-center" @click="setActiveEmployee()">
+      <div class="bg-light rounded m-2 p-2 d-flex align-items-center employee-card" @click="setActiveEmployee()">
         <div class="row">
           <div class="col-md-4">
             <img :src="employee.account.picture" class="img-fluid" alt="">
@@ -58,5 +58,17 @@ export default {
 <style lang="scss" scoped>
 img {
   border-radius: 50%;
+}
+
+.employee-card:hover {
+  transition: 500ms;
+  cursor: pointer;
+  transform: scale(1.05);
+  border: 3px rgb(255, 132, 73) solid;
+}
+
+.employee-card {
+  border: 3px rgba(255, 132, 73, 0);
+  transition: 500ms;
 }
 </style>
