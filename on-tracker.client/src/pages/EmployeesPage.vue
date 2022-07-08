@@ -1,12 +1,9 @@
 <template>
   <navbar></navbar>
-  <!-- component of active employee -->
   <ActiveEmployee />
-
-  <!-- employee nav bar -->
-  .<div class="container">
+  <div class="container">
     <div class="row">
-      <div class="col-6" v-for="e in employees" :key="e.id">
+      <div class="col-md-6" v-for="e in employees" :key="e.id">
         <EmployeeCard :employee="e"></EmployeeCard>
       </div>
     </div>

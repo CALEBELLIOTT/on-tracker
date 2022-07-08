@@ -1,16 +1,27 @@
 <template>
-  <div class="d-flex text-light align-items-center my-2 mx-2">
-    <div class="d-flex align-items-center me-5">
-      <img class="profile-img" :src="employee.account.picture || employee.account.picture" alt="">
-      <h2 class="mx-2"> {{ employee.account.name }} </h2>
-    </div>
-    <div class="d-flex flex-column text-light ms-5">
-      <h2>certifications: {{ employee.certifications.toString() }}</h2>
-      <h2>Skills: {{ employee.skills }}</h2>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="bg-light rounded p-2 my-2">
+          <div class="row">
+            <div class="col-md-4 text-md-start text-center">
+              <h3 class="my-2">{{ employee.account.name }}</h3>
+              <img class="profile-img" :src="employee.account.picture || employee.account.picture" alt="">
+            </div>
+            <div class="col-md-4">
+              <div class="d-flex flex-column justify-content-center my-2">
+                <h3>certifications: {{ employee.certifications.toString() }}</h3>
+                <h3>Skills: {{ employee.skills }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <hr class="text-light">
 
+  <hr class="text-light">
 </template>
 
 
