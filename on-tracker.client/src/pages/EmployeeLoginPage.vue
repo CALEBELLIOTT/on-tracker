@@ -13,10 +13,7 @@
         </div>
       </div>
     </div>
-  </transition>
-
-  <transition>
-    <div class="container-fluid dark-theme text-light" v-if="account.businessId">
+    <div class="container-fluid dark-theme text-light" v-else>
       <div class="row ">
         <div class="col-12 d-flex flex-column justify-content-center align-items-center">
           <h4 class="mb-5 mt-2">Tell us about yourself</h4>
@@ -73,6 +70,13 @@ export default {
       },
       async editAccountInfo() {
         console.log(userData.value);
+        try {
+          await accountService.editAccountInfo(userData.value)
+          await employeesService.editEmployee(userData.value, AppState.account.id)
+        } catch (error) {
+          Pop.toast(error.message, "error")
+          console.error(error)
+        }
       }
     }
   }

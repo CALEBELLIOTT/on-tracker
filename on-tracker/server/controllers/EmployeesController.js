@@ -10,6 +10,7 @@ export class EmployeesController extends BaseController {
     constructor() {
         super('api/employees')
         this.router
+            .get('', this.getAllEmployees)
             .get('/:id/teammembers', this.teamByEmployee)
             .get('/:id', this.getById)
             .delete('/:id', this.deleteEmployee)
@@ -19,6 +20,15 @@ export class EmployeesController extends BaseController {
     }
 
 
+
+    async getAllEmployees(req, res, next) {
+        try {
+            const employees = await employeesService.getAllEmployees()
+            return res.send(employees)
+        } catch (error) {
+            next(error)
+        }
+    }
     async getById(req, res, next) {
         try {
             const employee = await employeesService.getById(req.params.id)

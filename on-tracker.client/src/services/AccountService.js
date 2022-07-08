@@ -36,11 +36,11 @@ class AccountService {
     console.log(res.data);
   }
 
-  // async setBusinessAccount() {
-  //   const res = await api.put('account/' + AppState.account.id, { businessAccount: true })
-  //   console.log(res.data);
-  //   console.log(AppState.account);
-  // }
+  async editAccountInfo(updatedData) {
+    const res = await api.put('account/' + AppState.account.id, updatedData)
+    console.log(res.data);
+  }
+
 }
 
 export const accountService = new AccountService()

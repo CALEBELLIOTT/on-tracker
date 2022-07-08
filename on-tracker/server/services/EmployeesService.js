@@ -9,6 +9,11 @@ class EmployeesService {
       return employees
    }
 
+   async getAllEmployees() {
+      const employees = await dbContext.Employees.find().populate('account')
+      return employees
+   }
+
 
    async getById(id) {
       const employee = await dbContext.Employees.findById(id)

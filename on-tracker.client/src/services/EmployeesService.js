@@ -27,6 +27,14 @@ class EmployeesService {
     console.log(res.data + 'create employee');
   }
 
+  async editEmployee(updatedData, id) {
+    let employees = await api.get('api/employees')
+    employees = employees.data.filter(e => e.account.id === id)
+    console.log(employees);
+    const res = await api.put('api/employees/' + employees[0].id, updatedData)
+    console.log(res.data);
+  }
+
   async removeEmployee(id) {
     // TODO allow business accounts to remove employees that aren't themselves
     const res = await api.delete('api/employees/' + id)
