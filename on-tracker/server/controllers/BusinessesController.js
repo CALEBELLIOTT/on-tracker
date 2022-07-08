@@ -2,6 +2,7 @@ import BaseController from '../utils/BaseController'
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { businessesService } from '../services/BusinessesService'
 import { employeesService } from "../services/EmployeesService"
+import { projectsService } from "../services/ProjectsService"
 
 
 export class BusinessesController extends BaseController {
@@ -11,6 +12,7 @@ export class BusinessesController extends BaseController {
             .get('', this.getBusinesses)
             .get('/:id', this.getBusinessesById)
             .get('/:id/employees', this.getEmployeesByBusiness)
+            .get('/:id/projects', this.getProjectsByBusiness)
             // TODO create project and employee gets
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createBusiness)
@@ -71,6 +73,15 @@ export class BusinessesController extends BaseController {
         try {
             const employees = await employeesService.getEmployeesByBusiness(req.params.id)
             return res.send(employees)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async getProjectsByBusiness(req, res, next) {
+        try {
+            const projects = await projectsService.getProjectsByBusiness(req.params.id)
+            return res.send(projects)
         } catch (error) {
             next(error)
         }

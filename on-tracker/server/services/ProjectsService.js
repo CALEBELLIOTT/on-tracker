@@ -3,6 +3,7 @@ import { dbContext } from "../db/DbContext.js"
 
 class ProjectsService {
 
+
   async getAll(query = {}) {
     const projects = await dbContext.Projects.find(query)
     return projects
@@ -65,6 +66,11 @@ class ProjectsService {
     }
     await project.remove()
     return
+  }
+
+  async getProjectsByBusiness(businessId) {
+    const projects = await dbContext.Projects.find({ businessId })
+    return projects
   }
 }
 
