@@ -20,6 +20,8 @@
           <form action="" @submit.prevent="editAccountInfo()">
             <label for="" class="mt-2">Your Name</label>
             <input v-model="userData.name" type="text" placeholder="Name..." class="form-control mb-2">
+            <label for="" class="mt-2">Your Picture</label>
+            <input v-model="userData.picture" type="text" placeholder="Img Url..." class="form-control mb-2">
             <label for="" class="mt-2">Your Skills</label>
             <input v-model="userData.skills" type="text" placeholder="Skills..." class="form-control mb-2">
             <label for="" class="mt-2">Your Certifications</label>
@@ -70,9 +72,11 @@ export default {
       },
       async editAccountInfo() {
         console.log(userData.value);
+        userData.value.businessId = AppState.account.businessId
         try {
           await accountService.editAccountInfo(userData.value)
           await employeesService.editEmployee(userData.value, AppState.account.id)
+          router.push('home')
         } catch (error) {
           Pop.toast(error.message, "error")
           console.error(error)

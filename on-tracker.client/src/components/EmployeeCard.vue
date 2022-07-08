@@ -60,15 +60,14 @@ img {
   border-radius: 50%;
 }
 
-.employee-card:hover {
+.employee-card {
+  border: 3px solid rgba(12, 65, 255, 0);
   transition: 500ms;
-  cursor: pointer;
-  transform: scale(1.05);
-  border: 3px rgb(255, 132, 73) solid;
 }
 
-.employee-card {
-  border: 3px rgba(255, 132, 73, 0);
+.employee-card:hover {
+  cursor: pointer;
+  border: 3px rgb(255, 132, 73) solid;
   transition: 500ms;
 }
 </style>
