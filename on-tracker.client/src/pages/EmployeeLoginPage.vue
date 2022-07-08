@@ -64,7 +64,6 @@ export default {
         try {
           await accountService.setBusinessId(id)
           await employeesService.createEmployee()
-          // router.push({ name: 'Home' })
         } catch (error) {
           Pop.toast(error.message, "error")
           console.error(error)
@@ -76,7 +75,7 @@ export default {
         try {
           await accountService.editAccountInfo(userData.value)
           await employeesService.editEmployee(userData.value, AppState.account.id)
-          router.push('home')
+          router.push({ name: 'Home' })
         } catch (error) {
           Pop.toast(error.message, "error")
           console.error(error)

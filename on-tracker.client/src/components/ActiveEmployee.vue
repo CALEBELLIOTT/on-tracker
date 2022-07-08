@@ -43,5 +43,7 @@ export default {
 .profile-img {
   border-radius: 50%;
   height: 10rem;
+  width: 10rem;
+  object-fit: cover;
 }
 </style>

@@ -4,7 +4,7 @@
       <div class="bg-light rounded m-2 p-2 d-flex align-items-center employee-card" @click="setActiveEmployee()">
         <div class="row">
           <div class="col-md-4">
-            <img :src="employee.account.picture" class="img-fluid" alt="">
+            <img :src="employee.account.picture" class="profile-img" alt="">
           </div>
           <div class="col-md-7">
             <div class="d-flex flex-column mx-2">
@@ -69,5 +69,11 @@ img {
   cursor: pointer;
   border: 3px rgb(255, 132, 73) solid;
   transition: 500ms;
+}
+
+.profile-img {
+  height: 5rem;
+  width: 5rem;
+  object-fit: cover;
 }
 </style>
