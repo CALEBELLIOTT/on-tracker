@@ -13,7 +13,6 @@ export class BusinessesController extends BaseController {
             .get('/:id', this.getBusinessesById)
             .get('/:id/employees', this.getEmployeesByBusiness)
             .get('/:id/projects', this.getProjectsByBusiness)
-            // TODO create project and employee gets
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createBusiness)
             .put('/:id', this.editBusiness)
