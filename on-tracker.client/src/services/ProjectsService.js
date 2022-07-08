@@ -26,6 +26,13 @@ class ProjectsService {
         console.log(res.data);
     }
 
+    async getBusinessProjects(businessId) {
+        const res = await api.get('api/businesses/' + businessId + '/projects')
+        // console.log('Business Projects!!! LOOK HERE!');
+        console.log(res.data);
+        AppState.activeBusinessProjects = res.data
+    }
+
 
 }
 

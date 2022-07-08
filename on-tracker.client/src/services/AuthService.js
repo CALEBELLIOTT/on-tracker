@@ -5,6 +5,7 @@ import { router } from '../router'
 import { accountService } from './AccountService'
 import { api } from './AxiosService'
 import { employeesService } from "./EmployeesService.js"
+import { projectsService } from "./ProjectsService"
 import { socketService } from './SocketService'
 
 export const AuthService = initialize({
@@ -32,7 +33,8 @@ AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function () {
     router.push({ name: 'FirstTimeLogin' })
   }
   else {
-    employeesService.getAllEmployees()
+    await employeesService.getAllEmployees()
+    await projectsService.getBusinessProjects(AppState.account.businessId)
   }
 })
 
