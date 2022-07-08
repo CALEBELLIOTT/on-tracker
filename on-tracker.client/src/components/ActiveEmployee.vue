@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex text-light align-items-center my-2">
+  <div class="d-flex text-light align-items-center my-2 mx-2">
     <div class="d-flex align-items-center me-5">
       <img class="profile-img" :src="employee.account.picture || employee.account.picture" alt="">
       <h2 class="mx-2"> {{ employee.account.name }} </h2>
@@ -10,6 +10,7 @@
     </div>
   </div>
   <hr class="text-light">
+
 </template>
 
 
