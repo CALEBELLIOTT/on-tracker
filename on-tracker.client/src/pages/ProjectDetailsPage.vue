@@ -10,7 +10,7 @@
       <div
         class="
           col-md-10
-          bg-grey
+          grey-card
           elevation-2
           rounded
           d-flex
@@ -21,7 +21,7 @@
           <h1
             class="text-center text-white border-bottom border-5 border-white"
           >
-            <b>Notes</b>
+            <b><em>Notes</em></b>
           </h1>
           <div class="notes-section m-4 bg-light rounded">
             <ProjectNotes v-for="n in notes" :key="n.id" :note="n" />
@@ -56,7 +56,18 @@
       <div class="col-md-3 d-flex justify-content-center flex-column mt-4">
         <h4 class="text-center text-light">Current</h4>
         <h4 class="text-center text-light">Employees</h4>
-        <div class="employee-cards elevation-2 rounded bg-grey m-4">
+        <div
+          class="
+            employee-cards
+            elevation-2
+            rounded
+            grey-card
+            m-4
+            d-flex
+            flex-column
+            justify-content-center
+          "
+        >
           <div class="col-12 d-flex justify-content-around p-2">
             <span
               ><img
@@ -64,8 +75,12 @@
                 src="https://th.bing.com/th/id/R.3223efb84d9394750bcb90dadfefc5b2?rik=zhNwcP5qVVgiFQ&pid=ImgRaw&r=0"
                 alt=""
             /></span>
-            <span><h2>Bob</h2></span>
-            <span><i class="mdi mdi-delete f-24"></i></span>
+            <span
+              ><h2 class="text-white">
+                <b><em>Bob</em></b>
+              </h2></span
+            >
+            <span><i class="text-white mdi mdi-delete f-24"></i></span>
           </div>
           <div class="col-12 d-flex justify-content-around p-2">
             <span
@@ -74,8 +89,12 @@
                 src="https://th.bing.com/th/id/R.3223efb84d9394750bcb90dadfefc5b2?rik=zhNwcP5qVVgiFQ&pid=ImgRaw&r=0"
                 alt=""
             /></span>
-            <span><h2>Bob</h2></span>
-            <span><i class="mdi mdi-delete f-24"></i></span>
+            <span
+              ><h2 class="text-white">
+                <b><em>Bob</em></b>
+              </h2></span
+            >
+            <span><i class="text-white mdi mdi-delete f-24"></i></span>
           </div>
           <div class="col-12 d-flex justify-content-around p-2">
             <span
@@ -84,15 +103,30 @@
                 src="https://th.bing.com/th/id/R.3223efb84d9394750bcb90dadfefc5b2?rik=zhNwcP5qVVgiFQ&pid=ImgRaw&r=0"
                 alt=""
             /></span>
-            <span><h2>Bob</h2></span>
-            <span><i class="mdi mdi-delete f-24"></i></span>
+            <span
+              ><h2 class="text-white">
+                <b><em>Bob</em></b>
+              </h2></span
+            >
+            <span><i class="text-white mdi mdi-delete f-24"></i></span>
           </div>
         </div>
       </div>
       <div class="col-md-3 d-flex justify-content-center flex-column mt-4">
         <h4 class="text-center text-light">Active</h4>
         <h4 class="text-center text-light">Employees</h4>
-        <div class="employee-cards elevation-2 rounded bg-grey m-4">
+        <div
+          class="
+            employee-cards
+            d-flex
+            flex-column
+            elevation-2
+            rounded
+            grey-card
+            m-4
+            justify-content-center
+          "
+        >
           <div class="col-12 d-flex justify-content-around p-2">
             <span
               ><img
@@ -100,8 +134,12 @@
                 src="https://th.bing.com/th/id/R.3223efb84d9394750bcb90dadfefc5b2?rik=zhNwcP5qVVgiFQ&pid=ImgRaw&r=0"
                 alt=""
             /></span>
-            <span><h2>Bob</h2></span>
-            <span><i class="mdi mdi-delete f-22"></i></span>
+            <span
+              ><h2 class="text-white">
+                <b><em>Bob</em></b>
+              </h2></span
+            >
+            <span><i class="text-white mdi mdi-checkbox-marked f-22"></i></span>
           </div>
           <div class="col-12 d-flex justify-content-around p-2">
             <span
@@ -110,8 +148,12 @@
                 src="https://th.bing.com/th/id/R.3223efb84d9394750bcb90dadfefc5b2?rik=zhNwcP5qVVgiFQ&pid=ImgRaw&r=0"
                 alt=""
             /></span>
-            <span><h2>Bob</h2></span>
-            <span><i class="mdi mdi-delete f-22"></i></span>
+            <span
+              ><h2 class="text-white">
+                <b><em>Bob</em></b>
+              </h2></span
+            >
+            <span><i class="text-white mdi mdi-checkbox-marked f-22"></i></span>
           </div>
           <div class="col-12 d-flex justify-content-around p-2">
             <span
@@ -120,8 +162,12 @@
                 src="https://th.bing.com/th/id/R.3223efb84d9394750bcb90dadfefc5b2?rik=zhNwcP5qVVgiFQ&pid=ImgRaw&r=0"
                 alt=""
             /></span>
-            <span><h2>Bob</h2></span>
-            <span><i class="mdi mdi-delete f-22"></i></span>
+            <span
+              ><h2 class="text-white">
+                <b><em>Bob</em></b>
+              </h2></span
+            >
+            <span><i class="text-white mdi mdi-checkbox-marked f-22"></i></span>
           </div>
         </div>
       </div>
@@ -197,8 +243,8 @@ export default {
 
 <style lang="scss" scoped>
 .small-profile-img {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   object-fit: cover;
   border-radius: 50em;
 }

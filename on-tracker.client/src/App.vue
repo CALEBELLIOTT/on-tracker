@@ -29,4 +29,7 @@ export default {
 .text-dark-theme {
   color: rgba(37, 36, 36, 1);
 }
+.grey-card {
+  background-color: #9a9a9a;
+}
 </style>
