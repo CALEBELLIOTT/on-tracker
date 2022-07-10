@@ -1,7 +1,7 @@
 <template>
   <div class="col-12 text-center">
     <div class="row pt-5">
-      <div class="col-md-10 mx-auto bg-grey p-5 rounded">
+      <div class="col-md-10 mx-auto grey-card p-5 rounded">
         <div>{{ project.description }}</div>
       </div>
       <span class="d-flex justify-content-end"><TaskOffCanvas /></span>
