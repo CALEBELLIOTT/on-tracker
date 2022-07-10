@@ -21,8 +21,13 @@
     <div class="col-md-10 border-top border-3 my-3" v-if="account.id"></div>
   </div>
 
-  <div class="col-md-10">
-    <Project v-for="p in projects" :key="p.id" :project="p" />
+  <div class="d-flex justify-content-center">
+    <div class="col-md-10 ">
+      <div class="row justify-content-evenly">
+
+        <Project v-for="p in projects" :key="p.id" :project="p" />
+      </div>
+    </div>
   </div>
   <!-- </div> -->
 </template>
