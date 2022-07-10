@@ -1,9 +1,9 @@
 <template>
 
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Launch demo modal
-  </button>
+  <h4 class="d-flex align-items-center text-white selectable" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    + New Project
+  </h4>
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

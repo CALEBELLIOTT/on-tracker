@@ -1,66 +1,81 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark px-3">
-    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-left">
+  <nav class="d-flex">
+    <router-link class="navbar-brand" :to="{ name: 'Home' }">
+      <div class="col-md-6 m-2">
         <img src="../assets/img/Ontracker logo OG.png" alt="logo">
       </div>
     </router-link>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+
+
+    <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon" />
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto">
-        <li>
-          <router-link :to="{ name: 'Home' }" class="btn text-success lighten-30 selectable text-uppercase">
-            Home
-          </router-link>
-        </li>
-        <li>
-          <router-link :to="{ name: 'About' }" class="btn text-success lighten-30 selectable text-uppercase">
-            About
-          </router-link>
-        </li>
-        <li>
-          <router-link :to="{ name: 'EmployeesPage' }" class="btn text-success lighten-30 selectable text-uppercase">
-            Employees Page
-          </router-link>
-        </li>
-      </ul>
+    </button> -->
+
+
+
+    <div class="col-md-5 d-flex justify-content-between">
+
+      <CreateProjectModal />
+
+
+
+      <router-link :to="{ name: 'About' }" class="d-flex align-items-center text-white  selectable ">
+        <h4>
+          About
+        </h4>
+      </router-link>
+
+
+
+      <router-link :to="{ name: 'EmployeesPage' }" class="d-flex align-items-center text-white  selectable ">
+        <h4>
+          Employees
+        </h4>
+      </router-link>
+
+
       <!-- LOGIN COMPONENT HERE -->
       <Login />
     </div>
+
   </nav>
 </template>
 
 <script>
+import { computed } from 'vue';
+import { AppState } from '../AppState';
+
 export default {
   setup() {
-    return {};
+    return {
+      user: computed(() => AppState.user)
+    };
   },
 };
 </script>
 
 <style scoped>
-
-
 a:hover {
   text-decoration: none;
 }
+
 .nav-link {
   text-transform: uppercase;
 }
+
 .navbar-nav .router-link-exact-active {
 
   border-bottom: 2px solid var(--bs-success);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
-img{
-  width: 25%
+
+img {
+  width: 80%
 }
 
 nav {
-    background-color: rgb(93, 92, 92);
+  background-color: rgb(93, 92, 92);
 }
 </style>
