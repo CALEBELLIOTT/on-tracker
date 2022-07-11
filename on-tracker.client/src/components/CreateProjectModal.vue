@@ -1,12 +1,21 @@
 <template>
-
   <!-- Button trigger modal -->
-  <h4 class="d-flex align-items-center text-white selectable" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <h4
+    class="d-flex align-items-center text-white selectable"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal"
+  >
     + New Project
   </h4>
 
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
     <div class="modal-dialog modal-lg">
       <div class="modal-content bg-dark">
         <div class="modal-body">
@@ -20,41 +29,94 @@
               <div class="row">
                 <div class="col-md-6 p-2">
                   <label for="">Project Name</label>
-                  <input required type="text" class="form-control" placeholder="Name..."
-                    v-model="projectData.projectName">
+                  <input
+                    required
+                    type="text"
+                    class="form-control"
+                    placeholder="Name..."
+                    v-model="projectData.projectName"
+                  />
                 </div>
                 <div class="col-md-6 p-2">
                   <label for="">Project Cover Image</label>
-                  <input required type="text" class="form-control" placeholder="Url..." v-model="projectData.coverImg">
+                  <input
+                    required
+                    type="text"
+                    class="form-control"
+                    placeholder="Url..."
+                    v-model="projectData.coverImg"
+                  />
                 </div>
                 <div class="col-md-6 p-2">
                   <label for="">Location</label>
-                  <input required type="text" class="form-control" placeholder="Location..."
-                    v-model="projectData.location">
+                  <input
+                    required
+                    type="text"
+                    class="form-control"
+                    placeholder="Location..."
+                    v-model="projectData.location"
+                  />
                 </div>
                 <div class="col-md-6 p-2">
                   <label for="">Jobsite Images</label>
-                  <input required type="text" class="form-control" placeholder="Urls..."
-                    v-model="projectData.jobSiteImgs">
+                  <input
+                    required
+                    type="text"
+                    class="form-control"
+                    placeholder="Urls..."
+                    v-model="projectData.jobSiteImgs"
+                  />
                 </div>
                 <div class="col-md-6 p-2">
                   <label for="">Quoted Price</label>
-                  <input required type="number" min="1" placeholder="1" class="form-control"
-                    v-model="projectData.quotePrice">
+                  <input
+                    required
+                    type="number"
+                    min="1"
+                    placeholder="1"
+                    class="form-control"
+                    v-model="projectData.quotePrice"
+                  />
                 </div>
                 <div class="col-md-6 p-2">
                   <label for="">Due Date</label>
-                  <input required type="date" placeholder="" class="form-control" v-model="projectData.dueDate">
+                  <input
+                    required
+                    type="date"
+                    placeholder=""
+                    class="form-control"
+                    v-model="projectData.dueDate"
+                  />
                 </div>
                 <div class="col-12 p-2">
                   <label for="">Project Description</label>
-                  <textarea required name="" id="" cols="30" rows="5" placeholder="Description..." class="form-control"
-                    v-model="projectData.description"></textarea>
+                  <textarea
+                    required
+                    name=""
+                    id=""
+                    cols="30"
+                    rows="5"
+                    placeholder="Description..."
+                    class="form-control"
+                    v-model="projectData.description"
+                  ></textarea>
                 </div>
                 <div class="col-12 d-flex justify-content-between">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="submit" @click="createProject" class="btn btn-success"
-                    data-bs-dismiss="modal">Submit</button>
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="submit"
+                    @click="createProject"
+                    class="btn btn-success"
+                    data-bs-dismiss="modal"
+                  >
+                    Submit
+                  </button>
                 </div>
               </div>
             </form>
@@ -63,14 +125,14 @@
       </div>
     </div>
   </div>
-
-
 </template>
 
 
 <script>
 import { ref } from "vue"
 import { projectsService } from "../services/ProjectsService"
+import { logger } from '../utils/Logger'
+import Pop from '../utils/Pop'
 
 export default {
   setup() {
@@ -78,7 +140,12 @@ export default {
     return {
       projectData,
       async createProject() {
-        await projectsService.createProject(projectData)
+        try {
+          await projectsService.createProject(projectData)
+        } catch (error) {
+          Pop.toast(error.message)
+          logger.log(error)
+        }
       }
     }
   }

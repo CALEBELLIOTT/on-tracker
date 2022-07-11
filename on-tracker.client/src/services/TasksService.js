@@ -22,7 +22,9 @@ class TasksService {
     async completeTask(id) {
         const res = await api.put('api/tasks/' + id + '/completed')
         logger.log(res.data)
-        // AppState.projectTasks = res.data
+        let updated = res.data
+        AppState.projectTasks = AppState.projectTasks.filter(p => p.id === updated.id)
+        AppState.projectTasks.push(updated)
     }
 
     async deleteTask(id) {
@@ -51,8 +53,10 @@ class TasksService {
             }
         })
         let ratio = done / (undone + done) * 100
-        console.log(ratio);
-        return ratio.toString()
+        console.log(Math.floor(ratio));
+        AppState.projectCompletion = Math.floor(ratio)
+        console.log(AppState.projectCompletion);
+        console.log(AppState.projectTasks);
     }
 
 }
