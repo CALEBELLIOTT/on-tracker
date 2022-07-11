@@ -111,7 +111,7 @@
                   </button>
                   <button
                     type="submit"
-                    @click="createProject"
+                    @submit.prevent="createProject"
                     class="btn btn-success"
                     data-bs-dismiss="modal"
                   >
