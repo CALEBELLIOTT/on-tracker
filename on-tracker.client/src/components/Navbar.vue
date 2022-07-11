@@ -16,7 +16,7 @@
 
     <div class="col-md-5 d-flex justify-content-between">
 
-      <CreateProjectModal />
+      <CreateProjectModal v-if="account.businessAccount" />
 
 
 
@@ -49,7 +49,8 @@ import { AppState } from '../AppState';
 export default {
   setup() {
     return {
-      user: computed(() => AppState.user)
+      user: computed(() => AppState.user),
+      account: computed(() => AppState.account)
     };
   },
 };
