@@ -8,7 +8,7 @@
       Login
     </button>
 
-    <div class="dropdown my-2 my-lg-0" v-else>
+    <div class="dropdown my-3 my-lg-0" v-else>
       <div
         class="dropdown-toggle selectable"
         data-bs-toggle="dropdown"
@@ -26,7 +26,7 @@
         </div>
       </div>
       <div
-        class="dropdown-menu p-0 list-group w-100"
+        class="dropdown-menu p-0 list-group w-100 me-4"
         aria-labelledby="authDropdown"
       >
         <router-link :to="{ name: 'Account' }">
@@ -41,7 +41,11 @@
           <i class="mdi mdi-logout"></i>
           logout
         </div>
-        <div>hello</div>
+        <div class="text-center">
+          <span class="name"
+            ><b>{{ account.name }}</b></span
+          >
+        </div>
       </div>
     </div>
   </span>
@@ -72,9 +76,11 @@ export default {
 <style lang="scss" scoped>
 .dropdown-menu {
   user-select: none;
-  display: block;
+  display: flex;
+  flex-grow: 1;
   transform: scale(0);
   transition: all 0.15s linear;
+  padding: 4;
 }
 
 .dropdown-menu.show {
@@ -83,5 +89,9 @@ export default {
 
 .hoverable {
   cursor: pointer;
+}
+
+.name {
+  font-size: 10pt;
 }
 </style>
