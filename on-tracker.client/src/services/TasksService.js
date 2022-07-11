@@ -48,8 +48,8 @@ class TasksService {
             }
         })
         let ratio = done / (undone + done) * 100
-        console.log(ratio);
-        return ratio.toString()
+        console.log(Math.floor(ratio));
+        AppState.projectCompletion = Math.floor(ratio)
     }
 
 }
