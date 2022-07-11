@@ -16,16 +16,23 @@
 import { computed, onMounted, watchEffect } from "vue"
 import { AppState } from "../AppState"
 import { tasksService } from "../services/TasksService";
+import Pop from "../utils/Pop";
 
 export default {
   setup() {
     watchEffect(() => {
-      AppState.projectTasks
-      tasksService.getPercentage()
+      try {
+        if (AppState.projectTasks.length) {
+          tasksService.getPercentage()
+        }
+      } catch (error) {
+        Pop.toast(error.message)
+        console.error(error)
+      }
     })
     return {
       tasks: computed(() => AppState.projectTasks),
-      percentage: AppState.projectCompletion,
+      percentage: computed(() => AppState.projectCompletion)
     }
   }
 }
