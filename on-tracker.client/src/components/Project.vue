@@ -2,10 +2,10 @@
   <div
     class="
       col-4
+      selection-card
       project-img
       card
-      p-0
-      mt-4
+      m-4
       selectable
       justify-content-end
       text-center
@@ -55,9 +55,22 @@ export default {
   background-color: rgba(128, 128, 128, 0.639);
 }
 .project-img {
-  height: 200px;
+  height: 250px;
   width: 30%;
   background-position: center;
   background-size: cover;
+}
+
+.selection-card {
+  height: 30vh;
+  transition: 500ms;
+  border: solid 4px rgba(37, 36, 36, 1);
+}
+
+.selection-card:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  transition: 500ms;
+  border: solid 4px rgb(255, 132, 73);
 }
 </style>

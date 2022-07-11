@@ -1,12 +1,30 @@
 <template>
   <transition>
-    <div class="container-fluid dark-theme text-light" v-if="!account.businessId">
-      <div class="row ">
-        <div class="col-12 d-flex flex-column justify-content-center align-items-center">
+    <div
+      class="container-fluid dark-theme text-light"
+      v-if="!account.businessId"
+    >
+      <div class="row">
+        <div
+          class="
+            col-12
+            d-flex
+            flex-column
+            justify-content-center
+            align-items-center
+          "
+        >
           <h4 class="mb-5 mt-2">Select Your Workplace</h4>
+
+          <!-- WHeel spin -->
           <div class="business-list mt-5">
-            <h4 class="text-light text-center business" v-for="b in businesses" :key="b.id" :business="b"
-              @click="assignBusiness(b.id)">
+            <h4
+              class="text-light text-center business"
+              v-for="b in businesses"
+              :key="b.id"
+              :business="b"
+              @click="assignBusiness(b.id)"
+            >
               {{ b.name }}
             </h4>
           </div>
@@ -14,20 +32,49 @@
       </div>
     </div>
     <div class="container-fluid dark-theme text-light" v-else>
-      <div class="row ">
-        <div class="col-12 d-flex flex-column justify-content-center align-items-center">
+      <div class="row">
+        <div
+          class="
+            col-12
+            d-flex
+            flex-column
+            justify-content-center
+            align-items-center
+          "
+        >
           <h4 class="mb-5 mt-2">Tell us about yourself</h4>
           <form action="" @submit.prevent="editAccountInfo()">
             <label for="" class="mt-2">Your Name</label>
-            <input v-model="userData.name" type="text" placeholder="Name..." class="form-control mb-2">
+            <input
+              v-model="userData.name"
+              type="text"
+              placeholder="Name..."
+              class="form-control mb-2"
+            />
             <label for="" class="mt-2">Your Picture</label>
-            <input v-model="userData.picture" type="text" placeholder="Img Url..." class="form-control mb-2">
+            <input
+              v-model="userData.picture"
+              type="text"
+              placeholder="Img Url..."
+              class="form-control mb-2"
+            />
             <label for="" class="mt-2">Your Skills</label>
-            <input v-model="userData.skills" type="text" placeholder="Skills..." class="form-control mb-2">
+            <input
+              v-model="userData.skills"
+              type="text"
+              placeholder="Skills..."
+              class="form-control mb-2"
+            />
             <label for="" class="mt-2">Your Certifications</label>
-            <input v-model="userData.certifications" type="text" placeholder="Certifications..."
-              class="form-control mb-2">
-            <button type="submit" class="btn btn-light text-end my-4"><i class="mdi mdi-send"></i></button>
+            <input
+              v-model="userData.certifications"
+              type="text"
+              placeholder="Certifications..."
+              class="form-control mb-2"
+            />
+            <button type="submit" class="btn btn-light text-end my-4">
+              <i class="mdi mdi-send"></i>
+            </button>
           </form>
         </div>
       </div>
@@ -44,6 +91,10 @@ import { accountService } from "../services/AccountService"
 import { businessesService } from "../services/BusinessesService"
 import { employeesService } from "../services/EmployeesService"
 import Pop from "../utils/Pop"
+// FIXME plugins for wheel scroll
+// import BScroll from '@better-scroll/core'
+// import Wheel from '@better-scroll/wheel'
+// BScroll.use(Wheel)
 
 export default {
   setup() {
@@ -91,7 +142,6 @@ export default {
 .business-list {
   height: 25vh;
   transition: 500ms;
-
 }
 
 .business:hover {

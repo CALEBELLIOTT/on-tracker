@@ -4,31 +4,32 @@
   <!-- <div class="col-10 d-flex justify-content-between p-3"> -->
 
   <div class="d-flex justify-content-center m-5">
-    <img src="https://www.s-lec.eu/wp-content/uploads/map.jpg" alt="">
+    <img src="https://www.s-lec.eu/wp-content/uploads/map.jpg" alt="" />
   </div>
 
-  <div class="col-md-12 d-flex justify-content-center ">
+  <div class="col-md-12 d-flex justify-content-center">
     <div class="col-md-10 border-bottom border-3 my-3" v-if="account.id"></div>
   </div>
   <!-- <hr class="text-light" v-if="account.id"> -->
 
   <h1 class="text-light text-center" v-if="account.id">Critical</h1>
-  <div class="row justify-content-evenly" v-if="account.id">
-    <Project v-for="p in projects" :key="p.id" :project="p" />
+  <div class="row justify-content-evenly p-5" v-if="account.id">
+    <vue-horizontal>
+      <Project v-for="p in projects" :key="p.id" :project="p" class="mx-4" />
+    </vue-horizontal>
   </div>
 
   <div class="d-flex justify-content-center">
     <div class="col-md-10 border-top border-3 my-3" v-if="account.id"></div>
   </div>
-
-  <div class="d-flex justify-content-center">
-    <div class="col-md-10 ">
-      <div class="row justify-content-evenly">
-
-        <Project v-for="p in projects" :key="p.id" :project="p" />
-      </div>
+  <div class="col-12">
+    <div class="row p-5">
+      <vue-horizontal>
+        <Project v-for="p in projects" :key="p.id" :project="p" class="mx-4" />
+      </vue-horizontal>
     </div>
   </div>
+
   <!-- </div> -->
 </template>
 
@@ -39,7 +40,9 @@ import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
 import { projectsService } from '../services/ProjectsService'
 import { AppState } from '../AppState'
+import VueHorizontal from "vue-horizontal";
 export default {
+  components: { VueHorizontal },
   setup() {
     watchEffect(async () => {
       try {
@@ -63,6 +66,5 @@ export default {
 img {
   width: 80%;
   border-radius: 25px;
-
 }
 </style>
