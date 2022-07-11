@@ -140,7 +140,7 @@ export default {
       projectData,
       async createProject() {
         try {
-          await projectsService.createProject(projectData)
+          await projectsService.createProject(projectData.value)
         } catch (error) {
           Pop.toast(error.message)
           logger.log(error)
