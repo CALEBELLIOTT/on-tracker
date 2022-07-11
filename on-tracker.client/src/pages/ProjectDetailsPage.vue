@@ -197,7 +197,7 @@
 
 
 <script>
-import { computed, onMounted, ref } from '@vue/runtime-core'
+import { computed, onMounted, ref, watch, watchEffect } from '@vue/runtime-core'
 import { useRoute } from 'vue-router'
 import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
