@@ -35,8 +35,8 @@ class TasksService {
     }
 
 
-    async editTask(id, newText) {
-        const res = await api.put(`api/tasks/${id}`, { description: newText })
+    async editTask(id, newText, newHour) {
+        const res = await api.put(`api/tasks/${id}`, { description: newText }, { estimatedTime: newHour })
         logger.log(res.data)
     }
 
