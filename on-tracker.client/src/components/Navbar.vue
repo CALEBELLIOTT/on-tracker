@@ -14,17 +14,11 @@
     <div class="col-md-5 d-flex justify-content-between">
       <CreateProjectModal v-if="account.businessAccount" />
 
-      <router-link
-        :to="{ name: 'About' }"
-        class="d-flex align-items-center text-white selectable"
-      >
+      <router-link :to="{ name: 'About' }" class="d-flex align-items-center text-white selectable">
         <h4>About</h4>
       </router-link>
 
-      <router-link
-        :to="{ name: 'EmployeesPage' }"
-        class="d-flex align-items-center text-white selectable"
-      >
+      <router-link :to="{ name: 'EmployeesPage' }" class="d-flex align-items-center text-white selectable">
         <h4>Employees</h4>
       </router-link>
 

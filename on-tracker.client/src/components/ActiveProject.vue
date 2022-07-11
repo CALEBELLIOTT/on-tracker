@@ -4,22 +4,20 @@
       <div class="col-md-10 mx-auto grey-card p-5 rounded">
         <div>{{ project.description }}</div>
       </div>
-      <span class="d-flex justify-content-end"><TaskOffCanvas /></span>
+      <span class="d-flex justify-content-end">
+        <TaskOffCanvas />
+      </span>
     </div>
     <div class="col-12">
       <div class="row p-5">
         <vue-horizontal responsive>
-          <div
-            class="col-md-12 bg-white elevation-4 py-4 rounded"
-            v-for="img in project.jobSiteImgs"
-            :key="img"
-          >
+          <div class="col-md-12 bg-white elevation-4 py-4 rounded" v-for="img in project.jobSiteImgs" :key="img">
             <!-- NOTE create method to iterate through images -->
             <img class="img-fluid" :src="img" alt="" />
           </div>
         </vue-horizontal>
         <div class="col-md-10 mx-auto pt-3">
-          <div class="progress">
+          <!-- <div class="progress">
             <div
               class="progress-bar w-75"
               role="progressbar"
@@ -27,7 +25,7 @@
               aria-valuemin="0"
               aria-valuemax="100"
             ></div>
-          </div>
+          </div> -->
           <div class="text-center text-light pt-2">
             Progress Percentage here
           </div>
