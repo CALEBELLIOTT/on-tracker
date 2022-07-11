@@ -52,7 +52,9 @@ export default {
       },
       async deleteTask(id) {
         try {
-          await tasksService.deleteTask(id)
+          if (await Pop.confirm()) {
+            await tasksService.deleteTask(id)
+          }
         } catch (error) {
           logger.log(error)
           Pop.toast(error.message, 'error')
