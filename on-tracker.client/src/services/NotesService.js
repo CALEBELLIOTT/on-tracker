@@ -15,13 +15,20 @@ class NotesService {
     async createNote(body) {
         const res = await api.post('api/notes/', body)
         logger.log(res.data)
+        AppState.projectNotes.push(res.data)
 
     }
 
-    async editNote(id) {
-        const res = await api.put('api/notes/' + id)
+    async editNote(id, notes) {
+        const res = await api.put(`api/notes/${id}`, { body: notes })
         logger.log(res.data)
-        AppState.projectNotes = res.data
+        // AppState.projectNotes = res.data
+    }
+
+    async deleteNote(id) {
+        const res = await api.delete('api/notes/' + id)
+        logger.log('deleting note', res.data)
+        AppState.projectNotes = AppState.projectNotes.filter(n => n.id != id)
     }
 
 
