@@ -15,9 +15,10 @@
           </div>
           <div class="col-md-1">
             <h3 v-if="account.businessAccount && account.id != employee.account.id"><i
-                class="mdi mdi-trash-can selectable" @click="fireEmployee"></i>
+                class="mdi mdi-trash-can selectable" title="Fire Employee" @click="fireEmployee"></i>
             </h3>
-            <h3 v-if="account.id == employee.account.id"><i class="mdi mdi-trash-can selectable" @click="quitJob"></i>
+            <h3 v-if="account.id == employee.account.id"><i class="mdi mdi-trash-can selectable" title="Quit Job"
+                @click="quitJob"></i>
             </h3>
           </div>
         </div>
