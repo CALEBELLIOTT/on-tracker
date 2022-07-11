@@ -12,7 +12,12 @@
     </button> -->
 
     <div class="col-md-5 d-flex justify-content-between">
+<<<<<<< HEAD
       <CreateProjectModal />
+=======
+
+      <CreateProjectModal v-if="account.businessAccount" />
+>>>>>>> 8d8d496f29db04d1f6f1e82a12d0b3c2024408b0
 
       <router-link
         :to="{ name: 'About' }"
@@ -41,7 +46,8 @@ import { AppState } from '../AppState';
 export default {
   setup() {
     return {
-      user: computed(() => AppState.user)
+      user: computed(() => AppState.user),
+      account: computed(() => AppState.account)
     };
   },
 };
