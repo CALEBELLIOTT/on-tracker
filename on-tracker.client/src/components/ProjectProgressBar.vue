@@ -19,11 +19,8 @@ import { tasksService } from "../services/TasksService";
 
 export default {
   setup() {
-    onMounted(() => {
-      tasksService.getPercentage()
-    })
     watchEffect(() => {
-      AppState.projectTasks
+      AppState.projectCompletion
       tasksService.getPercentage()
       // console.log(document.getElementById('progress'));
       // document.getElementById('progress').style.width = `${percentage}%;`
