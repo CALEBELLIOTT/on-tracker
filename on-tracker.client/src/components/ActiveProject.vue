@@ -17,18 +17,8 @@
           </div>
         </vue-horizontal>
         <div class="col-md-10 mx-auto pt-3">
-          <!-- <div class="progress">
-            <div
-              class="progress-bar w-75"
-              role="progressbar"
-              aria-valuenow="75"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            ></div>
-          </div> -->
-          <div class="text-center text-light pt-2">
-            Progress Percentage here
-          </div>
+          <ProjectProgressBar />
+
         </div>
       </div>
     </div>
