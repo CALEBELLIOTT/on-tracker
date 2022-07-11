@@ -1,32 +1,13 @@
 <template>
   <div class="col-12 d-flex justify-content-between pt-4">
-    <input
-      class="selectable"
-      title="checkbox"
-      type="checkbox"
-      :checked="task.isCompleted"
-      @click="completeTask(task._id)"
-    />
-    <span
-      :id="`taskInfo${task._id}`"
-      @blur="editTask(task._id)"
-      contenteditable="true"
-      class="px-4"
-    >
-      {{ task.description }}</span
-    >
-    <span
-      :id="`taskTime${task._id}`"
-      @blur="editTask(task._id)"
-      contenteditable="true"
-      class="px-4"
-      >Hours: {{ task.estimatedTime }}</span
-    >
-    <span
-      @click="deleteTask(task._id)"
-      class="mdi mdi-trash-can selectable"
-      title="Delete task"
-    ></span>
+    <input class="selectable" title="checkbox" type="checkbox" :checked="task.isCompleted"
+      @click="completeTask(task._id)" />
+    <span :id="`taskInfo${task._id}`" @blur="editTask(task._id)" contenteditable="true" class="px-4">
+      {{ task.description }}</span>
+    <span :id="`taskTime${task._id}`" @blur="editTask(task._id)" contenteditable="true" class="px-4">Hours: {{
+        task.estimatedTime
+    }}</span>
+    <span @click="deleteTask(task._id)" class="mdi mdi-trash-can selectable" title="Delete task"></span>
   </div>
 </template>
 
@@ -64,7 +45,7 @@ export default {
       async editTask(id) {
         try {
           const newText = document.getElementById('taskInfo' + id).innerText;
-          const newHour = document.getElementById('taskTime' + props.task.id).innerText;
+          const newHour = document.getElementById('taskTime' + id).innerText;
           logger.log(newText)
           await tasksService.editTask(id, newText)
           Pop.toast('Task Updated')
