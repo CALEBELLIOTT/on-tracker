@@ -7,14 +7,13 @@
     <img src="https://www.s-lec.eu/wp-content/uploads/map.jpg" alt="" />
   </div>
 
-
   <div class="col-md-12 d-flex justify-content-center">
     <div class="col-md-10 border-bottom border-3 my-3" v-if="account.id"></div>
   </div>
   <!-- <hr class="text-light" v-if="account.id"> -->
 
   <h1 class="text-light text-center" v-if="account.id">Critical</h1>
-  <div class="row justify-content-evenly p-5" v-if="account.id">
+  <div class="container justify-content-evenly p-5" v-if="account.id">
     <vue-horizontal>
       <Project v-for="p in projects" :key="p.id" :project="p" class="mx-4" />
     </vue-horizontal>
@@ -24,7 +23,7 @@
     <div class="col-md-10 border-top border-3 my-3" v-if="account.id"></div>
   </div>
   <div class="col-12">
-    <div class="row p-5">
+    <div class="container p-5">
       <vue-horizontal>
         <Project v-for="p in projects" :key="p.id" :project="p" class="mx-4" />
       </vue-horizontal>
