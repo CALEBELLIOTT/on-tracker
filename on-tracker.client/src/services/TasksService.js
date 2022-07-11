@@ -23,7 +23,7 @@ class TasksService {
         const res = await api.put('api/tasks/' + id + '/completed')
         logger.log(res.data)
         let updated = res.data
-        AppState.projectTasks = AppState.projectTasks.filter(p => p.id === updated.id)
+        AppState.projectTasks = AppState.projectTasks.filter(p => p._id !== updated._id)
         AppState.projectTasks.push(updated)
     }
 

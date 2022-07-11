@@ -20,10 +20,8 @@ import { tasksService } from "../services/TasksService";
 export default {
   setup() {
     watchEffect(() => {
-      AppState.projectCompletion
+      AppState.projectTasks
       tasksService.getPercentage()
-      // console.log(document.getElementById('progress'));
-      // document.getElementById('progress').style.width = `${percentage}%;`
     })
     return {
       tasks: computed(() => AppState.projectTasks),
