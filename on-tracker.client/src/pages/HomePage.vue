@@ -23,6 +23,7 @@
     <div class="col-md-10 border-top border-3 my-3" v-if="account.id"></div>
   </div>
   <div class="col-12">
+    <h1 class="text-light text-center" v-if="account.id">All Projects</h1>
     <div class="container p-5">
       <vue-horizontal>
         <Project v-for="p in projects" :key="p.id" :project="p" class="mx-4" />
