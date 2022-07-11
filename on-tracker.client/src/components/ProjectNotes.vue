@@ -1,15 +1,11 @@
 <template>
   <div class="col-md-12 text-dark d-flex justify-content-between ps-2 pe-2">
-    <span
-      :id="`note${note.id}`"
-      @blur="editNote(note.id)"
-      contenteditable="true"
-    >
+    <span :id="`note${note.id}`" @blur="editNote(note.id)" contenteditable="true">
       <b>{{ note.body }}</b>
     </span>
 
     <span>
-      <i class="mdi mdi-delete selectable" @click="deleteNote(note.id)"></i>
+      <i class="mdi mdi-delete selectable" title="Delete Note" @click="deleteNote(note.id)"></i>
     </span>
 
     <!-- Modal -->
