@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" v-if="employee.id">
     <div class="row">
       <div class="col-12">
         <div class="bg-light rounded p-2 my-2">
@@ -19,6 +19,9 @@
                 </h3>
                 <h3>Skills: {{ employee.skills }}</h3>
               </div>
+            </div>
+            <div class="col-md-2">
+              <div class="p-2"></div>
             </div>
           </div>
         </div>

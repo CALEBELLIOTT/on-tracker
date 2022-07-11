@@ -3,7 +3,7 @@
   <UserLogin v-if="!account.id" />
   <!-- <div class="col-10 d-flex justify-content-between p-3"> -->
 
-  <div class="d-flex justify-content-center m-5">
+  <div v-if="account.id" class="d-flex justify-content-center m-5">
     <img src="https://www.s-lec.eu/wp-content/uploads/map.jpg" alt="" />
   </div>
 
@@ -24,7 +24,7 @@
   </div>
   <div class="col-12">
     <h1 class="text-light text-center" v-if="account.id">All Projects</h1>
-    <div class="container p-5">
+    <div class="container p-5" v-if="account.id">
       <vue-horizontal>
         <Project v-for="p in projects" :key="p.id" :project="p" class="mx-4" />
       </vue-horizontal>
