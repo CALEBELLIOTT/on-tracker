@@ -7,6 +7,7 @@
     <img src="https://www.s-lec.eu/wp-content/uploads/map.jpg" alt="" />
   </div>
 
+
   <div class="col-md-12 d-flex justify-content-center">
     <div class="col-md-10 border-bottom border-3 my-3" v-if="account.id"></div>
   </div>

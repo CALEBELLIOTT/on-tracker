@@ -37,6 +37,21 @@ class TasksService {
         logger.log(res.data)
     }
 
+    getPercentage() {
+        let done = 0
+        let undone = 0
+        AppState.projectTasks.forEach(t => {
+            if (t.isCompleted) {
+                done += t.estimatedTime
+            } else {
+                undone += t.estimatedTime
+            }
+        })
+        let ratio = done / (undone + done) * 100
+        console.log(ratio);
+        return ratio.toString()
+    }
+
 }
 
 export const tasksService = new TasksService()

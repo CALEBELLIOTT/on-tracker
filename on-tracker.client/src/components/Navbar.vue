@@ -20,14 +20,6 @@
 
 
 
-      <router-link :to="{ name: 'About' }" class="d-flex align-items-center text-white  selectable ">
-        <h4>
-          About
-        </h4>
-      </router-link>
-
-
-
       <router-link :to="{ name: 'EmployeesPage' }" class="d-flex align-items-center text-white  selectable ">
         <h4>
           Employees
