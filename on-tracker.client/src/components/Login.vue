@@ -1,27 +1,47 @@
 <template>
   <span class="d-flex align-items-center">
-    <button class="btn selectable text-success lighten-30 text-uppercase my-2 my-lg-0" @click="login"
-      v-if="!user.isAuthenticated">
+    <button
+      class="btn selectable text-success lighten-30 text-uppercase my-2 my-lg-0"
+      @click="login"
+      v-if="!user.isAuthenticated"
+    >
       Login
     </button>
 
     <div class="dropdown my-2 my-lg-0" v-else>
-      <div class="dropdown-toggle selectable" data-bs-toggle="dropdown" aria-expanded="false" id="authDropdown">
+      <div
+        class="dropdown-toggle selectable"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+        id="authDropdown"
+      >
         <div v-if="account.picture">
-          <img :src="account.picture" alt="account photo" height="40" class="rounded" />
+          <img
+            :src="account.picture"
+            alt="account photo"
+            height="40"
+            class="rounded"
+          />
           <span class="mx-3 text-success lighten-30">{{ account.name }}</span>
         </div>
       </div>
-      <div class="dropdown-menu p-0 list-group w-100" aria-labelledby="authDropdown">
+      <div
+        class="dropdown-menu p-0 list-group w-100"
+        aria-labelledby="authDropdown"
+      >
         <router-link :to="{ name: 'Account' }">
           <div class="list-group-item list-group-item-action hoverable">
             Manage Account
           </div>
         </router-link>
-        <div class="list-group-item list-group-item-action hoverable text-danger" @click="logout">
+        <div
+          class="list-group-item list-group-item-action hoverable text-danger"
+          @click="logout"
+        >
           <i class="mdi mdi-logout"></i>
           logout
         </div>
+        <div>hello</div>
       </div>
     </div>
   </span>
