@@ -23,8 +23,9 @@ class TasksService {
         const res = await api.put('api/tasks/' + id + '/completed')
         logger.log(res.data)
         let updated = res.data
+        let index = AppState.projectTasks.findIndex(t => t._id == updated._id);
         AppState.projectTasks = AppState.projectTasks.filter(p => p._id !== updated._id)
-        AppState.projectTasks.push(updated)
+        AppState.projectTasks.splice(index, 0, updated)
     }
 
     async deleteTask(id) {
@@ -37,9 +38,6 @@ class TasksService {
     async editTask(id, newText) {
         const res = await api.put(`api/tasks/${id}`, { description: newText })
         logger.log(res.data)
-
-
-
     }
 
     getPercentage() {
@@ -53,10 +51,7 @@ class TasksService {
             }
         })
         let ratio = done / (undone + done) * 100
-        console.log(Math.floor(ratio));
         AppState.projectCompletion = Math.floor(ratio)
-        console.log(AppState.projectCompletion);
-        console.log(AppState.projectTasks);
     }
 
 }
