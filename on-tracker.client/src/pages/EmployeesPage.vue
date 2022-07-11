@@ -1,7 +1,7 @@
 <template>
   <navbar></navbar>
   <ActiveEmployee />
-  <div class="container">
+  <div class="container" v-if="employees[0]?.id">
     <div class="row">
       <div class="col-md-6" v-for="e in employees" :key="e.id">
         <EmployeeCard :employee="e"></EmployeeCard>

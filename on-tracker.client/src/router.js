@@ -30,7 +30,7 @@ const routes = [
     path: '/employeePage',
     name: 'EmployeesPage',
     component: loadPage('EmployeesPage'),
-    beforeEnter: authSettled
+    beforeEnter: authGuard
   },
   {
     path: '/experimental',
