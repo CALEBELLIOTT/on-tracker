@@ -32,9 +32,12 @@ class TasksService {
     }
 
 
-    async editTask(id, newText, newHour) {
-        const res = await api.put(`api/tasks/${id}`, { description: newText }, { estimatedTime: newHour })
+    async editTask(id, newText) {
+        const res = await api.put(`api/tasks/${id}`, { description: newText })
         logger.log(res.data)
+
+
+
     }
 
     getPercentage() {

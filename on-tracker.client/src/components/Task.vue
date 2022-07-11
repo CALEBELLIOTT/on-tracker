@@ -67,7 +67,7 @@ export default {
           const newText = document.getElementById('taskInfo' + props.task.id).innerText;
           const newHour = document.getElementById('taskTime' + props.task.id).innerText;
           logger.log(newText)
-          await tasksService.editTask(id, newText, newHour)
+          await tasksService.editTask(id, newText)
           Pop.toast('Task Updated')
         } catch (error) {
           logger.log(error)
