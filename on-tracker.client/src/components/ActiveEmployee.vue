@@ -15,6 +15,11 @@
                 <h3>Skills: {{ employee.skills }}</h3>
               </div>
             </div>
+            <div class="col-md-2">
+              <div class="p-2">
+
+              </div>
+            </div>
           </div>
         </div>
       </div>
