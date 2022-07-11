@@ -25,7 +25,7 @@
                 <h3>Create A New Project With OnTracker</h3>
               </div>
             </div>
-            <form action="">
+            <form @submit.prevent="createProject">
               <div class="row">
                 <div class="col-md-6 p-2">
                   <label for="">Project Name</label>
@@ -111,7 +111,6 @@
                   </button>
                   <button
                     type="submit"
-                    @submit.prevent="createProject"
                     class="btn btn-success"
                     data-bs-dismiss="modal"
                   >
