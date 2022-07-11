@@ -1,6 +1,6 @@
 <template>
   <navbar />
-  <ProjectProgressBar></ProjectProgressBar>
+
   <div class="container-fluid dark-theme">
     <div class="row">
       <ActiveProject />
