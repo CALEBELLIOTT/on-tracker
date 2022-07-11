@@ -1,5 +1,4 @@
 <template>
-
   <div class="container">
     <div class="row">
       <div class="col-12">
@@ -7,11 +6,17 @@
           <div class="row">
             <div class="col-md-4 text-md-start text-center">
               <h3 class="my-2">{{ employee.account.name }}</h3>
-              <img class="profile-img" :src="employee.account.picture || employee.account.picture" alt="">
+              <img
+                class="profile-img"
+                :src="employee.account.picture || employee.account.picture"
+                alt=""
+              />
             </div>
             <div class="col-md-4">
               <div class="d-flex flex-column justify-content-center my-2">
-                <h3>certifications: {{ employee.certifications.toString() }}</h3>
+                <h3>
+                  certifications: {{ employee.certifications.toString() }}
+                </h3>
                 <h3>Skills: {{ employee.skills }}</h3>
               </div>
             </div>
@@ -21,15 +26,20 @@
     </div>
   </div>
 
-  <hr class="text-light">
+  <hr class="text-light" />
 </template>
 
 
 <script>
 import { computed } from "@vue/reactivity"
 import { AppState } from "../AppState.js"
+import { onMounted } from "@vue/runtime-core"
+import { logger } from "../utils/Logger.js"
+import Pop from "../utils/Pop.js"
+import { employeesService } from "../services/EmployeesService.js"
 export default {
   setup() {
+
     return {
       employee: computed(() => AppState.activeEmployee),
       account: computed(() => AppState.account)

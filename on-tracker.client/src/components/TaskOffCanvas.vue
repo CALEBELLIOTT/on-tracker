@@ -1,15 +1,30 @@
 <template>
-  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-    aria-controls="offcanvasRight">
+  <button
+    class="btn btn-primary"
+    type="button"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#offcanvasRight"
+    aria-controls="offcanvasRight"
+  >
     Tasks
   </button>
-  <div class="offcanvas offcanvas-end bg text-light" tabindex="-1" id="offcanvasRight"
-    aria-labelledby="offcanvasRightLabel">
+  <div
+    class="offcanvas offcanvas-end bg text-light"
+    tabindex="-1"
+    id="offcanvasRight"
+    aria-labelledby="offcanvasRightLabel"
+  >
     <div class="offcanvas-header text-center border-bottom border-2">
       <h5 id="offcanvasRightLabel">Tasks</h5>
 
-      <button type="button" class="btn-close text-light" data-bs-dismiss="offcanvas" aria-label="Close"><span
-          class="mdi mdi-close" title="Close"></span></button>
+      <button
+        type="button"
+        class="btn-close text-light"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      >
+        <span class="mdi mdi-close" title="Close"></span>
+      </button>
     </div>
     <div class="offcanvas-body">
       <ProjectProgressBar />
@@ -18,11 +33,19 @@
     <footer>
       <form @submit.prevent="postTask">
         <div>
-          <input class="form-control m-2 rounded" type="text" placeholder="Add Task..."
-            v-model="taskData.description" />
+          <input
+            class="form-control m-2 rounded"
+            type="text"
+            placeholder="Add Task..."
+            v-model="taskData.description"
+          />
         </div>
-        <input class="form-control m-2 rounded" type="number" v-model="taskData.estimatedTime"
-          placeholder="Estimated hours" />
+        <input
+          class="form-control m-2 rounded"
+          type="number"
+          v-model="taskData.estimatedTime"
+          placeholder="Estimated hours"
+        />
         <button class="btn btn-success" type="submit">Post</button>
       </form>
     </footer>

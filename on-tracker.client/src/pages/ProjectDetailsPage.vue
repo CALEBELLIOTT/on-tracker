@@ -205,6 +205,7 @@ import Pop from '../utils/Pop'
 import { projectsService } from '../services/ProjectsService'
 import { AppState } from '../AppState'
 import { notesService } from '../services/NotesService'
+import { employeesService } from "../services/EmployeesService"
 export default {
 
   setup() {
@@ -223,6 +224,7 @@ export default {
 
     return {
       noteData,
+      employees: computed(() => AppState.employees),
       project: computed(() => AppState.activeProject),
       notes: computed(() => AppState.projectNotes),
       async createNote() {
