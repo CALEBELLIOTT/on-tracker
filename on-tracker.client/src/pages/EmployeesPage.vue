@@ -8,8 +8,6 @@
       </div>
     </div>
   </div>
-
-
 </template>
 
 
@@ -17,10 +15,14 @@
 import { computed, onMounted } from "vue";
 import { AppState } from "../AppState.js";
 import { employeesService } from "../services/EmployeesService.js";
+import { projectsService } from '../services/ProjectsService.js';
 export default {
   setup() {
-    onMounted(() => {
-      employeesService.getAllEmployees()
+    onMounted(async () => {
+      await employeesService.getAllEmployees()
+      await projectsService.getAllProjects()
+      await projectsService.getBusinessProjects()
+
     })
     return {
       employees: computed(() => AppState.employees)

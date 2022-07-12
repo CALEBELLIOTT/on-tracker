@@ -18,6 +18,14 @@
                   certifications: {{ employee.certifications.toString() }}
                 </h3>
                 <h3>Skills: {{ employee.skills }}</h3>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
+                  Launch demo modal
+                </button>
               </div>
             </div>
             <div class="col-md-2">
@@ -30,6 +38,9 @@
   </div>
 
   <hr class="text-light" />
+  <!-- Modal -->
+  <EmployeeModal />
+  <!-- Modal -->
 </template>
 
 
