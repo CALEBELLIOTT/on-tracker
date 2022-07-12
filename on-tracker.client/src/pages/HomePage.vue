@@ -8,10 +8,7 @@
   </div>
 
   <div class="col-md-12 d-flex justify-content-center">
-    <div
-      class="col-md-10 border-bottom border-warning border-3 my-3"
-      v-if="account.id"
-    ></div>
+    <div class="col-md-10 border-bottom border-warning border-3 my-3" v-if="account.id"></div>
   </div>
   <!-- <hr class="text-light" v-if="account.id"> -->
 
@@ -39,15 +36,21 @@
 
 
 <script>
-import { computed, watchEffect } from '@vue/runtime-core'
+import { computed, watchEffect, onMounted } from '@vue/runtime-core'
 import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
 import { projectsService } from '../services/ProjectsService'
 import { AppState } from '../AppState'
 import VueHorizontal from "vue-horizontal";
+import { teamMemberService } from "../services/TeamMembersService"
 export default {
   components: { VueHorizontal },
   setup() {
+    onMounted(async () => {
+      if (AppState.account?.businessId) {
+        await teamMemberService.getBusinessTeamMembers()
+      }
+    })
     watchEffect(async () => {
       try {
         await projectsService.getAllProjects()
