@@ -50,7 +50,7 @@
       <div class="col-md-8 d-flex flex-column mt-5 justify-content-around">
         <div class="user-quote my-2">
           <h4>Jack Jameson <span class="position"> Project Manager (Spring Lawn Care)</span></h4>
-          <p class="text-muted mt-4 mx-4">I use OnTracker way too much its insane</p>
+          <p class="text-muted mt-4 mx-4">I use OnTracker way too much. It's insane.</p>
         </div>
         <div class="user-quote my-2">
           <h4>Jamie Jackson<span class="position"> Vice President (Jackson Construction)</span></h4>
@@ -59,7 +59,7 @@
         </div>
         <div class="user-quote my-2">
           <h4>Jason Jeremiah<span class="position"> CEO (TrackOnner)</span></h4>
-          <p class="text-muted mt-4 mx-4">I literally have withdrawls from OnTracker</p>
+          <p class="text-muted mt-4 mx-4">I literally have withdrawls from OnTracker.</p>
         </div>
       </div>
     </div>
@@ -86,7 +86,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-6">
+      <div class="col-md-6">
         <div class="mx-3 bg-light rounded p-2 my-5">
           <h3 class="text-center">Why Plan with Us</h3>
           <p class="text-muted">- Completely Free, Always <br>- 24/7 Customer Support <br>- Access to the Network of
@@ -94,9 +94,9 @@
             Utilize OnTracker <br>- Guaranteed ROI <br>- Proven Increase In Productivity</p>
         </div>
       </div>
-      <div class="col-6 d-flex flex-column align-items-center">
-        <h3 class="text-primary my-5">Join Now!</h3>
-        <button @click="launchLogin" class="btn btn-outline-primary">Login/ Signup</button>
+      <div class="col-md-6 d-flex flex-column align-items-center">
+        <h3 class="text-primary my-md-5 ">Join Now!</h3>
+        <button @click="launchLogin" class="btn btn-outline-primary mb-md-none mb-5">Login/ Signup</button>
       </div>
     </div>
   </div>
