@@ -15,8 +15,18 @@
   >
     <div class="happy">
       <h1>
-        {{ project.location }}
+        {{ project.projectName }}
       </h1>
+      <h3>
+        {{
+          new Date(project.dueDate).toLocaleDateString("en-us", {
+            weekday: "long",
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          })
+        }}
+      </h3>
     </div>
   </div>
 </template>

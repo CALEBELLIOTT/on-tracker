@@ -15,10 +15,15 @@
   </div>
   <!-- <hr class="text-light" v-if="account.id"> -->
 
-  <h1 class="text-light text-center" v-if="account.id">Critical</h1>
+  <h1 class="text-danger text-center" v-if="account.id">Critical</h1>
   <div class="container justify-content-evenly p-5" v-if="account.id">
     <vue-horizontal>
-      <Project v-for="p in projects" :key="p.id" :project="p" class="mx-4" />
+      <Project
+        v-for="p in projects.slice(0, 3)"
+        :key="p.id"
+        :project="p"
+        class="mx-4"
+      />
     </vue-horizontal>
   </div>
 
@@ -26,7 +31,7 @@
     <div class="col-md-10 border-top border-3 my-3" v-if="account.id"></div>
   </div>
   <div class="col-12">
-    <h1 class="text-light text-center" v-if="account.id">All Projects</h1>
+    <h1 class="text-success text-center" v-if="account.id">All Projects</h1>
     <div class="container p-5" v-if="account.id">
       <vue-horizontal>
         <Project v-for="p in projects" :key="p.id" :project="p" class="mx-4" />
@@ -39,15 +44,21 @@
 
 
 <script>
-import { computed, watchEffect } from '@vue/runtime-core'
+import { computed, watchEffect, onMounted } from '@vue/runtime-core'
 import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
 import { projectsService } from '../services/ProjectsService'
 import { AppState } from '../AppState'
 import VueHorizontal from "vue-horizontal";
+import { teamMemberService } from "../services/TeamMembersService"
 export default {
   components: { VueHorizontal },
   setup() {
+    onMounted(async () => {
+      if (AppState.account?.businessId) {
+        await teamMemberService.getBusinessTeamMembers()
+      }
+    })
     watchEffect(async () => {
       try {
         await projectsService.getAllProjects()
@@ -58,7 +69,7 @@ export default {
     })
     return {
       account: computed(() => AppState.account),
-      projects: computed(() => AppState.projects)
+      projects: computed(() => AppState.projects.sort((a, b) => a.dueDate.localeCompare(b.dueDate)))
 
     }
   }
