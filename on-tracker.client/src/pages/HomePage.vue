@@ -31,7 +31,7 @@
     <div class="col-md-10 border-top border-3 my-3" v-if="account.id"></div>
   </div>
   <div class="col-12">
-    <h1 class="text-success text-center" v-if="account.id">All Projects</h1>
+    <h1 class="text-orange text-center" v-if="account.id">All Projects</h1>
     <div class="container p-5" v-if="account.id">
       <vue-horizontal>
         <Project v-for="p in projects" :key="p.id" :project="p" class="mx-4" />
@@ -78,6 +78,7 @@ export default {
 
 
 <style lang="scss" scoped>
+
 img {
   width: 80%;
   border-radius: 25px;
@@ -85,5 +86,9 @@ img {
 
 .border {
   color: orange;
+}
+
+.text-orange{
+    color: orange;
 }
 </style>

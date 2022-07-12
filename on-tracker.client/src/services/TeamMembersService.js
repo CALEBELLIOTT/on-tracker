@@ -9,6 +9,7 @@ class TeamMembersService {
         logger.log(res.data, '[TEAMMEMBERS IN AppState]')
         AppState.teamMembers.push(res.data)
         AppState.activeProjectTeamMembers.push(res.data)
+        AppState.activeProjectAvailableEmployees = AppState.activeProjectAvailableEmployees.filter(e => e.id !== res.data.employee.id)
     }
 
     async getBusinessTeamMembers() {
