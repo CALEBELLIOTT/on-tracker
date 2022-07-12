@@ -15,7 +15,7 @@ class TeamMembersService {
         console.log(res.data);
         let ThisBusinessTeamMembers = res.data.filter(m => m.employee?.businessId === AppState.account.businessId)
         console.log(ThisBusinessTeamMembers);
-        AppState.activeBusinessTeamMembers = ThisBusinessTeamMembers
+        AppState.teamMembers = ThisBusinessTeamMembers
     }
 
 
