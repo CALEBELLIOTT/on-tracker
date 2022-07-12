@@ -9,7 +9,6 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
           <button
             type="button"
             class="btn-close"
@@ -17,35 +16,35 @@
             aria-label="Close"
           ></button>
         </div>
-        <div class="modal-body">
-          <form action="">
-            <select name="" id="">
-              <option
-                :value="e.id"
-                class="d"
-                v-for="e in employees"
-                :key="e.id"
-              >
+        <form
+          @submit.prevent="createTeamMember"
+          class="d-flex justify-content-around"
+        >
+          <div class="modal-body">
+            <select
+              name="employee"
+              id="employee"
+              v-model="employeeData.employeeId"
+            >
+              <option :value="e.id" class="" v-for="e in employees" :key="e.id">
                 {{ e.account.name }}
               </option>
             </select>
-            <select name="" id="" class="m-4">
+            <select
+              name="project"
+              id="project"
+              class="m-4"
+              v-model="employeeData.projectId"
+            >
               <option :value="p.id" class="d" v-for="p in projects" :key="p.id">
                 {{ p.projectName }}
               </option>
             </select>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
-            Close
-          </button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">assign</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -53,13 +52,29 @@
 
 
 <script>
-import { computed } from '@vue/reactivity'
+import { computed, ref } from '@vue/reactivity'
 import { AppState } from '../AppState'
+import { logger } from '../utils/Logger'
+import Pop from '../utils/Pop'
+import { teamMemberService } from '../services/TeamMembersService'
+import { employeesService } from '../services/EmployeesService'
 export default {
   setup() {
+    const employeeData = ref({})
     return {
+      employeeData,
+      async createTeamMember() {
+        try {
+          console.log(employeeData.value)
+          await teamMemberService.createTeamMember(employeeData.value)
+        } catch (error) {
+          Pop.toast(error.message)
+          logger.log(error)
+        }
+      },
       employees: computed(() => AppState.employees),
       projects: computed(() => AppState.projects)
+
     }
   }
 }

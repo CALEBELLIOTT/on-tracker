@@ -24,7 +24,7 @@
                   data-bs-toggle="modal"
                   data-bs-target="#exampleModal"
                 >
-                  Launch demo modal
+                  Assign Employees
                 </button>
               </div>
             </div>

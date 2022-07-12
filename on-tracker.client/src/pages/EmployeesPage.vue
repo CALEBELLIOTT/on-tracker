@@ -25,7 +25,8 @@ export default {
 
     })
     return {
-      employees: computed(() => AppState.employees)
+      employees: computed(() => AppState.employees),
+
     }
   }
 }
