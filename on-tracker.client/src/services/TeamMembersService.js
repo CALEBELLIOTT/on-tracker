@@ -8,6 +8,12 @@ class TeamMembersService {
         logger.log(res.data, '[TEAMMEMBERS IN AppState]')
 
     }
+    async createTeamMember(projectId, employeeId) {
+        const res = await api.post('api/teammembers', projectId, employeeId)
+        logger.log(res.data, '[TEAMMEMBERS IN AppState]')
+
+    }
+
 
 
 
