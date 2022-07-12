@@ -8,6 +8,7 @@ class TeamMembersService {
         const res = await api.post('api/teammembers', employeeData)
         logger.log(res.data, '[TEAMMEMBERS IN AppState]')
         AppState.teamMembers.push(res.data)
+        AppState.activeProjectTeamMembers.push(res.data)
     }
 
     async getBusinessTeamMembers() {
@@ -23,14 +24,6 @@ class TeamMembersService {
         console.log(res.data);
         AppState.activeProjectTeamMembers = res.data
     }
-    async createTeamMember(projectId, employeeId) {
-        const res = await api.post('api/teammembers', projectId, employeeId)
-        logger.log(res.data, '[TEAMMEMBERS IN AppState]')
-
-    }
-
-
-
 
 }
 
