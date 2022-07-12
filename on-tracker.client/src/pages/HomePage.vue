@@ -8,7 +8,10 @@
   </div>
 
   <div class="col-md-12 d-flex justify-content-center">
-    <div class="col-md-10 border-bottom border-3 my-3" v-if="account.id"></div>
+    <div
+      class="col-md-10 border-bottom border-warning border-3 my-3"
+      v-if="account.id"
+    ></div>
   </div>
   <!-- <hr class="text-light" v-if="account.id"> -->
 
@@ -67,5 +70,9 @@ export default {
 img {
   width: 80%;
   border-radius: 25px;
+}
+
+.border {
+  color: orange;
 }
 </style>
