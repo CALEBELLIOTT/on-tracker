@@ -68,10 +68,35 @@
         <h3 class="text-primary">Join Our Family of Supported Businesses</h3>
       </div>
       <div class="col-12">
-        <div class="businesses-container p-2 mx-3 bg-primary rounded">
-          <!-- NOTE mobile  -->
-          <img v-if="businesses.length < 4" v-for="b in businesses" :key="b.id" :src="b.logo" alt="">
+        <div class="businesses-container p-2 m-3 bg-primary rounded">
+          <!-- NOTE mobile views -->
+          <img v-if="businesses.length <= 3" v-for="b in businesses" :key="b.id" :src="b.logo" alt="" class="d-md-none">
+          <div v-if="businesses.length >= 4" class="d-flex align-items-center">
+            <img v-for="b in businesses" :key="b.id" :src="b.logo" alt="" class="d-md-none">
+            <p class="text-center justify-self-center">and {{ calculateBusinessesRemaining(3) }} more!</p>
+          </div>
+          <!-- NOTE desktop views -->
+          <img v-if="businesses.length <= 15" v-for="b in businesses" :key="b.id" :src="b.logo" alt=""
+            class="d-none d-md-inline-block">
+          <div v-if="businesses.length >= 16" class="d-flex align-items-center">
+            <img v-for="b in businesses" :key="b.id" :src="b.logo" alt="" class="d-none d-md-inline-block">
+            <p class="text-center justify-self-center">and {{ calculateBusinessesRemaining(3) }} more!</p>
+          </div>
         </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <div class="mx-3 bg-light rounded p-2 my-5">
+          <h3 class="text-center">Why Plan with Us</h3>
+          <p class="text-muted">- Completely Free, Always <br>- 24/7 Customer Support <br>- Access to the Network of
+            Businesses Who
+            Utilize OnTracker <br>- Guaranteed ROI <br>- Proven Increase In Productivity</p>
+        </div>
+      </div>
+      <div class="col-6 d-flex flex-column align-items-center">
+        <h3 class="text-primary my-5">Join Now!</h3>
+        <button @click="launchLogin" class="btn btn-outline-primary">Login/ Signup</button>
       </div>
     </div>
   </div>
@@ -95,6 +120,9 @@ export default {
       async launchLogin() {
         AuthService.loginWithPopup();
       },
+      calculateBusinessesRemaining(numShown) {
+        return AppState.allBusinesses.length - numShown
+      }
     }
   }
 }
@@ -109,9 +137,7 @@ export default {
   background-position: left;
 }
 
-.hero-img h1,
-h2,
-p {
+.hero-img h1 {
   transform: translateY(-1.7rem);
 }
 
@@ -165,6 +191,8 @@ p {
   object-fit: cover;
   border-radius: 50em;
 }
+
+.businesses-container p {}
 
 .login-logo {
   height: 4rem;
