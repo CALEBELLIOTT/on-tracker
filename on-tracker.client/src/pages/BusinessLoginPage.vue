@@ -1,34 +1,50 @@
 <template>
   <transition>
     <div class="container-fluid dark-theme" v-if="!account.businessId">
-      <div class="row d-flex justify-content-center form-row align-items-center">
+      <div
+        class="row d-flex justify-content-center form-row align-items-center"
+      >
         <div class="col-8">
-          <div class="
+          <div
+            class="
               form-card
               d-flex
               flex-column
               justify-content-around
               rounded
               p-2
-            ">
+            "
+          >
             <form class="" @submit.prevent="createBusiness" action="">
               <div class="d-flex flex-column align-items-center">
                 <h3 class="text-center">Tell us about your business</h3>
                 <div class="col-md-10 d-flex flex-column">
-                  <div class="d-flex my-2">
-                    <label for="">Name</label>
-                    <input v-model="businessData.name" required type="text" class="border-bottom mx-2 form-control"
-                      placeholder="Business Name..." />
+                  <div class="inputBox d-flex my-2">
+                    <input
+                      v-model="businessData.name"
+                      required
+                      type="text"
+                      class="border-bottom"
+                    />
+                    <span for="">Name</span>
                   </div>
-                  <div class="d-flex my-2">
-                    <label for="">Cover Image</label>
-                    <input v-model="businessData.coverImg" required type="text" class="border-bottom mx-2 form-control"
-                      placeholder="Upload your Image..." />
+                  <div class="inputBox d-flex my-2">
+                    <input
+                      v-model="businessData.coverImg"
+                      required
+                      type="text"
+                      class="border-bottom"
+                    />
+                    <span for="">Cover Image</span>
                   </div>
-                  <div class="d-flex my-2">
-                    <label for="">Logo</label>
-                    <input v-model="businessData.logo" required type="text" class="border-bottom mx-2 form-control"
-                      placeholder="Upload your Logo..." />
+                  <div class="inputBox d-flex my-2">
+                    <input
+                      v-model="businessData.logo"
+                      required
+                      type="text"
+                      class="border-bottom"
+                    />
+                    <span for="">Logo</span>
                   </div>
                 </div>
               </div>
@@ -44,24 +60,45 @@
     </div>
     <div class="container-fluid dark-theme text-light" v-else>
       <div class="row">
-        <div class="
+        <div
+          class="
             col-12
             d-flex
             flex-column
             justify-content-center
             align-items-center
-          ">
+          "
+        >
           <h4 class="mb-5 mt-2">Tell us about yourself</h4>
           <form action="" @submit.prevent="editAccountInfo()">
             <label for="" class="mt-2">Your Name</label>
-            <input v-model="userData.name" type="text" placeholder="Name..." class="form-control mb-2" />
+            <input
+              v-model="userData.name"
+              type="text"
+              placeholder="Name..."
+              class="form-control mb-2"
+            />
             <label for="" class="mt-2">Your Picture</label>
-            <input v-model="userData.picture" type="text" placeholder="Img Url..." class="form-control mb-2" />
+            <input
+              v-model="userData.picture"
+              type="text"
+              placeholder="Img Url..."
+              class="form-control mb-2"
+            />
             <label for="" class="mt-2">Your Skills</label>
-            <input v-model="userData.skills" type="text" placeholder="Skills..." class="form-control mb-2" />
+            <input
+              v-model="userData.skills"
+              type="text"
+              placeholder="Skills..."
+              class="form-control mb-2"
+            />
             <label for="" class="mt-2">Your Certifications</label>
-            <input v-model="userData.certifications" type="text" placeholder="Certifications..."
-              class="form-control mb-2" />
+            <input
+              v-model="userData.certifications"
+              type="text"
+              placeholder="Certifications..."
+              class="form-control mb-2"
+            />
             <button type="submit" class="btn btn-light text-end my-4">
               <i class="mdi mdi-send"></i>
             </button>
@@ -125,5 +162,67 @@ export default {
 
 .form-row {
   height: 100vh;
+}
+
+input:invalid {
+  animation: shake 300ms;
+}
+@keyframes shake {
+  25% {
+    transform: translateX(4px);
+  }
+  50% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(4px);
+  }
+}
+
+.inputBox {
+  position: relative;
+}
+
+.inputBox input {
+  width: 100%;
+  border: 2px solid orange;
+  padding: 8px;
+  outline: none;
+  border-radius: 5px;
+}
+
+.inputBox span {
+  position: absolute;
+  left: 0;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 1em;
+  color: grey;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+
+.inputBox input:valid ~ span,
+.inputBox input:focus ~ span {
+  color: orange;
+  transform: translateX(10px) translateY(-7px);
+  font-size: 0.7em;
+  padding: 0 10px;
+  background: rgb(251, 246, 239);
+  border-left: 1px solid orange;
+  border-right: 1px solid orange;
+  letter-spacing: 0.2em;
+}
+
+.inputBox input:valid ~ span,
+.inputBox input:focus ~ span {
+  background: orange;
+  color: black;
+  border-radius: 3px;
+}
+
+.inputBox input:valid,
+.inputBox input:focus {
+  border: 2px solid orange;
 }
 </style>
