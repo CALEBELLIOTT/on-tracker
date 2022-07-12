@@ -14,5 +14,6 @@ export const AppState = reactive({
   activeBusinessProjects: [],
   projectCompletion: 0,
   teamMembers: [],
-  activeProjectTeamMembers: []
+  activeProjectTeamMembers: [],
+  activeProjectAvailableEmployees: []
 })

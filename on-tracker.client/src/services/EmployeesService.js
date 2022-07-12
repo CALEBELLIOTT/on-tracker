@@ -60,7 +60,7 @@ class EmployeesService {
       })
     })
     console.log(employees);
-    return employees
+    AppState.activeProjectAvailableEmployees = employees
   }
 }
 
