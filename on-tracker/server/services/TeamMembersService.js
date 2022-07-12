@@ -14,7 +14,7 @@ class TeamMembersService {
         return teamMembers
     }
     async getTeamMembersByProject(projectId) {
-        const teamMembers = await dbContext.TeamMembers.find(projectId).populate('project').populate('employee')
+        const teamMembers = await dbContext.TeamMembers.find({ projectId: projectId }).populate('project').populate('employee')
         return teamMembers
     }
 

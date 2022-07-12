@@ -18,6 +18,12 @@ class TeamMembersService {
         AppState.teamMembers = ThisBusinessTeamMembers
     }
 
+    async getProjectTeamMembers(projectId) {
+        const res = await api.get('api/projects/' + projectId + '/teamMembers')
+        console.log(res.data);
+        AppState.activeProjectTeamMembers = res.data
+    }
+
 
 
 }
