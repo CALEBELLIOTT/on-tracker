@@ -28,46 +28,27 @@
               <div class="col-md-12">
                 <h6 class="mb-2 text-primary">Account Details</h6>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6 mt-3">
                 <div class="form-group">
                   <label for="fullName">Name</label>
-                  <input type="text" class="form-control" placeholder="Enter name">
+                  <input type="text" class="form-control" placeholder="Enter name...">
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6 mt-3">
                 <div class="form-group">
                   <label for="eMail">Email</label>
-                  <input type="email" class="form-control" placeholder="Enter email">
+                  <input type="email" class="form-control" placeholder="Enter email...">
                 </div>
               </div>
             </div>
             <div class="row gutters">
-              <div class="col-md-12">
-                <h6 class="mt-3 mb-2 text-primary">Address</h6>
+              <div class="col-md-12 mt-3">
+                <label for="picture">Picture</label>
+                <input type="text" class="form-control" placeholder="Picture Url...">
               </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="Street">Street</label>
-                  <input type="name" class="form-control" id="Street" placeholder="Enter Street">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="ciTy">City</label>
-                  <input type="name" class="form-control" id="ciTy" placeholder="Enter City">
-                </div>
-              </div>
-              <div class="col-md-6 mt-3">
-                <div class="form-group">
-                  <label for="sTate">State</label>
-                  <input type="text" class="form-control" id="sTate" placeholder="Enter State">
-                </div>
-              </div>
-              <div class="col-md-6 mt-3">
-                <div class="form-group">
-                  <label for="zIp">Zip Code</label>
-                  <input type="text" class="form-control" id="zIp" placeholder="Zip Code">
-                </div>
+              <div class="col-md-12 mt-3">
+                <label for="description">Description</label>
+                <textarea class="form-control" placeholder="Describe yourself..."></textarea>
               </div>
             </div>
             <div class="row gutters ">
@@ -145,25 +126,25 @@
           </div>
         </div>
       </div>
-                  <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
-                    <div class="card h-100">
-                      <div class="card-body">
-                        <div class="account-settings">
-                          <div class="user-profile">
-                            <div class="user-avatar">
-                              <img :src="account.picture" :alt="account.name">
-                            </div>
-                            <h5 class="user-name">{{account.name}}</h5>
-                            <h6 class="user-email">{{account.email}}</h6>
-                          </div>
-                          <div class="about">
-                            <h5>About</h5>
-                            <p>{{ account.description }}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+      <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+        <div class="card h-100">
+          <div class="card-body">
+            <div class="account-settings">
+              <div class="user-profile">
+                <div class="user-avatar">
+                  <img :src="account.picture" :alt="account.name">
+                </div>
+                <h5 class="user-name">{{account.name}}</h5>
+                <h6 class="user-email">{{account.email}}</h6>
+              </div>
+              <div class="about">
+                <h5>About</h5>
+                <p>{{ account.description }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
