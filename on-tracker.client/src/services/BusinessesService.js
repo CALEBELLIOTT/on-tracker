@@ -15,7 +15,7 @@ class BusinessesService {
 
   async createBusiness(data) {
     if (!AppState.account.businessId) {
-      const res = await api.post('api/businesses', data)
+      let res = await api.post('api/businesses', data)
       console.log(res.data);
       AppState.allBusinesses.push(res.data)
       await accountService.setBusinessId(res.data.id)
