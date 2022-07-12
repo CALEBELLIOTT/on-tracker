@@ -17,6 +17,9 @@
       <h1>
         {{ project.location }}
       </h1>
+      <h3>
+        {{project.dueDate}}
+      </h3>
     </div>
   </div>
 </template>

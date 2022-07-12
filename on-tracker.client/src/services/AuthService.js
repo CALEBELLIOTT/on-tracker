@@ -7,6 +7,7 @@ import { api } from './AxiosService'
 import { employeesService } from "./EmployeesService.js"
 import { projectsService } from "./ProjectsService"
 import { socketService } from './SocketService'
+import { teamMemberService } from "./TeamMembersService"
 
 export const AuthService = initialize({
   domain,
@@ -35,6 +36,7 @@ AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function () {
   else {
     await employeesService.getAllEmployees()
     await projectsService.getBusinessProjects(AppState.account.businessId)
+    await teamMemberService.getBusinessTeamMembers()
   }
 })
 
