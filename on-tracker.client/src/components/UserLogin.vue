@@ -38,6 +38,31 @@
         <p class="mt-5">Keep both employees and clients up to date on the progress of jobs</p>
       </div>
     </div>
+    <div class="row">
+      <div class="col-12 d-flex justify-content-center">
+        <h3 class="text-primary">Don't take our word for it...</h3>
+      </div>
+      <div class="col-md-4">
+        <div>
+          <img class="long-img img-fluid rounded p-4" src="../assets/img/kevin-grieve-QCdRhVj7N8w-unsplash.jpg" alt="">
+        </div>
+      </div>
+      <div class="col-md-8 d-flex flex-column mt-5 justify-content-around">
+        <div class="user-quote my-2">
+          <h4>Jack Jameson <span class="position"> Project Manager (Spring Lawn Care)</span></h4>
+          <p class="text-muted mt-4 mx-4">I use OnTracker way too much its insane</p>
+        </div>
+        <div class="user-quote my-2">
+          <h4>Jamie Jackson<span class="position"> Vice President (Jackson Construction)</span></h4>
+          <p class="text-muted mt-4 mx-4">Using OnTracker has revolutionized the way that my company works. I couldn't
+            say enough good things about it.</p>
+        </div>
+        <div class="user-quote my-2">
+          <h4>Jason Jeremiah<span class="position"> CEO (TrackOnner)</span></h4>
+          <p class="text-muted mt-4 mx-4">I literally have withdrawls from OnTracker</p>
+        </div>
+      </div>
+    </div>
   </div>
   <!-- <div class="col-md-5">
         <div>
@@ -152,10 +177,10 @@ export default {
 
 <style lang="scss" scoped>
 .hero-img {
-  background-image: url(../assets/img/ave-calvar-M6XsJwIi6jg-unsplash.jpg);
   min-height: 50vh;
-  background-position: left;
+  background-image: url(../assets/img/ave-calvar-M6XsJwIi6jg-unsplash.jpg);
   background-size: cover;
+  background-position: left;
 }
 
 .hero-img h1,
@@ -182,6 +207,31 @@ p {
   }
 }
 
+
+.long-img {
+  height: 100vh;
+  object-fit: cover;
+  object-position: left;
+}
+
+// TODO make these colors variables once you figure out how
+.user-quote p::before {
+  content: open-quote;
+  color: #f27648;
+  font-size: 2rem;
+}
+
+.user-quote p::after {
+  content: close-quote;
+  color: #f27648;
+  font-size: 2rem;
+}
+
+.user-quote .position {
+  font-size: .75rem;
+  margin-left: 1rem;
+  color: #f27648;
+}
 
 .login-logo {
   height: 4rem;
