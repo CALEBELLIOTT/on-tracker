@@ -1,13 +1,4 @@
 <template>
-  <button
-    class="btn btn-primary"
-    type="button"
-    data-bs-toggle="offcanvas"
-    data-bs-target="#offcanvasRight"
-    aria-controls="offcanvasRight"
-  >
-    Tasks
-  </button>
   <div
     class="offcanvas offcanvas-end bg text-light"
     tabindex="-1"

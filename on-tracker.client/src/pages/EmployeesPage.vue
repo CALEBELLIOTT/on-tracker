@@ -16,13 +16,14 @@ import { computed, onMounted } from "vue";
 import { AppState } from "../AppState.js";
 import { employeesService } from "../services/EmployeesService.js";
 import { projectsService } from '../services/ProjectsService.js';
+import { logger } from '../utils/Logger.js';
 export default {
   setup() {
     onMounted(async () => {
       await employeesService.getAllEmployees()
       await projectsService.getAllProjects()
       await projectsService.getBusinessProjects()
-
+      // logger.log(AppState.activeBusinessProjects)
     })
     return {
       employees: computed(() => AppState.employees),

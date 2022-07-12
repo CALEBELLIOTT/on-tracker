@@ -1,7 +1,7 @@
 <template>
   <div
     class="modal fade"
-    id="exampleModal"
+    id="teamMemberModal"
     tabindex="-1"
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
@@ -73,7 +73,7 @@ export default {
         }
       },
       employees: computed(() => AppState.employees),
-      projects: computed(() => AppState.projects)
+      projects: computed(() => AppState.activeBusinessProjects)
 
     }
   }

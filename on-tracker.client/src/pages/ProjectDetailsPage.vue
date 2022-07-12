@@ -2,6 +2,32 @@
   <navbar />
 
   <div class="container-fluid dark-theme">
+    <div class="mt-3 me-0">
+      <button
+        class="btn btn-primary"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasRight"
+        aria-controls="offcanvasRight"
+      >
+        Tasks
+      </button>
+    </div>
+    <div>
+      <button
+        class="btn btn-primary mt-2"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#availableEmployees"
+        aria-controls="offcanvasRight"
+      >
+        Available Employees
+      </button>
+    </div>
+
+    <!-- OffCanvas -->
+    <AvailableEmployeesOffCanvas />
+    <!--  -->
     <div class="row">
       <ActiveProject />
     </div>
