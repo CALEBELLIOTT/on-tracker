@@ -82,7 +82,9 @@
       <div class="row pt-5 py-5">
         <div>
           <div class="col-12 bg-white elevation-4 rounded border border-4 p-5">
-            <span v-for="t in teamMembers" :key="t.id">{{ t.employee }}</span>
+            <span v-for="t in teamMembers" :key="t.id">{{
+              t.employee.account.name
+            }}</span>
           </div>
         </div>
       </div>
