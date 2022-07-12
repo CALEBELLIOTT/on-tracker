@@ -1,17 +1,41 @@
 <template>
   <div class="container-fluid ">
     <div class="row">
-      <div class="col-12 p-2 d-flex justify-content-center border-primary shadow border-bottom">
+      <div class="col-12 p-2 d-flex justify-content-between border-primary shadow border-bottom">
         <img class="img-fluid login-logo p-2" src="../assets/img/Ontracker logo OG.png" alt="" />
+        <button class="btn btn-outline-primary p-0 px-4 h-50 align-self-center" @click="launchLogin">login</button>
       </div>
       <div class="col-12 hero-img d-flex flex-column justify-content-center text-muted">
         <div class="text-center">
-          <h2>Plan With Confidence</h2>
-          <h3>Execute With Efficiency</h3>
+          <h1>Plan With Confidence</h1>
+          <h2>Execute With Efficiency</h2>
           <div class="w-15">
-            <p>The best way to handle your day to day business, in an easy to use interface</p>
+            <p>The best way to handle your day to day business, in an easy to use interface.</p>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 text-center mt-3">
+        <h3 class="text-primary">Organize Your Business's Logistics</h3>
+      </div>
+      <div class="col-md-4 text-center mt-md-3 mt-5 p-4">
+        <h1>
+          <i class="mdi mdi-map-marker"></i>
+        </h1>
+        <p class="mt-5">Map out jobSites, all while keeping employees in the loop</p>
+      </div>
+      <div class="col-md-4 text-center mt-2 p-4">
+        <h1>
+          <i class="mdi mdi-account-group"></i>
+        </h1>
+        <p class="mt-5">Collaborate with employees and track their tasks as they are completed</p>
+      </div>
+      <div class="col-md-4 text-center mt-2 p-4">
+        <h1>
+          <i class="mdi mdi-check-bold"></i>
+        </h1>
+        <p class="mt-5">Keep both employees and clients up to date on the progress of jobs</p>
       </div>
     </div>
   </div>
@@ -130,25 +154,34 @@ export default {
 .hero-img {
   background-image: url(../assets/img/ave-calvar-M6XsJwIi6jg-unsplash.jpg);
   min-height: 50vh;
-  background-position: center;
+  background-position: left;
   background-size: cover;
+}
+
+.hero-img h1,
+h2,
+p {
+  transform: translateY(-1.7rem);
 }
 
 
 
 @media(min-width: 769px) {
 
-  .hero-img h2,
-  h3 {
-    transform: translateX(-10rem);
+  .hero-img h1,
+  h2 {
+    transform: translateX(-14rem);
   }
 
-  .hero-img h2 {
-    transform: translateX(-13rem);
+  .hero-img h1 {
+    transform: translateX(-18rem);
+  }
+
+  .hero-img p {
+    transform: translateX(-14rem)
   }
 }
 
-.her-img h3 {}
 
 .login-logo {
   height: 4rem;
