@@ -8,15 +8,22 @@
   </div>
 
   <div class="col-md-12 d-flex justify-content-center">
-    <div class="col-md-10 border-bottom border-warning border-3 my-3" v-if="account.id"></div>
+    <div
+      class="col-md-10 border-bottom border-warning border-3 my-3"
+      v-if="account.id"
+    ></div>
   </div>
   <!-- <hr class="text-light" v-if="account.id"> -->
 
   <h1 class="text-danger text-center" v-if="account.id">Critical</h1>
   <div class="container justify-content-evenly p-5" v-if="account.id">
     <vue-horizontal>
-      <Project v-for="p in projects.slice(0,3)" :key="p.id" :project="p"
-        class="mx-4" />
+      <Project
+        v-for="p in projects.slice(0, 3)"
+        :key="p.id"
+        :project="p"
+        class="mx-4"
+      />
     </vue-horizontal>
   </div>
 
