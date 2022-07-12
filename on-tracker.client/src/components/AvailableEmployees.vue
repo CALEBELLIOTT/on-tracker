@@ -31,7 +31,11 @@ export default {
             activeProject: computed(() => AppState.activeProject),
             async createTeamMember() {
                 try {
-                    await teamMemberService.createTeamMember(route.params.id, props.employee.id)
+                    let data = {
+                        employeeId: props.employee.id,
+                        projectId: route.params.id
+                    }
+                    await teamMemberService.createTeamMember(data)
                     logger.log()
                 } catch (error) {
                     Pop.toast(error.message)
