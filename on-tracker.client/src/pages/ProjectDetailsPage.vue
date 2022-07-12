@@ -191,6 +191,8 @@ export default {
         await projectsService.getProjectById(route.params.id)
         await notesService.getNotes(route.params.id)
         await teamMemberService.getProjectTeamMembers(route.params.id)
+        await employeesService.getAvailableEmployees()
+        console.log(AppState.activeProjectTeamMembers);
       } catch (error) {
         logger.log(error)
         Pop.toast(error.message, 'error')
