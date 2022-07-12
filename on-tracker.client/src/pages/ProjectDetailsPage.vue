@@ -76,10 +76,13 @@
           </div>
         </div>
       </div>
+      <div class="text-light text-center pt-5">
+        <h2><b>TeamMembers</b></h2>
+      </div>
       <div class="row pt-5 py-5">
         <div>
           <div class="col-12 bg-white elevation-4 rounded border border-4 p-5">
-            hello
+            <span v-for="t in teamMembers" :key="t.id">{{ t.employee }}</span>
           </div>
         </div>
       </div>
@@ -124,7 +127,7 @@ export default {
       employees: computed(() => AppState.employees),
       project: computed(() => AppState.activeProject),
       notes: computed(() => AppState.projectNotes),
-      teamMembers: computed(() => AppState.activeProjectAvailableEmployees),
+      teamMembers: computed(() => AppState.activeProjectTeamMembers),
 
 
       async createNote() {
