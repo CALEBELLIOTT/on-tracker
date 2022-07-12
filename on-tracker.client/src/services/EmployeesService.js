@@ -47,6 +47,21 @@ class EmployeesService {
     console.log(AppState.employees);
     console.log(AppState.activeEmployee)
   }
+
+  getAvailableEmployees() {
+    let teamMembers = AppState.activeProjectTeamMembers
+    let employees = AppState.employees
+
+    teamMembers.forEach(m => {
+      employees.forEach(e => {
+        if (e.id === m.employee.id) {
+          employees = employees.filter(employee => employee.id !== e.id)
+        }
+      })
+    })
+    console.log(employees);
+    return employees
+  }
 }
 
 export const employeesService = new EmployeesService()
