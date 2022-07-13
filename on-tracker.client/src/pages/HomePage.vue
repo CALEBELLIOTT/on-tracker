@@ -4,7 +4,16 @@
 
   <div class="container-fluid">
     <div class="row">
+      <div class="col-md-6 mb-5 d-flex align-items-center">
+        <h1 class=" mt-5 text-center text-md-start me-2"><span class="text-primary">OnTracker</span> for {{
+            business.name
+        }}</h1>
+        <img :src="business.logo" class="img-fluid business-logo" alt="">
+      </div>
+
+
       <div class="col-12">
+        <p class="m-0">Utilize our map to keep track of where your company's projects are located</p>
         <div v-if="account.id" class="d-flex justify-content-center">
           <img class="img-fluid" src="https://www.s-lec.eu/wp-content/uploads/map.jpg" alt="" />
         </div>
@@ -76,6 +85,13 @@ export default {
 
 
 <style lang="scss" scoped>
+.business-logo {
+  height: 4rem;
+  width: 4rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 img {
   object-fit: cover;
 }
