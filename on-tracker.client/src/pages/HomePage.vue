@@ -90,7 +90,7 @@ export default {
       if (AppState.account?.businessId) {
         await teamMemberService.getBusinessTeamMembers()
       }
-      await projectsService.getBusinessProjects()
+
     })
     watchEffect(async () => {
       try {
