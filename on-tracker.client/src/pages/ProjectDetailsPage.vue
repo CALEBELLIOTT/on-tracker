@@ -1,16 +1,26 @@
 <template>
   <navbar />
 
-  <div class="container-fluid dark-theme">
+  <div class="container-fluid">
     <div class="mt-3 me-0">
-      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-        aria-controls="offcanvasRight">
+      <button
+        class="btn btn-primary"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasRight"
+        aria-controls="offcanvasRight"
+      >
         Tasks
       </button>
     </div>
     <div>
-      <button class="btn btn-primary mt-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#availableEmployees"
-        aria-controls="offcanvasRight">
+      <button
+        class="btn btn-primary mt-2"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#availableEmployees"
+        aria-controls="offcanvasRight"
+      >
         Available Employees
       </button>
     </div>
@@ -18,22 +28,27 @@
     <!-- OffCanvas -->
     <AvailableEmployeesOffCanvas />
     <!--  -->
-    <div class="row">
+
+    <div class="projects-container">
       <ActiveProject />
     </div>
 
     <!-- Note Component -->
     <div class="row align-items-center flex-column">
-      <div class="
+      <div
+        class="
           col-md-10
           grey-card
           elevation-2
           rounded
           d-flex
           justify-content-center
-        ">
+        "
+      >
         <div class="col-md-10 m-2">
-          <h1 class="text-center text-white border-bottom border-5 border-white">
+          <h1
+            class="text-center text-white border-bottom border-5 border-white"
+          >
             <b><em>Notes</em></b>
           </h1>
           <div class="notes-section m-4 bg-light rounded">
@@ -41,10 +56,20 @@
           </div>
           <div class="d-flex justify-content-center">
             <form @submit.prevent="createNote">
-              <textarea class="form-control" placeholder="Add a note..." name="" id="" cols="80" rows="1"
-                v-model="noteData.body"></textarea>
+              <textarea
+                class="form-control"
+                placeholder="Add a note..."
+                name=""
+                id=""
+                cols="80"
+                rows="1"
+                v-model="noteData.body"
+              ></textarea>
               <div class="d-flex justify-content-center mt-2">
-                <button class="btn btn-dark text-light rounded mb-3" type="submit">
+                <button
+                  class="btn btn-dark text-light rounded mb-3"
+                  type="submit"
+                >
                   Submit
                 </button>
               </div>
@@ -58,9 +83,13 @@
       <div class="row pt-5 py-5">
         <div>
           <div class="col-12 bg-white elevation-4 rounded border border-4 p-5">
-            <span v-for="t in teamMembers" :key="t.id">{{
-              t.employee.account.name
-            }}</span>
+            <span v-for="t in teamMembers" :key="t.id" class=""
+              ><img
+                :title="t.employee.account.name"
+                class="img-fluid profile-img"
+                alt=""
+                :src="t.employee.account.picture"
+            /></span>
           </div>
         </div>
       </div>
@@ -128,10 +157,22 @@ export default {
 
 
 <style lang="scss" scoped>
+.projects-container {
+  max-height: 80vh;
+  overflow: scroll;
+  overflow-x: hidden;
+}
 .small-profile-img {
   width: 60px;
   height: 60px;
   object-fit: cover;
+  border-radius: 50em;
+}
+
+.profile-img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
   border-radius: 50em;
 }
 
