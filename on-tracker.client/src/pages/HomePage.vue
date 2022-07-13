@@ -32,7 +32,13 @@
           projects
         </h3>
         <div class="projects-container" v-if="projects.creatorId == account.id">
-
+          <Project
+            v-for="p in projects"
+            :key="p.id"
+            :project="p"
+            class="mx-5"
+          />
+        </div>
         <div class="elevation-2 rounded" v-else>
           <h4 class="text-center">Projects will show here upon creation</h4>
         </div>
