@@ -1,29 +1,48 @@
 <template>
-  <div class="col-12 text-center">
-    <div class="row pt-5">
-      <div class="col-md-10 mx-auto grey-card p-5 rounded">
-        <div>{{ project.description }}</div>
-      </div>
-      <span class="d-flex justify-content-end">
-        <TaskOffCanvas />
-      </span>
-    </div>
-    <div class="col-12">
-      <div class="row p-5">
-        <vue-horizontal responsive>
-          <div class="col-md-12 bg-white elevation-4 py-4 rounded" v-for="img in project.jobSiteImgs" :key="img">
-            <!-- NOTE create method to iterate through images -->
-            <img class="img-fluid" :src="img" alt="" />
+  <div class="row px-5 pt-4 pb-3">
+    <div class="col-12 elevation-5">
+      <div class="row">
+        <div
+          class="col-md-12 bg-white p-4 border-bottom border-2 border-primary"
+        >
+          <div class="fs-4">
+            <span class="px-3"><i class="mdi mdi-dots-horizontal"></i></span>
+            {{ project.description }}
           </div>
-        </vue-horizontal>
-        <div class="col-md-10 mx-auto pt-3">
-          <ProjectProgressBar />
-
+        </div>
+        <span class="d-flex justify-content-end">
+          <TaskOffCanvas />
+        </span>
+      </div>
+      <div class="col-12">
+        <div class="row bg-white">
+          <vue-horizontal
+            responsive
+            class="p-0 border-bottom border-2 border-primary"
+          >
+            <div
+              class="col-md-12"
+              v-for="img in project.jobSiteImgs"
+              :key="img"
+            >
+              <!-- NOTE create method to iterate through images -->
+              <img class="img-fluid project-img" :src="img" alt="" />
+            </div>
+          </vue-horizontal>
+          <div class="col-md-10 mx-auto pt-3">
+            <ProjectProgressBar />
+          </div>
+          <div class="text-center pt-4">
+            <h4>Notes</h4>
+          </div>
+          <div class="col-12 bg-white">
+            <ProjectNotes v-for="n in notes" :key="n.id" :note="n" />
+          </div>
+          <div class="col-12"><input class="col-12 p-2" type="text" /></div>
         </div>
       </div>
     </div>
   </div>
-
   <!-- OFFCANVAS -->
 </template>
 
@@ -32,12 +51,18 @@
 import { computed } from '@vue/reactivity'
 import { AppState } from '../AppState'
 import VueHorizontal from "vue-horizontal";
+import { notesService } from '../services/NotesService';
+import { logger } from '../utils/Logger';
 export default {
   components: { VueHorizontal },
   props: { project: { type: Object, required: true } },
   setup() {
     return {
-      project: computed(() => AppState.activeProject)
+      project: computed(() => AppState.activeProject),
+      tasks: computed(() => AppState.projectTasks),
+      notes: computed(() => AppState.projectNotes),
+
+
     }
   }
 }
@@ -45,4 +70,8 @@ export default {
 
 
 <style lang="scss" scoped>
+.project-img {
+  height: 500px;
+  width: 10500px;
+}
 </style>

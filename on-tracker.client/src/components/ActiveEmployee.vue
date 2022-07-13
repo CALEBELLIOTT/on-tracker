@@ -6,24 +6,15 @@
           <div class="row">
             <div class="col-md-4 text-md-start text-center">
               <h3 class="my-2">{{ employee.account.name }}</h3>
-              <img
-                class="profile-img"
-                :src="employee.account.picture || employee.account.picture"
-                alt=""
-              />
+              <img class="profile-img" :src="employee.account.picture || employee.account.picture" alt="" />
             </div>
             <div class="col-md-4">
               <div class="d-flex flex-column justify-content-center my-2">
                 <h3>
-                  certifications: {{ employee.certifications.toString() }}
+                  Certifications: {{ employee.certifications.toString() }}
                 </h3>
                 <h3>Skills: {{ employee.skills }}</h3>
-                <button
-                  type="button"
-                  class="btn btn-primary"
-                  data-bs-toggle="modal"
-                  data-bs-target="#teamMemberModal"
-                >
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#teamMemberModal">
                   Assign Employees
                 </button>
               </div>
@@ -37,7 +28,8 @@
     </div>
   </div>
 
-  <hr class="text-light" />
+
+  <hr class="text-dark" />
   <!-- Modal -->
   <EmployeeModal />
   <!-- Modal -->
