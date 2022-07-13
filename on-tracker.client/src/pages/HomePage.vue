@@ -16,7 +16,14 @@
           challenges. What will you get done with OnTracker?</p>
         <div class="divider-line"></div>
       </div>
+      <div class="col-6"></div>
 
+
+      <div class="col-4">
+        <div class="projects-container scrollbar-primary">
+          <Project v-for="p in projects" :key="p.id" :project="p" class="mx-4" />
+        </div>
+      </div>
 
       <div class="col-12">
         <p class="m-0 text-muted">{{ business.name }}'s project locations</p>
@@ -101,6 +108,24 @@ export default {
   background-color: #f27648;
   width: 50%;
   margin: auto;
+}
+
+.projects-container {
+  max-height: 75vh;
+  overflow: scroll;
+}
+
+.projects-container::-webkit-scrollbar {
+  width: .5rem;
+}
+
+.projects-container::-webkit-scrollbar-thumb {
+  background-color: #f27648;
+  border-radius: 5px;
+}
+
+.projects-container::-webkit-scrollbar-track {
+  background-color: #e9ecef;
 }
 
 .business-logo {
