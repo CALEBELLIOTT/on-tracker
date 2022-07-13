@@ -4,6 +4,7 @@ import { audience, clientId, domain } from '../env'
 import { router } from '../router'
 import { accountService } from './AccountService'
 import { api } from './AxiosService'
+import { businessesService } from './BusinessesService'
 import { employeesService } from "./EmployeesService.js"
 import { projectsService } from "./ProjectsService"
 import { socketService } from './SocketService'
@@ -34,6 +35,7 @@ AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function () {
     router.push({ name: 'FirstTimeLogin' })
   }
   else {
+    await businessesService.setActiveBusiness(AppState.account.businessId)
     await employeesService.getAllEmployees()
     await projectsService.getBusinessProjects(AppState.account.businessId)
     await teamMemberService.getBusinessTeamMembers()

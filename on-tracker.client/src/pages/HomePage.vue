@@ -67,8 +67,8 @@ export default {
     })
     return {
       account: computed(() => AppState.account),
-      projects: computed(() => AppState.projects.sort((a, b) => a.dueDate.localeCompare(b.dueDate)))
-
+      projects: computed(() => AppState.projects.sort((a, b) => a.dueDate.localeCompare(b.dueDate))),
+      business: computed(() => AppState.activeBusiness)
     }
   }
 }

@@ -14,7 +14,7 @@ class BusinessesService {
   }
 
   async setActiveBusiness(id) {
-    const res = await api.get('api/' + id + 'businesses')
+    const res = await api.get('api/businesses/' + id)
     console.log('SET ACTIVE BUSINESS');
     console.log(res.data);
     AppState.activeBusiness = res.data
