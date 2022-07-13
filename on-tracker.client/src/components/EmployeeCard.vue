@@ -1,27 +1,40 @@
 <template>
   <div class="row">
-    <div class="col-12">
-      <div class="bg-light rounded m-2 p-2 d-flex align-items-center employee-card" @click="setActiveEmployee()">
-        <div class="row">
-          <div class="col-md-4">
-            <img :src="employee.account.picture" class="profile-img" alt="">
-          </div>
-          <div class="col-md-7">
-            <div class="d-flex flex-column mx-2">
-              <p class=""><b>{{ employee.account.name }}</b></p>
-              <p>{{ employee.skills }}</p>
-              <p> <span v-for="c in employee.certifications" :key="c">{{ c }}</span></p>
+    <div class="col-md-12">
+      <div class="col-md-12 justify-content-around bg-light rounded m-2 p-2 d-flex align-items-center employee-card"
+        @click="setActiveEmployee()">
+
+        <div class="col-md-4">
+          <img :src="employee.account.picture" class="shadow profile-img" alt="">
+        </div>
+        <div class="col-md-7">
+          <div class="d-flex flex-column mx-2">
+            <div class="col-md-12 d-flex justify-content-between border-bottom border-2 border-dark">
+              <h3 class="text-center"><b>{{ employee.account.name }}</b></h3>
+              <h3 v-if="account.businessAccount && account.id != employee.account.id"><i
+                  class="mdi mdi-trash-can selectable" title="Fire Employee" @click="fireEmployee"></i>
+              </h3>
+              <h3 v-if="account.id == employee.account.id"><i class="mdi mdi-trash-can selectable" title="Quit Job"
+                  @click="quitJob"></i>
+              </h3>
+            </div>
+            <div class="col-md-12 d-flex justify-content-around mt-4">
+
+              <div class="col-md-2">
+                <h5 class=" border-bottom border-2 border-dark">Skills:</h5>
+                <p> {{ employee.skills }}</p>
+              </div>
+              <div class="col-md-4">
+                <h5 class=" border-bottom border-2 border-dark">Certificates:</h5>
+                <p> <span v-for="c in employee.certifications" :key="c">{{ c }}</span></p>
+              </div>
             </div>
           </div>
-          <div class="col-md-1">
-            <h3 v-if="account.businessAccount && account.id != employee.account.id"><i
-                class="mdi mdi-trash-can selectable" title="Fire Employee" @click="fireEmployee"></i>
-            </h3>
-            <h3 v-if="account.id == employee.account.id"><i class="mdi mdi-trash-can selectable" title="Quit Job"
-                @click="quitJob"></i>
-            </h3>
-          </div>
+
+
+
         </div>
+
       </div>
     </div>
   </div>
@@ -57,9 +70,13 @@ export default {
 
 
 <style lang="scss" scoped>
-img {
-  border-radius: 50%;
+p {
+  text-indent: 10px;
 }
+
+// h5 {
+//   text-indent: 25px;
+// }
 
 .employee-card {
   border: 3px solid rgba(12, 65, 255, 0);
@@ -73,8 +90,9 @@ img {
 }
 
 .profile-img {
-  height: 5rem;
-  width: 5rem;
+  height: 12rem;
+  width: 12rem;
   object-fit: cover;
+  border-radius: 5%;
 }
 </style>
