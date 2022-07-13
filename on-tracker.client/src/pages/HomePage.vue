@@ -19,23 +19,24 @@
       <!-- <div class="col-6"></div> -->
 
 
-      <div class="col-md-4 d-flex flex-column align-items-center mt-4">
-        <h3><u>{{ business.name }}'s current projects</u></h3>
+      <div class="col-md-4 d-flex flex-column align-items-center my-4">
+        <h3>{{ business.name }}'s <span class="text-primary border-bottom border-primary mb-0">Tracked</span> projects
+        </h3>
         <div class="projects-container">
           <Project v-for="p in projects" :key="p.id" :project="p" class="mx-4" />
         </div>
       </div>
 
-      <div class="col-md-8 mt-4">
+      <div class="col-md-8 my-4">
         <p class="m-0 text-muted">{{ business.name }}'s project locations</p>
         <img class="map-img img-fluid" src="https://www.s-lec.eu/wp-content/uploads/map.jpg" alt="" />
       </div>
     </div>
 
-    <div class="col-md-12 d-flex justify-content-center">
+    <!-- <div class="col-md-12 d-flex justify-content-center">
       <div class="col-md-10 border-bottom border-warning border-3 my-3" v-if="account.id"></div>
     </div>
-    <!-- <hr class="text-light" v-if="account.id"> -->
+
 
     <h1 class="text-danger text-center" v-if="account.id">Critical</h1>
     <div class="container justify-content-evenly p-5" v-if="account.id">
@@ -54,9 +55,8 @@
           <Project v-for="p in projects" :key="p.id" :project="p" class="mx-4" />
         </vue-horizontal>
       </div>
-    </div>
+    </div> -->
 
-    <!-- </div> -->
   </div>
 
 </template>
