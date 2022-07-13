@@ -88,13 +88,15 @@ export default {
   setup() {
     let businessData = ref({})
     let userData = ref({})
+    let businessAddress = {}
     return {
       businessData,
       userData,
       account: computed(() => AppState.account),
       async createBusiness() {
         try {
-          console.log(document.getElementById('map'))
+          businessData.address = businessAddress
+          console.log(businessData);
           await businessesService.createBusiness(businessData.value)
           await employeesService.createEmployee()
         } catch (error) {
@@ -114,6 +116,10 @@ export default {
           console.error(error)
         }
       },
+      getAddressData(data) {
+        businessAddress = data
+        console.log(businessAddress);
+      }
     }
   }
 }
