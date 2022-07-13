@@ -1,48 +1,28 @@
 <template>
-  <div
-    class="modal fade"
-    id="teamMemberModal"
-    tabindex="-1"
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
-  >
+  <div class="modal fade" id="teamMemberModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
+          <b> Assign an Employee to a Project</b>
+          <button title="Close" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form
-          @submit.prevent="createTeamMember"
-          class="d-flex justify-content-around"
-        >
+        <form @submit.prevent="createTeamMember" class="d-flex justify-content-around">
           <div class="modal-body">
-            <select
-              name="employee"
-              id="employee"
-              v-model="employeeData.employeeId"
-            >
+            <b class="ms-2"> Employee : </b>
+            <select name="employee" id="employee" v-model="employeeData.employeeId">
               <option :value="e.id" class="" v-for="e in employees" :key="e.id">
                 {{ e.account.name }}
               </option>
             </select>
-            <select
-              name="project"
-              id="project"
-              class="m-4"
-              v-model="employeeData.projectId"
-            >
+            <b class="ms-3">Project :</b>
+            <select name="project" id="project" class="m-4" v-model="employeeData.projectId">
               <option :value="p.id" class="d" v-for="p in projects" :key="p.id">
                 {{ p.projectName }}
               </option>
             </select>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">assign</button>
+            <button type="submit" class="btn btn-primary">Assign</button>
           </div>
         </form>
       </div>

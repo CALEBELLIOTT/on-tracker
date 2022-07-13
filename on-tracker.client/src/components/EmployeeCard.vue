@@ -1,44 +1,48 @@
 <template>
-  <div class="row">
-    <div class="col-md-12">
-      <div
-        class="col-md-12 justify-content-around bg-light rounded m-2 p-2 d-flex align-items-center shadow employee-card"
-        @click="setActiveEmployee()">
+  <div class="container-fluid">
 
-        <div class="col-md-4">
-          <img :src="employee.account.picture" class="shadow profile-img" alt="">
-        </div>
-        <div class="col-md-7">
-          <div class="d-flex flex-column mx-2">
-            <div class="col-md-12 d-flex justify-content-between border-bottom border-2 border-dark ">
-              <h3><b>{{ employee.account.name }}</b></h3>
-              <h3 v-if="account.businessAccount && account.id != employee.account.id"><i
-                  class="mdi mdi-trash-can selectable" title="Fire Employee" @click="fireEmployee"></i>
-              </h3>
-              <h3 v-if="account.id == employee.account.id"><i class="mdi mdi-trash-can selectable" title="Quit Job"
-                  @click="quitJob"></i>
-              </h3>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div
+            class="col-md-12 justify-content-around bg-light rounded m-2 p-2 d-flex align-items-center shadow employee-card"
+            @click="setActiveEmployee()">
+            <div class="d-none d-md-block col-md-4">
+              <img :src="employee.account.picture" class="shadow profile-img" alt="">
             </div>
-            <div class="col-md-12 d-flex justify-content-around mt-4">
+            <div class="col-md-7">
+              <div class=" col-md-12 d-flex flex-column mx-2">
+                <div class="col-md-12 d-flex justify-content-between border-bottom border-2 border-dark ">
+                  <h3><b>{{ employee.account.name }}</b></h3>
+                  <h3 v-if="account.businessAccount && account.id != employee.account.id"><i
+                      class="mdi mdi-trash-can selectable" title="Fire Employee" @click="fireEmployee"></i>
+                  </h3>
+                  <h3 v-if="account.id == employee.account.id"><i class="mdi mdi-trash-can selectable" title="Quit Job"
+                      @click="quitJob"></i>
+                  </h3>
+                </div>
+                <div class="col-md-12 d-flex justify-content-around mt-4">
 
-              <div class="col-md-2">
-                <h5 class=" border-bottom border-2 border-dark">Skills:</h5>
-                <p> {{ employee.skills }}</p>
-              </div>
-              <div class="col-md-5">
-                <h5 class=" border-bottom border-2 border-dark">Certifications:</h5>
-                <p> <span v-for="c in employee.certifications" :key="c">{{ c }}</span></p>
+                  <div class="col-md-2">
+                    <h5 class=" border-bottom border-2 border-dark">Skills:</h5>
+                    <p> {{ employee.skills }}</p>
+                  </div>
+                  <div class="col-md-5">
+                    <h5 class=" border-bottom border-2 border-dark">Certifications:</h5>
+                    <p> <span v-for="c in employee.certifications" :key="c">{{ c }}</span></p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-
-
-
         </div>
-
       </div>
     </div>
   </div>
+
+  <!-- Modal -->
+  <EmployeeModal />
+  <!-- Modal -->
 </template>
 
 
@@ -87,9 +91,15 @@ h5 {
 }
 
 .profile-img {
-  height: 12rem;
-  width: 12rem;
+  height: 10rem;
+  width: 10rem;
   object-fit: cover;
   border-radius: 5%;
+}
+
+@media(max-width: 769px) {
+  .profile-img {
+    display: none;
+  }
 }
 </style>
