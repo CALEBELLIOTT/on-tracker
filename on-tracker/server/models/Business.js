@@ -8,7 +8,7 @@ export const BusinessSchema = new Schema({
     name: { type: String, required: true },
     coverImg: { type: String, required: true },
     logo: { type: String, required: true },
-    address: { type: String },
+    address: { type: Object, required: true },
     accountId: { type: ObjectId, required: true, ref: 'Account' }
 }, { timestamps: true, toJSON: { virtuals: true } })
 
