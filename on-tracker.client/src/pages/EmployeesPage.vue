@@ -22,7 +22,7 @@ export default {
     onMounted(async () => {
       await employeesService.getAllEmployees()
       await projectsService.getAllProjects()
-      await projectsService.getBusinessProjects()
+      await projectsService.getBusinessProjects(AppState.activeBusiness.id)
       // logger.log(AppState.activeBusinessProjects)
     })
     return {

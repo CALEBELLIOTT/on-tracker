@@ -1,6 +1,6 @@
 <template>
   <div class="container" v-if="employee.id">
-    <div class="row">
+    <div class="row mt-3">
       <div class="col-12 ">
         <div class="bg-light rounded p-2 my-2 shadow">
           <div class="row">
@@ -22,9 +22,7 @@
                     <h5>{{ employee.certifications.toString() }}</h5>
                   </div>
                 </div>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#teamMemberModal">
-                  Assign Employee to a Project
-                </button>
+
               </div>
             </div>
 
@@ -35,7 +33,11 @@
   </div>
 
   <div class="border-bottom border-3 border-dark m-4"></div>
-
+  <div class="col-md-12 d-flex justify-content-center my-4">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#teamMemberModal">
+      Assign a Project
+    </button>
+  </div>
   <!-- Modal -->
   <EmployeeModal />
   <!-- Modal -->
@@ -64,8 +66,8 @@ export default {
 <style lang="scss" scoped>
 .profile-img {
   border-radius: 5%;
-  height: 15rem;
-  width: 15rem;
+  height: 13rem;
+  width: 13rem;
   object-fit: cover;
 }
 

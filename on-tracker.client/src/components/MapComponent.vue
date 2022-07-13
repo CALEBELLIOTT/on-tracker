@@ -32,6 +32,7 @@ export default {
         new mapboxgl.Marker()
           .setLngLat([pL.longitude, pL.latitude])
           .addTo(map);
+          
       });
     }
 
@@ -42,7 +43,9 @@ export default {
     map.addControl(
       new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
-        mapboxgl: mapboxgl
+        placeholder: 'OnTrack Search in Boise',
+        mapboxgl: mapboxgl,
+        marker: false
       })
     );
     const nav = new mapboxgl.NavigationControl();
