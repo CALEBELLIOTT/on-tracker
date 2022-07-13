@@ -31,7 +31,7 @@
       <div class="selection-card d-flex flex-column bg-light p-2 m-2 rounded" @click="goToProjectPage">
         <h3 class="text-primary">{{ project.projectName }}</h3>
         <p class="text-muted mb-0">{{ project.location }}</p>
-        <p :class="getDateStyle()"><i class="mdi mdi-alert-circle-outline"></i> {{
+        <p :class="getDateStyle()"><i class="mdi mdi-alert-circle-outline"></i>Due: {{
             new Date(project.dueDate).toLocaleDateString("en-us", {
               weekday: "long",
               year: "numeric",
