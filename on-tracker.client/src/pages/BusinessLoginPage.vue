@@ -49,7 +49,11 @@
                 </div>
               </div>
               <div class="d-flex justify-content-end m-2">
-                <button type="submit" title="Add your Business ">
+                <button
+                  type="submit"
+                  class="button-1"
+                  title="Add your Business "
+                >
                   <h3 class="m-2"><i class="mdi mdi-check"></i></h3>
                 </button>
               </div>
@@ -162,6 +166,18 @@ export default {
 
 .form-row {
   height: 100vh;
+}
+
+.button-1 {
+  background-color: red;
+  box-shadow: rgb(109, 7, 7) 4px 4px 0px;
+  border-radius: 8px;
+  transition: transform 200ms, box-shadow 200ms;
+}
+
+.button-1:active {
+  transform: translateY(4px) translateX(4px);
+  box-shadow: rgb(109, 7, 7) 0px 0px 0px;
 }
 
 input:invalid {
