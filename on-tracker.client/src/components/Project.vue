@@ -40,7 +40,7 @@
         "
         @click="goToProjectPage"
       >
-        <h3 class="text-primary">{{ project.projectName }}</h3>
+        <h3 class="text-primary text-center">{{ project.projectName }}</h3>
         <p class="text-muted mb-0">{{ project.location }}</p>
         <p :class="getDateStyle()">
           <i class="mdi mdi-alert-circle-outline"></i>Due:
