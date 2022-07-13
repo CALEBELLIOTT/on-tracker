@@ -10,6 +10,7 @@
           border-primary
           shadow
           border-bottom
+          nav-color
         "
       >
         <router-link :to="{ name: 'Home' }">
@@ -19,9 +20,11 @@
             alt=""
           />
         </router-link>
+
         <div class="d-flex align-items-center">
+          <CreateProjectModal />
           <router-link :to="{ name: 'EmployeesPage' }">
-            <p class="text-primary mx-4 nav nav-custom">Employees</p>
+            <h6 class="text-primary mx-4 nav nav-custom">Employees</h6>
           </router-link>
 
           <Login class="ms-5"></Login>
@@ -96,5 +99,8 @@ img {
 
 nav {
   background-color: rgb(93, 92, 92);
+}
+.nav-color {
+  background-color: rgb(255, 251, 251);
 }
 </style>

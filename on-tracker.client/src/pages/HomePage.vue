@@ -39,7 +39,7 @@
             class="mx-5"
           />
         </div>
-        <div class="elevation-2 rounded" v-else>
+        <div class="no-projects-card d-flex align-items-center" v-else>
           <h4 class="text-center">Projects will show here upon creation</h4>
         </div>
       </div>
@@ -178,5 +178,14 @@ img {
 
 .blur {
   backdrop-filter: blur(10px);
+}
+
+.no-projects-card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border-radius: 15px;
+  width: 100%;
+  height: 43.5vh;
+  background-color: rgb(255, 255, 255);
 }
 </style>
