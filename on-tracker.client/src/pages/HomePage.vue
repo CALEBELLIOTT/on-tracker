@@ -2,7 +2,7 @@
   <Navbar v-if="account.id"></Navbar>
   <UserLogin v-if="!account.id" />
 
-  <div class="container-fluid">
+  <div class="container-fluid" v-if="account.id">
     <div class="row">
       <div class="col-md-12 mb-5 my-5">
         <div class="d-flex align-items-center justify-content-center">
