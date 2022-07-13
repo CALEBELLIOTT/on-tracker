@@ -1,4 +1,5 @@
 import { AppState } from "../AppState";
+import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
 import { accountService } from "./AccountService";
 import { api } from "./AxiosService"
@@ -29,6 +30,12 @@ class BusinessesService {
       return
     }
     Pop.toast('you already belong to a business', "error")
+  }
+
+  async editBusiness(updateBusiness) {
+    const res = await api.put('api/businesses/' + AppState.activeBusiness.id, updateBusiness)
+    logger.log(res.data)
+
   }
 }
 
