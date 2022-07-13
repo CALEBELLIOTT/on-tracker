@@ -20,7 +20,7 @@
       </div>
       <!-- <div class="col-6"></div> -->
 
-      <div class="col-md-4 d-flex flex-column align-items-center my-4">
+      <div class="col-md-3 d-flex flex-column align-items-center my-4">
         <h3>
           {{ business.name }}'s
           <span class="text-primary border-bottom border-primary mb-0">Tracked</span>
