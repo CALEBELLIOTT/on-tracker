@@ -95,7 +95,8 @@ export default {
       account: computed(() => AppState.account),
       async createBusiness() {
         try {
-          businessData.location = businessAddress
+          businessData.address = businessAddress
+          console.log(businessData);
           await businessesService.createBusiness(businessData.value)
           await employeesService.createEmployee()
         } catch (error) {
