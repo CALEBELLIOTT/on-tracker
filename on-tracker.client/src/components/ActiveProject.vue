@@ -24,6 +24,9 @@
           <div class="col-md-10 mx-auto pt-3">
             <ProjectProgressBar />
           </div>
+          <div class="text-center pt-4">
+            <h4>Tasks</h4>
+          </div>
           <div class="col-12">
             <Task v-for="t in tasks" :key="t.id" :task="t" />
           </div>

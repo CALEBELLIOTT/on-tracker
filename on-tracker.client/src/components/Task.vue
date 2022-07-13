@@ -1,7 +1,7 @@
 <template>
   <div class="col-12 pt-4">
     <input
-      class="selectable form-control"
+      class="selectable form-control mb-3"
       title="checkbox"
       type="checkbox"
       :checked="task.isCompleted"
@@ -18,11 +18,11 @@
 
     <span
       @click="deleteTask(task._id)"
-      class="mdi mdi-trash-can selectable"
+      class="mdi mdi-trash-can-outline selectable mx-3"
       title="Delete task"
     ></span>
   </div>
-  <div class="px-5 font-grey">
+  <div class="px-5 font-grey border-bottom border-1 border-primary mx-4">
     <span class="px-1"><i class="mdi mdi-clock-outline"></i></span>
     <span>Hours:</span>
     <span
@@ -112,7 +112,7 @@ input[type="checkbox"] {
   font: inherit;
   color: currentColor;
   width: 1.15em;
-  height: 1.15em;
+  height: 1.55em;
   border: 0.15em solid currentColor;
   border-radius: 0.15em;
   transform: translateY(-0.075em);
