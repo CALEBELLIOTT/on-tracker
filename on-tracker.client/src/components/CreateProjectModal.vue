@@ -1,12 +1,19 @@
 <template>
   <!-- Button trigger modal -->
-  <h4
-    class="d-flex align-items-center text-white selectable"
+  <h6
+    class="
+      d-flex
+      align-items-center
+      text-primary
+      mx-4
+      nav nav-custom
+      selectable
+    "
     data-bs-toggle="modal"
     data-bs-target="#exampleModal"
   >
     + New Project
-  </h4>
+  </h6>
 
   <!-- Modal -->
   <div

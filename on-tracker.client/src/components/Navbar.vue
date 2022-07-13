@@ -19,9 +19,11 @@
             alt=""
           />
         </router-link>
+
         <div class="d-flex align-items-center">
+          <CreateProjectModal />
           <router-link :to="{ name: 'EmployeesPage' }">
-            <p class="text-primary mx-4 nav nav-custom">Employees</p>
+            <h6 class="text-primary mx-4 nav nav-custom">Employees</h6>
           </router-link>
 
           <Login class="ms-5"></Login>
