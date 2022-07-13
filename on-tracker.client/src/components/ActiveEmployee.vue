@@ -1,35 +1,41 @@
 <template>
   <div class="container" v-if="employee.id">
     <div class="row">
-      <div class="col-12">
-        <div class="bg-light rounded p-2 my-2">
+      <div class="col-12 ">
+        <div class="bg-light rounded p-2 my-2 shadow">
           <div class="row">
             <div class="col-md-4 text-md-start text-center">
-              <h3 class="my-2">{{ employee.account.name }}</h3>
-              <img class="profile-img" :src="employee.account.picture || employee.account.picture" alt="" />
+              <img class="shadow profile-img m-2" :src="employee.account.picture || employee.account.picture" alt="" />
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
               <div class="d-flex flex-column justify-content-center my-2">
-                <h3>
-                  Certifications: {{ employee.certifications.toString() }}
-                </h3>
-                <h3>Skills: {{ employee.skills }}</h3>
+                <h2 class="my-3 border-bottom border-dark border-2"><b>{{ employee.account.name }}</b></h2>
+
+                <div class="d-flex justify-content-around">
+                  <div class="col-md-2 my-3">
+                    <h3 class="border-bottom border-2 border-dark">Skills: </h3>
+                    <h5>{{ employee.skills }}</h5>
+                  </div>
+
+                  <div class="col-md-4 my-3">
+                    <h3 class="border-bottom border-2 border-dark">Certifications:</h3>
+                    <h5>{{ employee.certifications.toString() }}</h5>
+                  </div>
+                </div>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#teamMemberModal">
-                  Assign Employees
+                  Assign Employee to a Project
                 </button>
               </div>
             </div>
-            <div class="col-md-2">
-              <div class="p-2"></div>
-            </div>
+
           </div>
         </div>
       </div>
     </div>
   </div>
 
+  <div class="border-bottom border-3 border-dark m-4"></div>
 
-  <hr class="text-dark" />
   <!-- Modal -->
   <EmployeeModal />
   <!-- Modal -->
@@ -57,9 +63,13 @@ export default {
 
 <style lang="scss" scoped>
 .profile-img {
-  border-radius: 50%;
-  height: 10rem;
-  width: 10rem;
+  border-radius: 5%;
+  height: 15rem;
+  width: 15rem;
   object-fit: cover;
+}
+
+h3 {
+  color: var(--bs-primary);
 }
 </style>
