@@ -1,27 +1,37 @@
 <template>
-
-  <div class="container-fluid ">
+  <div class="container-fluid">
     <div class="row">
-      <div class="col-12 p-2 d-flex justify-content-between border-primary shadow border-bottom">
+      <div
+        class="
+          col-12
+          p-2
+          d-flex
+          justify-content-between
+          border-primary
+          shadow
+          border-bottom
+          nav-color
+        "
+      >
         <router-link :to="{ name: 'Home' }">
-          <img class="img-fluid logo" src="../assets/img/Ontracker logo OG.png" alt="" />
+          <img
+            class="img-fluid logo"
+            src="../assets/img/Ontracker logo OG.png"
+            alt=""
+          />
         </router-link>
+
         <div class="d-flex align-items-center">
+          <CreateProjectModal />
           <router-link :to="{ name: 'EmployeesPage' }">
-            <p class="text-primary mx-4 nav nav-custom">Employees</p>
+            <h6 class="text-primary mx-4 nav nav-custom">Employees</h6>
           </router-link>
-          <router-link :to="{ name: 'About' }">
-            <p class="text-primary mx-4 nav nav-custom">About</p>
-          </router-link>
+
           <Login class="ms-5"></Login>
         </div>
       </div>
     </div>
   </div>
-
-
-
-
 
   <!-- <router-link class="navbar-brand" :to="{ name: 'Home' }">
       <div class="col-md-6 m-2">
@@ -37,7 +47,6 @@
         <h4>Employees</h4>
       </router-link> -->
   <!-- LOGIN COMPONENT HERE -->
-
 </template>
 
 <script>
@@ -90,5 +99,8 @@ img {
 
 nav {
   background-color: rgb(93, 92, 92);
+}
+.nav-color {
+  background-color: rgb(255, 251, 251);
 }
 </style>

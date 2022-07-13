@@ -29,7 +29,7 @@
     <AvailableEmployeesOffCanvas />
     <!--  -->
 
-    <div class="projects-container">
+    <div class="projects-container mt-2 mb-3">
       <ActiveProject />
     </div>
 
@@ -51,9 +51,7 @@
           >
             <b><em>Notes</em></b>
           </h1>
-          <div class="notes-section m-4 bg-light rounded">
-            <ProjectNotes v-for="n in notes" :key="n.id" :note="n" />
-          </div>
+
           <div class="d-flex justify-content-center">
             <form @submit.prevent="createNote">
               <textarea

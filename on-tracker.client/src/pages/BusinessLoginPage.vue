@@ -1,116 +1,73 @@
 <template>
-  <transition>
-    <div class="container-fluid dark-theme" v-if="!account.businessId">
-      <div
-        class="row d-flex justify-content-center form-row align-items-center"
-      >
-        <div class="col-8">
-          <div
-            class="
+  <div class="container-fluid dark-theme" v-if="!account.businessId">
+    <div class="row d-flex justify-content-center form-row align-items-center">
+      <div class="col-8">
+        <div class="
               form-card
               d-flex
               flex-column
               justify-content-around
               rounded
               p-2
-            "
-          >
-            <form class="" @submit.prevent="createBusiness" action="">
-              <div class="d-flex flex-column align-items-center">
-                <h3 class="text-center">Tell us about your business</h3>
-                <div class="col-md-10 d-flex flex-column">
-                  <div class="inputBox d-flex my-2">
-                    <input
-                      v-model="businessData.name"
-                      required
-                      type="text"
-                      class="border-bottom"
-                    />
-                    <span for="">Name</span>
-                  </div>
-                  <div class="inputBox d-flex my-2">
-                    <input
-                      v-model="businessData.coverImg"
-                      required
-                      type="text"
-                      class="border-bottom"
-                    />
-                    <span for="">Cover Image</span>
-                  </div>
-                  <div class="inputBox d-flex my-2">
-                    <input
-                      v-model="businessData.logo"
-                      required
-                      type="text"
-                      class="border-bottom"
-                    />
-                    <span for="">Logo</span>
-                  </div>
+            ">
+          <form class="" @submit.prevent="createBusiness" action="">
+            <div class="d-flex flex-column align-items-center">
+              <h3 class="text-center">Tell us about your business</h3>
+              <div class="col-md-10 d-flex flex-column">
+                <div class="inputBox d-flex my-2">
+                  <input v-model="businessData.name" required type="text" class="border" />
+                  <span for="">Name</span>
                 </div>
+                <div class="inputBox d-flex my-2">
+                  <input v-model="businessData.coverImg" required type="text" class="border" />
+                  <span for="">Cover Image</span>
+                </div>
+                <div class="inputBox d-flex my-2">
+                  <input v-model="businessData.logo" required type="text" class="border" placeholder="" />
+                  <span for="">Logo</span>
+                </div>
+                <vue-google-autocomplete v-model="businessData.address" id="map" classname="form-control"
+                  placeholder="Business Address" v-on:placechanged="getAddressData">
+                </vue-google-autocomplete>
               </div>
-              <div class="d-flex justify-content-end m-2">
-                <button
-                  type="submit"
-                  class="button-1"
-                  title="Add your Business "
-                >
-                  <h3 class="m-2"><i class="mdi mdi-check"></i></h3>
-                </button>
-              </div>
-            </form>
-          </div>
+            </div>
+            <div class="d-flex justify-content-end m-2">
+              <button type="submit" class="" title="Add your Business ">
+                <h3 class="m-2"><i class="mdi mdi-check"></i></h3>
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-    <div class="container-fluid dark-theme text-light" v-else>
-      <div class="row">
-        <div
-          class="
+  </div>
+  <div class="container-fluid dark-theme text-light" v-else>
+    <div class="row">
+      <div class="
             col-12
             d-flex
             flex-column
             justify-content-center
             align-items-center
-          "
-        >
-          <h4 class="mb-5 mt-2">Tell us about yourself</h4>
-          <form action="" @submit.prevent="editAccountInfo()">
-            <label for="" class="mt-2">Your Name</label>
-            <input
-              v-model="userData.name"
-              type="text"
-              placeholder="Name..."
-              class="form-control mb-2"
-            />
-            <label for="" class="mt-2">Your Picture</label>
-            <input
-              v-model="userData.picture"
-              type="text"
-              placeholder="Img Url..."
-              class="form-control mb-2"
-            />
-            <label for="" class="mt-2">Your Skills</label>
-            <input
-              v-model="userData.skills"
-              type="text"
-              placeholder="Skills..."
-              class="form-control mb-2"
-            />
-            <label for="" class="mt-2">Your Certifications</label>
-            <input
-              v-model="userData.certifications"
-              type="text"
-              placeholder="Certifications..."
-              class="form-control mb-2"
-            />
-            <button type="submit" class="btn btn-light text-end my-4">
-              <i class="mdi mdi-send"></i>
-            </button>
-          </form>
-        </div>
+          ">
+        <h4 class="mb-5 mt-2">Tell us about yourself</h4>
+        <form action="" @submit.prevent="editAccountInfo()">
+          <label for="" class="mt-2">Your Name</label>
+          <input v-model="userData.name" type="text" placeholder="Name..." class="form-control mb-2" />
+          <label for="" class="mt-2">Your Picture</label>
+          <input v-model="userData.picture" type="text" placeholder="Img Url..." class="form-control mb-2" />
+          <label for="" class="mt-2">Your Skills</label>
+          <input v-model="userData.skills" type="text" placeholder="Skills..." class="form-control mb-2" />
+          <label for="" class="mt-2">Your Certifications</label>
+          <input v-model="userData.certifications" type="text" placeholder="Certifications..."
+            class="form-control mb-2" />
+          <button type="submit" class="btn btn-light text-end my-4">
+            <i class="mdi mdi-send"></i>
+          </button>
+        </form>
       </div>
     </div>
-  </transition>
+  </div>
 </template>
 
 
@@ -122,17 +79,23 @@ import { accountService } from "../services/AccountService"
 import { businessesService } from "../services/BusinessesService"
 import { employeesService } from "../services/EmployeesService"
 import Pop from "../utils/Pop"
+import VueGoogleAutocomplete from "vue-google-autocomplete";
 
 export default {
+  components: {
+    VueGoogleAutocomplete
+  },
   setup() {
     let businessData = ref({})
     let userData = ref({})
+    let businessAddress = {}
     return {
       businessData,
       userData,
       account: computed(() => AppState.account),
       async createBusiness() {
         try {
+          businessData.location = businessAddress
           await businessesService.createBusiness(businessData.value)
           await employeesService.createEmployee()
         } catch (error) {
@@ -151,6 +114,10 @@ export default {
           Pop.toast(error.message, "error")
           console.error(error)
         }
+      },
+      getAddressData(data) {
+        businessAddress = data
+        console.log(businessAddress);
       }
     }
   }
@@ -183,13 +150,16 @@ export default {
 input:invalid {
   animation: shake 300ms;
 }
+
 @keyframes shake {
   25% {
     transform: translateX(4px);
   }
+
   50% {
     transform: translateX(-4px);
   }
+
   75% {
     transform: translateX(4px);
   }
@@ -218,8 +188,8 @@ input:invalid {
   transition: 0.5s;
 }
 
-.inputBox input:valid ~ span,
-.inputBox input:focus ~ span {
+.inputBox input:valid~span,
+.inputBox input:focus~span {
   color: orange;
   transform: translateX(10px) translateY(-7px);
   font-size: 0.7em;
@@ -230,8 +200,8 @@ input:invalid {
   letter-spacing: 0.2em;
 }
 
-.inputBox input:valid ~ span,
-.inputBox input:focus ~ span {
+.inputBox input:valid~span,
+.inputBox input:focus~span {
   background: orange;
   color: black;
   border-radius: 3px;

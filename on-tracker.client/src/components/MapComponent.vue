@@ -8,7 +8,7 @@ import mapboxgl from "mapbox-gl";
 export default {
   name: "BaseMap",
   data() {
-    
+
     return {
       accessToken: "pk.eyJ1Ijoic2tld2VyNDkwIiwiYSI6ImNsNHhhZnp3bTBjNWIzYnBwMGVnd2Frc28ifQ.HLbBCBYU_1Piw91ExBGBjA",
     };
@@ -16,7 +16,7 @@ export default {
   mounted() {
     mapboxgl.accessToken = this.accessToken;
 
-    let map =  new mapboxgl.Map({
+    let map = new mapboxgl.Map({
       container: "mapContainer",
       style: "mapbox://styles/mapbox/streets-v11",
       center: [-116.215019, 43.618881],
@@ -26,6 +26,15 @@ export default {
       //   [-116.215019, 42.618881],
       // ],
     });
+    //first attempt at a marker loader, need array of locations
+    function addMarker([projectLocations]) {
+      projectLocations.forEach(pL => {
+        new mapboxgl.Marker()
+          .setLngLat([pL.longitude, pL.latitude])
+          .addTo(map);
+      });
+    }
+
     const marker = new mapboxgl.Marker()
       .setLngLat([-116.215019, 43.618881])
       .addTo(map);
@@ -36,18 +45,22 @@ export default {
         mapboxgl: mapboxgl
       })
     );
-        const nav = new mapboxgl.NavigationControl();
-        map.addControl(nav, "top-right");
-  }}
+    const nav = new mapboxgl.NavigationControl();
+    map.addControl(nav, "top-right");
+  }
+}
 
 </script>
 <style scoped>
 .basemap {
   width: 100%;
-  height: 100%;
+  height: 50vh;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
 }
 .marker {
-  background-image: url('mapbox-icon.png');
+  background-image: url("mapbox-icon.png");
   background-size: cover;
   width: 50px;
   height: 50px;

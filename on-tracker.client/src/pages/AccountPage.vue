@@ -13,10 +13,6 @@
                 <h5 class="user-name">{{ account.name }}</h5>
                 <h6 class="user-email">{{ account.email }}</h6>
               </div>
-              <div class="about">
-                <h5>About</h5>
-                <p>{{ account.description }}</p>
-              </div>
             </div>
           </div>
         </div>
@@ -187,18 +183,17 @@
       </div>
       <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
         <div class="card-2 h-100 elevation-3">
-          <div class="card-body">
+          <div
+            class="card-body bg-img rounded-top"
+            :style="`background-image: url(${activeBusiness.coverImg})`"
+          >
             <div class="account-settings">
               <div class="user-profile">
                 <div class="user-avatar">
-                  <img :src="account.picture" :alt="account.name" />
+                  <img :src="activeBusiness.logo" :alt="account.name" />
                 </div>
-                <h5 class="user-name">{{ account.name }}</h5>
+                <h5 class="user-name">{{ activeBusiness.name }}</h5>
                 <h6 class="user-email">{{ account.email }}</h6>
-              </div>
-              <div class="about">
-                <h5>About</h5>
-                <p>{{ account.description }}</p>
               </div>
             </div>
           </div>
@@ -243,7 +238,8 @@ export default {
           Pop.toast(error.message)
         }
       },
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+      activeBusiness: computed(() => AppState.activeBusiness)
     }
   }
 }
@@ -330,5 +326,11 @@ body {
 .button-1:active {
   transform: translateY(4px) translateX(2px);
   box-shadow: rgb(26, 18, 4) 0px 0px 0px;
+}
+.bg-img {
+  height: 9vh;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--bs-primary);
 }
 </style>
