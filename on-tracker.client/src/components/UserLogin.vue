@@ -1,11 +1,11 @@
 <template>
   <div class="container-fluid ">
     <div class="row">
-      <div class="col-12 p-2 d-flex justify-content-between border-primary shadow border-bottom">
+      <div class="col-md-12 p-2 d-flex justify-content-between border-primary shadow border-bottom">
         <img class="img-fluid login-logo p-2" src="../assets/img/Ontracker logo OG.png" alt="" />
         <button class="btn btn-outline-primary p-0 px-4 h-50 align-self-center" @click="launchLogin">login</button>
       </div>
-      <div class="col-12 hero-img d-flex flex-column justify-content-center text-muted border-primary border-bottom">
+      <div class="col-md-12 hero-img d-flex flex-column justify-content-center text-muted border-primary border-bottom">
         <div class="text-center">
           <h1>Plan With Confidence</h1>
           <h2>Execute With Efficiency</h2>
@@ -39,27 +39,27 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-12 d-flex justify-content-center">
+      <div class="col-md-12 d-flex justify-content-center">
         <h3 class="text-primary">Don't take our word for it...</h3>
       </div>
       <div class="col-md-4">
         <div>
           <div id="carouselExampleInterval" class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner">
+            <div class="carousel-inner ">
               <div class="carousel-item active" data-bs-interval="3000">
                 <img
                   src="https://images.unsplash.com/photo-1581141849291-1125c7b692b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=733&q=80"
-                  class="d-block w-100" alt="...">
+                  class="d-block w-100 user-picture" alt="...">
               </div>
               <div class="carousel-item" data-bs-interval="3000">
                 <img
                   src="https://images.unsplash.com/photo-1597476817120-9b82cef5ce82?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
-                  class="d-block w-100" alt="...">
+                  class="d-block w-100 user-picture" alt="...">
               </div>
               <div class="carousel-item">
                 <img
                   src="https://images.unsplash.com/photo-1621905252472-943afaa20e20?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1976&q=80"
-                  class="d-block w-100" alt="...">
+                  class="d-block w-100 user-picture" alt="...">
               </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
@@ -92,10 +92,10 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-12 d-flex justify-content-center mt-3">
+      <div class="col-md-12 d-flex justify-content-center mt-3">
         <h3 class="text-primary">Join Our Family of Supported Businesses</h3>
       </div>
-      <div class="col-12">
+      <div class="col-md-12">
         <div class="businesses-container p-2 m-3 bg-primary rounded">
           <!-- NOTE mobile views -->
           <img v-if="businesses.length <= 3" v-for="b in businesses" :key="b.id" :src="b.logo" alt="" class="d-md-none">
@@ -194,23 +194,23 @@ export default {
   object-position: left;
 }
 
-// TODO make these colors variables once you figure out how
+
 .user-quote p::before {
   content: open-quote;
-  color: #f27648;
+  color: var(--bs-primary);
   font-size: 2rem;
 }
 
 .user-quote p::after {
   content: close-quote;
-  color: #f27648;
+  color: var(--bs-primary);
   font-size: 2rem;
 }
 
 .user-quote .position {
   font-size: .75rem;
   margin-left: 1rem;
-  color: #f27648;
+  color: var(--bs-primary);
 }
 
 .businesses-container img {
@@ -221,6 +221,21 @@ export default {
 }
 
 
+.user-picture {
+  float: left;
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+}
+
+@media(min-width: 769px) {
+  .user-picture {
+    float: left;
+    width: 700px;
+    height: 700px;
+    object-fit: cover;
+  }
+}
 
 .login-logo {
   height: 4rem;

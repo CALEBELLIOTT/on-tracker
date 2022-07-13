@@ -1,29 +1,39 @@
 <template>
-  <div class="col-12 text-center">
-    <div class="row pt-5">
-      <div class="col-md-10 mx-auto grey-card p-5 rounded">
-        <div>{{ project.description }}</div>
+  <div class="row px-5 pt-4 pb-3">
+    <div class="col-12 border border-primary border-1 rounded-top">
+      <div class="row">
+        <div class="col-md-12 bg-white p-4">
+          <div>{{ project.description }}</div>
+        </div>
+        <span class="d-flex justify-content-end">
+          <TaskOffCanvas />
+        </span>
       </div>
-      <span class="d-flex justify-content-end">
-        <TaskOffCanvas />
-      </span>
-    </div>
-    <div class="col-12">
-      <div class="row p-5">
-        <vue-horizontal responsive>
-          <div class="col-md-12 bg-white elevation-4 py-4 rounded" v-for="img in project.jobSiteImgs" :key="img">
-            <!-- NOTE create method to iterate through images -->
-            <img class="img-fluid" :src="img" alt="" />
+      <div class="col-12">
+        <div class="row">
+          <vue-horizontal responsive class="p-0">
+            <div
+              class="col-md-12"
+              v-for="img in project.jobSiteImgs"
+              :key="img"
+            >
+              <!-- NOTE create method to iterate through images -->
+              <img class="img-fluid project-img" :src="img" alt="" />
+            </div>
+          </vue-horizontal>
+          <div class="col-md-10 mx-auto pt-3">
+            <ProjectProgressBar />
           </div>
-        </vue-horizontal>
-        <div class="col-md-10 mx-auto pt-3">
-          <ProjectProgressBar />
-
+          <div class="text-center pt-4">
+            <h4>Tasks</h4>
+          </div>
+          <div class="col-12">
+            <Task v-for="t in tasks" :key="t.id" :task="t" />
+          </div>
         </div>
       </div>
     </div>
   </div>
-
   <!-- OFFCANVAS -->
 </template>
 
@@ -37,7 +47,8 @@ export default {
   props: { project: { type: Object, required: true } },
   setup() {
     return {
-      project: computed(() => AppState.activeProject)
+      project: computed(() => AppState.activeProject),
+      tasks: computed(() => AppState.projectTasks)
     }
   }
 }
@@ -45,4 +56,8 @@ export default {
 
 
 <style lang="scss" scoped>
+.project-img {
+  height: 500px;
+  width: 10500px;
+}
 </style>
