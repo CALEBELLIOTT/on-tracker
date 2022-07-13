@@ -8,6 +8,7 @@ import mapboxgl from "mapbox-gl";
 export default {
   name: "BaseMap",
   data() {
+    
     return {
       accessToken: "pk.eyJ1Ijoic2tld2VyNDkwIiwiYSI6ImNsNHhhZnp3bTBjNWIzYnBwMGVnd2Frc28ifQ.HLbBCBYU_1Piw91ExBGBjA",
     };
@@ -15,16 +16,18 @@ export default {
   mounted() {
     mapboxgl.accessToken = this.accessToken;
 
-    new mapboxgl.Map({
+    let map =  new mapboxgl.Map({
       container: "mapContainer",
       style: "mapbox://styles/mapbox/streets-v11",
       center: [-116.215019, 43.618881],
-      zoom: 12,
+      zoom: 13,
       // maxBounds: [
       //   [-117.215019, 43.618881],
       //   [-116.215019, 42.618881],
       // ],
     });
+    const nav = new mapboxgl.NavigationControl();
+    map.addControl(nav, "top-right");
   },
 };
 </script>
