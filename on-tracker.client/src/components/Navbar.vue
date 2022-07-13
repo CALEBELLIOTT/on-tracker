@@ -10,6 +10,7 @@
           border-primary
           shadow
           border-bottom
+          nav-color
         "
       >
         <router-link :to="{ name: 'Home' }">
@@ -96,5 +97,8 @@ img {
 
 nav {
   background-color: rgb(93, 92, 92);
+}
+.nav-color {
+  background-color: rgb(255, 251, 251);
 }
 </style>

@@ -27,7 +27,7 @@ export default {
       // ],
     });
     //first attempt at a marker loader, need array of locations
-    function addMarker([projectLocations]){
+    function addMarker([projectLocations]) {
       projectLocations.forEach(pL => {
         new mapboxgl.Marker()
           .setLngLat([pL.longitude, pL.latitude])
@@ -55,6 +55,9 @@ export default {
 .basemap {
   width: 100%;
   height: 50vh;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
 }
 .marker {
   background-image: url("mapbox-icon.png");

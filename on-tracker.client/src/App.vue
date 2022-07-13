@@ -1,5 +1,5 @@
 <template>
-  <main class="">
+  <main class="white-background">
     <router-view />
   </main>
 </template>
@@ -33,5 +33,8 @@ export default {
 
 .grey-card {
   background-color: #9a9a9a;
+}
+.white-background {
+  background-color: #ffffff;
 }
 </style>
