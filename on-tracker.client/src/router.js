@@ -47,8 +47,14 @@ const routes = [
     name: 'Account',
     component: loadPage('AccountPage'),
     beforeEnter: authGuard
-    // May need auth guard on more pages
-  }
+  },
+  {
+    path: '/createProject',
+    name: 'CreateProject',
+    component: loadPage('CreateProjectPage'),
+    beforeEnter: authGuard
+  },
+
 ]
 
 export const router = createRouter({
