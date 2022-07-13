@@ -26,6 +26,15 @@ export default {
       //   [-116.215019, 42.618881],
       // ],
     });
+    //first attempt at a marker loader, need array of locations
+    function addMarker([projectLocations]){
+      projectLocations.forEach(pL => {
+        new mapboxgl.Marker()
+          .setLngLat([pL.longitude, pL.latitude])
+          .addTo(map);
+      });
+    }
+
     const marker = new mapboxgl.Marker()
       .setLngLat([-116.215019, 43.618881])
       .addTo(map);
