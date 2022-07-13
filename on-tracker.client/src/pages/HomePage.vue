@@ -4,16 +4,22 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-6 mb-5 d-flex align-items-center">
-        <h1 class=" mt-5 text-center text-md-start me-2"><span class="text-primary">OnTracker</span> for {{
-            business.name
-        }}</h1>
-        <img :src="business.logo" class="img-fluid business-logo" alt="">
+      <div class="col-md-6 mb-5 ">
+        <div class="d-flex align-items-center justify-content-center justify-content-md-start">
+          <h1 class=" mt-5 text-center text-md-start me-2"><span class="text-primary">OnTracker</span> for {{
+              business.name
+          }}<span class="sup">&reg;</span></h1>
+          <img :src="business.logo" class="img-fluid business-logo" alt="">
+        </div>
+        <p class="text-muted text-center">A space for your company and its employees to collaborate, coordinate, and
+          tackle
+          challenges. What will you get done with OnTracker?</p>
+        <div class="divider-line"></div>
       </div>
 
 
       <div class="col-12">
-        <p class="m-0">Utilize our map to keep track of where your company's projects are located</p>
+        <p class="m-0 text-muted">{{ business.name }}'s project locations</p>
         <div v-if="account.id" class="d-flex justify-content-center">
           <img class="img-fluid" src="https://www.s-lec.eu/wp-content/uploads/map.jpg" alt="" />
         </div>
@@ -85,6 +91,18 @@ export default {
 
 
 <style lang="scss" scoped>
+.sup {
+  font-size: 1rem;
+  vertical-align: super;
+}
+
+.divider-line {
+  height: 2px;
+  background-color: #f27648;
+  width: 50%;
+  margin: auto;
+}
+
 .business-logo {
   height: 4rem;
   width: 4rem;
