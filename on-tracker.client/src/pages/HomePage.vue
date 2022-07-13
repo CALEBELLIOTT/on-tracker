@@ -4,8 +4,8 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-6 mb-5 ">
-        <div class="d-flex align-items-center justify-content-center justify-content-md-start">
+      <div class="col-md-12 mb-5 ">
+        <div class="d-flex align-items-center justify-content-center ">
           <h1 class=" mt-5 text-center text-md-start me-2"><span class="text-primary">OnTracker</span> for {{
               business.name
           }}<span class="sup">&reg;</span></h1>
@@ -13,23 +13,30 @@
         </div>
         <p class="text-muted text-center">A space for your company and its employees to collaborate, coordinate, and
           tackle
-          challenges. What will you get done with OnTracker?</p>
+          challenges.</p>
         <div class="divider-line"></div>
       </div>
+      <!-- <div class="col-6"></div> -->
 
 
-      <div class="col-12">
-        <p class="m-0 text-muted">{{ business.name }}'s project locations</p>
-        <div v-if="account.id" class="d-flex justify-content-center">
-          <img class="img-fluid" src="https://www.s-lec.eu/wp-content/uploads/map.jpg" alt="" />
+      <div class="col-md-4 d-flex flex-column align-items-center my-4">
+        <h3>{{ business.name }}'s <span class="text-primary border-bottom border-primary mb-0">Tracked</span> projects
+        </h3>
+        <div class="projects-container">
+          <Project v-for="p in projects" :key="p.id" :project="p" class="mx-4" />
         </div>
+      </div>
+
+      <div class="col-md-8 my-4">
+        <p class="m-0 text-muted">{{ business.name }}'s project locations</p>
+        <img class="map-img img-fluid" src="https://www.s-lec.eu/wp-content/uploads/map.jpg" alt="" />
       </div>
     </div>
 
-    <div class="col-md-12 d-flex justify-content-center">
+    <!-- <div class="col-md-12 d-flex justify-content-center">
       <div class="col-md-10 border-bottom border-warning border-3 my-3" v-if="account.id"></div>
     </div>
-    <!-- <hr class="text-light" v-if="account.id"> -->
+
 
     <h1 class="text-danger text-center" v-if="account.id">Critical</h1>
     <div class="container justify-content-evenly p-5" v-if="account.id">
@@ -48,9 +55,8 @@
           <Project v-for="p in projects" :key="p.id" :project="p" class="mx-4" />
         </vue-horizontal>
       </div>
-    </div>
+    </div> -->
 
-    <!-- </div> -->
   </div>
 
 </template>
@@ -101,6 +107,31 @@ export default {
   background-color: #f27648;
   width: 50%;
   margin: auto;
+}
+
+.projects-container {
+  max-height: 75vh;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.projects-container::-webkit-scrollbar {
+  width: .5rem;
+}
+
+.projects-container::-webkit-scrollbar-thumb {
+  background-color: #f27648;
+  border-radius: 5px;
+}
+
+.projects-container::-webkit-scrollbar-track {
+  background-color: #e9ecef;
+  border-radius: 5px;
+}
+
+.map-img {
+  object-position: center;
+  object-fit: cover;
 }
 
 .business-logo {
