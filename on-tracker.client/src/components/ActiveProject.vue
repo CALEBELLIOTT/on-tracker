@@ -29,16 +29,9 @@
               <img class="img-fluid project-img" :src="img" alt="" />
             </div>
           </vue-horizontal>
-          <div class="col-md-10 mx-auto pt-3">
+          <div class="col-md-10 mx-auto pt-3 pb-3">
             <ProjectProgressBar />
           </div>
-          <div class="text-center pt-4">
-            <h4>Notes</h4>
-          </div>
-          <div class="col-12 bg-white">
-            <ProjectNotes v-for="n in notes" :key="n.id" :note="n" />
-          </div>
-          <div class="col-12"><input class="col-12 p-2" type="text" /></div>
         </div>
       </div>
     </div>

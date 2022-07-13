@@ -1,27 +1,27 @@
 <template>
   <navbar />
 
-  <div class="container-fluid">
+  <div class="container-fluid position-relative">
     <div class="mt-3 me-0">
       <button
-        class="btn btn-primary"
+        class="btn btn-primary cool-button"
         type="button"
         data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasRight"
         aria-controls="offcanvasRight"
       >
-        Tasks
+        <b>T</b>
       </button>
     </div>
     <div>
       <button
-        class="btn btn-primary mt-2"
+        class="btn btn-primary cool-button2"
         type="button"
         data-bs-toggle="offcanvas"
         data-bs-target="#availableEmployees"
         aria-controls="offcanvasRight"
       >
-        Available Employees
+        <i class="mdi mdi-account-multiple-plus-outline fs-5 px-2"></i>
       </button>
     </div>
 
@@ -29,17 +29,17 @@
     <AvailableEmployeesOffCanvas />
     <!--  -->
 
-    <div class="projects-container mt-2 mb-3">
+    <div class="mt-2 mb-3 mx-4">
       <ActiveProject />
     </div>
 
     <!-- Note Component -->
-    <div class="row align-items-center flex-column">
+    <div class="row align-items-center flex-column mx-5">
       <div
         class="
-          col-md-10
-          grey-card
-          elevation-2
+          col-md-12
+          bg-white
+          elevation-4
           rounded
           d-flex
           justify-content-center
@@ -63,14 +63,14 @@
                 rows="1"
                 v-model="noteData.body"
               ></textarea>
-              <div class="d-flex justify-content-center mt-2">
+              <span class="d-flex justify-content-center mt-2">
                 <button
                   class="btn btn-dark text-light rounded mb-3"
                   type="submit"
                 >
                   Submit
                 </button>
-              </div>
+              </span>
             </form>
           </div>
         </div>
@@ -155,11 +155,6 @@ export default {
 
 
 <style lang="scss" scoped>
-.projects-container {
-  max-height: 80vh;
-  overflow: scroll;
-  overflow-x: hidden;
-}
 .small-profile-img {
   width: 60px;
   height: 60px;
@@ -192,5 +187,24 @@ export default {
   height: 12vh;
   overflow-y: scroll;
   // background-color: white;
+}
+
+.cool-button {
+  border-radius: 5%;
+  position: absolute;
+
+  left: 0em;
+  z-index: 2;
+  margin-bottom: 0.2em;
+  width: 60px;
+}
+
+.cool-button2 {
+  border-radius: 5%;
+  position: absolute;
+  left: 0em;
+  top: 2.5em;
+  z-index: 2;
+  width: 60px;
 }
 </style>
