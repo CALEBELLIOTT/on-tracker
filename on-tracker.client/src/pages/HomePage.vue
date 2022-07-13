@@ -4,8 +4,8 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-6 mb-5 ">
-        <div class="d-flex align-items-center justify-content-center justify-content-md-start">
+      <div class="col-md-12 mb-5 ">
+        <div class="d-flex align-items-center justify-content-center ">
           <h1 class=" mt-5 text-center text-md-start me-2"><span class="text-primary">OnTracker</span> for {{
               business.name
           }}<span class="sup">&reg;</span></h1>
@@ -13,23 +13,22 @@
         </div>
         <p class="text-muted text-center">A space for your company and its employees to collaborate, coordinate, and
           tackle
-          challenges. What will you get done with OnTracker?</p>
+          challenges.</p>
         <div class="divider-line"></div>
       </div>
-      <div class="col-6"></div>
+      <!-- <div class="col-6"></div> -->
 
 
-      <div class="col-4">
-        <div class="projects-container scrollbar-primary">
+      <div class="col-md-4 d-flex flex-column align-items-center mt-4">
+        <h3><u>{{ business.name }}'s current projects</u></h3>
+        <div class="projects-container">
           <Project v-for="p in projects" :key="p.id" :project="p" class="mx-4" />
         </div>
       </div>
 
-      <div class="col-12">
+      <div class="col-md-8 mt-4">
         <p class="m-0 text-muted">{{ business.name }}'s project locations</p>
-        <div v-if="account.id" class="d-flex justify-content-center">
-          <img class="img-fluid" src="https://www.s-lec.eu/wp-content/uploads/map.jpg" alt="" />
-        </div>
+        <img class="map-img img-fluid" src="https://www.s-lec.eu/wp-content/uploads/map.jpg" alt="" />
       </div>
     </div>
 
@@ -113,6 +112,7 @@ export default {
 .projects-container {
   max-height: 75vh;
   overflow: scroll;
+  overflow-x: hidden;
 }
 
 .projects-container::-webkit-scrollbar {
@@ -126,6 +126,12 @@ export default {
 
 .projects-container::-webkit-scrollbar-track {
   background-color: #e9ecef;
+  border-radius: 5px;
+}
+
+.map-img {
+  object-position: center;
+  object-fit: cover;
 }
 
 .business-logo {

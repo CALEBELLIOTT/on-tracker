@@ -1,6 +1,5 @@
 <template>
-  <div
-    class="
+  <div class="
       col-4
       selection-card
       project-img
@@ -9,22 +8,19 @@
       selectable
       justify-content-end
       text-center
-    "
-    @click="goToProjectPage"
-    :style="`background-image: url(${project.coverImg})`"
-  >
+    " @click="goToProjectPage" :style="`background-image: url(${project.coverImg})`">
     <div class="happy">
       <h1>
         {{ project.projectName }}
       </h1>
       <h3>
         {{
-          new Date(project.dueDate).toLocaleDateString("en-us", {
-            weekday: "long",
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-          })
+            new Date(project.dueDate).toLocaleDateString("en-us", {
+              weekday: "long",
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            })
         }}
       </h3>
     </div>
@@ -64,9 +60,10 @@ export default {
 .happy {
   background-color: rgba(128, 128, 128, 0.639);
 }
+
 .project-img {
   height: 250px;
-  width: 30%;
+  width: 90%;
   background-position: center;
   background-size: cover;
 }
