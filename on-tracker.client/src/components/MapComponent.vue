@@ -26,10 +26,20 @@ export default {
       //   [-116.215019, 42.618881],
       // ],
     });
-    const nav = new mapboxgl.NavigationControl();
-    map.addControl(nav, "top-right");
-  },
-};
+    const marker = new mapboxgl.Marker()
+      .setLngLat([-116.215019, 43.618881])
+      .addTo(map);
+
+    map.addControl(
+      new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: mapboxgl
+      })
+    );
+        const nav = new mapboxgl.NavigationControl();
+        map.addControl(nav, "top-right");
+  }}
+
 </script>
 <style scoped>
 .basemap {
