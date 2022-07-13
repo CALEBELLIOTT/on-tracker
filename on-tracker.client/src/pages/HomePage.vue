@@ -23,28 +23,18 @@
       <div class="col-md-4 d-flex flex-column align-items-center my-4">
         <h3>
           {{ business.name }}'s
-          <span class="text-primary border-bottom border-primary mb-0"
-            >Tracked</span
-          >
+          <span class="text-primary border-bottom border-primary mb-0">Tracked</span>
           projects
         </h3>
         <div class="projects-container">
-          <Project
-            v-for="p in projects"
-            :key="p.id"
-            :project="p"
-            class="mx-4"
-          />
+          <Project v-for="p in projects" :key="p.id" :project="p" class="mx-4" />
         </div>
       </div>
 
       <div class="col-md-8 my-4">
         <p class="m-0 text-muted">{{ business.name }}'s project locations</p>
-        <img
-          class="map-img img-fluid elevation-3 rounded"
-          src="https://www.s-lec.eu/wp-content/uploads/map.jpg"
-          alt=""
-        />
+        <img class="map-img img-fluid elevation-3 rounded" src="https://www.s-lec.eu/wp-content/uploads/map.jpg"
+          alt="" />
       </div>
     </div>
 
@@ -123,7 +113,7 @@ export default {
 }
 
 .projects-container {
-  max-height: 75vh;
+  max-height: 50vh;
   overflow: scroll;
   overflow-x: hidden;
 }
