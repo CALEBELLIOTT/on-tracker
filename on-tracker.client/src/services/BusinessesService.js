@@ -13,6 +13,13 @@ class BusinessesService {
     AppState.allBusinesses = res.data
   }
 
+  async setActiveBusiness(id) {
+    const res = await api.get('api/' + id + 'businesses')
+    console.log('SET ACTIVE BUSINESS');
+    console.log(res.data);
+    AppState.activeBusiness = res.data
+  }
+
   async createBusiness(data) {
     if (!AppState.account.businessId) {
       let res = await api.post('api/businesses', data)
