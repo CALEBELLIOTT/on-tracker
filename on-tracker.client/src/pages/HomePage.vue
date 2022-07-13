@@ -4,17 +4,17 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-12 mb-5">
+      <div class="col-md-12 mb-5 my-5">
         <div class="d-flex align-items-center justify-content-center">
-          <h1 class="mt-5 text-center text-md-start me-2">
+          <h1 class="text-center text-md-start me-2 my-0">
             <span class="text-primary">OnTracker</span> for {{ business.name
             }}<span class="sup">&reg;</span>
           </h1>
           <img :src="business.logo" class="img-fluid business-logo" alt="" />
         </div>
         <p class="text-muted text-center">
-          A space for your company and its employees to collaborate, coordinate,
-          and tackle challenges.
+          A space for your company and employees to collaborate, coordinate, and
+          tackle challenges.
         </p>
         <div class="divider-line"></div>
       </div>
@@ -148,8 +148,8 @@ export default {
 }
 
 .business-logo {
-  height: 4rem;
-  width: 4rem;
+  height: 3rem;
+  width: 3rem;
   object-fit: cover;
   border-radius: 50%;
 }

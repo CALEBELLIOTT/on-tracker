@@ -1,8 +1,10 @@
 <template>
-  <div class="container-fluid d-flex justify-content-around dark-theme">
+  <div class="container-fluid d-flex justify-content-around page-container">
     <div class="row mt-5">
-      <div class="col-12 text-center text-light">
-        <h4>We've noticed you're new here</h4>
+      <div class="col-12 text-center">
+        <h1>Welcome to <span class="text-primary">OnTracker<span class="sup">&reg;</span></span></h1>
+        <div class="divider-line"></div>
+        <h4 class="mt-2">We've noticed you're new here</h4>
         <h4>Choose your account type</h4>
       </div>
     </div>
@@ -61,8 +63,19 @@ export default {
 
 
 <style lang="scss" scoped>
-.dark-theme {
-  background-color: rgba(37, 36, 36, 1);
+.sup {
+  vertical-align: super;
+  font-size: 1rem;
+}
+
+.divider-line {
+  height: 2px;
+  background-color: #f27648;
+  width: 50%;
+  margin: auto;
+}
+
+.page-container {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -71,14 +84,14 @@ export default {
 
 .selection-card {
   height: 30vh;
-  transition: 500ms;
-  border: solid 4px rgba(37, 36, 36, 1);
+  transition: 300ms;
+  border: solid 2px rgba(37, 36, 36, 1);
 }
 
 .selection-card:hover {
   cursor: pointer;
-  transform: scale(1.1);
-  transition: 500ms;
-  border: solid 4px rgb(255, 132, 73);
+  transform: scale(1.01);
+  transition: 300ms;
+  border: solid 2px rgb(255, 132, 73);
 }
 </style>
