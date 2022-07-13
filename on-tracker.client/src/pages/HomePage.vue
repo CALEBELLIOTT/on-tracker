@@ -3,7 +3,10 @@
   <UserLogin v-if="!account.id" />
 
   <div class="container-fluid" v-if="account.id">
-    <div class="row">
+    <div
+      class="row bg-img"
+      :style="`background-image: url(${business.coverImg})`"
+    >
       <div class="col-md-12 mb-5 my-5">
         <div class="d-flex align-items-center justify-content-center">
           <h1 class="text-center text-md-start me-2 my-0">
@@ -23,17 +26,24 @@
       <div class="col-md-3 d-flex flex-column align-items-center my-4">
         <h3>
           {{ business.name }}'s
-          <span class="text-primary border-bottom border-primary mb-0">Tracked</span>
+          <span class="text-primary border-bottom border-primary mb-0"
+            >Tracked</span
+          >
           projects
         </h3>
         <div class="projects-container">
-          <Project v-for="p in projects" :key="p.id" :project="p" class="mx-4" />
+          <Project
+            v-for="p in projects"
+            :key="p.id"
+            :project="p"
+            class="mx-4"
+          />
         </div>
       </div>
 
       <div class="col-md-8 my-4">
         <p class="m-0 text-muted">{{ business.name }}'s project locations</p>
-        <MapComponent/>
+        <MapComponent />
       </div>
     </div>
 
@@ -154,5 +164,16 @@ img {
 
 .text-orange {
   color: orange;
+}
+
+.bg-img {
+  height: 20vh;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--bs-primary);
+}
+
+.blur {
+  backdrop-filter: blur(10px);
 }
 </style>
