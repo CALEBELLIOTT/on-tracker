@@ -1,79 +1,50 @@
 <template>
   <transition>
-    <div
-      class="container-fluid dark-theme text-light"
-      v-if="!account.businessId"
-    >
+    <div class="container-fluid" v-if="!account.businessId">
       <div class="row">
-        <div
-          class="
+        <div class="
             col-12
             d-flex
             flex-column
             justify-content-center
             align-items-center
-          "
-        >
-          <h4 class="mb-5 mt-2">Select Your Workplace</h4>
+          ">
+          <h2 class="mb-5 mt-5">Select Your Workplace</h2>
+          <div class="divider-line"></div>
 
           <!-- WHeel spin -->
 
           <div class="business-list mt-5">
-            <h4
-              class="text-light text-center business"
-              v-for="b in businesses"
-              :key="b.id"
-              :business="b"
-              @click="assignBusiness(b.id)"
-            >
+            <h4 class=" text-center business" v-for="b in businesses" :key="b.id" :business="b"
+              @click="assignBusiness(b.id)">
               {{ b.name }}
             </h4>
           </div>
         </div>
       </div>
     </div>
-    <div class="container-fluid dark-theme text-light" v-else>
+    <div class="container-fluid " v-else>
       <div class="row">
-        <div
-          class="
+        <div class="
             col-12
             d-flex
             flex-column
             justify-content-center
             align-items-center
-          "
-        >
-          <h4 class="mb-5 mt-2">Tell us about yourself</h4>
-          <form action="" @submit.prevent="editAccountInfo()">
+          ">
+          <h4 class="my-5">Tell us about yourself</h4>
+          <div class="divider-line"></div>
+          <form class="mt-3" action="" @submit.prevent="editAccountInfo()">
             <label for="" class="mt-2">Your Name</label>
-            <input
-              v-model="userData.name"
-              type="text"
-              placeholder="Name..."
-              class="form-control mb-2"
-            />
+            <input v-model="userData.name" type="text" placeholder="Name..." class="form-control mb-2" />
             <label for="" class="mt-2">Your Picture</label>
-            <input
-              v-model="userData.picture"
-              type="text"
-              placeholder="Img Url..."
-              class="form-control mb-2"
-            />
+            <input v-model="userData.picture" type="text" placeholder="Img Url..." class="form-control mb-2" />
             <label for="" class="mt-2">Your Skills</label>
-            <input
-              v-model="userData.skills"
-              type="text"
-              placeholder="Skills..."
-              class="form-control mb-2"
-            />
+            <input v-model="userData.skills" type="text" placeholder="Skills..." class="form-control mb-2" />
             <label for="" class="mt-2">Your Certifications</label>
-            <input
-              v-model="userData.certifications"
-              type="text"
-              placeholder="Certifications..."
-              class="form-control mb-2"
-            />
-            <button type="submit" class="btn btn-light text-end my-4">
+            <input v-model="userData.certifications" type="text" placeholder="Certifications..."
+              class="form-control mb-2" />
+            <button type="submit" class="btn btn-outline-primary text-end my-4">
               <i class="mdi mdi-send"></i>
             </button>
           </form>
@@ -140,9 +111,32 @@ export default {
 
 
 <style lang="scss" scoped>
+.divider-line {
+  height: 2px;
+  background-color: #f27648;
+  width: 50%;
+  margin: auto;
+}
+
 .business-list {
-  height: 25vh;
+  max-height: 45vh;
   transition: 500ms;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.business-list::-webkit-scrollbar {
+  width: .5rem;
+}
+
+.business-list::-webkit-scrollbar-thumb {
+  background-color: #f27648;
+  border-radius: 5px;
+}
+
+.business-list::-webkit-scrollbar-track {
+  background-color: #e9ecef;
+  border-radius: 5px;
 }
 
 .business:hover {

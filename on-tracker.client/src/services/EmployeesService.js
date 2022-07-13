@@ -59,6 +59,7 @@ class EmployeesService {
         }
       })
     })
+    console.log('here!!!!')
     console.log(employees);
     AppState.activeProjectAvailableEmployees = employees
   }

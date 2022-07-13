@@ -5,7 +5,7 @@
         <img class="img-fluid login-logo p-2" src="../assets/img/Ontracker logo OG.png" alt="" />
         <button class="btn btn-outline-primary p-0 px-4 h-50 align-self-center" @click="launchLogin">login</button>
       </div>
-      <div class="col-12 hero-img d-flex flex-column justify-content-center text-muted">
+      <div class="col-12 hero-img d-flex flex-column justify-content-center text-muted border-primary border-bottom">
         <div class="text-center">
           <h1>Plan With Confidence</h1>
           <h2>Execute With Efficiency</h2>

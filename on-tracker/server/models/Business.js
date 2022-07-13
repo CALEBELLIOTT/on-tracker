@@ -5,11 +5,12 @@ const ObjectId = Schema.Types.ObjectId
 
 
 export const BusinessSchema = new Schema({
-    name: {type: String, required: true},
-    coverImg: {type: String, required: true},
-    logo: {type: String, required: true},
-    accountId: {type: ObjectId, required: true, ref: 'Account'}
-},{timestamps: true, toJSON: {virtuals: true}})
+    name: { type: String, required: true },
+    coverImg: { type: String, required: true },
+    logo: { type: String, required: true },
+    address: { type: String },
+    accountId: { type: ObjectId, required: true, ref: 'Account' }
+}, { timestamps: true, toJSON: { virtuals: true } })
 
 
 BusinessSchema.virtual('creator', {
