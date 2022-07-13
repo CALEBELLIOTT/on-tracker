@@ -21,19 +21,29 @@
       <!-- <div class="col-6"></div> -->
 
       <div class="col-md-3 d-flex flex-column align-items-center my-4">
-        <h3>
-          {{ business.name }}'s
-          <span class="text-primary border-bottom border-primary mb-0">Tracked</span>
+        <h3 class="text-center">
+          {{ business.name }}
+          <span class="text-primary border-bottom border-primary mb-0"
+            >Tracked</span
+          >
           projects
         </h3>
-        <div class="projects-container">
-          <Project v-for="p in projects" :key="p.id" :project="p" class="mx-4" />
+        <div class="projects-container" v-if="projects.creatorId == account.id">
+          <Project
+            v-for="p in projects"
+            :key="p.id"
+            :project="p"
+            class="mx-4"
+          />
+        </div>
+        <div class="elevation-2 rounded" v-else>
+          <h4 class="text-center">Projects will show here upon creation</h4>
         </div>
       </div>
 
       <div class="col-md-8 my-4">
-        <p class="m-0 text-muted">{{ business.name }}'s project locations</p>
-        <MapComponent/>
+        <p class="m-0 text-muted">{{ business.name }} project locations</p>
+        <MapComponent />
       </div>
     </div>
 
