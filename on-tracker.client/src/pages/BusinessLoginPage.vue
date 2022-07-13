@@ -26,8 +26,8 @@
                   <input v-model="businessData.logo" required type="text" class="border" placeholder="" />
                   <span for="">Logo</span>
                 </div>
-                <vue-google-autocomplete v-model="businessData.address" id="map" classname="form-control"
-                  placeholder="Business Address" v-on:placechanged="getAddressData">
+                <vue-google-autocomplete id="map" classname="form-control" placeholder="Business Address"
+                  v-on:placechanged="getAddressData">
                 </vue-google-autocomplete>
               </div>
             </div>
@@ -95,7 +95,7 @@ export default {
       account: computed(() => AppState.account),
       async createBusiness() {
         try {
-          businessData.address = businessAddress
+          businessData.value.address = businessAddress
           console.log(businessData);
           await businessesService.createBusiness(businessData.value)
           await employeesService.createEmployee()
