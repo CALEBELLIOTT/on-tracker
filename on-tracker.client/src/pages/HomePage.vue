@@ -31,16 +31,13 @@
           >
           projects
         </h3>
-        <div class="projects-container" v-if="projects.creatorId == account.id">
+        <div class="projects-container">
           <Project
             v-for="p in projects"
             :key="p.id"
             :project="p"
             class="mx-5"
           />
-        </div>
-        <div class="no-projects-card d-flex align-items-center" v-else>
-          <h4 class="text-center">Projects will show here upon creation</h4>
         </div>
       </div>
 
@@ -93,6 +90,7 @@ export default {
       if (AppState.account?.businessId) {
         await teamMemberService.getBusinessTeamMembers()
       }
+      await projectsService.getBusinessProjects()
     })
     watchEffect(async () => {
       try {
@@ -104,7 +102,7 @@ export default {
     })
     return {
       account: computed(() => AppState.account),
-      projects: computed(() => AppState.projects.sort((a, b) => a.dueDate.localeCompare(b.dueDate))),
+      projects: computed(() => AppState.activeBusinessProjects.sort((a, b) => a.dueDate.localeCompare(b.dueDate))),
       business: computed(() => AppState.activeBusiness)
     }
   }
