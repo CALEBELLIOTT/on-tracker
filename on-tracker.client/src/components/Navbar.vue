@@ -1,31 +1,43 @@
 <template>
-  <nav class="d-flex">
-    <router-link class="navbar-brand" :to="{ name: 'Home' }">
-      <div class="col-md-6 m-2">
-        <img src="../assets/img/Ontracker logo OG.png" alt="logo" />
+
+  <div class="container-fluid ">
+    <div class="row">
+      <div class="col-12 p-2 d-flex justify-content-between border-primary shadow border-bottom">
+        <router-link :to="{ name: 'Home' }">
+          <img class="img-fluid logo" src="../assets/img/Ontracker logo OG.png" alt="" />
+        </router-link>
+        <div class="d-flex align-items-center">
+          <router-link :to="{ name: 'EmployeesPage' }">
+            <p class="text-primary mx-4 nav nav-custom">Employees</p>
+          </router-link>
+          <router-link :to="{ name: 'About' }">
+            <p class="text-primary mx-4 nav nav-custom">About</p>
+          </router-link>
+          <Login class="ms-5"></Login>
+        </div>
       </div>
-    </router-link>
+    </div>
+  </div>
 
-    <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon" />
-    </button> -->
 
-    <div class="col-md-5 d-flex justify-content-between">
-      <CreateProjectModal />
 
-      <router-link :to="{ name: 'About' }" class="d-flex align-items-center text-white selectable">
+
+
+  <!-- <router-link class="navbar-brand" :to="{ name: 'Home' }">
+      <div class="col-md-6 m-2">
+        <img src="../assets/img/Ontracker logo OG.png" class="logo img-fluid" alt="logo" />
+      </div>
+    </router-link> -->
+  <!-- <CreateProjectModal /> -->
+  <!-- <router-link :to="{ name: 'About' }" class="d-flex align-items-center text-white selectable">
         <h4>About</h4>
-      </router-link>
-
+      </router-link> -->
+  <!-- 
       <router-link :to="{ name: 'EmployeesPage' }" class="d-flex align-items-center text-white selectable">
         <h4>Employees</h4>
-      </router-link>
+      </router-link> -->
+  <!-- LOGIN COMPONENT HERE -->
 
-      <!-- LOGIN COMPONENT HERE -->
-      <Login />
-    </div>
-  </nav>
 </template>
 
 <script>
@@ -42,7 +54,22 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.logo {
+  height: 4rem;
+  object-fit: contain;
+}
+
+.nav-custom {
+  border-bottom: 2px solid rgba(255, 255, 255, 0);
+  transition: 500ms;
+}
+
+.nav-custom:hover {
+  transition: 500ms;
+  border-bottom: 2px solid;
+}
+
 a:hover {
   text-decoration: none;
 }
