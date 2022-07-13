@@ -3,7 +3,7 @@
   <div class="container mt-4">
     <div class="row gutters">
       <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
-        <div class="card h-100 elevation-3">
+        <div class="card-2 h-100 elevation-3">
           <div class="card-body">
             <div class="account-settings">
               <div class="user-profile">
@@ -186,7 +186,7 @@
         </div>
       </div>
       <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
-        <div class="card h-100 elevation-3">
+        <div class="card-2 h-100 elevation-3">
           <div class="card-body">
             <div class="account-settings">
               <div class="user-profile">
@@ -311,15 +311,24 @@ body {
   margin-bottom: 1rem;
 }
 
+.card-2 {
+  background: #f27648;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  border: 0;
+  margin-bottom: 1rem;
+}
+
 .button-1 {
-  background-color: orange;
-  box-shadow: rgb(157, 85, 22) 2px 3px 0px;
+  background-color: #f27648;
+  box-shadow: #985339 2px 3px 0px;
   border-radius: 8px;
   transition: transform 200ms, box-shadow 200ms;
 }
 
 .button-1:active {
   transform: translateY(4px) translateX(2px);
-  box-shadow: rgb(109, 7, 7) 0px 0px 0px;
+  box-shadow: rgb(26, 18, 4) 0px 0px 0px;
 }
 </style>
