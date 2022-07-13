@@ -2,7 +2,7 @@
   <Navbar v-if="account.id"></Navbar>
   <UserLogin v-if="!account.id" />
 
-  <div class="container-fluid">
+  <div class="container-fluid" v-if="account.id">
     <div class="row">
       <div class="col-md-12 mb-5 my-5">
         <div class="d-flex align-items-center justify-content-center">
@@ -23,18 +23,11 @@
       <div class="col-md-4 d-flex flex-column align-items-center my-4">
         <h3>
           {{ business.name }}'s
-          <span class="text-primary border-bottom border-primary mb-0"
-            >Tracked</span
-          >
+          <span class="text-primary border-bottom border-primary mb-0">Tracked</span>
           projects
         </h3>
         <div class="projects-container">
-          <Project
-            v-for="p in projects"
-            :key="p.id"
-            :project="p"
-            class="mx-4"
-          />
+          <Project v-for="p in projects" :key="p.id" :project="p" class="mx-4" />
         </div>
       </div>
 
@@ -120,7 +113,7 @@ export default {
 }
 
 .projects-container {
-  max-height: 75vh;
+  max-height: 50vh;
   overflow: scroll;
   overflow-x: hidden;
 }
