@@ -28,17 +28,31 @@
 
   <div class="row">
     <div class="col-12">
-      <div class="selection-card d-flex flex-column bg-light p-2 m-2 rounded" @click="goToProjectPage">
+      <div
+        class="
+          selection-card
+          d-flex
+          flex-column
+          white-background
+          p-2
+          m-2
+          rounded
+        "
+        @click="goToProjectPage"
+      >
         <h3 class="text-primary">{{ project.projectName }}</h3>
         <p class="text-muted mb-0">{{ project.location }}</p>
-        <p :class="getDateStyle()"><i class="mdi mdi-alert-circle-outline"></i>Due: {{
+        <p :class="getDateStyle()">
+          <i class="mdi mdi-alert-circle-outline"></i>Due:
+          {{
             new Date(project.dueDate).toLocaleDateString("en-us", {
               weekday: "long",
               year: "numeric",
               month: "short",
               day: "numeric",
             })
-        }}</p>
+          }}
+        </p>
       </div>
     </div>
   </div>
@@ -103,5 +117,8 @@ export default {
   cursor: pointer;
   transition: 250ms;
   border: solid 1.5px rgb(255, 132, 73);
+}
+.white-background {
+  background-color: #ffffff;
 }
 </style>
