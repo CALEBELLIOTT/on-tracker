@@ -40,11 +40,7 @@
 
       <div class="col-md-8 my-4">
         <p class="m-0 text-muted">{{ business.name }}'s project locations</p>
-        <img
-          class="map-img img-fluid elevation-3 rounded"
-          src="https://www.s-lec.eu/wp-content/uploads/map.jpg"
-          alt=""
-        />
+        <MapComponent/>
       </div>
     </div>
 
@@ -83,8 +79,9 @@ import { projectsService } from '../services/ProjectsService'
 import { AppState } from '../AppState'
 import VueHorizontal from "vue-horizontal";
 import { teamMemberService } from "../services/TeamMembersService"
+import MapComponent from "../components/MapComponent.vue"
 export default {
-  components: { VueHorizontal },
+  components: { VueHorizontal, MapComponent },
   setup() {
     onMounted(async () => {
       if (AppState.account?.businessId) {
