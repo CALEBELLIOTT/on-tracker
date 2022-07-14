@@ -25,6 +25,8 @@ class ProjectsService {
         const res = await api.post('api/projects', projectData)
         console.log(res.data);
         AppState.projects.unshift(res.data)
+        debugger
+        return res.data
     }
 
     async getBusinessProjects(businessId) {

@@ -73,11 +73,13 @@ import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
 import VueGoogleAutocomplete from "vue-google-autocomplete";
 import { AppState } from "../AppState";
+import { useRouter } from "vue-router";
 export default {
   components: {
     VueGoogleAutocomplete
   },
   setup() {
+    const router = useRouter()
     let projectData = ref({})
     let projectAddress = {}
     let businessId = computed(() => AppState.activeBusiness.value)
@@ -87,7 +89,8 @@ export default {
         projectData.value.location = projectAddress
         projectData.value.businessId = AppState.activeBusiness.id
         try {
-          await projectsService.createProject(projectData.value)
+          const project = await projectsService.createProject(projectData.value)
+          router.push({ name: 'Project', params: { id: project.id } })
         } catch (error) {
           Pop.toast(error.message)
           logger.log(error)
