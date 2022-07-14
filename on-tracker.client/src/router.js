@@ -15,7 +15,7 @@ const routes = [
   {
     path: '/project/:id',
     name: 'Project',
-    component: loadPage('ProjectDetailsPage')
+    component: loadPage('ProjectDetailsPage'),
   },
   {
     path: '/employeeLogin',
@@ -27,11 +27,6 @@ const routes = [
     name: 'EmployeesPage',
     component: loadPage('EmployeesPage'),
     beforeEnter: authGuard
-  },
-  {
-    path: '/experimental',
-    name: 'ExperimentPage',
-    component: loadPage('ExperimentPage')
   },
   {
     path: '/businessLogin',

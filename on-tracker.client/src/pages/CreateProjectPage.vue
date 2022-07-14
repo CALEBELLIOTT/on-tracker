@@ -20,87 +20,41 @@
           <div class="row">
             <div class="col-md-6 p-2">
               <label for="">Project Name</label>
-              <input
-                required
-                type="text"
-                class="form-control"
-                placeholder="Name..."
-                v-model="projectData.projectName"
-              />
+              <input required type="text" class="form-control" placeholder="Name..."
+                v-model="projectData.projectName" />
             </div>
             <div class="col-md-6 p-2">
               <label for="">Project Cover Image</label>
-              <input
-                required
-                type="text"
-                class="form-control"
-                placeholder="Url..."
-                v-model="projectData.coverImg"
-              />
+              <input required type="text" class="form-control" placeholder="Url..." v-model="projectData.coverImg" />
             </div>
             <div class="col-md-6 p-2">
               <label for="">Project Location</label>
-              <vue-google-autocomplete
-                id="project"
-                classname="form-control"
-                placeholder="Project Address"
-                v-on:placechanged="getAddressData"
-              >
+              <vue-google-autocomplete id="project" classname="form-control" placeholder="Project Address"
+                v-on:placechanged="getAddressData">
               </vue-google-autocomplete>
             </div>
             <div class="col-md-6 p-2">
-              <label for=""
-                >Jobsite Images x{{ projectData.jobSiteImgs?.length }}</label
-              >
+              <label for="">Jobsite Images x{{ projectData.jobSiteImgs?.length }}</label>
               <div class="input-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Jobsite Images..."
-                  v-model="jobImg"
-                />
-                <button
-                  @click="addImg"
-                  class="btn btn-outline-primary"
-                  type="button"
-                >
+                <input type="text" class="form-control" placeholder="Jobsite Images..." v-model="jobImg" />
+                <button @click="addImg" class="btn btn-outline-primary" type="button">
                   +
                 </button>
               </div>
             </div>
             <div class="col-md-6 p-2">
               <label for="">Quoted Price</label>
-              <input
-                required
-                type="number"
-                min="1"
-                placeholder="1"
-                class="form-control"
-                v-model="projectData.quotePrice"
-              />
+              <input required type="number" min="1" placeholder="1" class="form-control"
+                v-model="projectData.quotePrice" />
             </div>
             <div class="col-md-6 p-2">
               <label for="">Due Date</label>
-              <input
-                required
-                type="date"
-                placeholder=""
-                class="form-control"
-                v-model="projectData.dueDate"
-              />
+              <input required type="date" placeholder="" class="form-control" v-model="projectData.dueDate" />
             </div>
             <div class="col-12 p-2">
               <label for="">Project Description</label>
-              <textarea
-                required
-                name=""
-                id=""
-                cols="30"
-                rows="5"
-                placeholder="Description..."
-                class="form-control"
-                v-model="projectData.description"
-              ></textarea>
+              <textarea required name="" id="" cols="30" rows="5" placeholder="Description..." class="form-control"
+                v-model="projectData.description"></textarea>
             </div>
             <div class="col-12 d-flex justify-content-between">
               <button type="button" class="btn btn-secondary">Close</button>
@@ -121,6 +75,7 @@ import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
 import VueGoogleAutocomplete from "vue-google-autocomplete";
 import { AppState } from "../AppState";
+import { useRouter } from "vue-router";
 export default {
   components: {
     VueGoogleAutocomplete
@@ -130,6 +85,7 @@ export default {
     let jobImg = ref('')
     let projectAddress = {}
     let businessId = computed(() => AppState.activeBusiness.value)
+    const router = useRouter()
     return {
       jobImg,
       projectData,
@@ -137,7 +93,8 @@ export default {
         projectData.value.location = projectAddress
         projectData.value.businessId = AppState.activeBusiness.id
         try {
-          await projectsService.createProject(projectData.value)
+          const project = await projectsService.createProject(projectData.value)
+          router.push({ name: 'Project', params: { id: project.id } })
         } catch (error) {
           Pop.toast(error.message)
           logger.log(error)
