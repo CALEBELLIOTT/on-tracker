@@ -28,8 +28,7 @@
 
   <div class="row">
     <div class="col-12">
-      <div
-        class="
+      <div class="
           selection-card
           d-flex
           flex-column
@@ -37,20 +36,18 @@
           p-2
           m-2
           rounded
-        "
-        @click="goToProjectPage"
-      >
+        " @click="goToProjectPage">
         <h3 class="text-primary text-center">{{ project.projectName }}</h3>
-        <p class="text-muted mb-0">{{ project.location }}</p>
+        <p class="text-muted mb-0">{{ project.location.route }}</p>
         <p :class="getDateStyle()">
           <i class="mdi mdi-alert-circle-outline"></i>Due:
           {{
-            new Date(project.dueDate).toLocaleDateString("en-us", {
-              weekday: "long",
-              year: "numeric",
-              month: "short",
-              day: "numeric",
-            })
+              new Date(project.dueDate).toLocaleDateString("en-us", {
+                weekday: "long",
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              })
           }}
         </p>
       </div>
@@ -118,6 +115,7 @@ export default {
   transition: 250ms;
   border: solid 1.5px rgb(255, 132, 73);
 }
+
 .white-background {
   background-color: #ffffff;
 }
