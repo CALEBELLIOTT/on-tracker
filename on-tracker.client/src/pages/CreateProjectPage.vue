@@ -49,7 +49,9 @@
               </vue-google-autocomplete>
             </div>
             <div class="col-md-6 p-2">
-              <label for="">Jobsite Images</label>
+              <label for=""
+                >Jobsite Images x{{ projectData.jobSiteImgs?.length }}</label
+              >
               <div class="input-group">
                 <input
                   type="text"
