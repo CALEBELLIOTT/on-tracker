@@ -36,7 +36,7 @@
       </div>
     </div>
   </div>
-  <div class="container-fluid dark-theme text-light" v-else>
+  <div class="container-fluid" v-else>
     <div class="row">
       <div class="
             col-12
@@ -45,7 +45,7 @@
             justify-content-center
             align-items-center
           ">
-        <h4 class="my-5">Tell us about yourself</h4>
+        <h1 class="mt-5">Tell us about yourself</h1>
         <div class="divider-line"></div>
         <form class="mt-3" action="" @submit.prevent="editAccountInfo()">
           <label for="" class="mt-2">Your Name</label>
