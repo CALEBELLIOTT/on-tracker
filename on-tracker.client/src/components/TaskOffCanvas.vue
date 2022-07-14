@@ -23,25 +23,30 @@
     </div>
     <footer>
       <div class="row d-flex">
-        <form @submit.prevent="postTask">
-          <div class="col-11 m-3">
-            <div>
-              <input
-                class="form-control rounded"
-                type="text"
-                placeholder="Add Task..."
-                v-model="taskData.description"
-              />
-            </div>
-          </div>
-          <div class="col-11 d-flex m-3">
+        <form @submit.prevent="postTask" id="post" value="reset">
+          <div class="m-3 col-11 d-flex inputBox">
             <input
               class="form-control rounded"
-              type="number"
-              v-model="taskData.estimatedTime"
-              placeholder="Estimated hours"
+              type="text"
+              v-model="taskData.description"
             />
-            <button class="btn btn-success ms-2" type="submit">Post</button>
+            <span>Description</span>
+          </div>
+          <div class="col-12 d-flex m-3">
+            <div class="inputBox d-flex col-9">
+              <input
+                class="form-control rounded"
+                type="number"
+                v-model="taskData.estimatedTime"
+              />
+              <span>Estimated time</span>
+            </div>
+            <button
+              class="btn btn-primary ms-4 border-white border-2"
+              type="submit"
+            >
+              <i class="mdi mdi-arrow-up-circle-outline fs-5 text-white"></i>
+            </button>
           </div>
         </form>
       </div>
@@ -74,8 +79,10 @@ export default {
       taskData,
       async postTask() {
         try {
+
           taskData.value.projectId = route.params.id
           await tasksService.postTask(taskData.value)
+          document.getElementById("post").reset();
         } catch (error) {
           logger.log(error)
           Pop.toast(error.message, 'error')
@@ -93,5 +100,56 @@ export default {
 <style lang="scss" scoped>
 .bg {
   background: rgba(0, 0, 0, 0.8);
+}
+
+.inputBox {
+  position: relative;
+}
+
+.inputBox input {
+  width: 100%;
+  border: 2px solid #f27648;
+  padding: 8px;
+  outline: none;
+  border-radius: 5px;
+}
+
+.inputBox span {
+  position: absolute;
+  left: 0;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 1em;
+  color: grey;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+
+.inputBox input:valid ~ span,
+.inputBox input:focus ~ span {
+  color: #f27648;
+  transform: translateX(10px) translateY(-7px);
+  font-size: 0.7em;
+  padding: 0 10px;
+  background: rgb(251, 246, 239);
+  border-left: 1px solid #f27648;
+  border-right: 1px solid #f27648;
+  letter-spacing: 0.2em;
+}
+
+.inputBox input:valid ~ span,
+.inputBox input:focus ~ span {
+  background: #f27648;
+  color: black;
+  border-radius: 3px;
+}
+
+.inputBox input:valid,
+.inputBox input:focus {
+  border: 2px solid #f27648;
+}
+
+.post-button {
+  outline-color: white;
 }
 </style>

@@ -210,4 +210,14 @@ export default {
   z-index: 2;
   width: 60px;
 }
+
+.cool-button:hover {
+  transform: scale(1.04);
+  transition: 300ms;
+}
+
+.cool-button2:hover {
+  transform: scale(1.04);
+  transition: 300ms;
+}
 </style>

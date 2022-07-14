@@ -6,19 +6,21 @@
         src="https://th.bing.com/th/id/R.3223efb84d9394750bcb90dadfefc5b2?rik=zhNwcP5qVVgiFQ&pid=ImgRaw&r=0"
         alt=""
     /></span>
-    <span class="d-flex align-items-center">
-      <h2 class="text-dark">
+    <span class="d-flex align-items-center mt-2">
+      <h2 class="text-white">
         <b
           ><em>{{ employee.account.name }}</em></b
         >
       </h2>
     </span>
-    <button
-      class="btn btn-primary p-2 h-50 align-center"
-      @click="createTeamMember"
-    >
-      Assign
-    </button>
+    <span>
+      <button
+        class="btn btn-primary mt-2 text-center"
+        @click="createTeamMember"
+      >
+        Assign
+      </button>
+    </span>
   </div>
 </template>
 

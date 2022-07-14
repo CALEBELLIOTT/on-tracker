@@ -22,7 +22,7 @@
       title="Delete task"
     ></span>
   </div>
-  <div class="px-5 font-grey border-bottom border-1 border-primary mx-4">
+  <div class="px-5 font-grey border-bottom border-1 border-white mx-4">
     <span class="px-1"><i class="mdi mdi-clock-outline"></i></span>
     <span>Hours:</span>
     <span
