@@ -10,7 +10,7 @@
             <div class="d-none d-md-block col-md-4">
               <img :src="employee.account.picture" class="shadow profile-img" alt="">
             </div>
-            <div class="col-md-7">
+            <div class="col-md-7 column">
               <div class=" col-md-12 d-flex flex-column mx-2">
                 <div class="col-md-12 d-flex justify-content-between border-bottom border-2 border-dark ">
                   <h3><b>{{ employee.account.name }}</b></h3>
@@ -100,6 +100,12 @@ h5 {
 @media(max-width: 769px) {
   .profile-img {
     display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
   }
 }
 </style>
