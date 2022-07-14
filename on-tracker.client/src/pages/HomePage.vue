@@ -35,7 +35,7 @@
         </div>
       </div>
 
-      <div class="col-md-8 ms-3 me-4 mt-3 map-component">
+      <div class="col-md-8 ms-3 me-3 mt-3 map-component">
         <b class="mt-3 text-muted">{{ business.name }} project locations</b>
         <MapComponent />
       </div>
