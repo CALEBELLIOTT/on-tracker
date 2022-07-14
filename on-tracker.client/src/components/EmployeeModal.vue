@@ -3,27 +3,37 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <b> Assign an Employee to a Project</b>
+          <h5 class="m-0"> Assign an Employee to a Project</h5>
           <button title="Close" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <form @submit.prevent="createTeamMember" class="d-flex justify-content-around">
+
           <div class="modal-body">
-            <b class="ms-2"> Employee : </b>
-            <select name="employee" id="employee" v-model="employeeData.employeeId">
-              <option :value="e.id" class="" v-for="e in employees" :key="e.id">
-                {{ e.account.name }}
-              </option>
-            </select>
-            <b class="ms-3">Project :</b>
-            <select name="project" id="project" class="m-4" v-model="employeeData.projectId">
-              <option :value="p.id" class="d" v-for="p in projects" :key="p.id">
-                {{ p.projectName }}
-              </option>
-            </select>
+            <div class="col-md-12">
+              <b class="ms-1"> Employee : </b>
+              <select name="employee" id="employee" v-model="employeeData.employeeId">
+                <option :value="e.id" class="" v-for="e in employees" :key="e.id">
+                  {{ e.account.name }}
+                </option>
+              </select>
+            </div>
+
+            <div class="col-md-12">
+              <b class="ms-1">Project : </b>
+              <select name="project" id="project" class="mt-3" v-model="employeeData.projectId">
+                <option :value="p.id" class="d" v-for="p in projects" :key="p.id">
+                  {{ p.projectName }}
+                </option>
+              </select>
+            </div>
           </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Assign</button>
+
+          <div class="modal-footer d-flex align-items-end">
+
+            <button type="submit" class="btn btn-primary form-control">Assign</button>
+
           </div>
+
         </form>
       </div>
     </div>
@@ -62,4 +72,7 @@ export default {
 
 
 <style lang="scss" scoped>
+b {
+  color: var(--bs-primary);
+}
 </style>

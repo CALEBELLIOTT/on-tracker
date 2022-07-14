@@ -49,14 +49,24 @@
               </vue-google-autocomplete>
             </div>
             <div class="col-md-6 p-2">
-              <label for="">Jobsite Images</label>
-              <input
-                required
-                type="text"
-                class="form-control"
-                placeholder="Urls..."
-                v-model="projectData.jobSiteImgs"
-              />
+              <label for=""
+                >Jobsite Images x{{ projectData.jobSiteImgs?.length }}</label
+              >
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Jobsite Images..."
+                  v-model="jobImg"
+                />
+                <button
+                  @click="addImg"
+                  class="btn btn-outline-primary"
+                  type="button"
+                >
+                  +
+                </button>
+              </div>
             </div>
             <div class="col-md-6 p-2">
               <label for="">Quoted Price</label>
@@ -111,28 +121,31 @@ import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
 import VueGoogleAutocomplete from "vue-google-autocomplete";
 import { AppState } from "../AppState";
-import { useRouter } from "vue-router";
 export default {
   components: {
     VueGoogleAutocomplete
   },
   setup() {
-    const router = useRouter()
-    let projectData = ref({})
+    let projectData = ref({ jobSiteImgs: [] })
+    let jobImg = ref('')
     let projectAddress = {}
     let businessId = computed(() => AppState.activeBusiness.value)
     return {
+      jobImg,
       projectData,
       async createProject() {
         projectData.value.location = projectAddress
         projectData.value.businessId = AppState.activeBusiness.id
         try {
-          const project = await projectsService.createProject(projectData.value)
-          router.push({ name: 'Project', params: { id: project.id } })
+          await projectsService.createProject(projectData.value)
         } catch (error) {
           Pop.toast(error.message)
           logger.log(error)
         }
+      },
+      addImg() {
+        projectData.value.jobSiteImgs.push(jobImg.value)
+        jobImg.value = ''
       },
       getAddressData(data) {
         projectAddress = data
