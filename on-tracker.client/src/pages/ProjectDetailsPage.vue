@@ -28,7 +28,6 @@
     <!-- OffCanvas -->
     <AvailableEmployeesOffCanvas />
     <!--  -->
-
     <div class="mt-2 mb-3 mx-4">
       <ActiveProject />
     </div>
@@ -38,7 +37,7 @@
       <div
         class="
           col-md-12
-          bg-white
+          bg-grey
           elevation-4
           rounded
           d-flex
@@ -51,6 +50,9 @@
           >
             <b><em>Notes</em></b>
           </h1>
+          <div>
+            <ProjectNotes v-for="n in notes" :key="n.id" :note="n" />
+          </div>
 
           <div class="d-flex justify-content-center">
             <form @submit.prevent="createNote">
@@ -75,6 +77,7 @@
           </div>
         </div>
       </div>
+
       <div class="text-light text-center pt-5">
         <h2><b>TeamMembers</b></h2>
       </div>
@@ -92,9 +95,9 @@
         </div>
       </div>
     </div>
-
-    <!-- Employee Cards and Mapbox  -->
   </div>
+
+  <!-- Employee Cards and Mapbox  -->
 </template>
 
 
