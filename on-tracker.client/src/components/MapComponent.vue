@@ -43,6 +43,7 @@ export default {
 
     //first attempt at a marker loader, need array of locations
     async function addMarkers() {
+      let fitBounds = { maxLongitude: 0, maxLatitude: 0, minLongitude: 0, minLatitude:0}
       // await projectsService.getBusinessProjects()
       console.log(AppState.activeBusinessProjects);
       AppState.activeBusinessProjects.forEach(p => {
@@ -57,6 +58,18 @@ export default {
         el.style.height = '40px'
         el.style.backgroundSize = '100%'
         let coords = [p.location.longitude, p.location.latitude]
+        if (p.location.longitude > fitBounds.maxLongitude || fitBounds.maxLongitude == 0){
+          fitBounds.maxLongitude = p.location.longitude
+        }
+        if (p.location.longitude < fitBounds.minLongitude || fitBounds.minLongitude == 0) {
+          fitBounds.minLongitude = p.location.longitude
+        }
+        if (p.location.latitude > fitBounds.maxLatitude || fitBounds.maxLatitude == 0) {
+          fitBounds.maxLatitude = p.location.latitude
+        }
+        if (p.location.latitude < fitBounds.minLatitude || fitBounds.minLatitude == 0) {
+          fitBounds.minLatitude = p.location.latitude
+        }
         console.log(coords);
         let marker = new mapboxgl.Marker(el)
           .setLngLat(coords)
@@ -66,6 +79,10 @@ export default {
                 `<h4 class='text-primary text-start'>${p.projectName}</h4><p class='text-muted text-start'>${p.description}</p>`
               ))
           .addTo(map);
+        map.fitBounds([
+          [fitBounds.minLongitude - .1, fitBounds.minLatitude - .1], // southwestern corner of the bounds
+          [fitBounds.maxLongitude + .1, fitBounds.maxLatitude + .1] // northeastern corner of the bounds
+        ])
       });
       let elements = document.getElementsByClassName('marker')
       console.log(elements);
