@@ -26,6 +26,8 @@ export default {
   mounted() {
     watchEffect(() => {
       console.log(AppState.activeBusinessProjects);
+      console.log(AppState.activeBusiness)
+      addBusinessMarker()
       addMarkers()
     })
     mapboxgl.accessToken = this.accessToken;
@@ -87,7 +89,31 @@ export default {
       let elements = document.getElementsByClassName('marker')
       console.log(elements);
     }
+    async function addBusinessMarker() {
+      let business = AppState.activeBusiness
+        const el = document.createElement('div')
+        el.className = 'businessMarker'
+        el.style.backgroundImage = `url('${business.logo}')`
+        el.style.width = `80px`
+        el.style.height = '80px'
+        el.style.backgroundSize = '100%'
+        let coords = [business.address?.longitude, business.address?.latitude]
 
+        console.log(coords);
+        let marker = new mapboxgl.Marker(el)
+          .setLngLat(coords)
+          .setPopup(
+            new mapboxgl.Popup({ offset: 25 }) // add popups
+              .setHTML(
+                `<h2 class='text-primary text-start'>${business.name}</h2>`
+              ))
+          .addTo(map);
+        map.center = coords
+        console.log(coords)
+
+      let elements = document.getElementsByClassName('businessMarker')
+      console.log(elements);
+    }
 
 
 
