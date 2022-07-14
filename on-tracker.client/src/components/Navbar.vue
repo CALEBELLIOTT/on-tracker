@@ -22,7 +22,10 @@
         </router-link>
 
         <div class="d-flex align-items-center">
-          <CreateProjectModal />
+          <!-- <CreateProjectModal /> -->
+          <router-link :to="{ name: 'CreateProject' }">
+            <h6 class="text-primary mx-4 nav nav-custom">New Project</h6>
+          </router-link>
           <router-link :to="{ name: 'EmployeesPage' }">
             <h6 class="text-primary mx-4 nav nav-custom">Employees</h6>
           </router-link>
