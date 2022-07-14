@@ -5,62 +5,100 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-12 mt-5 text-center">
-        <h1 class="">Create A Project With <span class="text-primary">OnTracker</span></h1>
-        <p class="text-muted">Using OnTracker, you can track a projects progress, location, and manage employees - all
-          from an easy to use interface.</p>
+        <h1 class="">
+          Create A Project With <span class="text-primary">OnTracker</span>
+        </h1>
+        <p class="text-muted">
+          Using OnTracker, you can track a projects progress, location, and
+          manage employees - all from an easy to use interface.
+        </p>
       </div>
       <div class="divider-line"></div>
-
 
       <div class="col-12 mt-2">
         <form @submit.prevent="createProject">
           <div class="row">
             <div class="col-md-6 p-2">
               <label for="">Project Name</label>
-              <input required type="text" class="form-control" placeholder="Name..."
-                v-model="projectData.projectName" />
+              <input
+                required
+                type="text"
+                class="form-control"
+                placeholder="Name..."
+                v-model="projectData.projectName"
+              />
             </div>
             <div class="col-md-6 p-2">
               <label for="">Project Cover Image</label>
-              <input required type="text" class="form-control" placeholder="Url..." v-model="projectData.coverImg" />
+              <input
+                required
+                type="text"
+                class="form-control"
+                placeholder="Url..."
+                v-model="projectData.coverImg"
+              />
             </div>
             <div class="col-md-6 p-2">
               <label for="">Project Location</label>
-              <vue-google-autocomplete id="project" classname="form-control" placeholder="Project Address"
-                v-on:placechanged="getAddressData">
+              <vue-google-autocomplete
+                id="project"
+                classname="form-control"
+                placeholder="Project Address"
+                v-on:placechanged="getAddressData"
+              >
               </vue-google-autocomplete>
             </div>
             <div class="col-md-6 p-2">
               <label for="">Jobsite Images</label>
-              <input required type="text" class="form-control" placeholder="Urls..."
-                v-model="projectData.jobSiteImgs" />
+              <input
+                required
+                type="text"
+                class="form-control"
+                placeholder="Urls..."
+                v-model="projectData.jobSiteImgs"
+              />
             </div>
             <div class="col-md-6 p-2">
               <label for="">Quoted Price</label>
-              <input required type="number" min="1" placeholder="1" class="form-control"
-                v-model="projectData.quotePrice" />
+              <input
+                required
+                type="number"
+                min="1"
+                placeholder="1"
+                class="form-control"
+                v-model="projectData.quotePrice"
+              />
             </div>
             <div class="col-md-6 p-2">
               <label for="">Due Date</label>
-              <input required type="date" placeholder="" class="form-control" v-model="projectData.dueDate" />
+              <input
+                required
+                type="date"
+                placeholder=""
+                class="form-control"
+                v-model="projectData.dueDate"
+              />
             </div>
             <div class="col-12 p-2">
               <label for="">Project Description</label>
-              <textarea required name="" id="" cols="30" rows="5" placeholder="Description..." class="form-control"
-                v-model="projectData.description"></textarea>
+              <textarea
+                required
+                name=""
+                id=""
+                cols="30"
+                rows="5"
+                placeholder="Description..."
+                class="form-control"
+                v-model="projectData.description"
+              ></textarea>
             </div>
             <div class="col-12 d-flex justify-content-between">
-              <button type="button" class="btn btn-secondary">
-                Close
-              </button>
-              <button type="submit" class="btn btn-success">
-                Submit
-              </button>
+              <button type="button" class="btn btn-secondary">Close</button>
+              <button type="submit" class="btn btn-success">Submit</button>
             </div>
           </div>
         </form>
       </div>
-
     </div>
   </div>
 </template>
