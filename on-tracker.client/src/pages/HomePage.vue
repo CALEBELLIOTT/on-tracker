@@ -3,7 +3,7 @@
   <UserLogin v-if="!account.id" />
 
   <div class="container-fluid" v-if="account.id">
-    <div class="row">
+    <div class="row justify-content-around">
       <div class="d-none d-md-block col-md-12 mb-5 my-5">
         <div class="d-flex align-items-center justify-content-center">
           <h1 class="text-center text-md-start me-2 my-0">
@@ -20,7 +20,7 @@
       </div>
       <!-- <div class="col-6"></div> -->
 
-      <div class="col-md-3 d-flex flex-column align-items-center my-4">
+      <div class="col-md-3 d-flex flex-column align-items-center my-3">
         <h3 class="text-center">
           {{ business.name }}
           <span class="text-primary border-bottom border-primary mb-0">Tracked</span>
@@ -31,8 +31,8 @@
         </div>
       </div>
 
-      <div class="col-md-8 my-4 map-component">
-        <p class="m-0 text-muted">{{ business.name }} project locations</p>
+      <div class="col-md-8 ms-3 me-4 mt-3 map-component">
+        <b class="mt-3 text-muted">{{ business.name }} project locations</b>
         <MapComponent />
       </div>
     </div>
