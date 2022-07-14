@@ -14,8 +14,9 @@
           <TaskOffCanvas />
         </span>
       </div>
-
-      <ProjectImage />
+      <div class="row">
+        <ProjectImage />
+      </div>
     </div>
   </div>
   <!-- OFFCANVAS -->

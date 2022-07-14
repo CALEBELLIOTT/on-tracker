@@ -1,11 +1,15 @@
 <template>
   <vue-horizontal>
     <div
-      class="col-12 d-flex justify-content-center align-items-center"
+      class="col-6 justify-content-center d-flex align-items-center"
       v-for="img in project.jobSiteImgs"
       :key="img"
     >
-      <img class="col-12 project-img" :src="img" alt="" />
+      <img
+        class="img-fluid project-img rounded elevation-3"
+        :src="img"
+        alt=""
+      />
     </div>
   </vue-horizontal>
 </template>
@@ -28,6 +32,6 @@ export default {
 
 <style lang="scss" scoped>
 .project-img {
-  height: 500px;
+  height: 80%;
 }
 </style>

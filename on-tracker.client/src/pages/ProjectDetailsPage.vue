@@ -1,39 +1,99 @@
 <template>
   <navbar />
+  <nav>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link active"
+          id="home-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#home"
+          type="button"
+          role="tab"
+          aria-controls="home"
+          aria-selected="true"
+        >
+          Home
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link"
+          id="profile-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#profile"
+          type="button"
+          role="tab"
+          aria-controls="profile"
+          aria-selected="false"
+        >
+          Profile
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link"
+          id="messages-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#messages"
+          type="button"
+          role="tab"
+          aria-controls="messages"
+          aria-selected="false"
+        >
+          Messages
+        </button>
+      </li>
+    </ul>
 
-  <div class="container-fluid position-relative">
-    <div class="mt-3 me-0">
-      <button
-        class="btn btn-primary cool-button"
-        type="button"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasRight"
-        aria-controls="offcanvasRight"
-      >
-        <b>T</b>
-      </button>
-    </div>
-    <div>
-      <button
-        class="btn btn-primary cool-button2"
-        type="button"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#availableEmployees"
-        aria-controls="offcanvasRight"
-      >
-        <i class="mdi mdi-account-multiple-plus-outline fs-5 px-2"></i>
-      </button>
-    </div>
+    <!-- Tab panes -->
+  </nav>
 
-    <!-- OffCanvas -->
-    <AvailableEmployeesOffCanvas />
-    <!--  -->
-    <div class="mt-2 mb-3 mx-4">
-      <ActiveProject />
-    </div>
+  <div class="mt-3 me-0">
+    <button
+      class="btn btn-primary cool-button"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasRight"
+      aria-controls="offcanvasRight"
+    >
+      <b>T</b>
+    </button>
+  </div>
+  <div>
+    <button
+      class="btn btn-primary cool-button2"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#availableEmployees"
+      aria-controls="offcanvasRight"
+    >
+      <i class="mdi mdi-account-multiple-plus-outline fs-5 px-2"></i>
+    </button>
+  </div>
 
-    <!-- Note Component -->
-    <div class="row align-items-center flex-column mx-5">
+  <!-- OffCanvas -->
+  <AvailableEmployeesOffCanvas />
+  <!--  -->
+
+  <div class="tab-content">
+    <div
+      class="tab-pane active"
+      id="home"
+      role="tabpanel"
+      aria-labelledby="home-tab"
+    >
+      <div class="mt-2 mb-3 mx-5">
+        <ActiveProject />
+      </div>
+    </div>
+    <div
+      class="tab-pane"
+      id="profile"
+      role="tabpanel"
+      aria-labelledby="profile-tab"
+    >
       <div
         class="
           col-md-12
@@ -77,7 +137,13 @@
           </div>
         </div>
       </div>
-
+    </div>
+    <div
+      class="tab-pane"
+      id="messages"
+      role="tabpanel"
+      aria-labelledby="messages-tab"
+    >
       <div class="text-light text-center pt-5">
         <h2><b>TeamMembers</b></h2>
       </div>
@@ -96,6 +162,9 @@
       </div>
     </div>
   </div>
+
+  <!-- Note Component -->
+  <div class="row align-items-center flex-column mx-5"></div>
 
   <!-- Employee Cards and Mapbox  -->
 </template>
@@ -206,7 +275,7 @@ export default {
   border-radius: 5%;
   position: absolute;
   left: 0em;
-  top: 2.5em;
+  top: 11.5em;
   z-index: 2;
   width: 60px;
 }
@@ -219,5 +288,41 @@ export default {
 .cool-button2:hover {
   transform: scale(1.04);
   transition: 300ms;
+}
+.btn-left,
+.btn-right {
+  padding: 8px;
+  height: 100%;
+}
+
+.btn-left {
+  background: linear-gradient(to left, #ffffff00 0, #fff 50%, #fff);
+  padding-right: 16px;
+}
+
+.btn-right {
+  background: linear-gradient(to right, #ffffff00 0, #fff 50%, #fff);
+  padding-left: 16px;
+}
+
+.tabs {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.tab {
+  padding: 8px 24px 6px 24px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tab.selected {
+  border-bottom: 2px solid black;
+}
+
+@media (min-width: 768px) {
+  main {
+    padding: 48px;
+  }
 }
 </style>
