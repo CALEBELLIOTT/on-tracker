@@ -37,8 +37,11 @@
           m-2
           rounded
         " @click="goToProjectPage">
-        <h3 class="text-primary text-center">{{ project.projectName }}</h3>
-        <p class="text-muted mb-0">{{ project.location.route }}</p>
+        <div class="d-flex justify-content-between">
+          <h3 class="text-primary text-center">{{ project.projectName }}</h3>
+          <span class="mdi mdi-close" title="Delete Project"></span>
+        </div>
+        <p class="text-muted mb-0">{{ project.location.street_number }} {{ project.location.route }}</p>
         <p :class="getDateStyle()">
           <i class="mdi mdi-alert-circle-outline"></i>Due:
           {{

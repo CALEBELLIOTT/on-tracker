@@ -48,10 +48,10 @@ export default {
       AppState.activeBusinessProjects.forEach(p => {
         const el = document.createElement('div')
         el.className = 'marker'
-        el.addEventListener('click', () => {
-          const router = useRouter();
-          router.push({ name: 'ProjectPage', params: { id: p.id } })
-        })
+        // let router = useRouter();
+        // el.addEventListener('click', () => {
+        //   router.push({ name: 'ProjectDetailsPage', params: { id: p.id } })
+        // })
         el.style.backgroundImage = 'https://thiscatdoesnotexist.com/'
         el.style.width = `30px`
         el.style.height = '40px'
@@ -60,6 +60,11 @@ export default {
         console.log(coords);
         let marker = new mapboxgl.Marker(el)
           .setLngLat(coords)
+          .setPopup(
+            new mapboxgl.Popup({ offset: 25 }) // add popups
+              .setHTML(
+                `<h4 class='text-primary text-start'>${p.projectName}</h4><p class='text-muted text-start'>${p.description}</p>`
+              ))
           .addTo(map);
       });
       let elements = document.getElementsByClassName('marker')
