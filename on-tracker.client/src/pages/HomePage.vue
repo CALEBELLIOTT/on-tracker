@@ -4,7 +4,7 @@
 
   <div class="container-fluid" v-if="account.id">
     <div class="row">
-      <div class="col-md-12 mb-5 my-5">
+      <div class="d-none d-md-block col-md-12 mb-5 my-5">
         <div class="d-flex align-items-center justify-content-center">
           <h1 class="text-center text-md-start me-2 my-0">
             <span class="text-primary">OnTracker</span> for {{ business.name
@@ -31,7 +31,7 @@
         </div>
       </div>
 
-      <div class="col-md-8 my-4">
+      <div class="col-md-8 my-4 map-component">
         <p class="m-0 text-muted">{{ business.name }} project locations</p>
         <MapComponent />
       </div>
@@ -175,5 +175,13 @@ img {
   width: 100%;
   height: 43.5vh;
   background-color: rgb(255, 255, 255);
+}
+
+@media (max-width: 756px) {
+  .map-component {
+    transform: translateY(0);
+    order: -1;
+
+  }
 }
 </style>
