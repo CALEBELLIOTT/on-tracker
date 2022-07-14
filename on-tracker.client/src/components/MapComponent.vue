@@ -4,6 +4,12 @@
 
 <script>
 import mapboxgl from "mapbox-gl";
+import { onMounted, watchEffect } from "vue";
+import { useRouter } from "vue-router";
+import { AppState } from "../AppState";
+import { router } from "../router";
+import { businessesService } from "../services/BusinessesService";
+import { projectsService } from "../services/ProjectsService";
 
 export default {
   name: "BaseMap",
@@ -13,7 +19,15 @@ export default {
       accessToken: "pk.eyJ1Ijoic2tld2VyNDkwIiwiYSI6ImNsNHhhZnp3bTBjNWIzYnBwMGVnd2Frc28ifQ.HLbBCBYU_1Piw91ExBGBjA",
     };
   },
+  setup() {
+
+
+  },
   mounted() {
+    watchEffect(() => {
+      console.log(AppState.activeBusinessProjects);
+      addMarkers()
+    })
     mapboxgl.accessToken = this.accessToken;
 
     let map = new mapboxgl.Map({
@@ -26,19 +40,34 @@ export default {
       //   [-116.215019, 42.618881],
       // ],
     });
+
     //first attempt at a marker loader, need array of locations
-    function addMarker([projectLocations]) {
-      projectLocations.forEach(pL => {
-        new mapboxgl.Marker()
-          .setLngLat([pL.longitude, pL.latitude])
+    async function addMarkers() {
+      // await projectsService.getBusinessProjects()
+      console.log(AppState.activeBusinessProjects);
+      AppState.activeBusinessProjects.forEach(p => {
+        const el = document.createElement('div')
+        el.className = 'marker'
+        el.addEventListener('click', () => {
+          const router = useRouter();
+          router.push({ name: 'ProjectPage', params: { id: p.id } })
+        })
+        el.style.backgroundImage = 'https://thiscatdoesnotexist.com/'
+        el.style.width = `30px`
+        el.style.height = '40px'
+        el.style.backgroundSize = '100%'
+        let coords = [p.location.longitude, p.location.latitude]
+        console.log(coords);
+        let marker = new mapboxgl.Marker(el)
+          .setLngLat(coords)
           .addTo(map);
-          
       });
+      let elements = document.getElementsByClassName('marker')
+      console.log(elements);
     }
 
-    const marker = new mapboxgl.Marker()
-      .setLngLat([-116.215019, 43.618881])
-      .addTo(map);
+
+
 
     map.addControl(
       new MapboxGeocoder({
@@ -61,14 +90,6 @@ export default {
   border-radius: 15px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-}
-.marker {
-  background-image: url("mapbox-icon.png");
-  background-size: cover;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  cursor: pointer;
 }
 </style>
 

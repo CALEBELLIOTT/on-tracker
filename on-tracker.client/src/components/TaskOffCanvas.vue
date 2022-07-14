@@ -22,23 +22,29 @@
       <Task v-for="t in tasks" :key="t.id" :task="t" />
     </div>
     <footer>
-      <form @submit.prevent="postTask">
-        <div>
-          <input
-            class="form-control m-2 rounded"
-            type="text"
-            placeholder="Add Task..."
-            v-model="taskData.description"
-          />
-        </div>
-        <input
-          class="form-control m-2 rounded"
-          type="number"
-          v-model="taskData.estimatedTime"
-          placeholder="Estimated hours"
-        />
-        <button class="btn btn-success" type="submit">Post</button>
-      </form>
+      <div class="row d-flex">
+        <form @submit.prevent="postTask">
+          <div class="col-11 m-3">
+            <div>
+              <input
+                class="form-control rounded"
+                type="text"
+                placeholder="Add Task..."
+                v-model="taskData.description"
+              />
+            </div>
+          </div>
+          <div class="col-11 d-flex m-3">
+            <input
+              class="form-control rounded"
+              type="number"
+              v-model="taskData.estimatedTime"
+              placeholder="Estimated hours"
+            />
+            <button class="btn btn-success ms-2" type="submit">Post</button>
+          </div>
+        </form>
+      </div>
     </footer>
   </div>
 </template>
