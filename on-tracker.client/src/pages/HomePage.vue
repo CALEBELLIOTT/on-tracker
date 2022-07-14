@@ -22,16 +22,23 @@
 
       <div class="col-md-3 d-flex flex-column align-items-center my-3">
         <h3 class="text-center">
-          {{ business.name }}
-          <span class="text-primary border-bottom border-primary mb-0">Tracked</span>
+          <span class="text-primary border-bottom border-primary mb-0"
+            >Tracked</span
+          >
           projects
         </h3>
         <div class="projects-container">
           <div class="d-flex flex-column align-items-center">
-            <p class="text-muted">No Projects to Show...</p>
-            <p v-if="account.businessAccount" class="text-primary">Create a project to get started</p>
+            <p v-if="account.businessAccount" class="text-primary">
+              Create a project to get started
+            </p>
           </div>
-          <Project v-for="p in projects" :key="p.id" :project="p" class="mx-5" />
+          <Project
+            v-for="p in projects"
+            :key="p.id"
+            :project="p"
+            class="mx-5"
+          />
         </div>
       </div>
 
@@ -185,7 +192,6 @@ img {
   .map-component {
     transform: translateY(0);
     order: -1;
-
   }
 }
 </style>
