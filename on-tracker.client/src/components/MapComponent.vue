@@ -24,13 +24,9 @@ export default {
 
   },
   mounted() {
-    watchEffect(() => {
-      console.log(AppState.activeBusinessProjects);
-      console.log(AppState.activeBusiness)
-      addBusinessMarker()
-      addMarkers()
-    })
     mapboxgl.accessToken = this.accessToken;
+    let fitBounds = { maxLongitude: 0, maxLatitude: 0, minLongitude: 0, minLatitude: 0 }
+
 
     let map = new mapboxgl.Map({
       container: "mapContainer",
@@ -42,19 +38,21 @@ export default {
       //   [-116.215019, 42.618881],
       // ],
     });
+    watchEffect(() => {
+      console.log(AppState.activeBusinessProjects);
+      console.log(AppState.activeBusiness)
+      addBusinessMarker()
+      addMarkers()
+    })
 
-    let fitBounds = { maxLongitude: 0, maxLatitude: 0, minLongitude: 0, minLatitude: 0 }
-    //first attempt at a marker loader, need array of locations
+
+
+
     async function addMarkers() {
-      // await projectsService.getBusinessProjects()
       console.log(AppState.activeBusinessProjects);
       AppState.activeBusinessProjects.forEach(p => {
         const el = document.createElement('div')
         el.className = 'marker'
-        // let router = useRouter();
-        // el.addEventListener('click', () => {
-        //   router.push({ name: 'ProjectDetailsPage', params: { id: p.id } })
-        // })
         el.style.backgroundImage = 'https://thiscatdoesnotexist.com/'
         el.style.width = `30px`
         el.style.height = '40px'
@@ -144,42 +142,3 @@ export default {
   transition: 0.3s;
 }
 </style>
-
-  <!-- <template>
-  <div id="map"></div>
-</template>
-
-
-<script>
-import mapboxgl from "mapbox-gl"
-export default {
-  setup(){
-    // TO MAKE THE MAP APPEAR YOU MUST
-    // ADD YOUR ACCESS TOKEN FROM
-    // https://account.mapbox.com
-    mapboxgl.accessToken = 'pk.eyJ1Ijoic2tld2VyNDkwIiwiYSI6ImNsNHhhZnp3bTBjNWIzYnBwMGVnd2Frc28ifQ.HLbBCBYU_1Piw91ExBGBjA';
-    const map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v11',
-      center: [43.610, 116.2023],
-      zoom: 13
-    });
-
-    // Add the control to the map.
-    map.addControl(
-      new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken,
-        mapboxgl: mapboxgl
-      })
-    );
-    return {
-      
-    }
-  }
-}
-</script>
-
-
-<style lang="scss" scoped>
-
-</style> -->
