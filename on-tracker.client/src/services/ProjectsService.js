@@ -22,10 +22,10 @@ class ProjectsService {
     async createProject(projectData) {
         projectData.businessId = AppState.account.businessId
         projectData.creatorId = AppState.account.id
-
         const res = await api.post('api/projects', projectData)
         console.log(res.data);
         AppState.projects.unshift(res.data)
+        AppState.activeBusinessProjects.unshift(res.data)
         return res.data
     }
 
