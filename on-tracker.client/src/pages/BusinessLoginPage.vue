@@ -1,43 +1,38 @@
 <template>
-  <div class="container-fluid dark-theme" v-if="!account.businessId">
-    <div class="row d-flex justify-content-center form-row align-items-center">
+  <div class="container-fluid" v-if="!account.businessId">
+    <div class="row d-flex justify-content-center form-row">
+      <div class="col-12 d-flex flex-column align-items-center mt-5">
+        <h1>Create A Business With <span class="text-primary">OnTracker</span> </h1>
+        <div class="divider-line"></div>
+      </div>
       <div class="col-8">
-        <div class="
-              form-card
-              d-flex
-              flex-column
-              justify-content-around
-              rounded
-              p-2
-            ">
-          <form class="" @submit.prevent="createBusiness" action="">
-            <div class="d-flex flex-column align-items-center">
-              <h3 class="text-center">Tell us about your business</h3>
-              <div class="col-md-10 d-flex flex-column">
-                <div class="inputBox d-flex my-2">
-                  <input v-model="businessData.name" required type="text" class="border" />
-                  <span for="">Name</span>
-                </div>
-                <div class="inputBox d-flex my-2">
-                  <input v-model="businessData.coverImg" required type="text" class="border" />
-                  <span for="">Cover Image</span>
-                </div>
-                <div class="inputBox d-flex my-2">
-                  <input v-model="businessData.logo" required type="text" class="border" placeholder="" />
-                  <span for="">Logo</span>
-                </div>
-                <vue-google-autocomplete id="map" classname="form-control" placeholder="Business Address"
-                  v-on:placechanged="getAddressData">
-                </vue-google-autocomplete>
+        <form class="" @submit.prevent="createBusiness" action="">
+          <div class="d-flex flex-column align-items-center">
+            <h3 class="text-center">Tell us about your business</h3>
+            <div class="col-md-10 d-flex flex-column">
+              <div class="inputBox d-flex my-2">
+                <input v-model="businessData.name" required type="text" class="border" />
+                <span for="">Name</span>
               </div>
+              <div class="inputBox d-flex my-2">
+                <input v-model="businessData.coverImg" required type="text" class="border" />
+                <span for="">Cover Image</span>
+              </div>
+              <div class="inputBox d-flex my-2">
+                <input v-model="businessData.logo" required type="text" class="border" placeholder="" />
+                <span for="">Logo</span>
+              </div>
+              <vue-google-autocomplete id="map" classname="form-control" placeholder="Business Address"
+                v-on:placechanged="getAddressData">
+              </vue-google-autocomplete>
             </div>
-            <div class="d-flex justify-content-end m-2">
-              <button type="submit" class="" title="Add your Business ">
-                <h3 class="m-2"><i class="mdi mdi-check"></i></h3>
-              </button>
-            </div>
-          </form>
-        </div>
+          </div>
+          <div class="d-flex justify-content-end m-2">
+            <button type="submit" class="btn btn-outline-primary" title="Add your Business ">
+              <h3 class="m-2 my-0"><i class="mdi mdi-check"></i></h3>
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -50,8 +45,9 @@
             justify-content-center
             align-items-center
           ">
-        <h4 class="mb-5 mt-2">Tell us about yourself</h4>
-        <form action="" @submit.prevent="editAccountInfo()">
+        <h4 class="my-5">Tell us about yourself</h4>
+        <div class="divider-line"></div>
+        <form class="mt-3" action="" @submit.prevent="editAccountInfo()">
           <label for="" class="mt-2">Your Name</label>
           <input v-model="userData.name" type="text" placeholder="Name..." class="form-control mb-2" />
           <label for="" class="mt-2">Your Picture</label>
@@ -61,7 +57,7 @@
           <label for="" class="mt-2">Your Certifications</label>
           <input v-model="userData.certifications" type="text" placeholder="Certifications..."
             class="form-control mb-2" />
-          <button type="submit" class="btn btn-light text-end my-4">
+          <button type="submit" class="btn btn-outline-primary text-end my-4">
             <i class="mdi mdi-send"></i>
           </button>
         </form>
@@ -130,6 +126,14 @@ export default {
 .form-card {
   background-color: rgb(251, 246, 239);
   height: 45vh;
+}
+
+.divider-line {
+  height: 2px;
+  background-color: #f27648;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .form-row {
