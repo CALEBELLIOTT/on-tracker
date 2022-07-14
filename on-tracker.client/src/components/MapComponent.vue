@@ -43,9 +43,9 @@ export default {
       // ],
     });
 
+    let fitBounds = { maxLongitude: 0, maxLatitude: 0, minLongitude: 0, minLatitude: 0 }
     //first attempt at a marker loader, need array of locations
     async function addMarkers() {
-      let fitBounds = { maxLongitude: 0, maxLatitude: 0, minLongitude: 0, minLatitude:0}
       // await projectsService.getBusinessProjects()
       console.log(AppState.activeBusinessProjects);
       AppState.activeBusinessProjects.forEach(p => {
@@ -60,7 +60,7 @@ export default {
         el.style.height = '40px'
         el.style.backgroundSize = '100%'
         let coords = [p.location.longitude, p.location.latitude]
-        if (p.location.longitude > fitBounds.maxLongitude || fitBounds.maxLongitude == 0){
+        if (p.location.longitude > fitBounds.maxLongitude || fitBounds.maxLongitude == 0) {
           fitBounds.maxLongitude = p.location.longitude
         }
         if (p.location.longitude < fitBounds.minLongitude || fitBounds.minLongitude == 0) {
@@ -91,25 +91,29 @@ export default {
     }
     async function addBusinessMarker() {
       let business = AppState.activeBusiness
-        const el = document.createElement('div')
-        el.className = 'businessMarker'
-        el.style.backgroundImage = `url('${business.logo}')`
-        el.style.width = `80px`
-        el.style.height = '80px'
-        el.style.backgroundSize = '100%'
-        let coords = [business.address?.longitude, business.address?.latitude]
+      const el = document.createElement('div')
+      el.className = 'businessMarker'
+      el.style.backgroundImage = `url('${business.logo}')`
+      el.style.borderRadius = '50%'
+      el.style.width = `60px`
+      el.style.height = '60px'
+      el.style.backgroundSize = '100%'
+      let coords = [business.address?.longitude, business.address?.latitude]
 
-        console.log(coords);
-        let marker = new mapboxgl.Marker(el)
-          .setLngLat(coords)
-          .setPopup(
-            new mapboxgl.Popup({ offset: 25 }) // add popups
-              .setHTML(
-                `<h2 class='text-primary text-start'>${business.name}</h2>`
-              ))
-          .addTo(map);
-        map.center = coords
-        console.log(coords)
+      console.log(coords);
+      let marker = new mapboxgl.Marker(el)
+        .setLngLat(coords)
+        .setPopup(
+          new mapboxgl.Popup({ offset: 25 }) // add popups
+            .setHTML(
+              `<h2 class='text-primary text-start'>${business.name}</h2>`
+            ))
+        .addTo(map);
+      fitBounds.maxLatitude = business.address.latitude
+      fitBounds.minLatitude = business.address.latitude
+      fitBounds.minLongitude = business.address.longitude
+      fitBounds.maxLongitude = business.address.longitude
+      console.log(coords)
 
       let elements = document.getElementsByClassName('businessMarker')
       console.log(elements);
