@@ -17,6 +17,9 @@ export default {
 
     return {
       accessToken: "pk.eyJ1Ijoic2tld2VyNDkwIiwiYSI6ImNsNHhhZnp3bTBjNWIzYnBwMGVnd2Frc28ifQ.HLbBCBYU_1Piw91ExBGBjA",
+      navigateToProjectPage(id) {
+        console.log(id)
+      }
     };
   },
   setup() {
@@ -76,7 +79,7 @@ export default {
           .setPopup(
             new mapboxgl.Popup({ offset: 25 }) // add popups
               .setHTML(
-                `<h4 class='text-primary text-start'>${p.projectName}</h4><p class='text-muted text-start'>${p.description}</p>`
+                `<div class="text-start"><h4 class='text-primary text-start py-0'>${p.projectName}</h4><p class='text-muted text-start py-0'>${p.description}</p><btn @click="navigateToProjectPage(${p.id})" class="btn btn-outline-primary py-0">See Details</btn></div>`
               ))
           .addTo(map);
         map.fitBounds([
@@ -119,14 +122,14 @@ export default {
 
 
 
-    map.addControl(
-      new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken,
-        placeholder: 'OnTrack Search in Boise',
-        mapboxgl: mapboxgl,
-        marker: false
-      })
-    );
+    // map.addControl(
+    //   new MapboxGeocoder({
+    //     accessToken: mapboxgl.accessToken,
+    //     placeholder: 'OnTrack Search in Boise',
+    //     mapboxgl: mapboxgl,
+    //     marker: false
+    //   })
+    // );
     const nav = new mapboxgl.NavigationControl();
     map.addControl(nav, "top-right");
   }
