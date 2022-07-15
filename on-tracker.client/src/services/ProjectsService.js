@@ -29,6 +29,11 @@ class ProjectsService {
         return res.data
     }
 
+    async editProject(id, projectData) {
+        const res = await api.put('api/projects/' + id, projectData)
+        logger.log(res.data)
+    }
+
     async deleteProject(id) {
         const res = await api.delete('api/projects/' + id)
         logger.log(res.data)

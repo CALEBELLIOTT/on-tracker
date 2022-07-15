@@ -14,18 +14,13 @@
     <div class="col-12 elevation-5">
       <div class="row">
         <div
-          class="
-            col-md-12
-            bg-white
-            p-4
-            border-bottom border-2 border-primary
-            d-flex
-            justify-content-between
-          "
+          class="col-md-12 bg-white p-3 border-bottom border-2 border-primary"
         >
-          <div class="fs-4">
-            <span class="px-3"><i class="mdi mdi-dots-horizontal"></i></span>
-            <span>{{ project.projectName }}</span>
+          <h2 class="text-center text-primary">
+            {{ project.projectName }}
+          </h2>
+          <div class="text-center text-muted">
+            {{ project.description }}
           </div>
         </div>
         <span class="d-flex justify-content-end">
@@ -34,12 +29,6 @@
       </div>
       <div class="row border-bottom border-primary border-2">
         <ProjectImage />
-      </div>
-      <div>
-        <div class="p-5">
-          <div>Description</div>
-          {{ project.description }}
-        </div>
       </div>
     </div>
   </div>
