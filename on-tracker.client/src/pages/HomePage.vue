@@ -22,9 +22,7 @@
 
       <div class="col-md-3 d-flex flex-column align-items-center my-3">
         <h3 class="text-center">
-          <span class="text-primary border-bottom border-primary mb-0"
-            >Tracked</span
-          >
+          <span class="text-primary border-bottom border-primary mb-0">Tracked</span>
           projects
         </h3>
         <div class="projects-container">
@@ -33,12 +31,15 @@
               Create a project to get started
             </p>
           </div>
-          <Project
-            v-for="p in projects"
-            :key="p.id"
-            :project="p"
-            class="mx-5"
-          />
+
+          <template v-for="m in accountTeamMember" :key="m.id">
+            <Project v-if="!account.businessAccount" :project="m.project" class="mx-5" />
+          </template>
+
+          <template v-for="p in projects" :key="p.id">
+            <Project v-if="account.businessAccount" :project="p" class="mx-5" />
+          </template>
+
         </div>
       </div>
 
@@ -104,7 +105,9 @@ export default {
     return {
       account: computed(() => AppState.account),
       projects: computed(() => AppState.activeBusinessProjects.sort((a, b) => a.dueDate.localeCompare(b.dueDate))),
-      business: computed(() => AppState.activeBusiness)
+      business: computed(() => AppState.activeBusiness),
+      teamMember: computed(() => AppState.teamMembers),
+      accountTeamMember: computed(() => AppState.teamMemberAccount)
     }
   }
 }

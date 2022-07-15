@@ -35,6 +35,7 @@
           />
         </router-link>
       </a>
+
       <button
         class="navbar-toggler"
         type="button"
@@ -43,14 +44,11 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div
-        class="collapse navbar-collapse d-flex justify-content-end"
-        id="collapsibleNavbar"
-      >
+
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
           <li class="nav-item d-flex align-items-center">
-            <a class="nav-link" href="#"
-              ><!-- NOTE ADD V-IF BACK.. v-if account.businessAccount -->
+            <a class="nav-link" href="#">
               <router-link
                 :to="{ name: 'CreateProject' }"
                 v-if="account.businessAccount"

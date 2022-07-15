@@ -20,7 +20,7 @@
             :src="account.picture"
             alt="account photo"
             height="50"
-            class="rounded me-4"
+            class="rounded"
           />
           <!-- <span class="mx-3 text-success lighten-30">{{ account.name }}</span> -->
         </div>
@@ -85,6 +85,7 @@ export default {
 
 .dropdown-menu.show {
   transform: scale(1);
+  transform: translateX(-85px);
 }
 
 .hoverable {
