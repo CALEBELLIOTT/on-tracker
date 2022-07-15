@@ -17,6 +17,7 @@ class ProjectsService {
         const res = await api.get('api/projects/' + id)
         logger.log(res.data)
         AppState.activeProject = res.data
+        return res.data
     }
 
     async createProject(projectData) {
