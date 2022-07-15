@@ -1,35 +1,4 @@
 <template>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="
-          col-12
-          p-2
-          d-flex
-          justify-content-between
-          border-primary
-          shadow
-          border-bottom
-          nav-color
-        ">
-        <router-link :to="{ name: 'Home' }">
-          <img class="img-fluid logo" src="../assets/img/Ontracker logo OG.png" alt="" />
-        </router-link>
-
-        <div class="d-flex align-items-center">
-          <!-- <CreateProjectModal /> -->
-          <router-link :to="{ name: 'CreateProject' }">
-            <h6 v-if="account.businessAccount" class="text-primary mx-4 nav nav-custom">New Project</h6>
-          </router-link>
-          <router-link :to="{ name: 'EmployeesPage' }">
-            <h6 class="text-primary mx-4 nav nav-custom">Employees</h6>
-          </router-link>
-
-          <Login class="ms-5"></Login>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- <router-link class="navbar-brand" :to="{ name: 'Home' }">
       <div class="col-md-6 m-2">
         <img src="../assets/img/Ontracker logo OG.png" class="logo img-fluid" alt="logo" />
@@ -44,6 +13,54 @@
         <h4>Employees</h4>
       </router-link> -->
   <!-- LOGIN COMPONENT HERE -->
+  <nav class="navbar navbar-expand-sm nav-color navbar-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <router-link :to="{ name: 'Home' }">
+          <img
+            class="img-fluid logo"
+            src="../assets/img/Ontracker logo OG.png"
+            alt=""
+          />
+        </router-link>
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapsibleNavbar"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="collapse navbar-collapse d-flex justify-content-end"
+        id="collapsibleNavbar"
+      >
+        <ul class="navbar-nav">
+          <li class="nav-item d-flex align-items-center">
+            <a class="nav-link" href="#"
+              ><!-- NOTE ADD V-IF BACK.. v-if account.businessAccount -->
+              <router-link :to="{ name: 'CreateProject' }">
+                <h6 class="text-primary mx-4 nav nav-custom">New Project</h6>
+              </router-link></a
+            >
+          </li>
+          <li class="nav-item d-flex align-items-center">
+            <a class="nav-link" href="#">
+              <router-link :to="{ name: 'EmployeesPage' }">
+                <h6 class="text-primary mx-4 nav nav-custom">Employees</h6>
+              </router-link>
+            </a>
+          </li>
+          <li class="nav-item d-flex align-items-center">
+            <a class="nav-link" href="#">
+              <Login class="ms-5"></Login>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 </template>
 
 <script>
