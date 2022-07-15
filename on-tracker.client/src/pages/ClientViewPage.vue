@@ -59,7 +59,8 @@
             <div class="d-flex align-items-center">
               <img class="profile-img mx-2" :src="t.employee.account.picture" alt="">
               <div class="d-flex-flex-column">
-                <p class="text-primary my-0">{{ t.employee.account.name }}</p>
+                <p class="text-primary my-0">{{ t.employee.account.name }} <span
+                    v-if="t.employee.account.businessAccount || t.isAdmin" class="text-muted">(Admin)</span></p>
                 <p class="text-muted my-0">{{ t.employee.account.email }}</p>
               </div>
             </div>
@@ -70,9 +71,32 @@
         <div class="d-flex flex-column mt-5">
           <h3 class="text-center">Job Progress</h3>
           <p class="text-muted m-0 text-center">Monitor the progress of your job. Watch as tasks get completed</p>
-          <div class="tasks-container m-2 p-2 mt-5">
-            <div class="task d-flex justify-content-start" v-for="t in tasks">
-              <p class="">Task: <span class="text-primary">{{ t.description }}</span></p>
+          <projectProgressBar></projectProgressBar>
+          <p class="text-muted text-center">Job is {{ completion }}% done</p>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="tasks-container m-2 p-2 mt-5">
+                <h4>Completed Tasks</h4>
+                <template v-for="t in tasks">
+                  <div class="task d-flex justify-content-start flex-column task-card mt-2 p-2" v-if="t.isCompleted">
+                    <p class="m-0"><span class="text-primary">{{ t.description }}</span></p>
+                    <p class="m-0">Estimated time: {{ t.estimatedTime }} hours</p>
+                  </div>
+                </template>
+                <p class="text-muted mt-2 p-2" v-if="tasks.length < 1">no tasks to show</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="tasks-container m-2 p-2 mt-5">
+                <h4>In Progress Tasks</h4>
+                <template v-for="t in tasks">
+                  <div class="task d-flex justify-content-start flex-column task-card mt-2 p-2" v-if="!t.isCompleted">
+                    <p class="m-0"><span class="text-primary">{{ t.description }}</span></p>
+                    <p class="m-0">Estimated time: {{ t.estimatedTime }} hours</p>
+                  </div>
+                </template>
+                <p class="text-muted mt-2 p-2" v-if="tasks.length < 1">no tasks to show</p>
+              </div>
             </div>
           </div>
         </div>
@@ -87,6 +111,7 @@
 import { computed, onMounted } from "vue"
 import { useRoute } from "vue-router"
 import { AppState } from "../AppState"
+import { businessesService } from "../services/BusinessesService"
 import { projectsService } from "../services/ProjectsService"
 import { tasksService } from "../services/TasksService"
 import { teamMemberService } from "../services/TeamMembersService"
@@ -95,7 +120,8 @@ export default {
   setup() {
     let route = useRoute()
     onMounted(async () => {
-      await projectsService.getProjectById(route.params.id)
+      let project = await projectsService.getProjectById(route.params.id)
+      await businessesService.setActiveBusiness(project.businessId)
       await teamMemberService.getProjectTeamMembers(route.params.id)
       await tasksService.getTasks(route.params.id)
       console.log(AppState.activeProject);
@@ -108,7 +134,8 @@ export default {
       project: computed(() => AppState.activeProject),
       tasks: computed(() => AppState.projectTasks),
       teamMembers: computed(() => AppState.activeProjectTeamMembers),
-      business: computed(() => AppState.activeBusiness)
+      business: computed(() => AppState.activeBusiness),
+      completion: computed(() => AppState.projectCompletion)
     }
   }
 }
