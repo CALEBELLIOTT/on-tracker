@@ -13,7 +13,18 @@
         <h4>Employees</h4>
       </router-link> -->
   <!-- LOGIN COMPONENT HERE -->
-  <nav class="navbar navbar-expand-sm nav-color navbar-light">
+  <nav
+    class="
+      navbar navbar-expand-sm
+      nav-color
+      navbar-light
+      border-bottom border-primary
+      elevation-4
+      mb-2
+      pt-0
+      pb-0
+    "
+  >
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <router-link :to="{ name: 'Home' }">
@@ -40,7 +51,10 @@
           <li class="nav-item d-flex align-items-center">
             <a class="nav-link" href="#"
               ><!-- NOTE ADD V-IF BACK.. v-if account.businessAccount -->
-              <router-link :to="{ name: 'CreateProject' }">
+              <router-link
+                :to="{ name: 'CreateProject' }"
+                v-if="account.businessAccount"
+              >
                 <h6 class="text-primary mx-4 nav nav-custom">New Project</h6>
               </router-link></a
             >
