@@ -13,8 +13,7 @@
         <h4>Employees</h4>
       </router-link> -->
   <!-- LOGIN COMPONENT HERE -->
-  <nav
-    class="
+  <nav class="
       navbar navbar-expand-sm
       nav-color
       navbar-light
@@ -23,39 +22,26 @@
       mb-2
       pt-0
       pb-0
-    "
-  >
+    ">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <router-link :to="{ name: 'Home' }">
-          <img
-            class="img-fluid logo"
-            src="../assets/img/Ontracker logo OG.png"
-            alt=""
-          />
+          <img class="img-fluid logo" src="../assets/img/Ontracker logo OG.png" alt="" />
         </router-link>
       </a>
 
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#collapsibleNavbar"
-      >
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
         <ul class="navbar-nav">
           <li class="nav-item d-flex align-items-center justify-content-center">
             <a class="nav-link" href="#">
-              <router-link
-                :to="{ name: 'CreateProject' }"
-                v-if="account.businessAccount"
-              >
+              <router-link :to="{ name: 'CreateProject' }" v-if="account.businessAccount">
                 <h6 class="text-primary mx-4 nav nav-custom">New Project</h6>
-              </router-link></a
-            >
+              </router-link>
+            </a>
           </li>
           <li class="nav-item d-flex align-items-center justify-content-center">
             <a class="nav-link" href="#">
