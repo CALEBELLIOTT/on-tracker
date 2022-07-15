@@ -28,8 +28,7 @@
 
   <div class="row">
     <div class="col-12">
-      <div
-        class="
+      <div class="
           selection-card
           d-flex
           flex-column
@@ -37,9 +36,7 @@
           p-2
           m-2
           rounded
-        "
-        @click="goToProjectPage"
-      >
+        " @click="goToProjectPage">
         <div class="d-flex justify-content-between">
           <h3 class="text-primary text-center">{{ project.projectName }}</h3>
         </div>
@@ -49,21 +46,18 @@
         <p :class="getDateStyle()">
           <i class="mdi mdi-alert-circle-outline"></i>Due:
           {{
-            new Date(project.dueDate).toLocaleDateString("en-us", {
-              weekday: "long",
-              year: "numeric",
-              month: "short",
-              day: "numeric",
-            })
+              new Date(project.dueDate).toLocaleDateString("en-us", {
+                weekday: "long",
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              })
           }}
         </p>
       </div>
     </div>
-    <span
-      @click="deleteProject"
-      class="mdi mdi-close"
-      title="Delete Project"
-    ></span>
+    <span v-if="project.creatorId == account.id" @click="deleteProject" class="mdi mdi-close"
+      title="Delete Project"></span>
   </div>
 </template>
 
@@ -74,6 +68,7 @@ import { useRouter } from 'vue-router'
 import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
 import { projectsService } from '../services/ProjectsService'
+import { AppState } from '../AppState'
 export default {
   props: { project: { type: Object, required: true } },
   setup(props) {
@@ -109,7 +104,8 @@ export default {
           logger.log(error)
           Pop.toast(error.message, 'error')
         }
-      }
+      },
+      account: computed(() => AppState.account)
     }
   }
 }
@@ -132,6 +128,7 @@ export default {
 .selection-card {
   transition: 250ms;
   border: solid 1.5px rgba(37, 36, 36, 1);
+  width: max-content;
 }
 
 .selection-card:hover {

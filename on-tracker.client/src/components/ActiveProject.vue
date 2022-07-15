@@ -3,11 +3,18 @@
     <div class="col-12 elevation-5">
       <div class="row">
         <div
-          class="col-md-12 bg-white p-4 border-bottom border-2 border-primary"
+          class="
+            col-md-12
+            bg-white
+            p-4
+            border-bottom border-2 border-primary
+            d-flex
+            justify-content-between
+          "
         >
           <div class="fs-4">
             <span class="px-3"><i class="mdi mdi-dots-horizontal"></i></span>
-            {{ project.description }}
+            <span>{{ project.description }}</span>
           </div>
         </div>
         <span class="d-flex justify-content-end">
@@ -29,6 +36,7 @@ import { AppState } from '../AppState'
 import VueHorizontal from "vue-horizontal";
 import { notesService } from '../services/NotesService';
 import { logger } from '../utils/Logger';
+import Pop from '../utils/Pop';
 export default {
   components: { VueHorizontal },
   props: { project: { type: Object, required: true } },
@@ -37,6 +45,7 @@ export default {
       project: computed(() => AppState.activeProject),
       tasks: computed(() => AppState.projectTasks),
       notes: computed(() => AppState.projectNotes),
+
 
 
     }
