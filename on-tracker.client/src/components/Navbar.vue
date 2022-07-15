@@ -49,8 +49,7 @@
       >
         <ul class="navbar-nav">
           <li class="nav-item d-flex align-items-center">
-            <a class="nav-link" href="#"
-              ><!-- NOTE ADD V-IF BACK.. v-if account.businessAccount -->
+            <a class="nav-link" href="#">
               <router-link
                 :to="{ name: 'CreateProject' }"
                 v-if="account.businessAccount"
