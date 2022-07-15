@@ -63,6 +63,11 @@ class EmployeesService {
     console.log(employees);
     AppState.activeProjectAvailableEmployees = employees
   }
+
+  setAccountEmployee(id) {
+    AppState.accountEmployee = AppState.employees.filter(e => e.accountId == id)[0]
+    console.log(AppState.accountEmployee);
+  }
 }
 
 export const employeesService = new EmployeesService()
