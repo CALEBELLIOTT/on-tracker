@@ -1,17 +1,37 @@
 <template>
-  <div class="col-md-12 text-dark d-flex justify-content-between ps-2 pe-2">
-    <span :id="`note${note.id}`" @blur="editNote(note.id)" contenteditable="true">
-      <b>{{ note.body }}</b>
-    </span>
+  <div
+    class="col-md-12 text-dark d-flex justify-content-between ps-2 pe-2 pt-3"
+  >
+    <div>
+      <span>
+        <img
+          class="img-fluid profile-pic border border-primary border-2"
+          :src="note.account.picture"
+          alt=""
+        />
+      </span>
+      <span
+        class="ms-4"
+        :id="`note${note.id}`"
+        @blur="editNote(note.id)"
+        contenteditable="true"
+      >
+        <b>{{ note.body }}</b>
+      </span>
+    </div>
 
     <span>
-      <i class="mdi mdi-delete selectable" title="Delete Note" @click="deleteNote(note.id)"></i>
+      <i
+        class="mdi mdi-delete selectable"
+        title="Delete Note"
+        @click="deleteNote(note.id)"
+      ></i>
     </span>
 
     <!-- Modal -->
   </div>
-  <div>
-    <p class="ps-2 text-muted">{{ note.account?.name }}</p>
+  <div class="border-bottom border-dark">
+    <p class="ms-3 text-muted">{{ note.account?.name }}</p>
   </div>
 </template>
 
@@ -51,4 +71,11 @@ export default {
 
 
 <style lang="scss" scoped>
+.profile-pic {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  border: 5em;
+  border-color: orange;
+}
 </style>

@@ -28,7 +28,7 @@
           aria-controls="profile"
           aria-selected="false"
         >
-          Profile
+          Project Notes
         </button>
       </li>
       <li class="nav-item" role="presentation">
@@ -42,7 +42,7 @@
           aria-controls="messages"
           aria-selected="false"
         >
-          Messages
+          Team Members
         </button>
       </li>
     </ul>
@@ -86,6 +86,7 @@
     >
       <div class="mt-2 mb-3 mx-5">
         <ActiveProject />
+        <ProjectProgressBar />
       </div>
     </div>
     <div
@@ -94,28 +95,33 @@
       role="tabpanel"
       aria-labelledby="profile-tab"
     >
-      <div
-        class="
-          col-md-12
-          bg-grey
-          elevation-4
-          rounded
-          d-flex
-          justify-content-center
-        "
-      >
-        <div class="col-md-10 m-2">
-          <h1
-            class="text-center text-white border-bottom border-5 border-white"
-          >
+      <div class="row mb-0">
+        <div class="col-md-10 mx-auto text-center text-dark rounded">
+          <h1 class="text-center border-bottom border-5 border-white">
             <b><em>Notes</em></b>
           </h1>
-          <div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div
+          class="
+            col-md-10
+            m-2
+            elevation-4
+            rounded
+            pt-2
+            border-3 border border-primary
+          "
+        >
+          <div class="notes-section">
             <ProjectNotes v-for="n in notes" :key="n.id" :note="n" />
           </div>
-
-          <div class="d-flex justify-content-center">
-            <form @submit.prevent="createNote">
+        </div>
+      </div>
+      <div class="row">
+        <div class="">
+          <form @submit.prevent="createNote">
+            <div class="col-md-9 mx-auto d-flex pt-2">
               <textarea
                 class="form-control"
                 placeholder="Add a note..."
@@ -125,16 +131,16 @@
                 rows="1"
                 v-model="noteData.body"
               ></textarea>
-              <span class="d-flex justify-content-center mt-2">
+              <div>
                 <button
-                  class="btn btn-dark text-light rounded mb-3"
+                  class="btn btn-dark text-light rounded ms-5"
                   type="submit"
                 >
                   Submit
                 </button>
-              </span>
-            </form>
-          </div>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -256,7 +262,7 @@ export default {
 }
 
 .notes-section {
-  height: 12vh;
+  height: 50vh;
   overflow-y: scroll;
   // background-color: white;
 }

@@ -1,14 +1,20 @@
 
     <template>
-
   <div class="component">
-    <div class="progress">
-      <div id="progress" :class="`progress-bar`" :style="`width : ${percentage}%;`" role="progressbar"
-        aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"> {{ completedTasks() }}/{{ tasks.length }}
+    <div class="progress mx-5">
+      <div
+        id="progress"
+        :class="`progress-bar`"
+        :style="`width : ${percentage}%;`"
+        role="progressbar"
+        aria-valuenow="50"
+        aria-valuemin="0"
+        aria-valuemax="100"
+      >
+        {{ completedTasks() }}/{{ tasks.length }}
       </div>
     </div>
   </div>
-
 </template>
     
     
@@ -57,5 +63,5 @@ export default {
     
     
     <style lang="scss" scoped>
-    </style>
+</style>
 
