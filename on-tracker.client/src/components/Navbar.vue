@@ -47,7 +47,7 @@
 
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
-          <li class="nav-item d-flex align-items-center">
+          <li class="nav-item d-flex align-items-center justify-content-center">
             <a class="nav-link" href="#">
               <router-link
                 :to="{ name: 'CreateProject' }"
@@ -57,14 +57,15 @@
               </router-link></a
             >
           </li>
-          <li class="nav-item d-flex align-items-center">
+          <li class="nav-item d-flex align-items-center justify-content-center">
             <a class="nav-link" href="#">
               <router-link :to="{ name: 'EmployeesPage' }">
                 <h6 class="text-primary mx-4 nav nav-custom">Employees</h6>
               </router-link>
             </a>
           </li>
-          <li class="nav-item d-flex align-items-center">
+
+          <li class="nav-item d-flex align-items-center justify-content-center">
             <a class="nav-link" href="#">
               <Login class="ms-5"></Login>
             </a>
