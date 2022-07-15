@@ -58,7 +58,9 @@ export default {
       },
       async deleteNote(id) {
         try {
-          await notesService.deleteNote(id)
+          if (await Pop.confirm('Are you sure you want to delete this comment')) {
+            await notesService.deleteNote(id)
+          }
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'error')
