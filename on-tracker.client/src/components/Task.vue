@@ -1,5 +1,5 @@
 <template>
-  <div class="col-12 pt-4">
+  <div class="col-md-12 pt-4">
     <input
       class="selectable form-control mb-3"
       title="checkbox"

@@ -1,111 +1,140 @@
 <template>
   <navbar />
-  <nav>
-    <!-- Nav tabs -->
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-      <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
-          role="tab" aria-controls="home" aria-selected="true">
-          Home
+  <div class="container-fluid">
+    <nav>
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+            role="tab" aria-controls="home" aria-selected="true">
+            Home
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+            role="tab" aria-controls="profile" aria-selected="false">
+            Project Notes
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button"
+            role="tab" aria-controls="messages" aria-selected="false">
+            Team Members
+          </button>
+        </li>
+      </ul>
+
+      <!-- Tab panes -->
+    </nav>
+    <!-- Mobile button -->
+    <div class="col-12 d-flex justify-content-around d-md-none mt-2">
+      <div class="">
+        <button class="btn btn-primary mobile-button" type="button" data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+          <b>Tasks</b>
         </button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
-          role="tab" aria-controls="profile" aria-selected="false">
-          Project Notes
+      </div>
+      <div class="">
+        <button class="btn btn-primary mobile-button" type="button" data-bs-toggle="offcanvas"
+          data-bs-target="#availableEmployees" aria-controls="offcanvasRight">
+          <i class="mdi mdi-account-multiple-plus-outline fs-5"></i>
         </button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button"
-          role="tab" aria-controls="messages" aria-selected="false">
-          Team Members
-        </button>
-      </li>
-    </ul>
-
-    <!-- Tab panes -->
-  </nav>
-
-  <div class="mt-3 me-0">
-    <button class="btn btn-primary cool-button" type="button" data-bs-toggle="offcanvas"
-      data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-      <b>T</b>
-    </button>
-  </div>
-  <div v-if="account.businessAccount">
-    <button class="btn btn-primary cool-button2" type="button" data-bs-toggle="offcanvas"
-      data-bs-target="#availableEmployees" aria-controls="offcanvasRight">
-      <i class="mdi mdi-account-multiple-plus-outline fs-5 px-2"></i>
-    </button>
-  </div>
-
-  <!-- OffCanvas -->
-  <AvailableEmployeesOffCanvas />
-  <!--  -->
-
-  <div class="tab-content">
-    <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
-      <div class="mt-2 mb-3 mx-5">
-        <ActiveProject />
-        <ProjectProgressBar />
       </div>
     </div>
-    <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-      <div class="row mb-0 pt-3">
-        <div class="col-md-10 mx-auto text-center text-dark rounded">
-          <h1 class="text-center border-bottom border-5 border-white">
-            <b><em>Notes</em></b>
-          </h1>
+    <!--  -->
+
+    <div class="mt-3 me-0 d-none d-md-block">
+      <button class="btn btn-primary cool-button" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+        <b>T</b>
+      </button>
+    </div>
+    <div class="d-none d-md-block">
+      <button class="btn btn-primary cool-button2" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#availableEmployees" aria-controls="offcanvasRight">
+        <i class="mdi mdi-account-multiple-plus-outline fs-5 px-2"></i>
+      </button>
+    </div>
+
+    <!-- OffCanvas -->
+    <AvailableEmployeesOffCanvas />
+    <TaskOffCanvas />
+    <!--  -->
+
+    <div class="tab-content">
+      <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div class="mt-2 mb-3 mx-5 d-none d-md-block">
+          <ActiveProject />
+          <ProjectProgressBar />
+        </div>
+        <div class="d-md-none mt-2 pt-5">
+          <ActiveProjectMobile />
         </div>
       </div>
-      <div class="row justify-content-center">
-        <div class="
-            col-md-10
-            m-2
-            elevation-4
-            rounded
-            pt-2
-            border-2 border border-primary
-          ">
-          <div class="notes-section">
-            <ProjectNotes v-for="n in notes" :key="n.id" :note="n" />
+      <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="row mb-0 pt-3">
+          <div class="col-md-10 mx-auto text-center text-dark rounded">
+            <h1 class="text-center border-bottom border-5 border-white">
+              <b><em>Notes</em></b>
+            </h1>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="">
-          <form @submit.prevent="createNote">
-            <div class="col-md-9 mx-auto d-flex pt-2">
-              <textarea class="form-control" placeholder="Add a note..." name="" id="" cols="80" rows="1"
-                v-model="noteData.body"></textarea>
-              <div>
-                <button class="btn btn-dark text-light rounded ms-5" type="submit">
-                  Submit
-                </button>
+        <div class="row justify-content-center">
+          <div class="
+              col-md-10
+              m-2
+              elevation-4
+              rounded
+              pt-2
+              border-2 border border-primary
+            ">
+            <div class="notes-section">
+              <div class="
+                  notes-section
+                  d-flex
+                  justify-content-center
+                  align-items-center
+                " v-if="notes.length == 0">
+                <h6 class="text-muted">Add a note to your project!</h6>
+              </div>
+              <div class="notes-section" v-else>
+                <ProjectNotes v-for="n in notes" :key="n.id" :note="n" />
               </div>
             </div>
-          </form>
+          </div>
+        </div>
+        <div class="row">
+          <div class="">
+            <form @submit.prevent="createNote">
+              <div class="col-md-9 mx-auto d-flex pt-2">
+                <textarea class="form-control" placeholder="Add a note..." name="" id="" cols="80" rows="1"
+                  v-model="noteData.body"></textarea>
+                <div>
+                  <button class="btn btn-dark text-light rounded ms-5" type="submit">
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
-      <div class="text-light text-center pt-5">
-        <h2><b>TeamMembers</b></h2>
-      </div>
-      <div class="row pt-5 py-5">
-        <div>
-          <div class="col-12 bg-white elevation-4 rounded border border-4 p-5">
-            <span v-for="t in teamMembers" :key="t.id" class=""><img :title="t.employee.account.name"
-                class="img-fluid profile-img" alt="" :src="t.employee.account.picture" /></span>
+      <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
+        <div class="text-light text-center pt-5">
+          <h2><b>TeamMembers</b></h2>
+        </div>
+        <div class="row pt-5 py-5">
+          <div>
+            <div class="col-12 bg-white elevation-4 rounded border border-4 p-5">
+              <span v-for="t in teamMembers" :key="t.id" class=""><img :title="t.employee.account.name"
+                  class="img-fluid profile-img" alt="" :src="t.employee.account.picture" /></span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
   <!-- Note Component -->
-  <div class="row align-items-center flex-column mx-5"></div>
-
   <!-- Employee Cards and Mapbox  -->
 </template>
 
@@ -133,7 +162,6 @@ export default {
         await teamMemberService.getBusinessTeamMembers()
         await teamMemberService.getProjectTeamMembers(route.params.id)
         await employeesService.getAvailableEmployees()
-        console.log(AppState.activeProjectTeamMembers);
       } catch (error) {
         logger.log(error)
         Pop.toast(error.message, 'error')
@@ -200,6 +228,11 @@ export default {
   height: 50vh;
   overflow-y: scroll;
   // background-color: white;
+}
+
+.mobile-button {
+  height: 50px;
+  width: 150px;
 }
 
 .cool-button {
