@@ -29,42 +29,27 @@
                 <div class="col-md-6 mt-3">
                   <div class="form-group">
                     <label for="fullName">Name</label>
-                    <input
-                      type="text"
-                      class="form-control border-primary"
-                      placeholder="Enter name..."
-                      v-model="accountData.name"
-                    />
+                    <input type="text" class="form-control border-primary" placeholder="Enter name..."
+                      v-model="accountData.name" />
                   </div>
                 </div>
                 <div class="col-md-6 mt-3">
                   <div class="form-group">
                     <label for="eMail">Email</label>
-                    <input
-                      type="email"
-                      class="form-control border-primary"
-                      placeholder="Enter email..."
-                      v-model="accountData.email"
-                    />
+                    <input type="email" class="form-control border-primary" placeholder="Enter email..."
+                      v-model="accountData.email" />
                   </div>
                 </div>
               </div>
               <div class="row gutters">
                 <div class="col-md-12 mt-3">
                   <label for="picture">Picture</label>
-                  <input
-                    type="text"
-                    class="form-control border-primary"
-                    placeholder="Picture Url..."
-                    v-model="accountData.picture"
-                  />
+                  <input type="text" class="form-control border-primary" placeholder="Picture Url..."
+                    v-model="accountData.picture" />
                 </div>
                 <div class="col-md-12 mt-3">
                   <label for="description">Description</label>
-                  <textarea
-                    class="form-control border-primary"
-                    placeholder="Describe yourself..."
-                  ></textarea>
+                  <textarea class="form-control border-primary" placeholder="Describe yourself..."></textarea>
                 </div>
               </div>
               <div class="row gutters">
@@ -81,7 +66,7 @@
     </div>
   </div>
 
-  <div class="container mt-4 pb-5">
+  <div v-if="account.businessAccount" class="container mt-4 pb-5">
     <div class="row gutters">
       <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
         <div class="card h-100 elevation-3">
@@ -94,23 +79,15 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="fullName">Name</label>
-                    <input
-                      type="text"
-                      class="form-control border-primary"
-                      placeholder="Enter name"
-                      v-model="businessData.name"
-                    />
+                    <input type="text" class="form-control border-primary" placeholder="Enter name"
+                      v-model="businessData.name" />
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="eMail">Cover Image</label>
-                    <input
-                      type="text"
-                      class="form-control border-primary"
-                      v-model="businessData.coverImg"
-                      placeholder="Cover Image URL"
-                    />
+                    <input type="text" class="form-control border-primary" v-model="businessData.coverImg"
+                      placeholder="Cover Image URL" />
                   </div>
                 </div>
               </div>
@@ -118,12 +95,8 @@
                 <div class="col-md-12 pt-3"></div>
                 <label for="">Logo URL</label>
                 <div class="col-md-12">
-                  <input
-                    type="text"
-                    class="form-control border-primary"
-                    v-model="businessData.logo"
-                    placeholder="Logo URL"
-                  />
+                  <input type="text" class="form-control border-primary" v-model="businessData.logo"
+                    placeholder="Logo URL" />
                 </div>
                 <!-- <div class="col-md-6">
                 <div class="form-group">
@@ -183,10 +156,7 @@
       </div>
       <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
         <div class="card-2 h-100 elevation-3">
-          <div
-            class="card-body bg-img rounded-top"
-            :style="`background-image: url(${activeBusiness.coverImg})`"
-          >
+          <div class="card-body bg-img rounded-top" :style="`background-image: url(${activeBusiness.coverImg})`">
             <div class="account-settings">
               <div class="user-profile">
                 <div class="user-avatar">
@@ -327,6 +297,7 @@ body {
   transform: translateY(4px) translateX(2px);
   box-shadow: rgb(26, 18, 4) 0px 0px 0px;
 }
+
 .bg-img {
   height: 9vh;
   background-size: cover;

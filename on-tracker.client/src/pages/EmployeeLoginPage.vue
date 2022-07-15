@@ -95,6 +95,7 @@ export default {
       async editAccountInfo() {
         console.log(userData.value);
         userData.value.businessId = AppState.account.businessId
+        userData.businessAccount = AppState.account.businessAccount
         try {
           await accountService.editAccountInfo(userData.value)
           await employeesService.editEmployee(userData.value, AppState.account.id)

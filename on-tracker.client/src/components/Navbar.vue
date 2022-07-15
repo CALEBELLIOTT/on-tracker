@@ -1,8 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div
-        class="
+      <div class="
           col-12
           p-2
           d-flex
@@ -11,20 +10,15 @@
           shadow
           border-bottom
           nav-color
-        "
-      >
+        ">
         <router-link :to="{ name: 'Home' }">
-          <img
-            class="img-fluid logo"
-            src="../assets/img/Ontracker logo OG.png"
-            alt=""
-          />
+          <img class="img-fluid logo" src="../assets/img/Ontracker logo OG.png" alt="" />
         </router-link>
 
         <div class="d-flex align-items-center">
           <!-- <CreateProjectModal /> -->
           <router-link :to="{ name: 'CreateProject' }">
-            <h6 class="text-primary mx-4 nav nav-custom">New Project</h6>
+            <h6 v-if="account.businessAccount" class="text-primary mx-4 nav nav-custom">New Project</h6>
           </router-link>
           <router-link :to="{ name: 'EmployeesPage' }">
             <h6 class="text-primary mx-4 nav nav-custom">Employees</h6>
@@ -103,6 +97,7 @@ img {
 nav {
   background-color: rgb(93, 92, 92);
 }
+
 .nav-color {
   background-color: rgb(255, 251, 251);
 }
