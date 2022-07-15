@@ -18,8 +18,15 @@
       <div class="col-12">
         <div class="mt-5">
           <h3>Assign an employee to a project</h3>
-          <p class="text-muted">Using our assign to project tool, you can assign your employees </p>
+          <p class="text-muted m-0">Using our assign to project tool, you can assign your employees to a project your
+            business has created.</p>
+          <p class="">click the button below to get started</p>
+          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+            data-bs-target="#teamMemberModal">
+            Assign to Project
+          </button>
         </div>
+
       </div>
     </div>
 
