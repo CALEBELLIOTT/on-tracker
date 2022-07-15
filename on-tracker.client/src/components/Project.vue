@@ -101,7 +101,10 @@ export default {
       },
       async deleteProject() {
         try {
-          await projectsService.deleteProject(props.project.id)
+          if (await Pop.confirm()) {
+
+            await projectsService.deleteProject(props.project.id)
+          }
         } catch (error) {
           logger.log(error)
           Pop.toast(error.message, 'error')

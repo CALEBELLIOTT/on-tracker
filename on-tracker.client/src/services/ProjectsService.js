@@ -32,7 +32,7 @@ class ProjectsService {
     async deleteProject(id) {
         const res = await api.delete('api/projects/' + id)
         logger.log(res.data)
-        AppState.projects = AppState.activeProject.filter(p => p.id != id)
+        AppState.projects = AppState.projects.filter(p => p.id != id)
     }
 
     async getBusinessProjects(businessId) {
