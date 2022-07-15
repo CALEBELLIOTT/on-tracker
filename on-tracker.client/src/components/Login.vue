@@ -95,6 +95,4 @@ export default {
 .name {
   font-size: 10pt;
 }
-.dp-menu-transform {
-}
 </style>

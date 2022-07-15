@@ -45,33 +45,31 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="d-flex justify-content-end">
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-          <ul class="navbar-nav">
-            <li class="nav-item d-flex align-items-center">
-              <a class="nav-link" href="#">
-                <router-link
-                  :to="{ name: 'CreateProject' }"
-                  v-if="account.businessAccount"
-                >
-                  <h6 class="text-primary mx-4 nav nav-custom">New Project</h6>
-                </router-link></a
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item d-flex align-items-center">
+            <a class="nav-link" href="#">
+              <router-link
+                :to="{ name: 'CreateProject' }"
+                v-if="account.businessAccount"
               >
-            </li>
-            <li class="nav-item d-flex align-items-center">
-              <a class="nav-link" href="#">
-                <router-link :to="{ name: 'EmployeesPage' }">
-                  <h6 class="text-primary mx-4 nav nav-custom">Employees</h6>
-                </router-link>
-              </a>
-            </li>
-            <li class="nav-item d-flex align-items-center">
-              <a class="nav-link" href="#">
-                <Login class="ms-5"></Login>
-              </a>
-            </li>
-          </ul>
-        </div>
+                <h6 class="text-primary mx-4 nav nav-custom">New Project</h6>
+              </router-link></a
+            >
+          </li>
+          <li class="nav-item d-flex align-items-center">
+            <a class="nav-link" href="#">
+              <router-link :to="{ name: 'EmployeesPage' }">
+                <h6 class="text-primary mx-4 nav nav-custom">Employees</h6>
+              </router-link>
+            </a>
+          </li>
+          <li class="nav-item d-flex align-items-center">
+            <a class="nav-link" href="#">
+              <Login class="ms-5"></Login>
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>
