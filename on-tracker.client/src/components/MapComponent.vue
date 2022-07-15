@@ -35,6 +35,8 @@ export default {
       container: "mapContainer",
       style: "mapbox://styles/mapbox/outdoors-v11",
       center: [-116.215019, 43.618881],
+      // bounds: bounds,
+      // fitBoundsOptions: { padding: { top: 10, bottom: 25, left: 15, right: 5 } },
       zoom: 13,
       // maxBounds: [
       //   [-117.215019, 43.618881],
@@ -80,13 +82,16 @@ export default {
             new mapboxgl.Popup({ offset: 25 }) // add popups
               .setHTML(
                 `<div class="text-start"><h4 class='text-primary text-start py-0'>${p.projectName}</h4><p class='text-muted text-start py-0'>${p.description}</p><form action="http://localhost:8080/#/project/${p.id}">
-                <input type="submit" value="See Project Details" class="btn btn-outline-primary py-0" placeholder="." /></form></div>`
+                <button type="submit" class="btn btn-outline-primary py-0"/>See Project Details</button></form></div>`
               ))
           .addTo(map);
-        map.fitBounds([
-          [fitBounds.minLongitude - .1, fitBounds.minLatitude - .1], // southwestern corner of the bounds
-          [fitBounds.maxLongitude + .1, fitBounds.maxLatitude + .1], // northeastern corner of the bounds
-        ])
+        const bbox = [
+          [fitBounds.minLongitude , fitBounds.minLatitude ], // southwestern corner of the bounds
+          [fitBounds.maxLongitude , fitBounds.maxLatitude ], // northeastern corner of the bounds
+        ]
+        map.fitBounds(bbox, {
+          padding:100 
+        })
 
       });
       let elements = document.getElementsByClassName('marker')
@@ -146,20 +151,5 @@ export default {
   border-radius: 15px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-}
-
-a:link,
-a:visited {
-  background-color: #f44336;
-  color: white;
-  padding: 14px 25px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-}
-
-a:hover,
-a:active {
-  background-color: red;
 }
 </style>
