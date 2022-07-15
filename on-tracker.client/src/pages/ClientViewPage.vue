@@ -61,7 +61,7 @@
               <div class="d-flex-flex-column">
                 <p class="text-primary my-0">{{ t.employee.account.name }} <span
                     v-if="t.employee.account.businessAccount || t.isAdmin" class="text-muted">(Admin)</span></p>
-                <p class="text-muted my-0">{{ t.employee.account.email }}</p>
+                <p class=" my-0">{{ t.employee.account.email }}</p>
               </div>
             </div>
           </div>
@@ -70,7 +70,7 @@
       <div class="col-md-6">
         <div class="d-flex flex-column mt-5">
           <h3 class="text-center">Job Progress</h3>
-          <p class="text-muted m-0 text-center">Monitor the progress of your job. Watch as tasks get completed</p>
+          <p class="text-muted m-0 text-center">Monitor the progress of your job. Watch as tasks get completed.</p>
           <projectProgressBar></projectProgressBar>
           <p class="text-muted text-center">Job is {{ completion || 0 }}% done</p>
           <div class="row">
