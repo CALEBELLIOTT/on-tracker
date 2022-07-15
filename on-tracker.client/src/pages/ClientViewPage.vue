@@ -31,18 +31,18 @@
 
     <div class="row">
       <div class="col-12">
-        <div class="p-2 text-center text-md-start mt-5 d-flex justify-content-center flex-column align-items-center">
+        <div class="p-2 text-center text-md-start mt-3 d-flex justify-content-center flex-column align-items-center">
+          <img :src="business.logo" class="profile-img mx-2" alt="">
           <div class="d-flex align-items-center">
             <h3 class="">Your Project, <span class="text-primary">{{ project.projectName }}</span> is being completed by
               <span class="text-primary">{{ business.name }}</span>
             </h3>
-            <img :src="business.logo" class="profile-img mx-2" alt="">
           </div>
           <p class="text-muted my-0">{{ project.description }}</p>
           <!-- <p class="text-muted my-0">{{ project.location.route }}</p> -->
           <p class="text-muted my-0">Estimated Price: ${{ project.quotePrice }}</p>
         </div>
-        <div class="divider-line-local"></div>
+        <div class="divider-line-local mb-5"></div>
       </div>
     </div>
 
@@ -54,7 +54,7 @@
             time.
           </p>
         </div>
-        <div class="teamMembersContainer mt-5">
+        <div class="teamMembersContainer mt-5 mb-5">
           <div class="teamMemberCard p-2" v-for="t in teamMembers">
             <div class="d-flex align-items-center">
               <img class="profile-img mx-2" :src="t.employee.account.picture" alt="">
