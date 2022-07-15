@@ -26,7 +26,7 @@
     </div>
   </div> -->
 
-  <div class="row">
+  <div class="row ">
     <div class="col-12">
       <button class="btn btn-outline-primary" @click="goToClientView(project.id)">Client View</button>
       <div class="
@@ -113,7 +113,8 @@ export default {
           Pop.toast(error.message, 'error')
         }
       },
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+
     }
   }
 }

@@ -38,7 +38,9 @@ AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function () {
     await businessesService.setActiveBusiness(AppState.account.businessId)
     await employeesService.getAllEmployees()
     await projectsService.getBusinessProjects(AppState.account.businessId)
+    await employeesService.setAccountEmployee(AppState.account.id)
     await teamMemberService.getBusinessTeamMembers()
+    await teamMemberService.getEmployeesTeamMembers(AppState.accountEmployee.id)
   }
 })
 
