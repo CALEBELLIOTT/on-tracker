@@ -40,7 +40,10 @@
           <li class="nav-item d-flex align-items-center">
             <a class="nav-link" href="#"
               ><!-- NOTE ADD V-IF BACK.. v-if account.businessAccount -->
-              <router-link :to="{ name: 'CreateProject' }">
+              <router-link
+                :to="{ name: 'CreateProject' }"
+                v-if="account.businessAccount"
+              >
                 <h6 class="text-primary mx-4 nav nav-custom">New Project</h6>
               </router-link></a
             >
