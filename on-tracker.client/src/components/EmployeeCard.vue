@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <!-- <div class="container-fluid">
 
     <div class="row">
       <div class="col-md-12">
@@ -38,11 +38,26 @@
         </div>
       </div>
     </div>
+  </div> -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="p-2 employees-container">
+          <div class="d-flex align-items-center card-utility employee-card">
+            <img class="profile-img" :src="employee.account.picture" alt="" @click="setActiveEmployee()">
+            <div class="d-flex flex-column mx-2 card-utility">
+              <h4 class=" text-primary m-0" @click="setActiveEmployee()">{{ employee.account.name }}<span
+                  class="text-muted fs-6" v-if="employee.account.businessAccount"> (admin)</span>
+              </h4>
+              <p class="text-muted">{{ employee.account.email }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- Modal -->
-  <EmployeeModal />
-  <!-- Modal -->
 </template>
 
 
@@ -79,22 +94,57 @@ h5 {
   color: var(--bs-primary);
 }
 
-.employee-card {
-  border: 3px solid rgba(12, 65, 255, 0);
-  transition: 500ms;
+// .card-utility {
+//   border: 2px solid rgba(12, 65, 255, 0);
+//   transition: 500ms;
+// }
+
+// .card-utility:hover {
+//   cursor: pointer;
+//   border: 2px rgb(255, 132, 73) solid;
+//   transition: 500ms;
+// }
+
+
+.employees-container {
+  max-height: 35vh;
+  overflow-y: scroll;
 }
 
-.employee-card:hover {
+.employees-container::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.employees-container::-webkit-scrollbar-thumb {
+  background-color: #f27648;
+  border-radius: 5px;
+}
+
+.employees-container::-webkit-scrollbar-track {
+  background-color: #e9ecef;
+  border-radius: 5px;
+}
+
+.card-utility img:hover {
+  border: rgb(255, 132, 73) 2px solid;
   cursor: pointer;
-  border: 3px rgb(255, 132, 73) solid;
-  transition: 500ms;
+  transition: 300ms;
 }
 
-.profile-img {
-  height: 10rem;
-  width: 10rem;
+.card-utility img {
+  transition: 300ms;
+  transition-property: border;
+}
+
+.card-utility h4:hover {
+  cursor: pointer;
+}
+
+.card-utility .profile-img {
+  height: 8rem;
+  width: 8rem;
   object-fit: cover;
-  border-radius: 5%;
+  border-radius: 50%;
 }
 
 @media(max-width: 769px) {

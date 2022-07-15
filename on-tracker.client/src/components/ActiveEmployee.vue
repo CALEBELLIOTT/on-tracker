@@ -33,9 +33,6 @@
   </div>
 
 
-  <!-- Modal -->
-  <EmployeeModal />
-  <!-- Modal -->
 </template>
 
 
