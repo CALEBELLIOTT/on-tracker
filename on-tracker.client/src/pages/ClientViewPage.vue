@@ -34,8 +34,9 @@
       <div class="col-12">
         <div class="p-2 text-center text-md-start mt-5 d-flex justify-content-center flex-column align-items-center">
           <div class="d-flex align-items-center">
-            <h3 class="">Your Project <span class="text-primary">{{ project.projectName }}</span> is being completed by
-              {{ business.name }}</h3>
+            <h3 class="">Your Project, <span class="text-primary">{{ project.projectName }}</span> is being completed by
+              <span class="text-primary">{{ business.name }}</span>
+            </h3>
             <img :src="business.logo" class="profile-img mx-2" alt="">
           </div>
           <p class="text-muted my-0">{{ project.description }}</p>
@@ -53,8 +54,8 @@
             time.
           </p>
         </div>
-        <div class="teamMembersContainer">
-          <div class="teamMemberCard m-2 p-2" v-for="t in teamMembers">
+        <div class="teamMembersContainer mt-5">
+          <div class="teamMemberCard p-2" v-for="t in teamMembers">
             <div class="d-flex align-items-center">
               <img class="profile-img mx-2" :src="t.employee.account.picture" alt="">
               <div class="d-flex-flex-column">
@@ -66,12 +67,12 @@
         </div>
       </div>
       <div class="col-md-6">
-        <div class="d-flex align-items-center text-center flex-column mt-5">
-          <h3>Job Progress</h3>
-          <p class="text-muted m-0">Monitor the progress of your job. Watch as tasks get completed</p>
-          <div class="tasks-container m-2 p-2">
-            <div class="task" v-for="t in tasks">
-              <p class="text-primary">{{ t.description }}</p>
+        <div class="d-flex flex-column mt-5">
+          <h3 class="text-center">Job Progress</h3>
+          <p class="text-muted m-0 text-center">Monitor the progress of your job. Watch as tasks get completed</p>
+          <div class="tasks-container m-2 p-2 mt-5">
+            <div class="task d-flex justify-content-start" v-for="t in tasks">
+              <p class="">Task: <span class="text-primary">{{ t.description }}</span></p>
             </div>
           </div>
         </div>
