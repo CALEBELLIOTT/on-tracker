@@ -72,7 +72,7 @@
           <h3 class="text-center">Job Progress</h3>
           <p class="text-muted m-0 text-center">Monitor the progress of your job. Watch as tasks get completed</p>
           <projectProgressBar></projectProgressBar>
-          <p class="text-muted text-center">Job is {{ completion }}% done</p>
+          <p class="text-muted text-center">Job is {{ completion || 0 }}% done</p>
           <div class="row">
             <div class="col-md-6">
               <div class="tasks-container m-2 p-2 mt-5">
@@ -124,6 +124,7 @@ export default {
       await businessesService.setActiveBusiness(project.businessId)
       await teamMemberService.getProjectTeamMembers(route.params.id)
       await tasksService.getTasks(route.params.id)
+      await tasksService.getPercentage()
       console.log(AppState.activeProject);
       console.log(AppState.projectTasks);
       console.log('Project Tasks Directly Above');

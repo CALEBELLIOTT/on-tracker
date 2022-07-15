@@ -4,7 +4,7 @@
     <div class="progress mx-5">
       <div id="progress" :class="`progress-bar`" :style="`width : ${percentage}%;`" role="progressbar"
         aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-        {{ completedTasks() }}/{{ tasks.length }} tasks
+        <!-- {{ completedTasks() }}/{{ tasks.length }} tasks -->
       </div>
     </div>
   </div>
