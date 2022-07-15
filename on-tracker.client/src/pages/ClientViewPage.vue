@@ -31,18 +31,18 @@
 
     <div class="row">
       <div class="col-12">
-        <div class="p-2 text-center text-md-start mt-5 d-flex justify-content-center flex-column align-items-center">
+        <div class="p-2 text-center text-md-start mt-3 d-flex justify-content-center flex-column align-items-center">
+          <img :src="business.logo" class="profile-img mx-2" alt="">
           <div class="d-flex align-items-center">
             <h3 class="">Your Project, <span class="text-primary">{{ project.projectName }}</span> is being completed by
               <span class="text-primary">{{ business.name }}</span>
             </h3>
-            <img :src="business.logo" class="profile-img mx-2" alt="">
           </div>
           <p class="text-muted my-0">{{ project.description }}</p>
           <!-- <p class="text-muted my-0">{{ project.location.route }}</p> -->
           <p class="text-muted my-0">Estimated Price: ${{ project.quotePrice }}</p>
         </div>
-        <div class="divider-line-local"></div>
+        <div class="divider-line-local mb-5"></div>
       </div>
     </div>
 
@@ -54,14 +54,15 @@
             time.
           </p>
         </div>
-        <div class="teamMembersContainer mt-5">
+        <div class="teamMembersContainer mt-5 mb-5">
+          <p v-if="teamMembers.length < 1" class="text-muted text-center">No Team Members to show...</p>
           <div class="teamMemberCard p-2" v-for="t in teamMembers">
             <div class="d-flex align-items-center">
               <img class="profile-img mx-2" :src="t.employee.account.picture" alt="">
               <div class="d-flex-flex-column">
                 <p class="text-primary my-0">{{ t.employee.account.name }} <span
                     v-if="t.employee.account.businessAccount || t.isAdmin" class="text-muted">(Admin)</span></p>
-                <p class="text-muted my-0">{{ t.employee.account.email }}</p>
+                <p class=" my-0">{{ t.employee.account.email }}</p>
               </div>
             </div>
           </div>
@@ -70,9 +71,9 @@
       <div class="col-md-6">
         <div class="d-flex flex-column mt-5">
           <h3 class="text-center">Job Progress</h3>
-          <p class="text-muted m-0 text-center">Monitor the progress of your job. Watch as tasks get completed</p>
+          <p class="text-muted m-0 text-center">Monitor the progress of your job. Watch as tasks get completed.</p>
           <projectProgressBar></projectProgressBar>
-          <p class="text-muted text-center">Job is {{ completion }}% done</p>
+          <p class="text-muted text-center">Job is {{ completion || 0 }}% done</p>
           <div class="row">
             <div class="col-md-6">
               <div class="tasks-container m-2 p-2 mt-5">
@@ -83,7 +84,7 @@
                     <p class="m-0">Estimated time: {{ t.estimatedTime }} hours</p>
                   </div>
                 </template>
-                <p class="text-muted mt-2 p-2" v-if="tasks.length < 1">no tasks to show</p>
+                <p class="text-muted mt-2 p-2" v-if="tasks.length < 1">no tasks to show...</p>
               </div>
             </div>
             <div class="col-md-6">
@@ -95,7 +96,7 @@
                     <p class="m-0">Estimated time: {{ t.estimatedTime }} hours</p>
                   </div>
                 </template>
-                <p class="text-muted mt-2 p-2" v-if="tasks.length < 1">no tasks to show</p>
+                <p class="text-muted mt-2 p-2" v-if="tasks.length < 1">no tasks to show...</p>
               </div>
             </div>
           </div>
@@ -124,6 +125,7 @@ export default {
       await businessesService.setActiveBusiness(project.businessId)
       await teamMemberService.getProjectTeamMembers(route.params.id)
       await tasksService.getTasks(route.params.id)
+      await tasksService.getPercentage()
       console.log(AppState.activeProject);
       console.log(AppState.projectTasks);
       console.log('Project Tasks Directly Above');
@@ -172,5 +174,24 @@ export default {
 .teamMemberCard {
   border-bottom: #f27648 2px dashed;
   width: max-content;
+}
+
+.teamMembersContainer {
+  max-height: 20vh;
+  overflow-y: scroll;
+}
+
+.teamMembersContainer::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.teamMembersContainer::-webkit-scrollbar-thumb {
+  background-color: #f27648;
+  border-radius: 5px;
+}
+
+.teamMembersContainer::-webkit-scrollbar-track {
+  background-color: #e9ecef;
+  border-radius: 5px;
 }
 </style>
