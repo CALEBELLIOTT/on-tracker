@@ -55,6 +55,7 @@
           </p>
         </div>
         <div class="teamMembersContainer mt-5 mb-5">
+          <p v-if="teamMembers.length < 1" class="text-muted text-center">No Team Members to show...</p>
           <div class="teamMemberCard p-2" v-for="t in teamMembers">
             <div class="d-flex align-items-center">
               <img class="profile-img mx-2" :src="t.employee.account.picture" alt="">
@@ -83,7 +84,7 @@
                     <p class="m-0">Estimated time: {{ t.estimatedTime }} hours</p>
                   </div>
                 </template>
-                <p class="text-muted mt-2 p-2" v-if="tasks.length < 1">no tasks to show</p>
+                <p class="text-muted mt-2 p-2" v-if="tasks.length < 1">no tasks to show...</p>
               </div>
             </div>
             <div class="col-md-6">
@@ -95,7 +96,7 @@
                     <p class="m-0">Estimated time: {{ t.estimatedTime }} hours</p>
                   </div>
                 </template>
-                <p class="text-muted mt-2 p-2" v-if="tasks.length < 1">no tasks to show</p>
+                <p class="text-muted mt-2 p-2" v-if="tasks.length < 1">no tasks to show...</p>
               </div>
             </div>
           </div>
