@@ -27,7 +27,6 @@
             your project.</p>
         </div>
       </div>
-      <div class="divider-line-local"></div>
     </div>
 
     <div class="row">
@@ -43,6 +42,7 @@
           <!-- <p class="text-muted my-0">{{ project.location.route }}</p> -->
           <p class="text-muted my-0">Estimated Price: ${{ project.quotePrice }}</p>
         </div>
+        <div class="divider-line-local"></div>
       </div>
     </div>
 
@@ -131,7 +131,8 @@ export default {
 .divider-line-local {
   height: 2px;
   background-color: #f27648;
-  width: 50%;
+  width: 75%;
+  margin: auto;
 }
 
 @media(max-width: 769px) {
