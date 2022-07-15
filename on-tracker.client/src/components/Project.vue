@@ -60,6 +60,7 @@
       </div>
     </div>
     <span
+      v-if="project.creatorId == account.id"
       @click="deleteProject"
       class="mdi mdi-close"
       title="Delete Project"
@@ -74,6 +75,7 @@ import { useRouter } from 'vue-router'
 import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
 import { projectsService } from '../services/ProjectsService'
+import { AppState } from '../AppState'
 export default {
   props: { project: { type: Object, required: true } },
   setup(props) {
@@ -109,7 +111,8 @@ export default {
           logger.log(error)
           Pop.toast(error.message, 'error')
         }
-      }
+      },
+      account: computed(() => AppState.account)
     }
   }
 }

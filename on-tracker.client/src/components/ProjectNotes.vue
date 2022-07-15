@@ -6,7 +6,7 @@
       <span>
         <img
           class="img-fluid profile-pic border border-primary border-2"
-          :src="note.account.picture"
+          :src="account.picture"
           alt=""
         />
       </span>
@@ -41,7 +41,7 @@ import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
 import { notesService } from '../services/NotesService'
 import { useRoute } from 'vue-router'
-import { ref, watchEffect } from "@vue/runtime-core"
+import { computed, ref, watchEffect } from "@vue/runtime-core"
 import { AppState } from "../AppState"
 export default {
   props: { note: { type: Object, required: true } },
@@ -63,7 +63,8 @@ export default {
           logger.error(error)
           Pop.toast(error.message, 'error')
         }
-      }
+      },
+      account: computed(() => AppState.account)
     }
   }
 }
