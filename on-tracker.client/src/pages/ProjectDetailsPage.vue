@@ -116,7 +116,7 @@
           <ActiveProject />
           <ProjectProgressBar />
         </div>
-        <div class="d-md-none mt-5 pt-5">
+        <div class="d-md-none mt-2 pt-5">
           <ActiveProjectMobile />
         </div>
       </div>
@@ -145,7 +145,6 @@
             "
           >
             <div class="notes-section">
-              " >
               <div
                 class="
                   notes-section
@@ -162,61 +161,61 @@
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="">
-              <form @submit.prevent="createNote">
-                <div class="col-md-9 mx-auto d-flex pt-2">
-                  <textarea
-                    class="form-control"
-                    placeholder="Add a note..."
-                    name=""
-                    id=""
-                    cols="80"
-                    rows="1"
-                    v-model="noteData.body"
-                  ></textarea>
-                  <div>
-                    <button
-                      class="btn btn-dark text-light rounded ms-5"
-                      type="submit"
-                    >
-                      Submit
-                    </button>
-                  </div>
+        </div>
+        <div class="row">
+          <div class="">
+            <form @submit.prevent="createNote">
+              <div class="col-md-9 mx-auto d-flex pt-2">
+                <textarea
+                  class="form-control"
+                  placeholder="Add a note..."
+                  name=""
+                  id=""
+                  cols="80"
+                  rows="1"
+                  v-model="noteData.body"
+                ></textarea>
+                <div>
+                  <button
+                    class="btn btn-dark text-light rounded ms-5"
+                    type="submit"
+                  >
+                    Submit
+                  </button>
                 </div>
-              </form>
-            </div>
+              </div>
+            </form>
           </div>
         </div>
-        <div
-          class="tab-pane"
-          id="messages"
-          role="tabpanel"
-          aria-labelledby="messages-tab"
-        >
-          <div class="text-light text-center pt-5">
-            <h2><b>TeamMembers</b></h2>
-          </div>
-          <div class="row pt-5 py-5">
-            <div>
-              <div
-                class="col-12 bg-white elevation-4 rounded border border-4 p-5"
-              >
-                <span v-for="t in teamMembers" :key="t.id" class=""
-                  ><img
-                    :title="t.employee.account.name"
-                    class="img-fluid profile-img"
-                    alt=""
-                    :src="t.employee.account.picture"
-                /></span>
-              </div>
+      </div>
+      <div
+        class="tab-pane"
+        id="messages"
+        role="tabpanel"
+        aria-labelledby="messages-tab"
+      >
+        <div class="text-light text-center pt-5">
+          <h2><b>TeamMembers</b></h2>
+        </div>
+        <div class="row pt-5 py-5">
+          <div>
+            <div
+              class="col-12 bg-white elevation-4 rounded border border-4 p-5"
+            >
+              <span v-for="t in teamMembers" :key="t.id" class=""
+                ><img
+                  :title="t.employee.account.name"
+                  class="img-fluid profile-img"
+                  alt=""
+                  :src="t.employee.account.picture"
+              /></span>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- Note Component -->
   </div>
+  <!-- Note Component -->
   <!-- Employee Cards and Mapbox  -->
 </template>
 

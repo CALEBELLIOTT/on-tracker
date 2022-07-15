@@ -1,4 +1,5 @@
 <template>
+  <div>{{ project.name }}</div>
   <div
     class="col-10 mx-auto mt-1 align-item-center"
     v-for="img in project.jobSiteImgs"
