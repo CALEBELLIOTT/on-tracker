@@ -33,7 +33,7 @@
   </div>
 
   <div class="border-bottom border-3 border-dark m-4"></div>
-  <div class="col-md-12 d-flex justify-content-center my-4">
+  <div v-if="account.businessAccount" class="col-md-12 d-flex justify-content-center my-4">
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#teamMemberModal">
       Assign a Project
     </button>
