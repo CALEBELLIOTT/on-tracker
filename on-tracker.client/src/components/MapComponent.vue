@@ -90,7 +90,7 @@ export default {
           [fitBounds.maxLongitude + .1, fitBounds.maxLatitude + .1], // northeastern corner of the bounds
         ]
         map.fitBounds(bbox, {
-          padding: { top: 10, bottom: 25, left: 15, right: 5 }
+          padding:100 
         })
 
       });
