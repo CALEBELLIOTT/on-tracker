@@ -49,8 +49,34 @@
 
     <!-- Tab panes -->
   </nav>
+  <!-- Mobile button -->
+  <div class="col-12 d-flex justify-content-around d-md-none mt-2">
+    <div class="">
+      <button
+        class="btn btn-primary mobile-button"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasRight"
+        aria-controls="offcanvasRight"
+      >
+        <b>Tasks</b>
+      </button>
+    </div>
+    <div class="">
+      <button
+        class="btn btn-primary mobile-button"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#availableEmployees"
+        aria-controls="offcanvasRight"
+      >
+        <i class="mdi mdi-account-multiple-plus-outline fs-5"></i>
+      </button>
+    </div>
+  </div>
+  <!--  -->
 
-  <div class="mt-3 me-0">
+  <div class="mt-3 me-0 d-none d-md-block">
     <button
       class="btn btn-primary cool-button"
       type="button"
@@ -61,7 +87,7 @@
       <b>T</b>
     </button>
   </div>
-  <div>
+  <div class="d-none d-md-block">
     <button
       class="btn btn-primary cool-button2"
       type="button"
@@ -75,6 +101,7 @@
 
   <!-- OffCanvas -->
   <AvailableEmployeesOffCanvas />
+  <TaskOffCanvas />
   <!--  -->
 
   <div class="tab-content">
@@ -84,9 +111,12 @@
       role="tabpanel"
       aria-labelledby="home-tab"
     >
-      <div class="mt-2 mb-3 mx-5">
+      <div class="mt-2 mb-3 mx-5 d-none d-md-block">
         <ActiveProject />
         <ProjectProgressBar />
+      </div>
+      <div class="d-md-none mt-5 pt-5">
+        <ActiveProjectMobile />
       </div>
     </div>
     <div
@@ -170,7 +200,6 @@
   </div>
 
   <!-- Note Component -->
-  <div class="row align-items-center flex-column mx-5"></div>
 
   <!-- Employee Cards and Mapbox  -->
 </template>
@@ -265,6 +294,11 @@ export default {
   height: 50vh;
   overflow-y: scroll;
   // background-color: white;
+}
+
+.mobile-button {
+  height: 50px;
+  width: 150px;
 }
 
 .cool-button {

@@ -24,7 +24,7 @@
     <footer>
       <div class="row d-flex">
         <form @submit.prevent="postTask" id="post" value="reset">
-          <div class="m-3 col-11 d-flex inputBox">
+          <div class="m-3 col-md-11 d-flex inputBox">
             <input
               class="form-control rounded"
               type="text"
@@ -32,7 +32,7 @@
             />
             <span>Description</span>
           </div>
-          <div class="col-12 d-flex m-3">
+          <div class="col-md-12 d-flex m-3">
             <div class="inputBox d-flex col-9">
               <input
                 class="form-control rounded"
