@@ -33,7 +33,7 @@ export default {
 
     let map = new mapboxgl.Map({
       container: "mapContainer",
-      style: "mapbox://styles/mapbox/streets-v11",
+      style: "mapbox://styles/mapbox/outdoors-v11",
       center: [-116.215019, 43.618881],
       zoom: 13,
       // maxBounds: [
@@ -79,13 +79,15 @@ export default {
           .setPopup(
             new mapboxgl.Popup({ offset: 25 }) // add popups
               .setHTML(
-                `<div class="text-start"><h4 class='text-primary text-start py-0'>${p.projectName}</h4><p class='text-muted text-start py-0'>${p.description}</p><btn @click="navigateToProjectPage(${p.id})" class="btn btn-outline-primary py-0">See Details</btn></div>`
+                `<div class="text-start"><h4 class='text-primary text-start py-0'>${p.projectName}</h4><p class='text-muted text-start py-0'>${p.description}</p><form action="http://localhost:8080/#/project/${p.id}">
+                <input type="submit" value="See Project Details" class="btn btn-outline-primary py-0" placeholder="." /></form></div>`
               ))
           .addTo(map);
         map.fitBounds([
           [fitBounds.minLongitude - .1, fitBounds.minLatitude - .1], // southwestern corner of the bounds
-          [fitBounds.maxLongitude + .1, fitBounds.maxLatitude + .1] // northeastern corner of the bounds
+          [fitBounds.maxLongitude + .1, fitBounds.maxLatitude + .1], // northeastern corner of the bounds
         ])
+
       });
       let elements = document.getElementsByClassName('marker')
       console.log(elements);
@@ -137,11 +139,27 @@ export default {
 
 </script>
 <style scoped>
+
 .basemap {
   width: 100%;
   height: 50vh;
   border-radius: 15px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
+}
+
+a:link,
+a:visited {
+  background-color: #f44336;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover,
+a:active {
+  background-color: red;
 }
 </style>
