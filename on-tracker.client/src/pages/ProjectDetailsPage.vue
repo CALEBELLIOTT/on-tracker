@@ -113,7 +113,18 @@
             border-2 border border-primary
           "
         >
-          <div class="notes-section">
+          <div
+            class="
+              notes-section
+              d-flex
+              justify-content-center
+              align-items-center
+            "
+            v-if="notes.length == 0"
+          >
+            <h6 class="text-muted">Add a note to your project!</h6>
+          </div>
+          <div class="notes-section" v-else>
             <ProjectNotes v-for="n in notes" :key="n.id" :note="n" />
           </div>
         </div>
