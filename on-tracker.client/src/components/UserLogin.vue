@@ -44,9 +44,9 @@
       </div>
       <div class="col-md-4">
         <div>
-          <div id="carouselExampleInterval" class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner ">
-              <div class="carousel-item active" data-bs-interval="3000">
+          <div id="carouselExampleInterval" class="carousel slide carousel-fade " data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active " data-bs-interval="3000">
                 <img
                   src="https://images.unsplash.com/photo-1581141849291-1125c7b692b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=733&q=80"
                   class="d-block w-100 user-picture" alt="...">
@@ -99,16 +99,20 @@
         <div class="businesses-container p-2 m-3 bg-primary rounded">
           <!-- NOTE mobile views -->
           <img v-if="businesses.length <= 3" v-for="b in businesses" :key="b.id" :src="b.logo" alt="" class="d-md-none">
-          <div v-if="businesses.length >= 4" class="d-flex align-items-center">
-            <img v-for="b in businesses" :key="b.id" :src="b.logo" alt="" class="d-md-none">
+          <div v-if="businesses.length >= 4" class="d-flex align-items-center d-md-none">
+            <template v-for="(b, index) in businesses" :key="b.id">
+              <img v-if="index < 3" :src="b.logo" alt="" class="d-md-none">
+            </template>
             <p class="text-center justify-self-center">and {{ calculateBusinessesRemaining(3) }} more!</p>
           </div>
           <!-- NOTE desktop views -->
           <img v-if="businesses.length <= 15" v-for="b in businesses" :key="b.id" :src="b.logo" alt=""
             class="d-none d-md-inline-block">
           <div v-if="businesses.length >= 16" class="d-flex align-items-center">
-            <img v-for="b in businesses" :key="b.id" :src="b.logo" alt="" class="d-none d-md-inline-block">
-            <p class="text-center justify-self-center">and {{ calculateBusinessesRemaining(3) }} more!</p>
+            <template v-for="(b, index) in businesses" :key="b.id">
+              <img v-if="index < 15" :src="b.logo" alt="" class="d-none d-md-inline-block">
+            </template>
+            <p class="text-center justify-self-center">and {{ calculateBusinessesRemaining(16) }} more!</p>
           </div>
         </div>
       </div>

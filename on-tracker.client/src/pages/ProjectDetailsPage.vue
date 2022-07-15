@@ -144,61 +144,76 @@
           "
         >
           <div class="notes-section">
-            <ProjectNotes v-for="n in notes" :key="n.id" :note="n" />
+            " >
+            <div
+              class="
+                notes-section
+                d-flex
+                justify-content-center
+                align-items-center
+              "
+              v-if="notes.length == 0"
+            >
+              <h6 class="text-muted">Add a note to your project!</h6>
+            </div>
+            <div class="notes-section" v-else>
+              <ProjectNotes v-for="n in notes" :key="n.id" :note="n" />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="">
+            <form @submit.prevent="createNote">
+              <div class="col-md-9 mx-auto d-flex pt-2">
+                <textarea
+                  class="form-control"
+                  placeholder="Add a note..."
+                  name=""
+                  id=""
+                  cols="80"
+                  rows="1"
+                  v-model="noteData.body"
+                ></textarea>
+                <div>
+                  <button
+                    class="btn btn-dark text-light rounded ms-5"
+                    type="submit"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="">
-          <form @submit.prevent="createNote">
-            <div class="col-md-9 mx-auto d-flex pt-2">
-              <textarea
-                class="form-control"
-                placeholder="Add a note..."
-                name=""
-                id=""
-                cols="80"
-                rows="1"
-                v-model="noteData.body"
-              ></textarea>
-              <div>
-                <button
-                  class="btn btn-dark text-light rounded ms-5"
-                  type="submit"
-                >
-                  Submit
-                </button>
-              </div>
-            </div>
-          </form>
+      <div
+        class="tab-pane"
+        id="messages"
+        role="tabpanel"
+        aria-labelledby="messages-tab"
+      >
+        <div class="text-light text-center pt-5">
+          <h2><b>TeamMembers</b></h2>
         </div>
-      </div>
-    </div>
-    <div
-      class="tab-pane"
-      id="messages"
-      role="tabpanel"
-      aria-labelledby="messages-tab"
-    >
-      <div class="text-light text-center pt-5">
-        <h2><b>TeamMembers</b></h2>
-      </div>
-      <div class="row pt-5 py-5">
-        <div>
-          <div class="col-12 bg-white elevation-4 rounded border border-4 p-5">
-            <span v-for="t in teamMembers" :key="t.id" class=""
-              ><img
-                :title="t.employee.account.name"
-                class="img-fluid profile-img"
-                alt=""
-                :src="t.employee.account.picture"
-            /></span>
+        <div class="row pt-5 py-5">
+          <div>
+            <div
+              class="col-12 bg-white elevation-4 rounded border border-4 p-5"
+            >
+              <span v-for="t in teamMembers" :key="t.id" class=""
+                ><img
+                  :title="t.employee.account.name"
+                  class="img-fluid profile-img"
+                  alt=""
+                  :src="t.employee.account.picture"
+              /></span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
   <!-- Note Component -->
 
   <!-- Employee Cards and Mapbox  -->
@@ -228,7 +243,6 @@ export default {
         await teamMemberService.getBusinessTeamMembers()
         await teamMemberService.getProjectTeamMembers(route.params.id)
         await employeesService.getAvailableEmployees()
-        console.log(AppState.activeProjectTeamMembers);
       } catch (error) {
         logger.log(error)
         Pop.toast(error.message, 'error')
@@ -329,6 +343,7 @@ export default {
   transform: scale(1.04);
   transition: 300ms;
 }
+
 .btn-left,
 .btn-right {
   padding: 8px;

@@ -119,6 +119,7 @@ export default {
 }
 
 .business-list {
+  border-radius: 5px;
   max-height: 45vh;
   transition: 500ms;
   overflow: scroll;
@@ -141,7 +142,7 @@ export default {
 
 .business:hover {
   cursor: pointer;
-  transform: scale(1.1);
+  transform: scale(.9);
   transition: 500ms linear;
 }
 

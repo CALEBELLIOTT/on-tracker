@@ -38,4 +38,11 @@ export default {
 .white-background {
   background-color: #ffffff;
 }
+
+.divider-line {
+  height: 2px;
+  background-color: #f27648;
+  width: 50%;
+  margin: auto;
+}
 </style>

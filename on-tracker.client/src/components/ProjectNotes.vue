@@ -66,7 +66,8 @@ export default {
           Pop.toast(error.message, 'error')
         }
       },
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+      projectNotes: computed(() => AppState.projectNotes)
     }
   }
 }
