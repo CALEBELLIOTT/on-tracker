@@ -1,19 +1,10 @@
 <template>
-  <div
-    class="offcanvas offcanvas-end bg text-light"
-    tabindex="-1"
-    id="offcanvasRight"
-    aria-labelledby="offcanvasRightLabel"
-  >
+  <div class="offcanvas offcanvas-end bg text-light" tabindex="-1" id="offcanvasRight"
+    aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header text-center border-bottom border-2">
       <h5 id="offcanvasRightLabel">Tasks</h5>
 
-      <button
-        type="button"
-        class="btn-close text-light"
-        data-bs-dismiss="offcanvas"
-        aria-label="Close"
-      >
+      <button type="button" class="btn-close text-light" data-bs-dismiss="offcanvas" aria-label="Close">
         <span class="mdi mdi-close" title="Close"></span>
       </button>
     </div>
@@ -25,26 +16,15 @@
       <div class="row d-flex">
         <form @submit.prevent="postTask" id="post" value="reset">
           <div class="m-3 col-md-11 d-flex inputBox">
-            <input
-              class="form-control rounded"
-              type="text"
-              v-model="taskData.description"
-            />
+            <input class="form-control rounded" type="text" v-model="taskData.description" />
             <span>Description</span>
           </div>
           <div class="col-md-12 d-flex m-3">
             <div class="inputBox d-flex col-9">
-              <input
-                class="form-control rounded"
-                type="number"
-                v-model="taskData.estimatedTime"
-              />
+              <input class="form-control rounded" type="number" v-model="taskData.estimatedTime" />
               <span>Estimated time</span>
             </div>
-            <button
-              class="btn btn-primary ms-4 border-white border-2"
-              type="submit"
-            >
+            <button class="btn btn-primary ms-4 border-white border-2" type="submit">
               <i class="mdi mdi-arrow-up-circle-outline fs-5 text-white"></i>
             </button>
           </div>
@@ -70,6 +50,7 @@ export default {
     onMounted(async () => {
       try {
         await tasksService.getTasks(route.params.id)
+        await tasksService.getPercentage()
       } catch (error) {
         logger.log(error),
           Pop.toast(error.message, 'error')
@@ -125,8 +106,8 @@ export default {
   transition: 0.5s;
 }
 
-.inputBox input:valid ~ span,
-.inputBox input:focus ~ span {
+.inputBox input:valid~span,
+.inputBox input:focus~span {
   color: #f27648;
   transform: translateX(10px) translateY(-7px);
   font-size: 0.7em;
@@ -137,8 +118,8 @@ export default {
   letter-spacing: 0.2em;
 }
 
-.inputBox input:valid ~ span,
-.inputBox input:focus ~ span {
+.inputBox input:valid~span,
+.inputBox input:focus~span {
   background: #f27648;
   color: black;
   border-radius: 3px;
