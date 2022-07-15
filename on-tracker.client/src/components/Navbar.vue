@@ -13,7 +13,18 @@
         <h4>Employees</h4>
       </router-link> -->
   <!-- LOGIN COMPONENT HERE -->
-  <nav class="navbar navbar-expand-sm nav-color navbar-light">
+  <nav
+    class="
+      navbar navbar-expand-sm
+      nav-color
+      navbar-light
+      border-bottom border-primary
+      elevation-4
+      mb-2
+      pt-0
+      pb-0
+    "
+  >
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <router-link :to="{ name: 'Home' }">
