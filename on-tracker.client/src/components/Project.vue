@@ -28,6 +28,7 @@
 
   <div class="row">
     <div class="col-12">
+      <button class="btn btn-outline-primary" @click="goToClientView(project.id)">Client View</button>
       <div class="
           selection-card
           d-flex
@@ -85,6 +86,13 @@ export default {
           logger.log(error)
           Pop.toast(error.message, 'error')
         }
+      },
+      goToClientView(id) {
+        console.log(id);
+        router.push({
+          name: 'ClientView',
+          params: { id }
+        })
       },
       getDateStyle() {
         let projectDate = new Date(props.project.dueDate)

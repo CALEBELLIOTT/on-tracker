@@ -6,7 +6,7 @@
       :key="img"
     >
       <img
-        class="img-fluid project-img rounded elevation-3"
+        class="img-fluid card project-img rounded elevation-3"
         :src="img"
         alt=""
       />
@@ -33,5 +33,6 @@ export default {
 <style lang="scss" scoped>
 .project-img {
   height: 80%;
+  width: 80%;
 }
 </style>

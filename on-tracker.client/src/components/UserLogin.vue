@@ -99,16 +99,20 @@
         <div class="businesses-container p-2 m-3 bg-primary rounded">
           <!-- NOTE mobile views -->
           <img v-if="businesses.length <= 3" v-for="b in businesses" :key="b.id" :src="b.logo" alt="" class="d-md-none">
-          <div v-if="businesses.length >= 4" class="d-flex align-items-center">
-            <img v-for="b in businesses" :key="b.id" :src="b.logo" alt="" class="d-md-none">
+          <div v-if="businesses.length >= 4" class="d-flex align-items-center d-md-none">
+            <template v-for="(b, index) in businesses" :key="b.id">
+              <img v-if="index < 3" :src="b.logo" alt="" class="d-md-none">
+            </template>
             <p class="text-center justify-self-center">and {{ calculateBusinessesRemaining(3) }} more!</p>
           </div>
           <!-- NOTE desktop views -->
           <img v-if="businesses.length <= 15" v-for="b in businesses" :key="b.id" :src="b.logo" alt=""
             class="d-none d-md-inline-block">
           <div v-if="businesses.length >= 16" class="d-flex align-items-center">
-            <img v-for="b in businesses" :key="b.id" :src="b.logo" alt="" class="d-none d-md-inline-block">
-            <p class="text-center justify-self-center">and {{ calculateBusinessesRemaining(3) }} more!</p>
+            <template v-for="(b, index) in businesses" :key="b.id">
+              <img v-if="index < 15" :src="b.logo" alt="" class="d-none d-md-inline-block">
+            </template>
+            <p class="text-center justify-self-center">and {{ calculateBusinessesRemaining(16) }} more!</p>
           </div>
         </div>
       </div>
