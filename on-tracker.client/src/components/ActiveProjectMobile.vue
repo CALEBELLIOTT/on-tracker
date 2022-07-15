@@ -1,7 +1,12 @@
 <template>
-  <div>{{ project.name }}</div>
+  <div class="text-center mb-3">
+    <h2>{{ project.projectName }}</h2>
+  </div>
+  <div>
+    <ProjectProgressBar />
+  </div>
   <div
-    class="col-10 mx-auto mt-1 align-item-center"
+    class="col-10 mx-auto mt-2 align-item-center"
     v-for="img in project.jobSiteImgs"
     :key="img"
   >

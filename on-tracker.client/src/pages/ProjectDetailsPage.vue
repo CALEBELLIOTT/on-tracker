@@ -116,7 +116,7 @@
           <ActiveProject />
           <ProjectProgressBar />
         </div>
-        <div class="d-md-none mt-2 pt-5">
+        <div class="d-md-none mt-3">
           <ActiveProjectMobile />
         </div>
       </div>
