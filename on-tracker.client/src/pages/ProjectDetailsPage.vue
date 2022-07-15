@@ -95,7 +95,7 @@
       role="tabpanel"
       aria-labelledby="profile-tab"
     >
-      <div class="row mb-0">
+      <div class="row mb-0 pt-3">
         <div class="col-md-10 mx-auto text-center text-dark rounded">
           <h1 class="text-center border-bottom border-5 border-white">
             <b><em>Notes</em></b>
@@ -110,7 +110,7 @@
             elevation-4
             rounded
             pt-2
-            border-3 border border-primary
+            border-2 border border-primary
           "
         >
           <div class="notes-section">
