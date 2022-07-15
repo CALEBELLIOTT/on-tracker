@@ -50,6 +50,11 @@ const routes = [
     component: loadPage('CreateProjectPage'),
     beforeEnter: authGuard
   },
+  {
+    path: '/clientView/:id',
+    name: 'ClientView',
+    component: loadPage('ClientViewPage'),
+  },
 
 ]
 
