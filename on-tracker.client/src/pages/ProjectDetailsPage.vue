@@ -34,7 +34,7 @@
           <b>Tasks</b>
         </button>
       </div>
-      <div class="">
+      <div v-if="account.businessAccount" class="">
         <button class="btn btn-primary mobile-button" type="button" data-bs-toggle="offcanvas"
           data-bs-target="#availableEmployees" aria-controls="offcanvasRight">
           <i class="mdi mdi-account-multiple-plus-outline fs-5"></i>
@@ -49,7 +49,7 @@
         <b>T</b>
       </button>
     </div>
-    <div class="d-none d-md-block">
+    <div v-if="account.businessAccount" class="d-none d-md-block">
       <button class="btn btn-primary cool-button2" type="button" data-bs-toggle="offcanvas"
         data-bs-target="#availableEmployees" aria-controls="offcanvasRight">
         <i class="mdi mdi-account-multiple-plus-outline fs-5 px-2"></i>
