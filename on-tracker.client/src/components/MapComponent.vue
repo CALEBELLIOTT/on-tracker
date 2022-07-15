@@ -86,11 +86,11 @@ export default {
               ))
           .addTo(map);
         const bbox = [
-          [fitBounds.minLongitude - .2, fitBounds.minLatitude - .2], // southwestern corner of the bounds
-          [fitBounds.maxLongitude + .1, fitBounds.maxLatitude + .1], // northeastern corner of the bounds
+          [fitBounds.minLongitude , fitBounds.minLatitude ], // southwestern corner of the bounds
+          [fitBounds.maxLongitude , fitBounds.maxLatitude ], // northeastern corner of the bounds
         ]
         map.fitBounds(bbox, {
-          padding: { top: 10, bottom: 25, left: 15, right: 5 }
+          padding:100 
         })
 
       });

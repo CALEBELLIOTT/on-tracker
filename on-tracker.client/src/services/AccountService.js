@@ -24,6 +24,8 @@ class AccountService {
       await employeesService.getAllEmployees()
       if (business.data.creator.id == AppState.account.id) {
         const res = await api.put('account/' + AppState.account.id, { businessAccount: true, businessId: id })
+        // console.log(res.data);
+        // console.log('LOOK HERE FOR TESTING THE PUT TO SET BUSINESS ACCOUNT TO TRUE');
         AppState.account.businessAccount = true
       }
       AppState.account.businessId = id
@@ -39,6 +41,7 @@ class AccountService {
   }
 
   async editAccountInfo(updatedData) {
+    updatedData.businessAccount = AppState.account.businessAccount
     const res = await api.put('account/' + AppState.account.id, updatedData)
     console.log(res.data);
   }
