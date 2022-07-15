@@ -174,4 +174,23 @@ export default {
   border-bottom: #f27648 2px dashed;
   width: max-content;
 }
+
+.teamMembersContainer {
+  max-height: 20vh;
+  overflow-y: scroll;
+}
+
+.teamMembersContainer::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.teamMembersContainer::-webkit-scrollbar-thumb {
+  background-color: #f27648;
+  border-radius: 5px;
+}
+
+.teamMembersContainer::-webkit-scrollbar-track {
+  background-color: #e9ecef;
+  border-radius: 5px;
+}
 </style>
