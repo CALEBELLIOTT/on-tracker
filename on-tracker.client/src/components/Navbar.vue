@@ -35,6 +35,7 @@
           />
         </router-link>
       </a>
+
       <button
         class="navbar-toggler"
         type="button"
@@ -43,34 +44,34 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div
-        class="collapse navbar-collapse d-flex justify-content-end"
-        id="collapsibleNavbar"
-      >
-        <ul class="navbar-nav">
-          <li class="nav-item d-flex align-items-center">
-            <a class="nav-link" href="#">
-              <router-link
-                :to="{ name: 'CreateProject' }"
-                v-if="account.businessAccount"
+
+      <div class="d-flex justify-content-end">
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item d-flex align-items-center">
+              <a class="nav-link" href="#">
+                <router-link
+                  :to="{ name: 'CreateProject' }"
+                  v-if="account.businessAccount"
+                >
+                  <h6 class="text-primary mx-4 nav nav-custom">New Project</h6>
+                </router-link></a
               >
-                <h6 class="text-primary mx-4 nav nav-custom">New Project</h6>
-              </router-link></a
-            >
-          </li>
-          <li class="nav-item d-flex align-items-center">
-            <a class="nav-link" href="#">
-              <router-link :to="{ name: 'EmployeesPage' }">
-                <h6 class="text-primary mx-4 nav nav-custom">Employees</h6>
-              </router-link>
-            </a>
-          </li>
-          <li class="nav-item d-flex align-items-center">
-            <a class="nav-link" href="#">
-              <Login class="ms-5"></Login>
-            </a>
-          </li>
-        </ul>
+            </li>
+            <li class="nav-item d-flex align-items-center">
+              <a class="nav-link" href="#">
+                <router-link :to="{ name: 'EmployeesPage' }">
+                  <h6 class="text-primary mx-4 nav nav-custom">Employees</h6>
+                </router-link>
+              </a>
+            </li>
+            <li class="nav-item d-flex align-items-center">
+              <a class="nav-link" href="#">
+                <Login class="ms-5"></Login>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </nav>
