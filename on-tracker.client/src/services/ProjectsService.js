@@ -29,6 +29,12 @@ class ProjectsService {
         return res.data
     }
 
+    async deleteProject(id) {
+        const res = await api.delete('api/projects/' + id)
+        logger.log(res.data)
+        AppState.projects = AppState.activeProject.filter(p => p.id != id)
+    }
+
     async getBusinessProjects(businessId) {
         const res = await api.get('api/businesses/' + businessId + '/projects')
         // console.log('Business Projects!!! LOOK HERE!');
