@@ -14,26 +14,55 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row" v-if="account.businessAccount">
       <div class="col-12">
         <div class="mt-5">
           <h3>Assign an employee to a project</h3>
-          <p class="text-muted">Using our assign to project tool, you can assign your employees </p>
+          <p class="text-muted m-0">Using our assign to project tool, you can assign your employees to a project your
+            business has created.</p>
+          <p class="">Click the button below to get started</p>
+          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+            data-bs-target="#teamMemberModal">
+            Assign to Project
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-6">
+        <div class="mt-5 d-flex flex-column align-items-center">
+          <h3>Employees</h3>
+          <EmployeeCard v-for="e in employees" :key="e.id" :employee="e"></EmployeeCard>
         </div>
       </div>
+
+      <div class="col-md-6">
+        <div class="mt-5 d-flex flex-column align-items-center">
+          <ActiveEmployee></ActiveEmployee>
+        </div>
+      </div>
+
     </div>
 
 
 
-    <ActiveEmployee />
+    <!-- <ActiveEmployee />
     <div class="container" v-if="employees[0]?.id">
       <div class="row">
         <div class="col-md-6" v-for="e in employees" :key="e.id">
           <EmployeeCard :employee="e"></EmployeeCard>
         </div>
       </div>
-    </div>
+    </div> -->
+
+
   </div>
+
+
+  <EmployeeModal></EmployeeModal>
 </template>
 
 

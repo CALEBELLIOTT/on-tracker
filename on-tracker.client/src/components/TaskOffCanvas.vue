@@ -7,6 +7,7 @@
   >
     <div class="offcanvas-header text-center border-bottom border-2">
       <h5 id="offcanvasRightLabel">Tasks</h5>
+      <div v-if="activeProject.completed"> - Completed</div>
 
       <button
         type="button"
@@ -89,7 +90,7 @@ export default {
           Pop.toast(error.message, 'error')
         }
       },
-
+      activeProject: computed(() => AppState.activeProject),
       tasks: computed(() => AppState.projectTasks)
     }
 
