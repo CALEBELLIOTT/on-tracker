@@ -5,20 +5,20 @@
       <!-- Nav tabs -->
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#project-page"
+          <button class="nav-link active p-2 ms-3" id="home-tab" data-bs-toggle="tab" data-bs-target="#project-page"
             type="button" role="tab" aria-controls="project" aria-selected="true">
             Project Page
           </button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#notes" type="button"
+          <button class="nav-link p-2" id="profile-tab" data-bs-toggle="tab" data-bs-target="#notes" type="button"
             role="tab" aria-controls="notes" aria-selected="false">
             Project Notes
           </button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#edit-project" type="button"
-            role="tab" aria-controls="messages" aria-selected="false">
+          <button class="nav-link p-2" id="messages-tab" data-bs-toggle="tab" data-bs-target="#edit-project"
+            type="button" role="tab" aria-controls="messages" aria-selected="false">
             Edit Project
           </button>
         </li>

@@ -2,30 +2,24 @@
   <div class="container" v-if="employee.id">
     <div class="row mt-3">
       <div class="col-12 ">
-        <div class="bg-light rounded p-2 my-2 shadow">
+        <div class=" rounded p-2 my-2 ">
           <div class="row">
-            <div class="col-md-4 text-md-start text-center">
-              <img class="shadow profile-img m-2" :src="employee.account.picture || employee.account.picture" alt="" />
-            </div>
-            <div class="col-md-6">
-              <div class="d-flex flex-column justify-content-center my-2">
-                <h2 class="my-3 border-bottom border-dark border-2"><b>{{ employee.account.name }}</b></h2>
-
-                <div class="d-flex justify-content-around">
-                  <div class="col-md-2 my-3">
-                    <h3 class="border-bottom border-2 border-dark">Skills: </h3>
-                    <h5>{{ employee.skills }}</h5>
-                  </div>
-
-                  <div class="col-md-4 my-3">
-                    <h3 class="border-bottom border-2 border-dark">Certifications:</h3>
-                    <h5>{{ employee.certifications.toString() }}</h5>
+            <div class="col-12">
+              <div class="d-flex flex-column">
+                <div class="d-flex">
+                  <img class="profile-img" :src="employee.account.picture" alt="">
+                  <div class="mx-2">
+                    <h3>{{ employee.account.name }}<span class="text-muted fs-6"
+                        v-if="employee.account.businessAccount"> (admin)</span></h3>
+                    <p class=""> <span class="text-primary">Email: </span> {{ employee.account.email }}</p>
+                    <p class=""> <span class="text-primary">skills: </span> {{ employee.skills }}</p>
+                    <p class=""> <span class="text-primary">Certifications: </span> {{
+                        employee.certifications.toString()
+                    }}</p>
                   </div>
                 </div>
-
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -33,9 +27,6 @@
   </div>
 
 
-  <!-- Modal -->
-  <EmployeeModal />
-  <!-- Modal -->
 </template>
 
 

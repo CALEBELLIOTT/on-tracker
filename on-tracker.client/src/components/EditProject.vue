@@ -2,7 +2,7 @@
   <div class="col-md-12 p-5">
     <div class="row bg-white m-4 p-4 elevation-3">
       <div class="col-md-12">
-        <form @submit.prevent="">
+        <form @submit.prevent="editProject">
           <div class="row d-flex justify-content-around">
             <div class="col-md-6 p-3">
               <label for="">Project Name</label>
@@ -26,7 +26,7 @@
               <label for="">Project Location</label>
               <vue-google-autocomplete
                 id="project"
-                classname="form-control"
+                class="form-control"
                 placeholder="Project Address"
                 v-on:placechanged="getAddressData"
               >
@@ -34,12 +34,16 @@
             </div>
             <div class="col-md-6 p-3">
               <label for="">Job Site Images</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Url..."
-                v-model="jobImg"
-              />
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Url..."
+                  v-model="jobImg"
+                />
+
+                <button @click="addImg" class="btn btn-dark">+</button>
+              </div>
             </div>
             <div class="col-md-6 p-3">
               <label for="">Quoted Price</label>
@@ -87,6 +91,8 @@ import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
 import { projectsService } from '../services/ProjectsService';
 import { useRoute } from 'vue-router';
+import { watchEffect } from '@vue/runtime-core';
+import { AppState } from '../AppState';
 export default {
 
   components: {
@@ -97,7 +103,9 @@ export default {
     let jobImg = ref('')
     let projectAddress = {}
     const route = useRoute()
-
+    watchEffect(() => {
+      projectData.value = AppState.activeProject
+    })
     return {
       projectData,
       jobImg,
@@ -105,12 +113,23 @@ export default {
 
       async editProject() {
         try {
-          projectData.value.location = projectAddress
+          if (projectAddress.length >= 1) {
+            projectData.value.location = projectAddress
+          }
+          projectData.value.location = AppState.activeProject.location
           await projectsService.editProject(route.params.id, projectData.value)
         } catch (error) {
           logger.log(error)
           Pop.toast(error.message, 'error')
         }
+      },
+      getAddressData(data) {
+        projectAddress = data
+        console.log(data)
+      },
+      addImg() {
+        projectData.value.jobSiteImgs.push(jobImg.value)
+        jobImg.value = ''
       }
 
     }

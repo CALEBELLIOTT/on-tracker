@@ -1,50 +1,29 @@
 <template>
   <span class="d-flex align-items-center">
-    <button
-      class="btn selectable text-success lighten-30 text-uppercase my-2 my-lg-0"
-      @click="login"
-      v-if="!user.isAuthenticated"
-    >
+    <button class="btn selectable text-success lighten-30 text-uppercase my-2 my-lg-0" @click="login"
+      v-if="!user.isAuthenticated">
       Login
     </button>
 
     <div class="dropdown my-3 my-lg-0" v-else>
-      <div
-        class="dropdown-toggle selectable"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-        id="authDropdown"
-      >
-        <div v-if="account.picture">
-          <img
-            :src="account.picture"
-            alt="account photo"
-            height="50"
-            class="rounded"
-          />
+      <div class="dropdown-toggle selectable" data-bs-toggle="dropdown" aria-expanded="false" id="authDropdown">
+        <div v-if="account.picture" class="d-flex justify-content-center">
+          <img :src="account.picture" alt="account photo" height="50" class="rounded" />
           <!-- <span class="mx-3 text-success lighten-30">{{ account.name }}</span> -->
         </div>
       </div>
-      <div
-        class="dropdown-menu p-0 list-group w-100 me-4"
-        aria-labelledby="authDropdown"
-      >
+      <div class="dropdown-menu p-0 list-group  me-4" aria-labelledby="authDropdown">
         <router-link :to="{ name: 'Account' }">
           <div class="list-group-item list-group-item-action hoverable">
             Manage Account
           </div>
         </router-link>
-        <div
-          class="list-group-item list-group-item-action hoverable text-danger"
-          @click="logout"
-        >
+        <div class="list-group-item list-group-item-action hoverable text-danger" @click="logout">
           <i class="mdi mdi-logout"></i>
           logout
         </div>
         <div class="text-center">
-          <span class="name"
-            ><b>{{ account.name }}</b></span
-          >
+          <span class="name"><b>{{ account.name }}</b></span>
         </div>
       </div>
     </div>
