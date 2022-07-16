@@ -69,7 +69,7 @@
           <div class="row">
             <div class="col-md-12 d-flex justify-content-center">
               <button class="btn btn-primary my-3" v-if="activeProjectComplete" @click="completeProject">Complete Project</button>
-              <button class="btn btn-danger m-3" @click="deleteActiveProject" >Cancel Project</button>
+              <button class="btn btn-danger m-3" @click="cancelProject" >Cancel Project</button>
             </div>
           </div>
         </div>
@@ -217,7 +217,14 @@ export default {
         } catch (error) {
           logger.log(error)
         }
-      }
+      },
+      async cancelProject() {
+        try {
+          await projectsService.cancelProject(route.params.id)
+        } catch (error) {
+          logger.log(error)
+        }
+      },
     }
   }
 }
