@@ -27,8 +27,13 @@
         </h3>
         <div class="projects-container">
           <div class="d-flex flex-column align-items-center">
-            <p v-if="account.businessAccount" class="text-primary">
+            <p v-if="account.businessAccount && projects.length == 0" class="text-primary text-center">
               Create a project to get started
+            </p>
+            <p v-if="!account.businessAccount && accountTeamMember.length == 0" class="text-primary p-2 text-center">
+              Contact an
+              administrator to be assigned to a
+              project
             </p>
           </div>
 

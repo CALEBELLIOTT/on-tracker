@@ -35,6 +35,16 @@ class ProjectsService {
         logger.log(res.data)
     }
 
+    async completeProject(id) {
+        const res = await api.put('api/projects/' + id + '/complete')
+        logger.log(res.data)
+    }
+
+    async cancelProject(id) {
+        const res = await api.put('api/projects/' + id + '/cancel')
+        logger.log(res.data)
+    }
+
     async deleteProject(id) {
         const res = await api.delete('api/projects/' + id)
         logger.log(res.data)

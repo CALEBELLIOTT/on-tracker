@@ -177,7 +177,7 @@ export default {
 }
 
 .teamMembersContainer {
-  max-height: 20vh;
+  max-height: 30vh;
   overflow-y: scroll;
 }
 

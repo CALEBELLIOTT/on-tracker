@@ -53,7 +53,7 @@
 
           <li class="nav-item d-flex align-items-center justify-content-center">
             <a class="nav-link" href="#">
-              <Login class="ms-5"></Login>
+              <Login class=""></Login>
             </a>
           </li>
         </ul>

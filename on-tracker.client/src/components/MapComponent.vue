@@ -10,12 +10,13 @@ import { AppState } from "../AppState";
 import { router } from "../router";
 import { businessesService } from "../services/BusinessesService";
 import { projectsService } from "../services/ProjectsService";
-
+import pin from "../assets/img/PinLogo.png"
 export default {
   name: "BaseMap",
   data() {
 
     return {
+      pin,
       accessToken: "pk.eyJ1Ijoic2tld2VyNDkwIiwiYSI6ImNsNHhhZnp3bTBjNWIzYnBwMGVnd2Frc28ifQ.HLbBCBYU_1Piw91ExBGBjA",
       navigateToProjectPage(id) {
         console.log(id)
@@ -55,47 +56,92 @@ export default {
 
     async function addMarkers() {
       console.log(AppState.activeBusinessProjects);
-      AppState.activeBusinessProjects.forEach(p => {
-        const el = document.createElement('div')
-        el.className = 'marker'
-        el.style.backgroundImage = 'https://thiscatdoesnotexist.com/'
-        el.style.width = `30px`
-        el.style.height = '40px'
-        el.style.backgroundSize = '100%'
-        let coords = [p.location.longitude, p.location.latitude]
-        if (p.location.longitude > fitBounds.maxLongitude || fitBounds.maxLongitude == 0) {
-          fitBounds.maxLongitude = p.location.longitude
-        }
-        if (p.location.longitude < fitBounds.minLongitude || fitBounds.minLongitude == 0) {
-          fitBounds.minLongitude = p.location.longitude
-        }
-        if (p.location.latitude > fitBounds.maxLatitude || fitBounds.maxLatitude == 0) {
-          fitBounds.maxLatitude = p.location.latitude
-        }
-        if (p.location.latitude < fitBounds.minLatitude || fitBounds.minLatitude == 0) {
-          fitBounds.minLatitude = p.location.latitude
-        }
-        console.log(coords);
-        let marker = new mapboxgl.Marker(el)
-          .setLngLat(coords)
-          .setPopup(
-            new mapboxgl.Popup({ offset: 25 }) // add popups
-              .setHTML(
-                `<div class="text-start"><h4 class='text-primary text-start py-0'>${p.projectName}</h4><p class='text-muted text-start py-0'>${p.description}</p><form action="http://localhost:8080/#/project/${p.id}">
-                <button type="submit" class="btn btn-outline-primary py-0"/>See Project Details</button></form></div>`
-              ))
-          .addTo(map);
-        const bbox = [
-          [fitBounds.minLongitude , fitBounds.minLatitude ], // southwestern corner of the bounds
-          [fitBounds.maxLongitude , fitBounds.maxLatitude ], // northeastern corner of the bounds
-        ]
-        map.fitBounds(bbox, {
-          padding:100 
-        })
+      if (AppState.account.businessAccount) {
+        AppState.activeBusinessProjects.forEach(p => {
+          const el = document.createElement('div')
+          el.className = 'marker'
+          el.style.backgroundImage = 'https://thiscatdoesnotexist.com/'
+          el.style.width = `30px`
+          el.style.height = '40px'
+          el.style.backgroundSize = '100%'
+          let coords = [p.location.longitude, p.location.latitude]
+          if (p.location.longitude > fitBounds.maxLongitude || fitBounds.maxLongitude == 0) {
+            fitBounds.maxLongitude = p.location.longitude
+          }
+          if (p.location.longitude < fitBounds.minLongitude || fitBounds.minLongitude == 0) {
+            fitBounds.minLongitude = p.location.longitude
+          }
+          if (p.location.latitude > fitBounds.maxLatitude || fitBounds.maxLatitude == 0) {
+            fitBounds.maxLatitude = p.location.latitude
+          }
+          if (p.location.latitude < fitBounds.minLatitude || fitBounds.minLatitude == 0) {
+            fitBounds.minLatitude = p.location.latitude
+          }
+          console.log(coords);
+          let marker = new mapboxgl.Marker(el)
+            .setLngLat(coords)
+            .setPopup(
+              new mapboxgl.Popup({ offset: 25 }) // add popups
+                .setHTML(
+                  `<div class="text-start"><h4 class='text-primary text-start py-0'>${p.projectName}</h4><p class='text-muted text-start py-0'>${p.description}</p><form action="http://localhost:8080/#/project/${p.id}">
+                  <button type="submit" class="btn btn-outline-primary py-0"/>See Project Details</button></form></div>`
+                ))
+            .addTo(map);
+          const bbox = [
+            [fitBounds.minLongitude, fitBounds.minLatitude], // southwestern corner of the bounds
+            [fitBounds.maxLongitude, fitBounds.maxLatitude], // northeastern corner of the bounds
+          ]
+          map.fitBounds(bbox, {
+            padding: 100
+          })
 
-      });
-      let elements = document.getElementsByClassName('marker')
-      console.log(elements);
+        });
+        let elements = document.getElementsByClassName('marker')
+        console.log(elements);
+      }
+      else {
+        AppState.teamMemberAccount.forEach(p => {
+          const el = document.createElement('div')
+          el.className = 'marker'
+          el.style.backgroundImage = 'https://thiscatdoesnotexist.com/'
+          el.style.width = `30px`
+          el.style.height = '40px'
+          el.style.backgroundSize = '100%'
+          let coords = [p.project.location.longitude, p.project.location.latitude]
+          if (p.project.location.longitude > fitBounds.maxLongitude || fitBounds.maxLongitude == 0) {
+            fitBounds.maxLongitude = p.project.location.longitude
+          }
+          if (p.project.location.longitude < fitBounds.minLongitude || fitBounds.minLongitude == 0) {
+            fitBounds.minLongitude = p.project.location.longitude
+          }
+          if (p.project.location.latitude > fitBounds.maxLatitude || fitBounds.maxLatitude == 0) {
+            fitBounds.maxLatitude = p.project.location.latitude
+          }
+          if (p.project.location.latitude < fitBounds.minLatitude || fitBounds.minLatitude == 0) {
+            fitBounds.minLatitude = p.project.location.latitude
+          }
+          console.log(coords);
+          let marker = new mapboxgl.Marker(el)
+            .setLngLat(coords)
+            .setPopup(
+              new mapboxgl.Popup({ offset: 25 }) // add popups
+                .setHTML(
+                  `<div class="text-start"><h4 class='text-primary text-start py-0'>${p.projectName}</h4><p class='text-muted text-start py-0'>${p.description}</p><form action="http://localhost:8080/#/project/${p.id}">
+                  <button type="submit" class="btn btn-outline-primary py-0"/>See Project Details</button></form></div>`
+                ))
+            .addTo(map);
+          const bbox = [
+            [fitBounds.minLongitude, fitBounds.minLatitude], // southwestern corner of the bounds
+            [fitBounds.maxLongitude, fitBounds.maxLatitude], // northeastern corner of the bounds
+          ]
+          map.fitBounds(bbox, {
+            padding: 100
+          })
+
+        });
+        let elements = document.getElementsByClassName('marker')
+        console.log(elements);
+      }
     }
     async function addBusinessMarker() {
       let business = AppState.activeBusiness
@@ -144,7 +190,6 @@ export default {
 
 </script>
 <style scoped>
-
 .basemap {
   width: 100%;
   height: 50vh;

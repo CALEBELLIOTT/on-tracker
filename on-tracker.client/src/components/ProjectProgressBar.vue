@@ -48,7 +48,6 @@ export default {
           logger.log(error)
         }
       }
-
     }
   }
 }

@@ -17,10 +17,10 @@
           </div>
         </div>
       </div>
-      <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+      <div class="col-md-9">
         <form @submit.prevent="editAccountInfo">
           <div class="card h-100 elevation-3">
-            <div class="card-body">
+            <div class="card-body h-100">
               <div class="row gutters">
                 <div class="col-md-12">
                   <h6 class="mb-2 text-primary">Account Details</h6>
@@ -46,10 +46,6 @@
                   <label for="picture">Picture</label>
                   <input type="text" class="form-control border-primary" placeholder="Picture Url..."
                     v-model="accountData.picture" />
-                </div>
-                <div class="col-md-12 mt-3">
-                  <label for="description">Description</label>
-                  <textarea class="form-control border-primary" placeholder="Describe yourself..."></textarea>
                 </div>
               </div>
               <div class="row gutters">

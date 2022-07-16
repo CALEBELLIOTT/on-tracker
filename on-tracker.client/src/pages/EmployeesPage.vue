@@ -14,7 +14,7 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row" v-if="account.businessAccount">
       <div class="col-12">
         <div class="mt-5">
           <h3>Assign an employee to a project</h3>
