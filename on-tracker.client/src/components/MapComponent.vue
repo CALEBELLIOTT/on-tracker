@@ -17,6 +17,7 @@ export default {
   data() {
 
     return {
+      pin,
       accessToken: "pk.eyJ1Ijoic2tld2VyNDkwIiwiYSI6ImNsNHhhZnp3bTBjNWIzYnBwMGVnd2Frc28ifQ.HLbBCBYU_1Piw91ExBGBjA",
       navigateToProjectPage(id) {
         console.log(id)
