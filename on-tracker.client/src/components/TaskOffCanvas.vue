@@ -7,7 +7,6 @@
   >
     <div class="offcanvas-header text-center border-bottom border-2">
       <h5 id="offcanvasRightLabel">Tasks</h5>
-      <div v-if="activeProject.completed"> - Completed</div>
 
       <button
         type="button"
