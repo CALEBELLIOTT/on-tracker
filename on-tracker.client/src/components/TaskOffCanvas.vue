@@ -3,8 +3,6 @@
     aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header text-center border-bottom border-2">
       <h5 id="offcanvasRightLabel">Tasks</h5>
-      <div v-if="activeProject.completed"> - Completed</div>
-
       <button type="button" class="btn-close text-light" data-bs-dismiss="offcanvas" aria-label="Close">
         <span class="mdi mdi-close" title="Close"></span>
       </button>
