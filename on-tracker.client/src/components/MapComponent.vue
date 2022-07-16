@@ -10,12 +10,13 @@ import { AppState } from "../AppState";
 import { router } from "../router";
 import { businessesService } from "../services/BusinessesService";
 import { projectsService } from "../services/ProjectsService";
-
+import pin from "../assets/img/PinLogo.png"
 export default {
   name: "BaseMap",
   data() {
 
     return {
+      pin,
       accessToken: "pk.eyJ1Ijoic2tld2VyNDkwIiwiYSI6ImNsNHhhZnp3bTBjNWIzYnBwMGVnd2Frc28ifQ.HLbBCBYU_1Piw91ExBGBjA",
       navigateToProjectPage(id) {
         console.log(id)
