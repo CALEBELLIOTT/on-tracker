@@ -10,6 +10,7 @@ import { AppState } from "../AppState";
 import { router } from "../router";
 import { businessesService } from "../services/BusinessesService";
 import { projectsService } from "../services/ProjectsService";
+import pin from "../assets/img/PinLogo.png"
 
 
 export default {
