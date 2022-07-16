@@ -43,7 +43,7 @@
             aria-controls="messages"
             aria-selected="false"
           >
-            Edit Project
+            Edit
           </button>
         </li>
       </ul>
@@ -232,6 +232,7 @@ import { notesService } from '../services/NotesService'
 import { employeesService } from "../services/EmployeesService"
 import { teamMemberService } from "../services/TeamMembersService"
 import VueHorizontal from "vue-horizontal";
+import { socketService } from '../services/SocketService'
 export default {
   components: { VueHorizontal },
   setup() {
@@ -245,6 +246,7 @@ export default {
         await teamMemberService.getBusinessTeamMembers()
         await teamMemberService.getProjectTeamMembers(route.params.id)
         await employeesService.getAvailableEmployees()
+        socketService.joinRoom(route.params.id)
       } catch (error) {
         logger.log(error)
         Pop.toast(error.message, 'error')
