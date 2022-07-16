@@ -15,7 +15,7 @@ class ProjectsService {
   }
   async edit(edited) {
     const original = await this.findById(edited.id);
-    if (original.creatorId !== edited.creatorId) {
+    if (original.creatorId.toString() != edited.creatorId) {
       throw new Forbidden("You do not have permission to edit this project.");
     }
     if (original.cancelled) {
@@ -29,6 +29,9 @@ class ProjectsService {
     original.description = edited.description || original.description
     original.dueDate = edited.dueDate || original.dueDate
     original.completed = edited.completed || original.completed
+
+    await original.save()
+    return original
   }
 
   async cancel(projectId, userId) {
@@ -38,6 +41,7 @@ class ProjectsService {
     }
     project.cancelled = true
     await project.save()
+
   }
 
 
