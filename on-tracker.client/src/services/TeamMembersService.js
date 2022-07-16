@@ -6,8 +6,10 @@ import { api } from "./AxiosService"
 class TeamMembersService {
 
     async createTeamMember(employeeData) {
+        console.log(AppState.teamMembers);
         let found = AppState.teamMembers.filter(t => t.employeeId == employeeData.employeeId && t.projectId == employeeData.projectId)
-        if (!found) {
+        console.log(found);
+        if (found.length === 0) {
             const res = await api.post('api/teammembers', employeeData)
             logger.log(res.data, '[TEAMMEMBERS IN AppState]')
             AppState.teamMembers.push(res.data)
