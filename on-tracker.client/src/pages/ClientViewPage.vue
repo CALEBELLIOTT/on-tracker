@@ -13,7 +13,7 @@
           nav-color
         ">
         <router-link :to="{ name: 'Home' }">
-          <img class="img-fluid logo" src="../assets/img/Ontracker logo OG.png" alt="" />
+          <img class="img-fluid logo" :src="logo" alt="" />
         </router-link>
       </div>
     </div>
@@ -116,6 +116,8 @@ import { businessesService } from "../services/BusinessesService"
 import { projectsService } from "../services/ProjectsService"
 import { tasksService } from "../services/TasksService"
 import { teamMemberService } from "../services/TeamMembersService"
+import logo from '../assets/img/Ontracker logo OG.png'
+
 
 export default {
   setup() {
@@ -133,6 +135,7 @@ export default {
 
     })
     return {
+      logo,
       project: computed(() => AppState.activeProject),
       tasks: computed(() => AppState.projectTasks),
       teamMembers: computed(() => AppState.activeProjectTeamMembers),

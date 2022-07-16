@@ -26,7 +26,7 @@
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <router-link :to="{ name: 'Home' }">
-          <img class="img-fluid logo" src="../assets/img/Ontracker logo OG.png" alt="" />
+          <img class="img-fluid logo" :src="logo" alt="" />
         </router-link>
       </a>
 
@@ -65,12 +65,14 @@
 <script>
 import { computed } from 'vue';
 import { AppState } from '../AppState';
+import logo from '../assets/img/Ontracker logo OG.png'
 
 export default {
   setup() {
     return {
       user: computed(() => AppState.user),
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+      logo
     };
   },
 };
