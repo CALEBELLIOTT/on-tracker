@@ -1,18 +1,24 @@
 import { AppState } from "../AppState"
 import { logger } from "../utils/Logger"
+import Pop from "../utils/Pop"
 import { api } from "./AxiosService"
 
 class TeamMembersService {
 
     async createTeamMember(employeeData) {
-        const res = await api.post('api/teammembers', employeeData)
-        logger.log(res.data, '[TEAMMEMBERS IN AppState]')
-        AppState.teamMembers.push(res.data)
-        AppState.activeProjectTeamMembers.push(res.data)
-        AppState.activeProjectAvailableEmployees = AppState.activeProjectAvailableEmployees.filter(e => e.id !== res.data.employee.id)
-        if (res.data.employee.account.id == AppState.account.id) {
-            AppState.teamMemberAccount.push(res.data)
+        let found = AppState.teamMembers.filter(t => t.employeeId == employeeData.employeeId && t.projectId == employeeData.projectId)
+        if (!found) {
+            const res = await api.post('api/teammembers', employeeData)
+            logger.log(res.data, '[TEAMMEMBERS IN AppState]')
+            AppState.teamMembers.push(res.data)
+            AppState.activeProjectTeamMembers.push(res.data)
+            AppState.activeProjectAvailableEmployees = AppState.activeProjectAvailableEmployees.filter(e => e.id !== res.data.employee.id)
+            if (res.data.employee.account.id == AppState.account.id) {
+                AppState.teamMemberAccount.push(res.data)
+            }
+            return
         }
+        Pop.toast('Already Assigned to Project')
     }
 
     async getBusinessTeamMembers() {

@@ -5,9 +5,9 @@
         <img class="img-fluid login-logo p-2" src="../assets/img/Ontracker logo OG.png" alt="" />
         <button class="btn btn-outline-primary p-0 px-4 h-50 align-self-center" @click="launchLogin">login</button>
       </div>
-      <div class="col-md-12 hero-img d-flex flex-column justify-content-center text-muted border-primary border-bottom">
+      <div class="col-md-12 hero-img d-flex flex-column justify-content-center border-primary border-bottom">
         <div class="text-center">
-          <h1>Plan With Confidence</h1>
+          <h1 class="m-0">Plan With Confidence</h1>
           <h2>Execute With Efficiency</h2>
           <div class="w-15">
             <p>The best way to handle your day to day business, in an easy to use interface.</p>
@@ -103,7 +103,7 @@
             <template v-for="(b, index) in businesses" :key="b.id">
               <img v-if="index < 3" :src="b.logo" alt="" class="d-md-none">
             </template>
-            <p class="text-center justify-self-center">and {{ calculateBusinessesRemaining(3) }} more!</p>
+            <p class="text-center justify-self-center mx-2">And {{ calculateBusinessesRemaining(3) }} more!</p>
           </div>
           <!-- NOTE desktop views -->
           <img v-if="businesses.length <= 15" v-for="b in businesses" :key="b.id" :src="b.logo" alt=""
@@ -112,7 +112,7 @@
             <template v-for="(b, index) in businesses" :key="b.id">
               <img v-if="index < 15" :src="b.logo" alt="" class="d-none d-md-inline-block">
             </template>
-            <p class="text-center justify-self-center">and {{ calculateBusinessesRemaining(16) }} more!</p>
+            <p class="text-center justify-self-center mx-2">And {{ calculateBusinessesRemaining(16) }} more!</p>
           </div>
         </div>
       </div>
