@@ -9,13 +9,21 @@
     </div>
 
     <div class="divider-line"></div>
+    <div class="row justify-content-center mt-5" v-if="project.cancelled">
+      <div class="col-md-10 text-center text-danger">
+        <h1 class=" mb-0">This Project is cancelled</h1>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-5" v-if="project.completed">
+      <div class="col-md-10 text-center text-primary">
+        <h1 class=" mb-0">This Project is completed</h1>
+      </div>
+    </div>
   </div>
   <div class="row px-5 pt-4 pb-3">
     <div class="col-12 elevation-5">
       <div class="row">
-        <div
-          class="col-md-12 bg-white p-3 border-bottom border-2 border-primary"
-        >
+        <div class="col-md-12 bg-white p-3 border-bottom border-2 border-primary">
           <h2 class="text-center text-primary">
             {{ project.projectName }}
           </h2>

@@ -28,14 +28,10 @@
 
   <div class="row">
     <div class="col-12">
-      <button
-        class="btn btn-outline-primary"
-        @click="goToClientView(project.id)"
-      >
+      <button class="btn btn-outline-primary" @click="goToClientView(project.id)">
         Client View
       </button>
-      <div
-        class="
+      <div class="
           selection-card
           d-flex
           flex-column
@@ -43,19 +39,13 @@
           p-2
           m-2
           rounded
-        "
-        @click="goToProjectPage"
-      >
+        " @click="goToProjectPage">
         <div class="d-flex justify-content-between">
           <h3 class="text-primary text-center">
             {{ project.projectName }}
           </h3>
-          <i
-            v-if="project.creatorId == account.id"
-            @click="deleteProject"
-            class="close-spill mdi mdi-close-circle f-20"
-            title="Delete Project"
-          ></i>
+          <i v-if="project.creatorId == account.id" @click="deleteProject" class="close-spill mdi mdi-close-circle f-20"
+            title="Delete Project"></i>
         </div>
         <p class="text-muted mb-0">
           {{ project.location.street_number }} {{ project.location.route }}
@@ -63,14 +53,16 @@
         <p :class="getDateStyle()">
           <i class="mdi mdi-alert-circle-outline"></i>Due:
           {{
-            new Date(project.dueDate).toLocaleDateString("en-us", {
-              weekday: "long",
-              year: "numeric",
-              month: "short",
-              day: "numeric",
-            })
+          new Date(project.dueDate).toLocaleDateString("en-us", {
+          weekday: "long",
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+          })
           }}
         </p>
+        <div class="col-12 bg-danger rounded text-center" v-if="project.cancelled">Cancelled</div>
+        <div class="col-12 bg-success rounded text-center" v-if="project.completed">Completed</div>
       </div>
     </div>
   </div>
