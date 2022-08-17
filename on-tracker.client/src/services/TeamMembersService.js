@@ -18,9 +18,12 @@ class TeamMembersService {
             if (res.data.employee.account.id == AppState.account.id) {
                 AppState.teamMemberAccount.push(res.data)
             }
+            Pop.toast("Employee Assigned", "success")
             return
         }
-        Pop.toast('Already Assigned to Project')
+        if (found.length > 0) {
+            Pop.toast('Already Assigned to Project')
+        }
     }
 
     async getBusinessTeamMembers() {

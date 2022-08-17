@@ -103,7 +103,8 @@
             <template v-for="(b, index) in businesses" :key="b.id">
               <img v-if="index < 3" :src="b.logo" alt="" class="d-md-none">
             </template>
-            <p class="text-center justify-self-center mx-2">And {{ calculateBusinessesRemaining(3) }} more!</p>
+            <p class="text-center justify-self-center mx-2">And {{ calculateBusinessesRemaining(3) }} more!
+            </p>
           </div>
           <!-- NOTE desktop views -->
           <img v-if="businesses.length <= 15" v-for="b in businesses" :key="b.id" :src="b.logo" alt=""
@@ -112,7 +113,8 @@
             <template v-for="(b, index) in businesses" :key="b.id">
               <img v-if="index < 15" :src="b.logo" alt="" class="d-none d-md-inline-block">
             </template>
-            <p class="text-center justify-self-center mx-2">And {{ calculateBusinessesRemaining(16) }} more!</p>
+            <p class="text-center justify-self-center mx-2 d-none d-md-block">And {{ calculateBusinessesRemaining(16) }}
+              more!</p>
           </div>
         </div>
       </div>
