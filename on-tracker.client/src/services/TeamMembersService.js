@@ -22,7 +22,7 @@ class TeamMembersService {
             return
         }
         if (found.length > 0) {
-            Pop.toast('Already Assigned to Project')
+            Pop.toast('Already Assigned to Project!')
         }
     }
 
