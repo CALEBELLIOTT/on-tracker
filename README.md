@@ -7,7 +7,7 @@ The app is somewhat complicated so follow these steps and read the readme to exp
 
 ### Features
 
-Users can login and apun first time login, are prompted to select whether they are an employee or a business owner. Business owners are asked to specify some information about their business and have unlimited access to information on the app. Employees are limited to view information on projects that they have been assigned to by their employer. 
+Users can login and upon first time login, are prompted to select whether they are an employee or a business owner. Business owners are asked to specify some information about their business and have unlimited access to information on the app. Employees are limited to view information on projects that they have been assigned to by their employer. 
 
 Employers have the ability to create projects. Projects have a location attached to them and a pin will appear on the homepage map at the specified location. These pins are clickable and will show some information about the project they are associated with.
 
