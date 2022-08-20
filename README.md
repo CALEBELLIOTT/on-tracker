@@ -30,4 +30,4 @@ To test the app and explore its features, follow these steps
 
 ### Creating the project
 
-This project was created over the course of 2 weeks in a group of 5 developers. It is built using Vue.js, Node.js with mongoose and express, and MongoDB. We implemented features using a google API for autofilling locataions and geolocating and the Mapbox library for rendering the front end dynamic map. These features proved to be challenging to implement, but resulted in a very impressive app that we were all very proud of. 
+This project was created over the course of 2 weeks in a group of 5 developers. It is built using Vue.js, Node.js with mongoose and express, and MongoDB. We implemented features using a google API for auto filling locations and geolocating and the Mapbox library for rendering the front end dynamic map. These features proved to be challenging to implement, but resulted in a very impressive app that we were all very proud of. 
