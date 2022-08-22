@@ -83,7 +83,7 @@ export default {
             .setPopup(
               new mapboxgl.Popup({ offset: 25 }) // add popups
                 .setHTML(
-                  `<div class="text-start"><h4 class='text-primary text-start py-0'>${p.projectName}</h4><p class='text-muted text-start py-0'>${p.description}</p><form action="http://localhost:8080/#/project/${p.id}">
+                  `<div class="text-start"><h4 class='text-primary text-start py-0'>${p.projectName}</h4><p class='text-muted text-start py-0'>${p.description}</p><form action="#/project/${p.id}">
                   <button type="submit" class="btn btn-outline-primary py-0"/>See Project Details</button></form></div>`
                 ))
             .addTo(map);
@@ -126,7 +126,7 @@ export default {
             .setPopup(
               new mapboxgl.Popup({ offset: 25 }) // add popups
                 .setHTML(
-                  `<div class="text-start"><h4 class='text-primary text-start py-0'>${p.projectName}</h4><p class='text-muted text-start py-0'>${p.description}</p><form action="http://localhost:8080/#/project/${p.id}">
+                  `<div class="text-start"><h4 class='text-primary text-start py-0'>${p.projectName}</h4><p class='text-muted text-start py-0'>${p.description}</p><form action="#/project/${p.id}">
                   <button type="submit" class="btn btn-outline-primary py-0"/>See Project Details</button></form></div>`
                 ))
             .addTo(map);
