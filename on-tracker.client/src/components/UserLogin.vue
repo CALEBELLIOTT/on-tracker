@@ -2,7 +2,7 @@
   <div class="container-fluid ">
     <div class="row">
       <div class="col-md-12 p-2 d-flex justify-content-between border-primary shadow border-bottom">
-        <img class="img-fluid login-logo p-2" src="../assets/img/Ontracker logo OG.png" alt="" />
+        <img class="img-fluid login-logo p-2" src="https://i.imgur.com/KjejY3u.png" alt="" />
         <button class="btn btn-outline-primary p-0 px-4 h-50 align-self-center" @click="launchLogin">login</button>
       </div>
       <div class="col-md-12 hero-img d-flex flex-column justify-content-center border-primary border-bottom">

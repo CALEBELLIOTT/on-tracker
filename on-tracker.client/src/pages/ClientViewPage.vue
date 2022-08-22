@@ -13,7 +13,7 @@
           nav-color
         ">
         <router-link :to="{ name: 'Home' }">
-          <img class="img-fluid logo" src="../assets/img/Ontracker logo OG.png" alt="" />
+          <img class="img-fluid logo" src="https://i.imgur.com/KjejY3u.png" alt="" />
         </router-link>
       </div>
     </div>
