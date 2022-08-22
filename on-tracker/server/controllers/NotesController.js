@@ -1,5 +1,6 @@
 import { Auth0Provider } from "@bcwdev/auth0provider";
 import { notesService } from "../services/NotesService";
+import { socketProvider } from "../SocketProvider";
 import BaseController from "../utils/BaseController";
 
 export class NotesController extends BaseController {
@@ -27,6 +28,7 @@ export class NotesController extends BaseController {
         try {
             req.body.accountId = req.userInfo.id
             const note = await notesService.createNote(req.body)
+            socketProvider.messageRoom(req.body.noteId, 'new:note', note)
             res.send(note)
         } catch (error) {
             next(error)
