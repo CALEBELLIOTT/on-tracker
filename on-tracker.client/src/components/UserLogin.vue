@@ -10,7 +10,7 @@
           <h1 class="m-0">Plan With Confidence</h1>
           <h2>Execute With Efficiency</h2>
           <div class="w-15">
-            <p>The best way to handle your day to day business, in an easy to use interface.</p>
+            <p>The best way to handle your day to day business, in an easy to use interface</p>
           </div>
         </div>
       </div>
